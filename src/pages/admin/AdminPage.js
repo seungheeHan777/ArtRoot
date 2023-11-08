@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { userlist } from "../../lib/api/admin";
 import Adminuseritem from "./Adminuseritem";
 
 const AdminPage = () => {
@@ -7,14 +7,12 @@ const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/admin/users"); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
-
+        const response = await userlist(); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
         setData(response.data);
       } catch (e) {
         console.error(e);
       }
     };
-
     fetchData();
   }, []);
   return (

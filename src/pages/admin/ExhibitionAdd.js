@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { Form, FormGroup, Button } from "react-bootstrap";
 import { exhibitionAdd } from "../../lib/api/admin";
 const ExhibitionAdd = () => {

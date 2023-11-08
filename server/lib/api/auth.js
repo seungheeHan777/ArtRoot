@@ -238,7 +238,7 @@ router.get("/mypage", (req, res) => {
 });
 
 //사용자 정보 수정
-router.post("/updateMy", (req, res) => {
+router.post("/update", (req, res) => {
   if (req.session.username) {
     const username = req.session.username; // 세션에서 사용자 이름 가져오기
     const updateFields = {}; // 변경할 필드를 저장할 빈 객체 생성

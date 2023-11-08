@@ -8,7 +8,7 @@ const AdminExhibitionList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await exhibitionInfo;
+        const response = await exhibitionInfo();
         setData(response.data);
       } catch (error) {
         console.error("에러 발생:", error);

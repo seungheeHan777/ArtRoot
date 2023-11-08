@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { random } from "../lib/api/exhibition";
 import ExhibitionItem from "../ExhibitionItem";
 import "./home.css";
 const RecommendedExhibition = () => {
@@ -8,7 +9,7 @@ const RecommendedExhibition = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/RandomExhibitions"); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
+        const response = await random(); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
 
         setData(response.data);
       } catch (e) {

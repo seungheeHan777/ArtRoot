@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Form, FormGroup, Button } from "react-bootstrap";
 import { exhibitionUpdate, exhibitionDel } from "../../lib/api/admin";
+import { detail } from "../../lib/api/exhibition";
 const AdminExhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
@@ -29,10 +29,7 @@ const AdminExhibitiondetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `/Exhibitiondetail/${id}` // Use the 'id' parameter in the URL
-        );
-
+        const response = await detail({ id }); // Use the 'id' parameter in the URL
         setExhibitionData(response.data);
       } catch (e) {
         console.error(e);

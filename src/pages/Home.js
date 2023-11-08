@@ -3,7 +3,6 @@ import "./home.css";
 import SimpleSlider from "./Slider.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Button } from "react-bootstrap";
 const Home = () => {
   return (
     <div className="home-container">

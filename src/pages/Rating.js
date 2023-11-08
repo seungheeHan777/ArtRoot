@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
-import axios from "axios";
+import { rating, submit } from "../lib/api/exhibition";
 import { useParams, useNavigate } from "react-router-dom";
 import "./detail.css";
 
@@ -18,7 +18,7 @@ const Rating = ({ totalStars = 5 }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/Rating/${id}`);
+        const response = await rating(id);
         setExhibitionData(response.data);
       } catch (e) {
         console.error(e);
@@ -46,8 +46,7 @@ const Rating = ({ totalStars = 5 }) => {
       exhibitionId: id,
     };
     console.log(data);
-    axios
-      .post(`/submitRating`, data)
+    submit(data)
       .then((response) => {
         if (response.data.message === "이미 평가를 제출했습니다.") {
           // 이미 평가를 제출한 경우
