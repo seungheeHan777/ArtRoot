@@ -295,4 +295,85 @@ router.delete("/deleteAccount", (req, res) => {
     res.status(401).json({ message: "Not logged in" });
   }
 });
+
+// 유저 sessin으로 처리
+//한줄평 정보 조회
+router.get("/myone", (req, res) => {
+  if (req.session.username) {
+    const username = req.session.username; // 세션에서 사용자 이름 가져오기
+    // 데이터베이스에서 사용자 정보 조회
+    const sql = "SELECT * FROM one WHERE ONE_USER = ?";
+    db.query(sql, [username], (err, results) => {
+      if (err) {
+        console.log("에러 발생");
+        console.log(err);
+        return res.status(500).json({ error: "데이터베이스 오류" });
+      }
+      // 사용자 정보가 조회되지 않으면 오류 응답
+
+      if (results.length === 0) {
+        console.log("사용자 정보가 없음");
+        return res.status(404).json({ error: "사용자를 찾을 수 없습니다" });
+      }
+
+      const oneList = results.map((one) => ({
+        username: one.ONE_USER,
+        artnum: one.ONE_ARTNUM,
+        comment: one.ONE_COMMENT,
+        stars: one.ONE_STARS,
+        picture: one.ONE_PICTURE,
+        date: one.ONE_DATE,
+        // 기타 한줄평 정보 추가
+      }));
+      console.log(oneList);
+      res.status(200).json(oneList); // 사용자 정보 응답
+    });
+  } else {
+    // 세션에 사용자 이름이 없으면 로그인되지 않은 상태
+    res.status(401).json({ error: "로그인되지 않음" });
+  }
+});
+
+//한줄평 정보 수정
+router.post("/updateOne", (req, res) => {
+  if (req.session.username) {
+    const username = req.session.username; // 세션에서 사용자 이름 가져오기
+
+    const updateFields = {}; // 변경할 필드를 저장할 빈 객체 생성
+
+    // 클라이언트에서 전송한 변경된 필드가 있는지 확인하고 객체에 추가
+    if (req.body.comment) {
+      updateFields.ONE_COMMENT = req.body.comment;
+    }
+    if (req.body.stars) {
+      updateFields.ONE_STARS = req.body.stars;
+    }
+    if (req.body.picture) {
+      updateFields.ONE_PICTURE = req.body.picture;
+    }
+
+    if (Object.keys(updateFields).length === 0) {
+      // 변경된 필드가 없는 경우
+      return res.status(400).json({ message: "변경된 필드가 없습니다." });
+    }
+    // 데이터베이스에서 사용자 정보 업데이트
+    const updateSql = "UPDATE one SET ? WHERE ONE_USER = ?  AND ONE_PICTURE=?";
+    db.query(
+      updateSql,
+      [updateFields, username, updateFields.ONE_PICTURE],
+      (err, result) => {
+        if (err) {
+          console.error("Failed to update user info:", err);
+          res.status(500).json({ message: "Failed to update user info" });
+        } else {
+          console.log("User info updated successfully");
+          res.status(200).json({ message: "User info updated successfully" });
+        }
+      }
+    );
+  } else {
+    res.status(401).json({ message: "Not logged in" });
+  }
+});
+
 module.exports = router;

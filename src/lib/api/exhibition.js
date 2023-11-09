@@ -18,3 +18,7 @@ export const allRating = () => client.get("/ex/all");
 
 // 전시회 추천 -> 일단 랜덤
 export const random = () => client.get("/ex/random");
+
+//한줄평 삭제
+export const ratingDel = (ONE_USER, ONE_ARTNUM) =>
+  client.delete(`/ex/Ratings/${ONE_USER}/${ONE_ARTNUM}`);

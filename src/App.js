@@ -25,6 +25,8 @@ import ExhibitionSearchList from "./pages/ExhibitionSearchList";
 import RatingList from "./pages/RatingList";
 import RecommendedExhibition from "./pages/RecommendedExhibition";
 import Question from "./pages/Question";
+import AdminRatingList from "./pages/admin/AdminRatingList";
+import Calendar from "./pages/calendar";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -68,6 +70,7 @@ function App() {
         <Route path="/ChangePW" element={<ChangePW />} />
         <Route path="/AdminPage" element={<AdminPage />} />
         <Route path="/AdminMain" element={<AdminMain />} />
+        <Route path="/AdminRatingList" element={<AdminRatingList />} />
         <Route path="/AdminExhibitionList" element={<AdminExhibitionList />} />
         <Route
           path="/AdminExhibitiondetail/:id"
@@ -81,6 +84,7 @@ function App() {
           element={<ExhibitionSearchList />}
         />
         <Route path="/Question" element={<Question />} />
+        <Route path="/Calendar" element={<Calendar />} />
       </Routes>
 
       <footer>

@@ -108,7 +108,7 @@ router.get("/rating/:id", (req, res) => {
 // 별점 평가한거 받는 것
 // rating user,comment, start, exhiitionID post하기
 router.post("/submitRating", (req, res) => {
-  const { user, comment, star, exhibitionId } = req.body;
+  const { user, comment, star, date, exhibitionId } = req.body;
 
   const checkSql = "SELECT * FROM one WHERE ONE_USER = ? AND ONE_ARTNUM = ?";
   db.query(checkSql, [user, exhibitionId], (checkErr, checkResult) => {
@@ -127,8 +127,7 @@ router.post("/submitRating", (req, res) => {
     } else {
       // Insert the data into your "one" database table using an SQL query
       const insertSql =
-        "INSERT INTO one (ONE_USER, ONE_COMMENT, ONE_STARS, ONE_PICTURE, ONE_ARTNUM) VALUES (?, ?, ?, ?, ?)";
-
+        "INSERT INTO one (ONE_USER, ONE_COMMENT, ONE_STARS, ONE_PICTURE, ONE_ARTNUM, ONE_DATE) VALUES (?, ?, ?, ?, ?,?)";
       // First, perform a SELECT query to get the 'image' field from the other table based on 'exhibitionId'
       const selectSql = "SELECT ART_PICTURE FROM exhibition WHERE ART_NUM = ?";
       db.query(selectSql, [exhibitionId], (selectErr, selectResult) => {
@@ -144,7 +143,7 @@ router.post("/submitRating", (req, res) => {
         // Now, you can use the retrieved 'image' value in your INSERT statement
         db.query(
           insertSql,
-          [user, comment, star, ONE_PICTURE, exhibitionId],
+          [user, comment, star, ONE_PICTURE, exhibitionId, date],
           (insertErr, insertResult) => {
             if (insertErr) {
               console.error(
@@ -181,6 +180,24 @@ router.get("/all", (req, res) => {
 
     // 결과를 클라이언트에게 응답
     res.status(200).json(results);
+  });
+});
+
+//한줄평 삭제
+router.delete("/Ratings/:ONE_USER/:ONE_ARTNUM", (req, res) => {
+  const user = req.params.ONE_USER; // URL에서 전시회 ID를 가져옴
+  const artnum = req.params.ONE_ARTNUM;
+
+  const sql = "DELETE FROM one WHERE ONE_USER = ? AND ONE_ARTNUM =?"; // 전시회 ID를 기반으로 삭제 쿼리 작성
+
+  db.query(sql, [user, artnum], (err, results) => {
+    if (err) {
+      console.error("Failed to delete:", err);
+      res.status(500).json({ message: "한줄평 삭제 실패" });
+    } else {
+      console.log("한줄평 삭제 성공");
+      res.status(200).json({ message: "한줄평 삭제 성공" });
+    }
   });
 });
 

@@ -8,7 +8,7 @@ const cors = require("cors");
 const mysql2 = require("mysql2/promise"); // 추가
 const axios = require("axios"); // 추가
 const xml2js = require("xml2js"); // 추가
-const PORT = 3000;
+const PORT = 60008;
 const con = require("./lib/db.js");
 const authRoutes = require("./lib/api/auth.js"); // api/user.js를 불러옵니다.
 const exhibitionRoutes = require("./lib/api/exhibition.js"); // api/user.js를 불러옵니다.
@@ -100,19 +100,19 @@ async function fetchAndStoreData() {
 fetchAndStoreData();
 // 여기까지 주석처리
 */
-app.use(express.static(path.join(__dirname, "../build"))); //주소 바꾸기
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "../build/index.html"))
-);
+// app.use(express.static(path.join(__dirname, "../build"))); //주소 바꾸기
+// app.get("/", (req, res) =>
+//   res.sendFile(path.join(__dirname, "../build/index.html"))
+// );
 
 app.use("/auth", authRoutes);
 app.use("/ex", exhibitionRoutes);
 app.use("/admin", adminRoutes);
 // 유저 정보 수정
 
-app.get("/*", (req, res) =>
-  res.sendFile(path.join(__dirname, "../build/index.html"))
-);
+// app.get("/*", (req, res) =>
+//   res.sendFile(path.join(__dirname, "../build/index.html"))
+// );
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`Server run : http://localhost:${PORT}/`);

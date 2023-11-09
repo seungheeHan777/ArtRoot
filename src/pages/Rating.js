@@ -13,6 +13,7 @@ const Rating = ({ totalStars = 5 }) => {
   const [exhibitionData, setExhibitionData] = useState(null);
   const [stars, setStars] = useState(0);
   const [comment, setComment] = useState("");
+  const [date, setDate] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -44,17 +45,19 @@ const Rating = ({ totalStars = 5 }) => {
       comment: comment,
       star: stars,
       exhibitionId: id,
+      date: date,
     };
     console.log(data);
     submit(data)
       .then((response) => {
         if (response.data.message === "이미 평가를 제출했습니다.") {
           // 이미 평가를 제출한 경우
-          alert("이미 평가를 제출했습니다.");
+          window.confirm("이미 평가한 전시입니다.");
         } else {
           // 평가가 성공적으로 제출된 경우
           setShowModal(true); // 모달 표시
           setComment("");
+          setDate("");
           setStars(0); // 별점 초기화
           setTimeout(() => {
             setShowModal(false); // 2초 후 모달을 닫습니다.
@@ -87,6 +90,14 @@ const Rating = ({ totalStars = 5 }) => {
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+        />
+      </label>
+      <label>
+        관람한 날짜:
+        <textarea
+          placeholder="YYYY-MM-DD로 입력해주세요"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
       </label>
       <button type="submit" onClick={handleSubmitComment}>

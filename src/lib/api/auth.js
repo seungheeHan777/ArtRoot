@@ -33,3 +33,10 @@ export const updateMy = ({ name, email, newPassword }) =>
 //회원 탈퇴
 export const deleteAccount = ({ username }) =>
   client.delete("/auth/deleteAccount", { username });
+
+//마이페이지 한줄평 정보 조회
+export const myone = () => client.get("/auth/myone");
+
+//마이페이지 한줄평 정보 수정
+export const updateOne = ({ comment, stars, picture }) =>
+  client.post("/auth/updateOne", { comment, stars, picture });
