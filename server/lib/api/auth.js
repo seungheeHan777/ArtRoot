@@ -376,4 +376,20 @@ router.post("/updateOne", (req, res) => {
   }
 });
 
+// 문의사항
+router.post("/question", (req, res) => {
+  const { name, email, message } = req.body;
+
+  const sql = "INSERT INTO qna (name, email, message) VALUES (?, ?, ?)";
+  db.query(sql, [name, email, message], (err, result) => {
+    if (err) {
+      console.error("데이터 입력 실패:", err);
+      res.status(500).json({ message: "데이터 입력 실패" });
+    } else {
+      console.log("데이터 입력 성공");
+      res.status(200).json({ message: "데이터 입력 성공" });
+    }
+  });
+});
+
 module.exports = router;

@@ -40,3 +40,6 @@ export const myone = () => client.get("/auth/myone");
 //마이페이지 한줄평 정보 수정
 export const updateOne = ({ comment, stars, picture }) =>
   client.post("/auth/updateOne", { comment, stars, picture });
+
+//qna 전송
+export const qna = (formData) => client.post("/auth/question", formData);
