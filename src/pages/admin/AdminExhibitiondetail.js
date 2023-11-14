@@ -6,6 +6,7 @@ import { detail } from "../../lib/api/exhibition";
 const AdminExhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
+  const [isDiscount, setIsDiscount] = useState(false); // 할인 여부 상태
   const [updatedInfo, setUpdatedInfo] = useState({
     ART_NAME: "",
     ART_EXPLAIN: "",
@@ -31,6 +32,7 @@ const AdminExhibitiondetail = () => {
       try {
         const response = await detail({ id }); // Use the 'id' parameter in the URL
         setExhibitionData(response.data);
+        setIsDiscount(response.data.ART_DISCOUNT === "1");//할인 여부 설정 불러오기
       } catch (e) {
         console.error(e);
       }
@@ -52,6 +54,8 @@ const AdminExhibitiondetail = () => {
         },
         {}
       );
+      // 할인 여부 값을 '0' 또는 '1'로 설정
+      updatedData.ART_DISCOUNT = isDiscount ? '1' : '0';
       // 서버로 업데이트 데이터를 보내거나 필요한 작업을 수행
       const response = await exhibitionUpdate(id, updatedData);
       // 서버 응답에 따른 작업 수행 (예: 성공 메시지 표시)
@@ -153,7 +157,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 ART_ADDR</Form.Label>
+            <Form.Label>전시회 주소</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_ADDR"
@@ -170,6 +174,13 @@ const AdminExhibitiondetail = () => {
               placeholder={exhibitionData ? exhibitionData.ART_PRICE : ""}
             />
           </FormGroup>
+          <Form.Check
+            type="checkbox"
+            label="할인 여부"
+            name="ART_DISCOUNT"
+            checked={isDiscount}
+            onChange={() => setIsDiscount(!isDiscount)}
+          />
           <FormGroup>
             <Form.Label>전시회 링크</Form.Label>
             <Form.Control
@@ -189,7 +200,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 ART_PREFER</Form.Label>
+            <Form.Label>전시회 분야</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_PREFER"

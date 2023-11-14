@@ -110,6 +110,229 @@ app.use("/ex", exhibitionRoutes);
 app.use("/admin", adminRoutes);
 // 유저 정보 수정
 
+
+// 관리자 카테고리, 이미지 관리하는 부분
+// 관리자 카테고리 조회
+app.get('/admin/categories', (req, res) => {
+  const query = 'SELECT * FROM category';
+
+  con.query(query, (err, results) => {
+    if (err) {
+      console.error('카테고리 데이터를 가져오는 중 오류가 발생했습니다:', err);
+      res.status(500).send('서버 오류');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// 관리자 카테고리 삭제
+app.post('/admin/deletecategories', (req, res) => {
+  const categoryNamesToDelete  = req.body.names; // 클라이언트에서 전달된 카테고리 ID 목록
+  console.log("삭제 카테 : ", categoryNamesToDelete);
+  // 카테고리 삭제 쿼리를 실행합니다.
+  const query = 'DELETE FROM category WHERE category IN (?)';
+
+  con.query(query, [categoryNamesToDelete], (err, results) => {
+    if (err) {
+      console.error('카테고리 삭제 중 오류가 발생했습니다:', err);
+      res.status(500).send('서버 오류');
+    } else {
+      res.sendStatus(200); // 성공적으로 삭제되면 응답을 보냅니다.
+    }
+  });
+});
+
+// 관리자 카테고리 추가
+app.post('/admin/addcategory', (req, res) => {
+  const { name } = req.body; // 클라이언트에서 전달된 카테고리 이름
+  console.log("추가 카테 : ", name);
+  // 카테고리 추가 쿼리를 실행합니다.
+  const query = 'INSERT INTO category (category) VALUES (?)';
+
+  con.query(query, [name], (err, results) => {
+    if (err) {
+      console.error('카테고리 추가 중 오류가 발생했습니다:', err);
+      res.status(500).send('서버 오류');
+    } else {
+      res.sendStatus(200); // 성공적으로 추가되면 응답을 보냅니다.
+    }
+  });
+});
+
+// 관리자 이미지 조회
+app.get('/admin/images', (req, res) => {
+  const query = 'SELECT image_id, image_url, image_genre FROM image_category';
+
+  con.query(query, (err, results) => {
+    if (err) {
+      console.error('이미지 데이터를 가져오는 중 오류가 발생했습니다:', err);
+      res.status(500).send('서버 오류');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// 관리자 이미지 추가
+app.post('/admin/addimage', (req, res) => {
+  const { imageUrl, imageGenre } = req.body;
+
+  // 이미지 URL과 이미지 장르를 데이터베이스에 추가하는 쿼리 작성
+  const query = 'INSERT INTO image_category (image_url, image_genre) VALUES (?, ?)';
+
+  con.query(query, [imageUrl, imageGenre], (err, results) => {
+    if (err) {
+      console.error('이미지 추가 중 오류가 발생했습니다:', err);
+      res.status(500).send('이미지 추가 오류');
+    } else {
+      console.log('이미지가 성공적으로 추가되었습니다.');
+      res.status(200).send('이미지가 추가되었습니다.');
+    }
+  });
+});
+
+// 관리자 이미지 삭제
+app.post('/admin/deleteimages', (req, res) => {
+  const imageIdsToDelete = req.body.imageIds;
+  console.log("IDs to delete: ", imageIdsToDelete);
+  
+  // 이미지 삭제 쿼리 작성
+  const query = 'DELETE FROM image_category WHERE image_id IN (?)';
+
+  con.query(query, [imageIdsToDelete], (err, results) => {
+    if (err) {
+      console.error('이미지 삭제 중 오류가 발생했습니다:', err);
+      res.status(500).send('이미지 삭제 오류');
+    } else {
+      console.log('이미지가 성공적으로 삭제되었습니다.');
+      res.status(200).send('이미지가 삭제되었습니다.');
+    }
+  });
+});
+
+// 사용자 카테고리 가져오기
+app.get('/admin/getcategories', (req, res) => {
+  con.query('SELECT category FROM category', (err, results) => {
+    if (err) {
+      console.error('카테고리 데이터를 불러오는 중 오류가 발생했습니다:', err);
+      res.status(500).send('카테고리 데이터 불러오기 오류');
+    } else {
+      const categories = results.map((row) => row.category);
+      res.status(200).json({ categories });
+    }
+  });
+});
+
+// 사용자 이미지 카테고리 가져오기
+app.get('/admin/getimagecategories', (req, res) => {
+  con.query('SELECT image_id, image_url, image_genre FROM image_category', (err, results) => {
+    if (err) {
+      console.error('이미지 카테고리 데이터를 불러오는 중 오류가 발생했습니다:', err);
+      res.status(500).send('이미지 카테고리 데이터 불러오기 오류');
+    } else {
+      const imageCategories = results.map((row) => ({
+        image_id: row.image_id,
+        image_url: row.image_url,
+        image_genre: row.image_genre,
+      }));
+      res.status(200).json({ imageCategories });
+    }
+  });
+});
+
+
+// 사용자 카테고리 업데이트
+app.post("/saveCategories", (req, res) => {
+  const categories = req.body.categories;
+  const user_id = req.session.username; // 세션에서 로그인한 사용자 아이디 가져오기
+  console.log("카테고리 : ", categories);
+
+  if (!user_id) {
+    res.status(401).json({ error: "로그인되지 않음" });
+    return;
+  }
+
+  if (categories && categories.length > 0) {
+    // 중복된 카테고리를 제거하기 위해 SET으로 변환하고 다시 CSV 문자열로 조합
+    const uniqueCategories = Array.from(new Set(categories));
+    const user_prefer = uniqueCategories.join(','); // NULL 값도 처리 가능
+
+    const updateQuery = "UPDATE user SET user_prefer = ? WHERE user_id = ?";
+    const values = [user_prefer || null, user_id]; // user_prefer 값이 NULL이면 NULL을 저장
+
+    con.query(updateQuery, values, (err, result) => {
+      if (err) {
+        console.error("카테고리 저장 오류: " + err.message);
+        res.status(500).json({ error: "카테고리를 저장하는 중 오류가 발생했습니다." });
+      } else {
+        console.log("카테고리가 성공적으로 저장되었습니다.");
+        res.status(200).json({ message: "카테고리가 저장되었습니다." });
+      }
+    });
+  } else {
+    // 선택된 카테고리가 없을 때도 NULL 값을 저장
+    const updateQuery = "UPDATE user SET user_prefer = NULL WHERE user_id = ?";
+    const values = [user_id];
+
+    con.query(updateQuery, values, (err, result) => {
+      if (err) {
+        console.error("카테고리 저장 오류: " + err.message);
+        res.status(500).json({ error: "카테고리를 저장하는 중 오류가 발생했습니다." });
+      } else {
+        console.log("카테고리가 성공적으로 저장되었습니다.");
+        res.status(200).json({ message: "카테고리가 저장되었습니다." });
+      }
+    });
+  }
+});
+
+// 사용자 이미지 장르 업데이트
+app.post("/saveImages", (req, res) => {
+  const images = req.body.images;
+  const user_id = req.session.username; // 세션에서 로그인한 사용자 아이디 가져오기
+  console.log("이미지 장르 : ", images);
+
+  if (!user_id) {
+    res.status(401).json({ error: "로그인되지 않음" });
+    return;
+  }
+
+  if (images && images.length > 0) {
+    // 중복된 카테고리를 제거하기 위해 SET으로 변환하고 다시 CSV 문자열로 조합
+    const uniqueImages = Array.from(new Set(images));
+    const user_imageprefer = uniqueImages.join(','); // NULL 값도 처리 가능
+
+    const updateQuery = "UPDATE user SET user_imageprefer = ? WHERE user_id = ?";
+    const values = [user_imageprefer || null, user_id]; // user_imageprefer 값이 NULL이면 NULL을 저장
+
+    con.query(updateQuery, values, (err, result) => {
+      if (err) {
+        console.error("이미지 장르 저장 오류: " + err.message);
+        res.status(500).json({ error: "이미지 장르를 저장하는 중 오류가 발생했습니다." });
+      } else {
+        console.log("이미지 장르가 성공적으로 저장되었습니다.");
+        res.status(200).json({ message: "이미지 장르가 저장되었습니다." });
+      }
+    });
+  } else {
+    // 선택된 이미지 장르가 없을 때도 NULL 값을 저장
+    const updateQuery = "UPDATE user SET user_imageprefer = NULL WHERE user_id = ?";
+    const values = [user_id];
+
+    con.query(updateQuery, values, (err, result) => {
+      if (err) {
+        console.error("이미지 장르 저장 오류: " + err.message);
+        res.status(500).json({ error: "이미지 장르를 저장하는 중 오류가 발생했습니다." });
+      } else {
+        console.log("이미지 장르가 성공적으로 저장되었습니다.");
+        res.status(200).json({ message: "이미지 장르가 저장되었습니다." });
+      }
+    });
+  }
+});
+
+
 // app.get("/*", (req, res) =>
 //   res.sendFile(path.join(__dirname, "../build/index.html"))
 // );

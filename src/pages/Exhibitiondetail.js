@@ -55,7 +55,9 @@ const Exhibitiondetail = () => {
                   <span>일정</span>
                 </th>
                 <td>
-                  <span>{exhibitionData.date}</span>
+                  <span>
+                    {exhibitionData.ART_START} ~ {exhibitionData.ART_END}
+                  </span>
                 </td>
               </tr>
 
@@ -109,6 +111,14 @@ const Exhibitiondetail = () => {
                 </th>
                 <td>
                   <span>{exhibitionData.ART_EXPLAIN}</span>
+                </td>
+              </tr>
+              <tr className="space">
+                <th className="t_row">
+                  <span>전시 배경지식</span>
+                </th>
+                <td>
+                  <span>{exhibitionData.ART_BACK}</span>
                 </td>
               </tr>
             </table>

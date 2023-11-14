@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { allList } from "../lib/api/exhibition.js";
+import { discount } from "../lib/api/exhibition.js";
 import { Link } from "react-router-dom";
 import "./home.css";
 import "slick-carousel/slick/slick.css";
@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 //https://blog.naver.com/PostView.naver?blogId=jaeeun_98&logNo=222835174514  참고한 사이트
 
-export default function SimpleSlider() {
+export default function DiscountSlider() {
   const [sliderInitialized, setSliderInitialized] = useState(false);
   const settings = {
     dots: true,
@@ -26,7 +26,7 @@ export default function SimpleSlider() {
 
     const fetchData = async () => {
       try {
-        const response = await allList(); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
+        const response = await discount(); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
 
         setData(response.data);
       } catch (e) {
@@ -41,7 +41,7 @@ export default function SimpleSlider() {
     <div className="slidediv">
       {sliderInitialized && (
         <Slider {...settings}>
-          {data.slice(0, 7).map((exhibition, index) => (
+          {data.slice(0, 4).map((exhibition, index) => (
             <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`} key={index}>
               <div>
                 <img

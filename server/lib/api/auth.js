@@ -50,10 +50,14 @@ router.post("/LogIn", (req, res) => {
         // 로그인 성공
         console.log("로그인 성공");
         req.session.username = user.user_id;
+        req.session.user_prefer = user.user_prefer; // 유저 카테고리 정보도 전송
+        req.session.user_imageprefer = user.user_imageprefer; // 유저 이미지 장르 정보도 전송
         console.log(req.session.username);
         console.log(user); // 유저 아이디를 콘솔에 출력
         res.status(200).json({
           user: user,
+          user_prefer: user.user_prefer,
+          user_imageprefer: user.user_imageprefer,
         }); //사용자 정보를 응답에 포함
       } else {
         // 로그인 실패
@@ -136,7 +140,8 @@ router.get("/check", (req, res) => {
     // 세션에 사용자 이름이 존재하면 로그인된 상태
     const user = {
       username: req.session.username, // 현재 로그인한 사용자의 이름 또는 아이디
-      // 여기에서 다른 사용자 정보를 필요에 따라 세션에서 읽어올 수 있습니다.
+      user_prefer: req.session.user_prefer, // 사용자의 카테고리 정보를 응답에 추가
+      user_imageprefer: req.session.user_imageprefer, // 여기에서 다른 사용자 정보를 필요에 따라 세션에서 읽어올 수 있습니다.
     };
     res.status(200).json(user);
     console.log(user);

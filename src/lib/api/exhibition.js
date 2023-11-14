@@ -22,3 +22,6 @@ export const random = () => client.get("/ex/random");
 //한줄평 삭제
 export const ratingDel = (ONE_USER, ONE_ARTNUM) =>
   client.delete(`/ex/Ratings/${ONE_USER}/${ONE_ARTNUM}`);
+
+//할인 전시회
+export const discount = () => client.get("/ex/DiscountExhibitions");

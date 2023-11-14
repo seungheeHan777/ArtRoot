@@ -26,12 +26,16 @@ const MyCalendar = () => {
     fetchOneInfo();
   }, []);
 
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   const getImageForDate = (currentDate) => {
-    const dateStr = currentDate.toISOString().split("T")[0];
-    console.log(dateStr);
-    console.log(oneInfo);
+    const dateStr = formatDate(currentDate);
     const imageInfo = oneInfo.filter((info) => info.date === dateStr);
-    console.log(imageInfo);
     return imageInfo.map((info) => info.picture);
   };
 

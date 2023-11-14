@@ -8,6 +8,7 @@ const AdminMain = () => {
       <Button href="/AdminPage">유저 관리</Button>
       <Button href="/AdminExhibitionList">전시회 관리</Button>
       <Button href="/AdminRatingList">한줄평 관리</Button>
+      <Button href="/AdminRecommend">전시회 추천 관리</Button>
     </div>
   );
 };

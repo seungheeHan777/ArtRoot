@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, FormGroup, Button } from "react-bootstrap";
 import { exhibitionAdd } from "../../lib/api/admin";
 const ExhibitionAdd = () => {
+  const [isDiscount, setIsDiscount] = useState(false); // 할인 여부 상태
   const [updatedInfo, setUpdatedInfo] = useState({
     ART_NUM: "",
     ART_NAME: "",
@@ -32,6 +33,7 @@ const ExhibitionAdd = () => {
         (acc, [key, value]) => {
           // 빈 문자열인 경우 null로 설정
           acc[key] = value === "" ? null : value;
+          //ART_DISCOUNT: isDiscount; //할인 여부 정보 추가
           return acc;
         },
         {}
@@ -118,7 +120,7 @@ const ExhibitionAdd = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 ART_ADDR</Form.Label>
+            <Form.Label>전시회 주소</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_ADDR"
@@ -131,6 +133,15 @@ const ExhibitionAdd = () => {
               class="form-control"
               name="ART_PRICE"
               onChange={handleInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Form.Check
+              type="checkbox"
+              label="할인 여부"
+              name="ART_DISCOUNT"
+              checked={isDiscount}
+              onChange={() => setIsDiscount(!isDiscount)}
             />
           </FormGroup>
           <FormGroup>

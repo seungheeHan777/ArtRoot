@@ -108,28 +108,20 @@ const NavBarElement = ({ user, onLogout }) => {
               <NavDropdown.Item href="/RecommendedExhibition">
                 추천 전시회
               </NavDropdown.Item>
-              <NavDropdown.Item href="/ExhibitionList">
+              <NavDropdown.Item href="/DiscountExhibition">
                 할인 전시회
               </NavDropdown.Item>
-              <NavDropdown.Item href="/ExhibitionList">
-                전시회 배경지식
-              </NavDropdown.Item>
+
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/RatingList" style={{ marginRight: "50px" }}>
               평가
             </Nav.Link>
-            <Nav.Link href="#recommend" style={{ marginRight: "50px" }}>
+            <Nav.Link href="/Recommend" style={{ marginRight: "50px" }}>
               취향 추천
             </Nav.Link>
             <Nav.Link href="/MyPage" style={{ marginRight: "50px" }}>
               마이페이지
-            </Nav.Link>
-            <Nav.Link href="/" style={{ marginRight: "50px" }}>
-              문의사항
             </Nav.Link>
             {user && user.username === "admin" ? (
               <Nav.Link href="/AdminMain" style={{ marginRight: "50px" }}>
