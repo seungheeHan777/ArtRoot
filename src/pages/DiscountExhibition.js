@@ -18,6 +18,7 @@ const DiscountExhibition = () => {
 
     fetchData();
   }, []);
+  console.log("data", data);
   return (
     <div className="home-container">
       <h1>할인 전시회 목록</h1>

@@ -1,0 +1,258 @@
+/*
+Theme Name: Muzze || Art &amp; History Museum
+Author: Arklogics
+Author URI: https://themeforest.net/user/Arklogics
+Version: 1
+Description: Base theme for HTML5
+Text Domain: base
+Tags: one-column, two-columns, three-columns
+Theme URI: http://www.htmlbeans.com/html/muzze/
+*/
+
+/*------------------------------------------------------------------
+Flaticons / .fi
+Icomoon / .icomoon
+Slick Slider / .slick-slider
+Chosen Select / .chosen-container
+JQuery UI / .ui
+Quantity Nav / .quantity-nav
+Page Wrapper / #pageWrapper
+Background Cover / .bgCover
+Background Parallax / .bgParallax
+Font Base / .fontBase
+Font Serif / .fontSerif
+Font (alter) Muli / .fontAlter
+Font (alter) Merriweather / .fontAlterVii
+Text Decotaion None / .textDecorationNone
+Font Weight Medium / .fwMedium
+Inaccessible / .inaccessible
+Image Fit / .imgFit
+Button Dark / .btn-dark
+Button Outline Dark / .btn-outline-dark
+Button Gray #999 / .btnGr999
+Button Gray #e5e5e5 / .btnGre5
+Button Gray #e0e0e0 / .btnGree0
+Button Blue 2 / .btnbl
+Button Brown / .btnBrown
+Button Yellow 2 / .btnYellow2
+Header Top Holder / .hTopHolder
+Button Small Min Width / .btnSmMinWidth
+Button Medium Min Width / .btnMdMinWidth
+Button Large Min Width / .btnLgMinWidth
+Header Time / .hthTime
+Header / #pageHeader
+Header Sticky Wrap / .phStickyWrap
+Header Logo / .logo
+Header Menu Opener / .hdMenuOpener
+Main Navigation / .mainNavigation
+Header Search Opener / .hdSearchOpener
+Header Search Collapse / .hdSearchFieldCollapse
+Header Search Holder / .hdsfcHolder
+Header Search Close / .hdSearchClose
+Header Main Drop / .mndDropMenu
+Header Main Drop Address / .mndAdress
+Header Main Drop List / .mnDropList
+Header Main Drop Title / .mndaTitle
+Header Main Drop Link / .mndLink
+Header Main Nav Opener / .pgNavOpener
+Header Main Nav Collapse / .pageNavigationCollapse
+Intro Banner Block / .introBannerBlock
+Main Heading Title / .mainHeadingTitle
+Intro Banner Heading / .ibbHeading
+SDA Column / .sdaColumn
+Tee See All Button / .teeSeeAllBtn
+Category Title / .catagoryTitle
+Current Exhibition Column / .currExibitColumn
+CecTime / .cecTime
+H2 Medium / .h2Medium
+H2 Small / .h2Small
+Bullet List / .bulletList
+H3 Small / .h3Small
+Has Border / .hasBdr
+Description Text Medium / .decrTextMedium
+Top Heading Title / .tpHeadingTitle
+Collection Column / .collectionColumn
+Collection Column Caption / .ccCaption
+Sub Feature Column / .subFeatureColumn
+Animation Class One / .animItVi
+Sponsor Logo Wrap / .spLogoWrap
+Map / .saMap
+Newsletter Aside / .newsletterAside
+Footer Aside / .footerAside
+Footer Contact List / .ftContactList
+Footer Pin Link / .ftPinLink
+Footer Logo / .ftLogo
+Footer Social Networks / .ftSocialNetworks
+Page Footer / #pageFooter
+Footer Term Links / .ftTermLinks
+Header Top Bar / .htTopBar
+Header Top Bar Links / .httbLinks
+EstStamp / .estStamp
+Ea Description Text / .eabDescrText
+Slider Arrow One / .ssArrowVi
+Quote Column Wrap / .qlColumnsWrap
+Quick Link Block / .quickLinkBlock
+Quick Column / .qlColum
+Button Go / .btnGo
+EPC Time Stamp / .epcTimeStamp
+Event Pro Column / .eveProColumn
+Link Absolute / .linkAbsolute
+News Column / .newsColumn
+Read More Link / .readMore
+Insta Feed List / .instaFeedList
+Bes Column / .besColumn
+Slider Arrow, Slider Counter / .ssArrowVii, .ssCountOnly
+Button Next Scroll / .btnNxtBlock
+About Intro Aside / .aboutIntroAside
+Get Here Column / .getHereColumn
+GHC Button Go / .ghcBtnGo
+GHC Address List / .ghcAdrList
+GHC Heading Wrap / .ghcHeadingWrap
+Live Counter Block / .liveCounterBlock
+Slider Dots List / .dotsList
+CQS Quote / .cqsQuote
+Slider Arrow Three / .ssArrowViii
+Heading Icn Behind / .thhIcnBehind
+FOM Column / .fomColumn
+Become Member Aside / .becomeMemberAside
+Header Address / .hdrAddress
+Slider Arrow Four / .ssArrowViv
+Callout Aside / .calloutAside
+About Onview Block / .aboutOnviewBlock
+Onview Museum Aside / .onviewMuseumAside
+UE Event Column / .ueEveColumn
+UE Event Time Tag / .ueecTimeTag
+Filters List / .ogFiltersList
+Gallery Figure / .galFig
+VS Quote / .vsQuote
+Rating Star List / .ratingStarListSpan
+UPC Event Column / .upcEveColumn
+Intro Banner Full Block / .introBannerFullBlock
+Full Link Nav / .hmFullLinkingNav
+Widget Callout / .widgetCllout
+Widget Callout Button / .wcBtn
+VN Figure / .vnFig
+Venues Block / .venuesBlock
+FAS Frame Wrap / .fasFrameWrap
+Main Heading Head / .mainHeadingHead
+Scroll To Nav / .scrollToNav
+AP Data Table / .apDataTable
+VTC Button Wrap / .vtcBtnsWrap
+VTC Frame Wrap / .vtcFrameWrap
+VTC Accordion Item / .vctAccItem
+VTC Accordion Opener / .vctOpener
+Button Learn More / .btnLearnMore
+Shop Post Column / .shopPostColumn
+ISO Content Holder / .isoContentHolderStatic
+Exhibition Tab List / .exhiTabList
+Time Table Aside / .timetableAside
+Shop Item Column / .shopItemColumn
+SIC Button Cart / .sicBtnCart
+Slider Arrow Nine / .ssArrowVix
+Footer Quick Links / .ftQuickLinks
+SC Button Back / .scBtnBack
+SC Time / .scTime
+Button Share / .btnShare
+SCS Info List / .scsInfosList
+SCS Sidebar / .scSidebar
+Slider Arrow Ten / .ssArrowVx
+IG Image Wrap / .igImageWrap
+SC Page NAV / .scPagerNav
+Event Pro Filter Box / .eveProFiltersBox
+Datepicker Wrap / ..dtPickerWrap
+CS Paging / .csPaging
+SB Caption / .sbisCaption
+Become Member Block / .becomeMemberBlock
+About Explore Aside / .aboutExploreAside
+SB Column / .sbisColumn
+LC Frame Wrap / .lcFrameWrap
+About Links / .abtLinks
+CD Info List / .cdInfoList
+ON Image Column / .onImageColumn
+History List / .historyList
+BR List / .brList
+Artist Profile Column / .artistProfileColumn
+Contribute Column / .contributeColumn
+Logos List / .logosList
+CT Social Networks / .ctSocialNetworks
+Flt Dropdown / .fltDropdown
+Custom Select / .custSelect
+Sorter Head / .sorterHead
+Fig Rel Action List / .figRelActionList
+widget Search / .widgetSearch
+widget Nav List / .widgetNavList
+RPC Caption / .rpcCaption
+Widget Tag Cloud / .widgetTagCloud
+Button Play / .btnPlay
+TW Tags List / .twTagsList
+Share Drop Menu / .shareDropMenu
+Author Info Column / .authorInfoColumn
+Comment & Review List / .commentsList, .reviewList
+Comment Opener / .commentsOpener
+Product Tag / .prdctTag
+Button Zoom / .btnZoom
+Product Switcher Slider / .productSwitcherSlider
+Review Form / .reviewForm
+Button Cart Remove / .btnCartRemove
+Cart Table / .cartTable
+Cart Totals / .cartTotals
+Order Placer Box / .orderPlacerBox
+Login Block / .loginBlock
+Member Column / .memberColumn
+Space Column / .spaceColumn
+DP Spent Show / .dbSpentShow
+DN Radio List / .dnRadioList
+Navbar Side / .navbarSide
+VT Tab Links / .vtTabLinks
+IB Row / .ibftRow
+Order Ticket Table / .ticketTable
+Order Ticket Modal / .orderTicketModal
+Insta Poster / .instaPoster
+-------------------------------------------------------------------*/
+
+@import "vendor/bootstrap/functions";
+@import "vendor/bootstrap/variables";
+
+@import "customVariables";
+@import "vendor/bootstrap/mixins";
+@import "base/customMixins";
+@import 'base/wp-reset';
+
+/*------------------------------------------------------------------
+Flaticons / .fi
+-------------------------------------------------------------------*/
+@import "vendor/flatIcons";
+
+/*------------------------------------------------------------------
+Icomoon / .icomoon
+-------------------------------------------------------------------*/
+@import "vendor/icomoon";
+
+/*------------------------------------------------------------------
+Slick Slider / .slick-slider
+-------------------------------------------------------------------*/
+@import "vendor/slickSlider";
+
+/*------------------------------------------------------------------
+Chosen Select / .chosen-container
+-------------------------------------------------------------------*/
+@import "vendor/chosen";
+@import "vendor/fancybox";
+
+/*------------------------------------------------------------------
+JQuery UI / .ui
+-------------------------------------------------------------------*/
+
+@import "vendor/jqueryUi";
+
+/*------------------------------------------------------------------
+Quantity Nav / .quantity-nav
+-------------------------------------------------------------------*/
+
+@import "vendor/quantityNav";
+@import "all";
+
+/*------------------------------------------------------------------
+Animations
+-------------------------------------------------------------------*/
+@import 'animations';

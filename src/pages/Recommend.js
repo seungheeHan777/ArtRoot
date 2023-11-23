@@ -1,330 +1,189 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// const Recommend = () => {
-//   const [user, setUser] = useState({ username: "" });
-//   const [selectedCategories, setSelectedCategories] = useState([]);
-//   const [selectedImages, setSelectedImages] = useState([]);
-//   const [message, setMessage] = useState("");
-//   const [showMessage, setShowMessage] = useState(false);
-//   const [categories, setCategories] = useState([]);
-//   const [images, setImages] = useState([]);
-
-//   useEffect(() => {
-//     // 사용자 정보를 서버에서 가져오는 부분
-//     axios
-//       .get("/auth/check")
-//       .then((response) => {
-//         setUser(response.data);
-//         // 사용자의 카테고리 정보를 가져와서 선택한 카테고리로 설정
-//         const userCategories = response.data.user_prefer;
-//         const userImageCategories = response.data.user_imageprefer;
-//         if (userCategories) {
-//           const categories = userCategories.split(",");
-//           setSelectedCategories(categories);
-//         }
-//         if (userImageCategories) {
-//           const imagecategories = userImageCategories.split(",");
-//           setSelectedImages(imagecategories);
-//         }
-//       })
-//       .catch((error) => {
-//         setUser({ username: "" });
-//       });
-
-//     // 카테고리 데이터를 서버에서 가져오는 부분
-//     axios
-//       .get("/admin/getcategories")
-//       .then((response) => {
-//         setCategories(response.data.categories);
-//       })
-//       .catch((error) => {
-//         console.error(
-//           "카테고리 데이터를 불러오는 중 오류가 발생했습니다:",
-//           error
-//         );
-//       });
-
-//     // 이미지 카테고리 데이터를 서버에서 가져오는 부분
-//     axios
-//       .get("/admin/getimagecategories")
-//       .then((response) => {
-//         setImages(response.data.imageCategories);
-//       })
-//       .catch((error) => {
-//         console.error(
-//           "이미지 카테고리 데이터를 불러오는 중 오류가 발생했습니다:",
-//           error
-//         );
-//       });
-//   }, []);
-
-//   const handleCategoryChange = (event) => {
-//     const category = event.target.value;
-//     if (event.target.checked) {
-//       setSelectedCategories([...selectedCategories, category]);
-//     } else {
-//       setSelectedCategories(selectedCategories.filter((c) => c !== category));
-//     }
-//   };
-
-//   const handleImageChange = (event) => {
-//     const imageName = event.target.value; // 이미지의 이름 가져오기
-//     if (event.target.checked) {
-//       setSelectedImages([...selectedImages, imageName]);
-//     } else {
-//       setSelectedImages(selectedImages.filter((name) => name !== imageName));
-//     }
-//   };
-
-//   const handleCategoryRecommend = () => {
-//     if (!user || !user.username) {
-//       setMessage("먼저 로그인하세요.");
-//     } else {
-//       // 카테고리 저장 로직 추가
-//       axios
-//         .post("/saveCategories", { categories: selectedCategories })
-//         .then(() => {
-//           setMessage("카테고리 등록 완료!!");
-//           setShowMessage(true);
-//         })
-//         .catch((error) => {
-//           setMessage("카테고리 저장 오류: " + error.message);
-//         });
-//     }
-//   };
-
-//   const handleImageRecommend = () => {
-//     if (!user || !user.username) {
-//       setMessage("먼저 로그인하세요.");
-//     } else {
-//       // 이미지 저장 로직 추가
-//       axios
-//         .post("/saveImages", { images: selectedImages })
-//         .then(() => {
-//           setMessage("이미지 등록 완료!!");
-//           setShowMessage(true);
-//         })
-//         .catch((error) => {
-//           setMessage("이미지 저장 오류: " + error.message);
-//         });
-//     }
-//   };
-//   return (
-//     <div>
-//       <h1>추천</h1>
-//       {user.username ? (
-//         <div>
-//           <h2>카테고리 선택</h2>
-//           {categories.map((category) => (
-//             <label key={category}>
-//               <input
-//                 type="checkbox"
-//                 value={category}
-//                 onChange={handleCategoryChange}
-//                 checked={selectedCategories.includes(category)}
-//               />{" "}
-//               {category}
-//             </label>
-//           ))}
-//           <button onClick={handleCategoryRecommend}>등록</button>
-//           <hr />
-//           <div>
-//             <h2>이미지 선택</h2>
-//             <div style={{ display: "flex", flexWrap: "wrap" }}>
-//               {images.map((image) => (
-//                 <div
-//                   key={image.image_id}
-//                   style={{
-//                     flexBasis: "33%",
-//                     padding: "10px",
-//                     boxSizing: "border-box",
-//                   }}
-//                 >
-//                   <img
-//                     src={image.image_url}
-//                     alt={image.image_genre}
-//                     style={{ width: "100%", height: "300px" }}
-//                   />
-//                   <label>
-//                     <input
-//                       type="checkbox"
-//                       id={image.image_id}
-//                       value={image.image_genre}
-//                       onChange={handleImageChange}
-//                       checked={selectedImages.includes(image.image_genre)}
-//                     />{" "}
-//                     {image.image_genre}
-//                   </label>
-//                 </div>
-//               ))}
-//             </div>
-//             <button onClick={handleImageRecommend}>이미지 등록</button>
-//             {showMessage && (
-//               <div className="message">
-//                 <p>{message}</p>
-//                 <button onClick={() => setShowMessage(false)}>닫기</button>
-//               </div>
-//             )}
-//           </div>
-//         </div>
-//       ) : (
-//         <div>
-//           <p>{message}</p>
-//           <p>먼저 로그인하세요.</p>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Recommend;
-
-// -------------------------------------------------로그인을 먼저저하세요 띄우게
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import {
+  ADcategory,
+  getUser,
+  userCategory,
+  userImage,
+} from "../lib/api/keyword";
+import { useSelector } from "react-redux";
 const Recommend = () => {
-  const [user, setUser] = useState({ username: "" });
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
-
+  const { user } = useSelector(({ user }) => ({ user: user.user }));
   const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedImage, setSelectedImage] = useState([]);
 
   useEffect(() => {
-    // 사용자 정보를 서버에서 가져오는 부분
-    axios
-      .get("/auth/check")
+    // Fetch category and image data when the component mounts
+    fetchData("word"); // Fetch categories
+    fetchData("image"); // Fetch images
+    if (user) {
+      fetchUserPrefer();
+      fetchUserImagePrefer(); // Fetch user image preferences
+    }
+  }, [user]);
+
+  const fetchData = (type) => {
+    ADcategory()
       .then((response) => {
-        setUser(response.data);
-        // 사용자의 카테고리 정보를 가져와서 선택한 카테고리로 설정
-        const userCategories = response.data.user_prefer;
-        const userImageCategories = response.data.user_imageprefer;
-        if (userCategories) {
-          const categories = userCategories.split(",");
-          setSelectedCategories(categories);
-        }
-        if (userImageCategories) {
-          const imagecategories = userImageCategories.split(",");
-          setSelectedImages(imagecategories);
+        if (Array.isArray(response.data)) {
+          // item.type이 'word' 또는 'image'인 데이터만 필터링
+          const filteredData = response.data.filter(
+            (item) => item.type === type
+          );
+
+          if (type === "word") {
+            setCategories(
+              filteredData.map((item) => ({
+                name: item.name,
+                category_id: item.category_id,
+              }))
+            );
+          } else if (type === "image") {
+            setImages(filteredData);
+          }
+        } else {
+          console.error(
+            `서버에서 반환된 ${
+              type === "word" ? "카테고리" : "이미지"
+            } 데이터 구조가 예상과 다릅니다.`
+          );
         }
       })
       .catch((error) => {
-        setUser({ username: "" });
-      });
-
-    // 카테고리 데이터를 서버에서 가져오는 부분
-    axios
-      .get("/admin/getcategories")
-      .then((response) => {
-        setCategories(response.data.categories);
-      })
-      .catch((error) => {
         console.error(
-          "카테고리 데이터를 불러오는 중 오류가 발생했습니다:",
+          `${
+            type === "word" ? "카테고리" : "이미지"
+          }를 불러오는 중 오류가 발생했습니다.`,
           error
         );
       });
+  };
 
-    // 이미지 카테고리 데이터를 서버에서 가져오는 부분
-    axios
-      .get("/admin/getimagecategories")
-      .then((response) => {})
-      .catch((error) => {
-        console.error(
-          "이미지 카테고리 데이터를 불러오는 중 오류가 발생했습니다:",
-          error
+  const fetchUserPrefer = async () => {
+    try {
+      const response = await userCategory(user.username);
+      // response가 undefined이면 오류 방지
+      if (response && response.data) {
+        const userPreferences = response.data.map(
+          (preference) => preference.category_id
         );
-      });
-  }, []);
-
-  const handleCategoryChange = (event) => {
-    const category = event.target.value;
-    if (event.target.checked) {
-      setSelectedCategories([...selectedCategories, category]);
-    } else {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+        console.log(userPreferences);
+        setSelectedCategories(userPreferences);
+      } else {
+        console.error("사용자 선호도 정보가 없습니다.");
+      }
+    } catch (error) {
+      console.error(
+        "사용자 선호도 정보를 불러오는 중 오류가 발생했습니다.",
+        error
+      );
     }
   };
 
-  const handleImageChange = (event) => {
-    const imageName = event.target.value; // 이미지의 이름 가져오기
-    if (event.target.checked) {
-      setSelectedImages([...selectedImages, imageName]);
+  const handleCheckboxChange = (categoryId) => {
+    if (selectedCategories.includes(categoryId)) {
+      setSelectedCategories(
+        selectedCategories.filter((category_id) => category_id !== categoryId)
+      );
     } else {
-      setSelectedImages(selectedImages.filter((name) => name !== imageName));
+      setSelectedCategories([...selectedCategories, categoryId]);
     }
   };
-
   const handleCategoryRecommend = () => {
-    // 카테고리 저장 로직 추가
-    axios
-      .post("/saveCategories", { categories: selectedCategories })
-      .then(() => {})
-      .catch((error) => {});
+    // 유저가 선택한 카테고리를 서버로 전송
+    getUser({ user_id: user.username, categories: selectedCategories })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((error) => {
+        console.error(
+          "카테고리 정보를 서버에 전송하는 중 오류가 발생했습니다.",
+          error
+        );
+      });
   };
-
-  const handleImageRecommend = () => {
-    if (!user || !user.username) {
-    } else {
-      // 이미지 저장 로직 추가
-      axios
-        .post("/saveImages", { images: selectedImages })
-        .then(() => {})
-        .catch((error) => {});
+  const fetchUserImagePrefer = async () => {
+    try {
+      const response = await userImage(user.username);
+      if (response && response.data) {
+        const selectedImageId = response.data.image_id;
+        setSelectedImage(selectedImageId);
+      } else {
+        console.error("사용자 이미지 선호도 정보가 없습니다.");
+      }
+    } catch (error) {
+      console.error(
+        "사용자 이미지 선호도 정보를 불러오는 중 오류가 발생했습니다.",
+        error
+      );
     }
   };
   return (
     <div>
-      {user.username ? (
+      {user ? (
         <div>
           <h1>추천</h1>
           <h2>카테고리 선택</h2>
           {categories.map((category) => (
-            <label key={category}>
+            <label key={category.name}>
               <input
                 type="checkbox"
-                value={category}
-                onChange={handleCategoryChange}
-                checked={selectedCategories.includes(category)}
+                checked={selectedCategories.includes(category.category_id)}
+                onChange={() => handleCheckboxChange(category.category_id)}
               />{" "}
-              {category}
+              {category.name}
             </label>
           ))}
           <button onClick={handleCategoryRecommend}>등록</button>
           <hr />
           <div>
             <h2>이미지 선택</h2>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div className="image-container">
               {images.map((image) => (
-                <div
-                  key={image.image_id}
-                  style={{
-                    flexBasis: "33%",
-                    padding: "10px",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  <img
-                    src={image.image_url}
-                    alt={image.image_genre}
-                    style={{ width: "100%", height: "300px" }}
-                  />
-                  <label>
+                <div key={image.category_id} className="image-item">
+                  <div className="image-content">
+                    <img
+                      src={image.image_url}
+                      alt={`이미지 ${image.category_id}`}
+                      style={{ width: "200px", height: "150px" }}
+                    />
+                    <p>이미지 카테고리: {image.name}</p>
+                  </div>
+                  <div className="checkbox">
                     <input
                       type="checkbox"
-                      id={image.image_id}
-                      value={image.image_genre}
-                      onChange={handleImageChange}
-                      checked={selectedImages.includes(image.image_genre)}
-                    />{" "}
-                    {image.image_genre}
-                  </label>
+                      checked={selectedCategories.includes(image.category_id)}
+                      onChange={() => handleCheckboxChange(image.category_id)}
+                    />
+                  </div>
                 </div>
               ))}
+              <style jsx>{`
+                .image-container {
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: flex-start; /* 왼쪽에서 오른쪽으로 정렬 */
+                }
+
+                .image-item {
+                  width: calc(33.33% - 10px);
+                  margin-bottom: 20px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                }
+
+                .image-content {
+                  text-align: center;
+                }
+
+                .checkbox {
+                  margin-top: 10px;
+                }
+              `}</style>
             </div>
-            <button onClick={handleImageRecommend}>이미지 등록</button>
+            <button onClick={handleCategoryRecommend}>이미지 등록</button>
           </div>
         </div>
       ) : (

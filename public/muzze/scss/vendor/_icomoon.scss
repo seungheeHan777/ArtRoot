@@ -1,0 +1,71 @@
+@font-face {
+	font-family: 'icomoon';
+	src:
+		url('fonts/icomoon.ttf?h7kkm8') format('truetype'),
+		url('fonts/icomoon.woff?h7kkm8') format('woff'),
+		url('fonts/icomoon.svg?h7kkm8#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-user:before {
+	content: "\e90c";
+}
+.icomoon-layers:before {
+	content: "\e90d";
+}
+.icomoon-breifcase:before {
+	content: "\e90e";
+}
+.icomoon-smiley:before {
+	content: "\e90f";
+}
+.icomoon-share:before {
+	content: "\e909";
+}
+.icomoon-download:before {
+	content: "\e90a";
+}
+.icomoon-resize:before {
+	content: "\e90b";
+}
+.icomoon-UpCircle:before {
+	content: "\e905";
+}
+.icomoon-leftCircle:before {
+	content: "\e906";
+}
+.icomoon-downCircle:before {
+	content: "\e907";
+}
+.icomoon-rightCircle:before {
+	content: "\e908";
+}
+.icomoon-arrowCircleDown:before {
+	content: "\e900";
+}
+.icomoon-arrowCircleRight:before {
+	content: "\e901";
+}
+.icomoon-arrowCircleUp:before {
+	content: "\e902";
+}
+.icomoon-arrowCircleLeft:before {
+	content: "\e903";
+}
+.icomoon-search:before {
+	content: "\e904";
+}

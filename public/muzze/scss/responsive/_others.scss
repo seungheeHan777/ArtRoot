@@ -1,0 +1,92 @@
+@include media-breakpoint-down(xs){
+	.exhiTabList{
+
+		&.smVertical{
+
+			.nav-item{
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.nav-link{
+				padding: 5px 15px;
+
+				&:after{
+					right: auto;
+					top: 0;
+					border-bottom: 0;
+					border-left: 3px solid $clr1;
+				}
+			}
+		}
+	}
+
+	.orderTable{
+		min-width: 470px;
+	}
+
+	.otTableWrap{
+		overflow-x: auto;
+	}
+}
+
+@include media-breakpoint-down(sm){
+	.mainNavigation{
+
+		.dropdown-menu{
+			border: 0;
+			box-shadow: none;
+			background-color: transparent;
+		}
+	}
+
+	.carterTableWrap{
+		overflow-x: auto;
+		width: 100%;
+	}
+
+	.cartTable{
+		min-width: 768px;
+	}
+
+	.cartTotals{
+		min-width: 506px;
+	}
+
+	.sceHeadStick{
+		position: static !important;
+	}
+}
+
+@include media-breakpoint-down(md){
+	.hdBtn{
+		padding-top: 4px;
+		padding-bottom: 4px;
+		min-width: 80px;
+	}
+
+	.sceHeadStickII{
+		position: static !important;
+		max-width: none;
+	}
+}
+
+@media (min-width: 1800px){
+	.mainNavigation{
+
+		.nav-item{
+
+			&:nth-last-child(1),
+			&:nth-last-child(2){
+
+				.dropdown-menu{
+
+					.mnDropList{
+						left: 100%;
+						right: initial;
+					}
+				}
+			}
+		}
+	}
+}

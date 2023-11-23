@@ -1,0 +1,31 @@
+/* site responsive styles */
+@import "vendor/bootstrap/functions";
+@import "vendor/bootstrap/variables";
+@import "customVariables";
+@import "vendor/bootstrap/mixins";
+
+@import "base/customMixins";
+
+/* query sm (576) styles */
+@import 'responsive/sm--576';
+
+/* query md (768) styles */
+@import 'responsive/md--768';
+
+/* query lg (992) styles */
+@import 'responsive/lg--992';
+
+/* query lgwd (1025) styles */
+@import 'responsive/lgwd--1025';
+
+/* query xl (1230) styles */
+@import 'responsive/xl--1230';
+
+/* query xlwd (1366) styles */
+@import 'responsive/xlwd--1366';
+
+/* query xxl (1920) styles */
+@import 'responsive/xxl--1920';
+
+/* query others (down & between) styles */
+@import 'responsive/others';

@@ -30,6 +30,7 @@ import Calendar from "./pages/calendar";
 import Recommend from "./pages/Recommend";
 import AdminRecommend from "./pages/admin/AdminRecommend";
 import DiscountExhibition from "./pages/DiscountExhibition";
+import Test from "./pages/Test";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -91,6 +92,7 @@ function App() {
         />
         <Route path="/Question" element={<Question />} />
         <Route path="/Calendar" element={<Calendar />} />
+        <Route path="/Test" element={<Test />} />
       </Routes>
 
       <footer>

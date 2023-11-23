@@ -1,0 +1,255 @@
+@include media-breakpoint-up(sm){
+	.currExibitColumn{
+
+		&.gridView{
+
+			.imgHolder{
+				max-width: 203px;
+			}
+		}
+	}
+
+	.listHasColumns{
+		column-count: 2;
+
+		> li{
+			page-break-inside: avoid;
+		}
+	}
+
+	.collectionColumn{
+
+		.imgHolder{
+			height: auto;
+		}
+	}
+
+	.saMap{
+		height: 250px;
+	}
+
+	.newsletterAside{
+
+		.form-group{
+			width: auto;
+		}
+
+		.form-control{
+			width: 220px;
+		}
+
+		.btn{
+			display: inline-block;
+			min-width: 150px;
+		}
+	}
+
+	.ssArrowVi{
+		margin-top: -81px;
+		@include size(30px);
+
+		&.slickNext{
+			right: -50px;
+		}
+
+		&.slickPrev{
+			left: -50px;
+		}
+	}
+
+	.qlColumnsWrap{
+
+		&.qlColumnsWrapII{
+
+			.col{
+				border-left-color: $border-color;
+			}
+		}
+
+		.col{
+			border-left: 1px solid rgba($white, 0.06);
+		}
+	}
+
+	.qlColum{
+		min-height: 272px;
+	}
+
+	.epcTimeStamp{
+		float: none;
+	}
+
+	.eveProColumn{
+
+		.imgHolder{
+			width: 110px;
+			float: none;
+		}
+
+		.descrWrap{
+			width: auto;
+		}
+	}
+
+	.lcbContList{
+
+		> li{
+			min-width: 50%;
+		}
+	}
+
+	.ueEveColumn{
+
+		&.gridView{
+
+			.imgHolder{
+				width: auto;
+			}
+		}
+
+		.imgHolder{
+			@include size(211px, initial);
+		}
+	}
+
+	.vnFig{
+		max-width: none;
+	}
+
+	.fasFrameWrap{
+		height: auto;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: calc(50% - 6px);
+		position: absolute;
+
+		&.fasFrameWrapII{
+			height: auto;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 50%;
+			position: absolute;
+		}
+	}
+
+	.vtcBtnsWrap{
+
+		.btn{
+			width: 66%;
+		}
+	}
+
+	.shopItemColumn{
+		max-width: none;
+	}
+
+	.scPagerNav{
+		font-size: 16px;
+		line-height: (22/16);
+
+		a{
+
+			&:before{
+				margin-top: -12px;
+				@include size(30px);
+			}
+		}
+
+		.scpnPrev{
+			padding-left: 55px;
+		}
+
+		.scpnNext{
+			padding-right: 55px;
+		}
+	}
+
+	.historyList{
+
+		time{
+			width: 200px;
+			font-size: 20px;
+			line-height: (22/20);
+		}
+	}
+
+	.logosList{
+		max-width: none;
+
+		li{
+			min-height: 136px;
+		}
+
+		a{
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+	}
+
+	.contactFormWrap{
+
+		.formCol6{
+			width: 50%;
+		}
+	}
+
+	.orderPlacerBox{
+
+		.btn{
+			width: auto;
+		}
+	}
+
+	.btnHelp{
+		right: 0;
+		top: 0;
+		position: absolute;
+	}
+
+	.cardImage{
+		max-width: 100%;
+	}
+
+	.loginBlock{
+
+		.btnForget{
+			font-size: inherit;
+		}
+	}
+
+	.acwColLarge{
+		max-width: 265px;
+	}
+
+	.acwColSmall{
+		max-width: 153px;
+	}
+
+	.acwColII{
+		margin-top: 80px;
+	}
+
+	.acwColIII{
+		clear: left;
+		margin-top: 80px;
+	}
+
+	.acwColIV{
+		margin-top: 180px;
+	}
+
+	.acwColV{
+		margin-top: 80px;
+		clear: right;
+	}
+
+	.acwColVI{
+		margin-top: 290px;
+	}
+
+	.ibtbtOpener{
+		top: 21px;
+	}
+}

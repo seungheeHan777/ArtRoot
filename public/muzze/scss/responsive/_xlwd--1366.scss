@@ -1,0 +1,10 @@
+@include media-breakpoint-up(xlwd){
+	.h1Large{
+		font-size: 60px;
+		line-height: (60/60);
+	}
+
+	.hmFullLinkingNav{
+		right: 40px;
+	}
+}

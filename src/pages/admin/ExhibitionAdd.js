@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Button } from "react-bootstrap";
 import { exhibitionAdd } from "../../lib/api/admin";
+import { getKeyword } from "../../lib/api/keyword";
 const ExhibitionAdd = () => {
   const [isDiscount, setIsDiscount] = useState(false); // 할인 여부 상태
   const [updatedInfo, setUpdatedInfo] = useState({
@@ -18,11 +19,31 @@ const ExhibitionAdd = () => {
     ART_BACK: "",
     ART_PREFER: "",
     ART_ARTIST: "",
+    ART_DISCOUNT: "",
   });
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   // 입력 필드의 name 속성을 사용하여 상태 업데이트
+  //   setUpdatedInfo({ ...updatedInfo, [name]: value });
+  // };
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    // 입력 필드의 name 속성을 사용하여 상태 업데이트
-    setUpdatedInfo({ ...updatedInfo, [name]: value });
+    const { name, value, options } = e.target;
+
+    if (name === "selectedKeywords") {
+      // 다중 선택된 키워드를 배열로 변환하여 상태에 저장합니다.
+      const selectedKeywords = Array.from(options)
+        .filter((option) => option.selected)
+        .map((option) => option.value);
+
+      setUpdatedInfo({
+        ...updatedInfo,
+        ART_KEYWORDS: selectedKeywords,
+      });
+    } else {
+      // 입력 필드의 name 속성을 사용하여 상태 업데이트
+      setUpdatedInfo({ ...updatedInfo, [name]: value });
+    }
   };
 
   // 수정 버튼 클릭 시 호출되는 함수
@@ -46,7 +67,22 @@ const ExhibitionAdd = () => {
       console.error("요청 중 오류 발생:", error);
     }
   };
+  // // 추가
+  // const [keywords, setKeywords] = useState([]); // 서버에서 가져온 키워드 목록
+  // useEffect(() => {
+  //   // 페이지가 로드될 때 서버에서 키워드 목록을 가져옵니다.
+  //   const fetchKeywords = async () => {
+  //     try {
+  //       const response = await getKeyword();
+  //       console.log(response.data.keywords);
+  //       setKeywords(response.data.keywords);
+  //     } catch (error) {
+  //       console.error("키워드를 불러오는 중 오류 발생:", error);
+  //     }
+  //   };
 
+  //   fetchKeywords();
+  // }, []);
   return (
     <div className="contents">
       <div className="product_detail">
@@ -58,7 +94,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>ART_NUM</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_NUM"
               onChange={handleInputChange}
             />
@@ -66,7 +102,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 명</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_NAME"
               onChange={handleInputChange}
             />
@@ -74,7 +110,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 설명</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_EXPLAIN"
               onChange={handleInputChange}
             />
@@ -82,7 +118,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 시작일</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_START"
               onChange={handleInputChange}
             />
@@ -90,7 +126,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 종료일</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_END"
               onChange={handleInputChange}
             />
@@ -98,7 +134,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 시간</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_TIME"
               onChange={handleInputChange}
             />
@@ -106,7 +142,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 휴관일</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_CLOSED"
               onChange={handleInputChange}
             />
@@ -114,7 +150,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 장소</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_PLACE"
               onChange={handleInputChange}
             />
@@ -122,7 +158,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 주소</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_ADDR"
               onChange={handleInputChange}
             />
@@ -130,7 +166,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 가격</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_PRICE"
               onChange={handleInputChange}
             />
@@ -147,7 +183,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 링크</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_SITE"
               onChange={handleInputChange}
             />
@@ -155,7 +191,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 배경지식</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_BACK"
               onChange={handleInputChange}
             />
@@ -163,7 +199,7 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>전시회 ART_PREFER</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_PREFER"
               onChange={handleInputChange}
             />
@@ -171,12 +207,30 @@ const ExhibitionAdd = () => {
           <FormGroup>
             <Form.Label>참여 아티스트</Form.Label>
             <Form.Control
-              class="form-control"
+              className="form-control"
               name="ART_ARTIST"
               onChange={handleInputChange}
             />
           </FormGroup>
         </Form>
+
+        {/* 여기에 서버에서 불러온 키워드 목록을 매핑하여 옵션으로 만듭니다. */}
+        {/* <FormGroup>
+          <Form.Label>전시회 키워드 선택</Form.Label>
+          <Form.Control
+            as="select"
+            multiple
+            name="selectedKeywords"
+            onChange={handleInputChange}
+          >
+          
+            {keywords.map((keyword) => (
+              <option key={keyword.id} value={keyword.id}>
+                {keyword.keyword_id}:{keyword.name}
+              </option>
+            ))}
+          </Form.Control>
+        </FormGroup> */}
         <Button onClick={handleSubmit} href={"/AdminExhibitionList"}>
           저장
         </Button>

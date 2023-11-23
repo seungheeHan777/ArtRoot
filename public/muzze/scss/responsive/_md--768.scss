@@ -1,0 +1,918 @@
+@include media-breakpoint-up(md){
+	.phStickyWrap{
+
+		&.phVi{
+			height: 119px;
+		}
+
+		&.phVii{
+			height: 94px;
+		}
+
+		&.phViii{
+			height: 53px;
+		}
+
+		&.phViv{
+			height: 121px;
+		}
+
+		&.phVix{
+			min-height: 39px;
+		}
+
+		&.phVx{
+			min-height: 131px;
+		}
+
+		&.phVxi{
+			min-height: 60px;
+		}
+	}
+
+	.logo{
+		max-width: 136px;
+
+		&.logoVii{
+			max-width: 106px;
+		}
+
+		&.logoViv{
+			max-width: 108px;
+		}
+	}
+
+	.mainNavigation{
+
+		&.mainNavigationVii{
+
+			.nav-item{
+				margin-right: initial;
+				margin-left: 15px;
+
+				&.dropdown{
+
+					&:hover{
+
+						> .dropdown-menu{
+							transform: translateY(10px);
+						}
+					}
+				}
+
+				> .dropdown-menu{
+
+					&:before{
+						height: 13px;
+						top: -13px;
+					}
+				}
+			}
+
+			.dropdown-menu{
+				transform: translateY(15px);
+			}
+		}
+
+		&.mainNavigationVv,
+		.navbar-light &{
+
+			&.mainNavigationVv{
+
+				.nav-item{
+					margin-right: initial;
+					margin-left: 15px;
+
+					&.active{
+
+						.nav-link{
+							color: $white;
+						}
+					}
+				}
+
+				.nav-link{
+					color: $white;
+
+					&:hover{
+						color: $white;
+					}
+				}
+			}
+		}
+
+		&.mainNavigationVix{
+
+			.nav-item{
+				margin-left: 11px;
+				margin-right: 11px;
+			}
+		}
+
+		&.mainSideNavigation{
+
+			.nav-item{
+				margin: 0 0 12px;
+
+				&.dropdown{
+
+					&.show{
+
+						> .dropdown-menu{
+							display: block !important;
+						}
+					}
+				}
+			}
+
+			.dropdown-menu{
+				position: static;
+				display: none !important;
+				background-color: transparent;
+				transform: none;
+				box-shadow: none;
+				opacity: 1;
+				visibility: visible;
+				border: 0;
+				width: 100%;
+			}
+
+			.mnDropList{
+
+				.mnDropList{
+					position: static;
+					opacity: 1;
+					visibility: visible;
+					overflow: hidden;
+					max-height: 0;
+					background-color: transparent;
+					border: 0;
+					transition: max-height 0.3s ease;
+				}
+
+				li{
+
+					&.hasDropdown{
+
+						&:hover{
+
+							> .mnDropList{
+								max-height: 555px;
+								overflow-y: auto;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.nav-item{
+			margin-right: 23px;
+
+			&:nth-last-child(1),
+			&:nth-last-child(2){
+
+				.dropdown-menu{
+
+					.mnDropList{
+						left: initial;
+						right: 100%;
+					}
+				}
+			}
+
+			&.dropdown{
+
+				&:hover{
+
+					> .dropdown-menu{
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(12px);
+					}
+				}
+
+				> .nav-link{
+
+					&:after{
+						display: none;
+					}
+				}
+			}
+		}
+
+		.nav-link{
+			padding: 0;
+		}
+
+		.navbar-expand-md &{
+
+			.nav-link{
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+
+		.dropdown-menu{
+			display: block !important;
+			opacity: 0;
+			position: absolute;
+			visibility: hidden;
+			transform: translateY(5px);
+			transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+			@include pseudo(before, -14px, 0, null, 0);
+
+			&:before{
+				height: 14px;
+			}
+		}
+	}
+
+	.hdSearchOpener{
+		position: static;
+	}
+
+	.mndDropMenu{
+		min-width: 1px;
+		width: 250px;
+
+		&.mndDropMenuSmall{
+			width: 200px;
+		}
+	}
+
+	.mnDropList{
+
+		li{
+
+			&.hasDropdown{
+
+				&:hover{
+
+					> .mnDropList{
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+			}
+		}
+
+		.mnDropList{
+			display: block;
+			position: absolute;
+			left: 100%;
+			top: 0;
+			width: 200px;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease, visibility 0.3s ease;
+			background-color: $dropdown-bg;
+			border: 1px solid $dropdown-border-color;
+			box-shadow: $dropdown-box-shadow;
+			max-height: none;
+		}
+	}
+
+	.pageNavigationCollapse{
+		position: static;
+		background-color: transparent;
+	}
+
+	.introBannerBlock{
+
+		&.hdIsVi{
+			min-height: calc(100vh - 119px);
+		}
+
+		&.hdIsVii{
+			min-height: calc(100vh - 94px);
+		}
+
+		&.hdIsViv{
+			min-height: calc(100vh - 121px);
+		}
+
+		&.hdIsVix{
+			min-height: calc(100vh - 39px);
+		}
+
+		&.hdIsViClActive{
+			min-height: calc(100vh - 165px);
+		}
+	}
+
+	.mainHeadingTitle{
+		font-size: 24px;
+		line-height: (28/24);
+	}
+
+	.ibbHeading{
+		font-size: 40px;
+		line-height: (45/40);
+
+		&.ibbHeadingIII{
+			font-size: 50px;
+		}
+
+		&.ibbHeadingHasMark{
+
+			&:before{
+				margin-top: 22px;
+				height: 40px;
+			}
+		}
+	}
+
+	.scheduleDetailsAside{
+
+		.col{
+
+			+ .col{
+				@include pseudo(before, 10px, null, 30px, -9px);
+
+				&:before{
+					border-left: 1px solid $clr4;
+				}
+			}
+		}
+	}
+
+	.currExibitColumn{
+		max-width: none;
+
+		&.gridView{
+
+			.imgHolder{
+				width: 243px;
+			}
+		}
+	}
+
+	.h2Medium{
+		font-size: 29px;
+		line-height: (35/29);
+	}
+
+	.h3Small{
+		font-size: 20px;
+		line-height: (24/20);
+	}
+
+	.decrTextMedium{
+		font-size: 20px;
+		line-height: (31/20);
+	}
+
+	.tpHeadingTitle{
+		font-size: 16px;
+		line-height: (20/16);
+	}
+
+	.collectionColumn{
+
+		.imgHolder{
+
+			img{
+				height: auto;
+				object-fit: none;
+			}
+		}
+	}
+
+	.saMap{
+		height: 300px;
+	}
+
+	.footerAside{
+		font-size: 13px;
+		line-height: (24/17);
+	}
+
+	.ftPinLink{
+		font-size: 15px;
+	}
+
+	.ftLogo{
+		max-width: 135px;
+
+		&.ftLogoVii{
+			max-width: none;
+		}
+	}
+
+	.ftSocialNetworks{
+		font-size: 24px;
+	}
+
+	#pageFooter{
+		font-size: 13px;
+		line-height: (18/13);
+	}
+
+	.httbLinks{
+
+		> li{
+			margin-left: 27px;
+			margin-right: initial;
+		}
+	}
+
+	.qlColumnsWrap{
+
+		&.qlColumnsWrapII{
+
+			.col{
+
+				&:last-child{
+					border-right-color: $border-color;
+				}
+			}
+		}
+
+		.col{
+
+			&:first-child{
+				border-left-width: 1px;
+			}
+
+			&:last-child{
+				border-right: 1px solid rgba($white, 0.06);
+			}
+		}
+	}
+
+	.qlColum{
+
+		&:hover{
+
+			.qlcHolder{
+				transform: translateY(-32px);
+			}
+
+			.btnGo{
+				transform: translate(-50%, 51px) scaleY(1);
+			}
+		}
+
+		.qlcHolder{
+			transition: transform 0.3s ease;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		.btnGo{
+			bottom: 0;
+			left: 50%;
+			position: absolute;
+			transform: translate(-50%, 65px) scaleY(0);
+		}
+	}
+
+	.epcTimeStamp{
+		width: 150px;
+
+		.textDate{
+			font-size: 45px;
+		}
+
+		.textDay{
+			font-size: 20px;
+		}
+	}
+
+	.eveProColumn{
+
+		.imgHolder{
+			width: 170px;
+		}
+	}
+
+	.newsColumn{
+		max-width: none;
+
+		&.newsColumnMdMax{
+			max-width: 310px;
+		}
+	}
+
+	.besColumn{
+
+		&.hdIsViii{
+			min-height: calc(100vh - 53px);
+		}
+
+		.imgHolder{
+			max-width: 290px;
+		}
+
+		.bgLayer{
+			@include size(357px, 363px);
+		}
+	}
+
+	.ssArrowVii,
+	.ssCountOnly{
+		bottom: 7.4%;
+		left: 0;
+		right: 0;
+		max-width: 690px;
+	}
+
+	.ssArrowVii{
+
+		&.slickNext{
+			transform: translateX(104px);
+		}
+
+		&.slickPrev{
+			transform: none;
+		}
+	}
+
+	.ssArrowVi{
+
+		&.ssArrowViII{
+			margin-top: -15px;
+		}
+	}
+
+	.ssCountOnly{
+		padding-left: 74px;
+	}
+
+	.getHereColumn{
+
+		&:before{
+			left: 0;
+		}
+	}
+
+	.lcbContList{
+
+		> li{
+			min-width: 33.333%;
+		}
+	}
+
+	.cqsQuote{
+		font-size: 24px;
+		line-height: (35/24);
+	}
+
+	.aboutOnviewBlock{
+
+		.imgHolder{
+			max-height: 566px;
+			max-width: 100%;
+
+			&:before{
+				@include size(204px);
+			}
+
+			&:after{
+				@include size(286px);
+			}
+		}
+	}
+
+	.ueEveColumn{
+
+		&.gridView{
+			max-width: none;
+		}
+	}
+
+	.ogFiltersList{
+
+		&.isLeft{
+
+			> li{
+				margin-left: initial;
+				margin-right: 20px;
+			}
+		}
+
+		> li{
+			margin: 0 0 0 20px;
+		}
+	}
+
+	.galFig{
+		max-width: none;
+	}
+
+	.upcEveColumn{
+		max-width: none;
+	}
+
+	.fasFrameWrap{
+		width: calc(50% + 114px);
+
+		&.fasFrameWrapII{
+			width: 50%;
+		}
+	}
+
+	.mainHeadingHead{
+		min-height: 200px;
+	}
+
+	.apDataTable{
+
+		&.apDataTableII{
+
+			td{
+
+				&:first-child{
+					width: 40%;
+				}
+			}
+		}
+
+		&.apDataTableIII{
+
+			td{
+
+				&:first-child{
+					width: 31%;
+				}
+			}
+		}
+
+		td{
+
+			&:first-child{
+				width: 66%;
+			}
+		}
+	}
+
+	.exhiTabList{
+
+		&.exhiTabListII{
+
+			.nav-item{
+				margin-right: 34px;
+			}
+		}
+	}
+
+	.supportMuseumBlock{
+
+		.imgHolder{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 50%;
+		}
+	}
+
+	.ssArrowVix{
+		@include size(50px, 60px);
+	}
+
+	.scSidebar{
+
+		&:before{
+			height: calc(100% + 180px);
+			border-width: 0 0 0 1px;
+			right: initial;
+			left: -15px;
+		}
+	}
+
+	.eveProFiltersBox{
+
+		.form-group{
+			width: 33.333%;
+		}
+	}
+
+	.sbisCaption{
+		max-width: 450px;
+
+		h1, .h1{
+			font-size: 25px;
+			line-height: (30/25);
+		}
+	}
+
+	.becomeMemberBlock{
+
+		.imgHolder{
+			@include size(initial);
+		}
+	}
+
+	.aboutExploreAside{
+		min-height: 250px;
+	}
+
+	.sbisColumn{
+
+		.imgHolder{
+			height: 350px;
+		}
+	}
+
+	.lcFrameWrap{
+		height: 360px;
+	}
+
+	.cdInfoList{
+
+		> li{
+			width: 50%;
+			margin-bottom: 22px;
+		}
+	}
+
+	.onImageColumn{
+
+		&.onImageColumnLarge{
+			height: 340px;
+		}
+	}
+
+	.historyList{
+
+		> li{
+			margin-bottom: 31px;
+		}
+	}
+
+	.queryCalloutBlock{
+		min-height: 300px;
+	}
+
+	.artistProfileColumn{
+		max-width: none;
+	}
+
+	.logosList{
+
+		li{
+			min-height: 186px;
+		}
+	}
+
+	.contactFormWrap{
+
+		textarea{
+
+			&,
+			&.form-control{
+				height: 192px;
+			}
+		}
+	}
+
+	.fltDropdown{
+		width: 300px;
+	}
+
+	.sorterHead{
+
+		select{
+			width: 213px;
+		}
+	}
+
+	.authorInfoColumn{
+
+		.imgHolder{
+			max-width: 81px;
+		}
+	}
+
+	.commentsList,
+	.reviewList{
+
+		.imgHolder{
+			@include size(80px);
+		}
+	}
+
+	.reviewList{
+
+		.imgHolder{
+			@include size(70px);
+		}
+	}
+
+	.commentsList{
+
+		ul{
+
+			li{
+				padding-left: 105px;
+			}
+		}
+	}
+
+	.commentsForm{
+
+		textarea{
+
+			&,
+			&.form-control{
+				height: 145px;
+			}
+		}
+	}
+
+	.orderTable{
+
+		th,
+		td{
+
+			&:first-child{
+				width: 63.6%;
+			}
+		}
+	}
+
+	.loginBlock,
+	.pageNotFoundBlock{
+
+		&.hdIsVii{
+			min-height: calc(100vh - 94px);
+		}
+	}
+
+	.specialRequestAside{
+
+		h2, .h2{
+			font-size: 28px;
+		}
+	}
+
+	.exhibitDescrColumn{
+
+		&:nth-child(even){
+
+			.imgHolder{
+				left: initial;
+				right: 0;
+			}
+		}
+
+		.imgHolder{
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 50%;
+			padding-top: 0;
+		}
+	}
+
+	.acwColLarge{
+		max-width: 365px;
+	}
+
+	.acwColSmall{
+		max-width: 193px;
+	}
+
+	.nextCounterAside{
+
+		.textLarge,
+		.countdown-amount{
+			font-size: 47px;
+		}
+	}
+
+	.tcsbHeadWrap{
+		font-size: 23px;
+		line-height: (27/23);
+	}
+
+	.headerFixer{
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+		&.headerFixerII{
+
+			&.fixedPosition{
+				background-color: $secondary;
+			}
+		}
+
+		&.headerFixerIII{
+
+			&.fixedPosition{
+				background-color: transparent;
+			}
+		}
+
+		&.fixedPosition{
+			background-color: $white;
+			box-shadow: 0 5px 5px -5px rgba($black, 0.2);
+		}
+	}
+
+	.sceHeadStick{
+		max-width: 210px;
+	}
+}

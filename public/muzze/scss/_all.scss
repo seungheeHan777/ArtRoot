@@ -1,0 +1,6305 @@
+body{
+	-ms-overlfow-style: scrollbar;
+	min-width: 320px;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+
+	a{
+		color: inherit;
+	}
+}
+
+/*------------------------------------------------------------------
+Page Wrapper / #pageWrapper
+-------------------------------------------------------------------*/
+#pageWrapper{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+/*------------------------------------------------------------------
+Background Cover / .bgCover
+-------------------------------------------------------------------*/
+.bgCover{
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.bgHasParallax{
+	background-attachment: fixed;
+}
+
+/*------------------------------------------------------------------
+Background Parallax / .bgParallax
+-------------------------------------------------------------------*/
+.bgParallax{
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: 50% 50%;
+}
+
+/*------------------------------------------------------------------
+Font Base / .fontBase
+-------------------------------------------------------------------*/
+.fontBase{
+	font-family: $font-family-sans-serif;
+}
+
+/*------------------------------------------------------------------
+Font Serif / .fontSerif
+-------------------------------------------------------------------*/
+.fontSerif{
+	font-family: $base-font-serif;
+}
+
+/*------------------------------------------------------------------
+Font (alter) Muli / .fontAlter
+-------------------------------------------------------------------*/
+.fontAlter{
+	font-family: $fontMuli;
+}
+
+/*------------------------------------------------------------------
+Font (alter) Merriweather / .fontAlterVii
+-------------------------------------------------------------------*/
+.fontAlterVii{
+	font-family: $fontMerriweather;
+}
+
+/*------------------------------------------------------------------
+Text Decotaion None / .textDecorationNone
+-------------------------------------------------------------------*/
+.textDecorationNone{
+	text-decoration: none;
+}
+
+/*------------------------------------------------------------------
+Font Weight Medium / .fwMedium
+-------------------------------------------------------------------*/
+.fwMedium{
+	font-weight: 500;
+}
+
+/*------------------------------------------------------------------
+Inaccessible / .inaccessible
+-------------------------------------------------------------------*/
+.inaccessible{
+	pointer-events: none;
+}
+
+/*------------------------------------------------------------------
+Image Fit / .imgFit
+-------------------------------------------------------------------*/
+.imgFit{
+	object-fit: cover;
+}
+
+.btn{
+	text-decoration: none;
+
+	&.bdr2{
+		border-width: 2px;
+	}
+
+	&.btnSmall{
+		padding-top: 7px;
+		padding-bottom: 7px;
+	}
+}
+
+/*------------------------------------------------------------------
+Button Dark / .btn-dark
+-------------------------------------------------------------------*/
+.btn-dark{
+
+	&.btnDarkInverse{
+		background-color: $white;
+		color: $dark;
+		border-color: $white;
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+			color: $white;
+		}
+	}
+
+	.hClassVi &{
+		
+		&.btnDarkInverse{
+
+			&:hover{
+				border-color: $warning;
+				background-color: $warning;
+			}
+		}
+	}
+
+	.hClassVii &{
+		
+		&.btnDarkInverse{
+
+			&:hover{
+				border-color: $orange;
+				background-color: $orange;
+			}
+		}
+	}
+
+	.hClassViii &{
+		
+		&.btnDarkInverse{
+
+			&:hover{
+				border-color: $clr1;
+				background-color: $clr1;
+			}
+		}
+	}
+
+	.hClassViv &{
+		
+		&.btnDarkInverse{
+
+			&:hover{
+				border-color: $clr7;
+				background-color: $clr7;
+			}
+		}
+	}
+
+	.hClassVv &{
+		
+		&.btnDarkInverse{
+
+			&:hover{
+				border-color: $danger;
+				background-color: $danger;
+			}
+		}
+	}
+
+	.hClassVvi &{
+		
+		&.btnDarkInverse{
+
+			&:hover{
+				border-color: $yellow2;
+				background-color: $yellow2;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Outline Dark / .btn-outline-dark
+-------------------------------------------------------------------*/
+.btn-outline-dark{
+
+	&.btnOutlineDarkInverse{
+		background-color: transparent;
+		border-color: $white;
+		color: $white;
+
+		&:hover{
+			color: $dark;
+			background-color: $white;
+			border-color: $white;
+		}
+	}
+
+	.hClassVi &{
+
+		&:hover{
+			color: $white;
+			background-color: $warning;
+			border-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+		
+		&.btnOutlineDarkInverse{
+
+			&:hover{
+				color: $orange;
+			}
+		}
+
+		&:hover{
+			background-color: $orange;
+			border-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+		
+		&.btnOutlineDarkInverse{
+
+			&:hover{
+				color: $clr1;
+			}
+		}
+
+		&:hover{
+			background-color: $clr1;
+			border-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+		
+		&.btnOutlineDarkInverse{
+
+			&:hover{
+				color: $clr7;
+			}
+		}
+
+		&:hover{
+			background-color: $clr7;
+			border-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+		
+		&.btnOutlineDarkInverse{
+
+			&:hover{
+				color: $danger;
+			}
+		}
+
+		&:hover{
+			background-color: $danger;
+			border-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+		
+		&.btnOutlineDarkInverse{
+
+			&:hover{
+				color: $yellow2;
+			}
+		}
+
+		&:hover{
+			background-color: $yellow2;
+			border-color: $yellow2;
+			color: $dark;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Gray #999 / .btnGr999
+-------------------------------------------------------------------*/
+.btnGr999{
+
+	&.btnGr999Outline{
+		background-color: transparent;
+		color: $gray-600;
+		border-color: $gray888;
+
+		&:hover{
+			background-color: $clr1;
+			color: $white;
+			border-color: $clr1;
+		}
+	}
+
+	&:hover{
+		border-color: $clr1;
+		background-color: $clr1;
+		color: $white;
+	}
+
+	.hClassVi &{
+		
+		&.btnGr999Outline{
+
+			&:hover{
+				background-color: $warning;
+				border-color: $warning;
+			}
+		}
+
+		&:hover{
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+		
+		&.btnGr999Outline{
+
+			&:hover{
+				background-color: $orange;
+				border-color: $orange;
+			}
+		}
+
+		&:hover{
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+		
+		&.btnGr999Outline{
+
+			&:hover{
+				background-color: $clr1;
+				border-color: $clr1;
+			}
+		}
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+		
+		&.btnGr999Outline{
+
+			&:hover{
+				background-color: $clr7;
+				border-color: $clr7;
+			}
+		}
+
+		&:hover{
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+		
+		&.btnGr999Outline{
+
+			&:hover{
+				background-color: $danger;
+				border-color: $danger;
+			}
+		}
+
+		&:hover{
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+		
+		&.btnGr999Outline{
+
+			&:hover{
+				background-color: $yellow2;
+				border-color: $yellow2;
+			}
+		}
+
+		&:hover{
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Gray #e5e5e5 / .btnGre5
+-------------------------------------------------------------------*/
+.btnGre5{
+	background-color: $graye5e5e5;
+	color: $dark;
+	border-color: $graye5e5e5;
+
+	&.btnGre5Outline{
+		background-color: transparent;
+		color: $secondary;
+		border-color: $graye5e5e5;
+
+		&:hover{
+			background-color: $secondary;
+			color: $white;
+			border-color: $secondary;
+		}
+		&.text-gray777{
+			&:hover{ color: $white !important; }
+		}
+	}
+
+	&:hover{
+		border-color: $clr1;
+		background-color: $clr1;
+		color: $white;
+	}
+
+	.hClassVi &{
+		
+		&.btnGre5Outline{
+
+			&:hover{
+				background-color: $warning;
+				border-color: $warning;
+			}
+		}
+
+		&:hover{
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+		
+		&.btnGre5Outline{
+
+			&:hover{
+				background-color: $orange;
+				border-color: $orange;
+			}
+		}
+
+		&:hover{
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+		
+		&.btnGre5Outline{
+
+			&:hover{
+				background-color: $clr1;
+				border-color: $clr1;
+			}
+		}
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+		
+		&.btnGre5Outline{
+
+			&:hover{
+				background-color: $clr7;
+				border-color: $clr7;
+			}
+		}
+
+		&:hover{
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+		
+		&.btnGre5Outline{
+
+			&:hover{
+				background-color: $danger;
+				border-color: $danger;
+			}
+		}
+
+		&:hover{
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+		
+		&.btnGre5Outline{
+
+			&:hover{
+				background-color: $yellow2;
+				border-color: $yellow2;
+			}
+		}
+
+		&:hover{
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Gray #e0e0e0 / .btnGree0
+-------------------------------------------------------------------*/
+.btnGree0{
+	background-color: $graye0e0e0;
+	color: $secondary;
+	border-color: $graye0e0e0;
+
+	&:hover{
+		border-color: darken($graye0e0e0, 10%);
+		background-color: darken($graye0e0e0, 10%);
+		color: $dark;
+	}
+
+	.hClassVi &{
+
+		&:hover{
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+
+		&:hover{
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+
+		&:hover{
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+
+		&:hover{
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassvVi &{
+
+		&:hover{
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Blue 2 / .btnbl
+-------------------------------------------------------------------*/
+.btnbl{
+	background-color: $clr8;
+	color: $white;
+	border-color: $clr8;
+
+	&:hover{
+		border-color: darken($clr8, 10%);
+		background-color: darken($clr8, 10%);
+		color: $white;
+	}
+}
+
+/*------------------------------------------------------------------
+Button Brown / .btnBrown
+-------------------------------------------------------------------*/
+.btnBrown{
+	background-color: $clr1;
+	border-color: $clr1;
+	color: $white;
+
+	&:hover{
+		background-color: $dark;
+		border-color: $dark;
+		color: $white;
+	}
+
+	.hClassVi &{
+
+		&:hover{
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+
+		&:hover{
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+
+		&:hover{
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+
+		&:hover{
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+
+		&:hover{
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Yellow 2 / .btnYellow2
+-------------------------------------------------------------------*/
+.btnYellow2{
+	background-color: $yellow2;
+	border-color: $yellow2;
+	color: $secondary;
+
+	&:hover{
+		background-color: darken($yellow2, 10%);
+		border-color: darken($yellow2, 10%);
+		color: $secondary;
+	}
+}
+
+.btn-light{
+
+	&:hover{
+		background-color: $dark;
+		color: $white;
+		border-color: $dark;
+	}
+
+	.hClassVi &{
+
+		&:hover{
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+
+		&:hover{
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+
+		&:hover{
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+
+		&:hover{
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+
+		&:hover{
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+.btn-outline-light{
+	color: $secondary;
+
+	&:hover{
+		color: $white;
+		background-color: $dark;
+		border-color: $dark;
+	}
+
+	.hClassVi &{
+
+		&:hover{
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+
+		&:hover{
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+
+		&:hover{
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+
+		&:hover{
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+
+		&:hover{
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+
+		&:hover{
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+.btn-outline-secondary{
+
+	.hClassVi &{
+
+		&:hover{
+			color: $white;
+			border-color: $warning;
+			background-color: $warning;
+		}
+	}
+
+	.hClassVii &{
+
+		&:hover{
+			color: $white;
+			border-color: $orange;
+			background-color: $orange;
+		}
+	}
+
+	.hClassViii &{
+
+		&:hover{
+			color: $white;
+			border-color: $clr1;
+			background-color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+
+		&:hover{
+			color: $white;
+			border-color: $clr7;
+			background-color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+
+		&:hover{
+			color: $white;
+			border-color: $danger;
+			background-color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+
+		&:hover{
+			color: $white;
+			border-color: $yellow2;
+			background-color: $yellow2;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Header Top Holder / .hTopHolder
+-------------------------------------------------------------------*/
+.hTopHolder{
+	border-bottom: 1px solid $grayeee;
+	color: $gray777;
+	font-size: 14px;
+
+	&.hTopHolderViv{
+		border-bottom: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+Button Small Min Width / .btnSmMinWidth
+-------------------------------------------------------------------*/
+.btnSmMinWidth{
+	min-width: 120px;
+}
+
+/*------------------------------------------------------------------
+Button Medium Min Width / .btnMdMinWidth
+-------------------------------------------------------------------*/
+.btnMdMinWidth{
+	min-width: 172px;
+}
+
+/*------------------------------------------------------------------
+Button Large Min Width / .btnLgMinWidth
+-------------------------------------------------------------------*/
+.btnLgMinWidth{
+	min-width: 250px;
+}
+
+/*------------------------------------------------------------------
+Button Mid Min Width / .btnMidMinWidth
+-------------------------------------------------------------------*/
+.btnMidMinWidth{
+	min-width: 210px;
+}
+
+/*------------------------------------------------------------------
+Header Time / .hthTime
+-------------------------------------------------------------------*/
+.hthTime{
+	letter-spacing: 0.021rem;
+
+	.icn{
+		font-size: 1.2em;
+	}
+}
+
+/*------------------------------------------------------------------
+Header / #pageHeader
+-------------------------------------------------------------------*/
+#pageHeader{
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+
+/*------------------------------------------------------------------
+Header Sticky Wrap / .phStickyWrap
+-------------------------------------------------------------------*/
+.phStickyWrap{
+
+	&.phVi{
+		height: 54px;
+	}
+
+	&.phVii{
+		height: 80px;
+	}
+
+	&.phViii{
+		height: 49px;
+	}
+
+	&.phViv{
+		height: 53px;
+	}
+
+	&.phVv{
+		min-height: 1px;
+	}
+
+	&.phVix{
+		min-height: 29px;
+	}
+
+	&.phVx{
+		min-height: 81px;
+	}
+
+	&.phVxi{
+		min-height: 50px;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Logo / .logo
+-------------------------------------------------------------------*/
+.logo{
+	max-width: 95px;
+}
+
+/*------------------------------------------------------------------
+Header Menu Opener / .hdMenuOpener
+-------------------------------------------------------------------*/
+.hdMenuOpener{
+	transition: color 0.3s ease;
+	color: $secondary;
+	text-decoration: none;
+	@include size(24px, 14px);
+	@include pseudo(before, 0, 0, null, 0);
+	@include pseudo(after, null, 0, 0, 0);
+
+	&.hdMenuOpenerVv{
+		color: $white;
+	}
+
+	&:before,
+	&:after,
+	.icnBar{
+		transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+		height: 2px;
+		background-color: currentColor;
+	}
+
+	.icnBar{
+		left: 0;
+		top: 6px;
+		right: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+Main Navigation / .mainNavigation
+-------------------------------------------------------------------*/
+.mainNavigation{
+
+	&.mainSideNavigation{
+
+		.mnDropList{
+
+			li{
+
+				&.active{
+
+					> a{
+						color: $white;
+					}
+				}
+			}
+
+			a{
+
+				&:hover{
+					color: $white;
+				}
+			}
+		}
+	}
+
+	.nav-item{
+
+		&.active{
+
+			.nav-link{
+				color: $clr1;
+			}
+		}
+
+		&.dropdown{
+
+			> .nav-link{
+
+				&:after{
+					content: '';
+					border: solid currentColor;
+					border-width: 2px 2px 0 0;
+					transform: rotate(45deg);
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 4px;
+					@include size(7px);
+				}
+			}
+		}
+	}
+
+	.nav-link{
+		transition: color 0.3s ease;
+		font-size: 17px;
+		text-decoration: none;
+		padding: 3px ($grid-gutter-width / 2);
+	}
+
+	.navbar-light &{
+
+		&.mainSideNavigation{
+
+			.nav-link{
+				color: $clr6;
+			}
+		}
+
+		.nav-link{
+			color: $gray444;
+
+			&:hover{
+				color: $clr1;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Header Search Opener / .hdSearchOpener
+-------------------------------------------------------------------*/
+.hdSearchOpener{
+	text-decoration: none;
+	color: $secondary;
+	transition: color 0.3s ease;
+	font-size: 20px;
+	position: absolute;
+	top: -41px;
+	right: 54px;
+
+	&.hdSearchOpenerVii,
+	&.hdSearchOpenerVv{
+		top: 11px;
+	}
+
+	&.hdSearchOpenerVii{
+		top: 11px;
+	}
+
+	&.hdSearchOpenerVv{
+		color: $white;
+	}
+
+	&.hdSearchOpenerVx{
+		right: auto;
+		left: 0;
+		top: -39px;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Search Collapse / .hdSearchFieldCollapse
+-------------------------------------------------------------------*/
+.hdSearchFieldCollapse{
+	top: 0;
+	left: 0;
+	overflow-y: auto;
+	background-color: rgba($white, 0.97);
+	z-index: 9;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease !important;
+
+	&.show{
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Search Holder / .hdsfcHolder
+-------------------------------------------------------------------*/
+.hdsfcHolder{
+	max-width: 1170px;
+}
+
+/*------------------------------------------------------------------
+Header Search Close / .hdSearchClose
+-------------------------------------------------------------------*/
+.hdSearchClose{
+	top: 15px;
+	right: 15px;
+	font-size: 20px;
+	text-decoration: none;
+	color: $danger;
+	transition: color 0.3s ease;
+	border-color: currentColor;
+	border: 2px solid currentColor;
+	@include size(50px);
+}
+
+/*------------------------------------------------------------------
+Header Main Drop / .mndDropMenu
+-------------------------------------------------------------------*/
+.mndDropMenu{
+	min-width: 1px;
+	width: 100%;
+}
+
+/*------------------------------------------------------------------
+Header Main Drop Address / .mndAdress
+-------------------------------------------------------------------*/
+.mndAdress{
+	left: 100%;
+	top: 0;
+	bottom: 0;
+	width: 251px;
+	font-style: normal;
+	font-size: 16px;
+	line-height: (24/16);
+	background-color: $clr3;
+	padding: 25px 29px;
+
+	p{
+		margin-bottom: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Main Drop List / .mnDropList
+-------------------------------------------------------------------*/
+.mnDropList{
+
+	li{
+		padding: 5px 27px;
+		position: relative;
+
+		&.hasDropdown{
+			position: relative;
+
+			&:hover{
+
+				> .mnDropList{
+					display: block;
+				}
+			}
+
+			> a{
+
+				&:after{
+					content: '';
+					border: solid currentColor;
+					border-width: 2px 2px 0 0;
+					transform: rotate(45deg);
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 4px;
+					@include size(7px);
+				}
+			}
+		}
+
+		&.active{
+
+			> a{
+				color: $dark;
+			}
+		}
+	}
+
+	a{
+		font-size: 15px;
+		line-height: (18/15);
+		text-decoration: none;
+		color: $gray777;
+		transition: color 0.3s ease;
+
+		&:hover{
+			color: $dark;
+		}
+	}
+
+	.mnDropList{
+		display: none;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Main Drop Title / .mndaTitle
+-------------------------------------------------------------------*/
+.mndaTitle{
+	font-size: 18px;
+}
+
+/*------------------------------------------------------------------
+Header Main Drop Link / .mndLink
+-------------------------------------------------------------------*/
+.mndLink{
+	font-size: 14px;
+	line-height: 1;
+	text-decoration: none;
+	transition: color 0.3s ease;
+
+	.icn{
+		font-size: 0.75em;
+		margin-right: 3px;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Main Nav Opener / .pgNavOpener
+-------------------------------------------------------------------*/
+.pgNavOpener{
+	right: 0;
+	top: -44px;
+	transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+
+	&.pgNavOpenerVii,
+	&.pgNavOpenerVv{
+		top: 8px;
+	}
+
+	&.pgNavOpenerViv,
+	&.pgNavOpenerVv{
+		background-color: $white;
+		border-width: $white;
+
+		&:hover{
+			background-color: $warning;
+			border-width: $warning;
+		}
+	}
+
+	&.pgNavOpenerVx{
+		top: -43px;
+	}
+
+	&[aria-expanded="true"]{
+		transform: scaleY(0.6) rotate(-180deg);
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+	}
+
+	&:focus{
+		outline: none;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Main Nav Collapse / .pageNavigationCollapse
+-------------------------------------------------------------------*/
+.pageNavigationCollapse{
+	position: absolute;
+	top: 0;
+	left: $grid-gutter-width / -2;
+	right: $grid-gutter-width / -2;
+	background-color: $white;
+
+	&.pageNavigationCollapseVii{
+		top: 100%;
+	}
+}
+
+/*------------------------------------------------------------------
+Intro Banner Block / .introBannerBlock
+-------------------------------------------------------------------*/
+.introBannerBlock{
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&.overlayDbl{
+		@include pseudo(after, 0, 0, 0, 0);
+
+		&:after{
+			@extend .inaccessible;
+			z-index: 0;
+			background: linear-gradient(to right, rgba(0,0,0,0.4) 0%,rgba(255,255,255,0) 100%);
+		}
+	}
+
+	&.hdIsVi{
+		min-height: calc(100vh - 54px);
+	}
+
+	&.hdIsVii{
+		min-height: calc(100vh - 80px);
+	}
+
+	&.hdIsViv{
+		min-height: calc(100vh - 53px);
+	}
+
+	&.hdIsVix{
+		min-height: calc(100vh - 29px);
+	}
+
+	&.hdIsXi{
+		min-height: 100vh;
+
+		&.ibbHasAside{
+			min-height: calc(100vh - 82px);
+		}
+	}
+
+	&.hdIsViClActive{
+		min-height: calc(100vh - 53px);
+	}
+
+	&.introBannerBlockVii{
+		@include pseudo(after, null, null, 0, 50%);
+
+		&:after{
+			@extend .inaccessible;
+			z-index: 1;
+			transform: translateX(-50%);
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAAaCAYAAACXbyOAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxMUQ4OTQ1MUE4RjAxMUVBQkVEQkEyQjJCRDgxNDY2QiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxMUQ4OTQ1MkE4RjAxMUVBQkVEQkEyQjJCRDgxNDY2QiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjExRDg5NDRGQThGMDExRUFCRURCQTJCMkJEODE0NjZCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjExRDg5NDUwQThGMDExRUFCRURCQTJCMkJEODE0NjZCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7U0VMAAAAqpJREFUeNrsmluITVEYx9eM43rkXkpe3EISE6J4UpKmXF9QaryQiTQTRcoDIgqJvCkintyjKJJLlFtCkks8IOSowRAzs/2+1ufhiDqcfc6cvfb3r1/n4Uwze/Zvf2utvdZXFUWRCySdoRcMgUEwHAZCf+in33WHTvrzrdAMTfAB3sNreAZP4AW8gq/QFsINygQieSyMh3EwDAZAT8hClwJ/zw8V+0nFv4S7cAduwZuk36iqhFZ2VsVOh2laxV2hY8x/J9IHQORfhvNwScW3muzSjkIyPNfCHJWdLfM1RDq8n4ITWvVNJjvGa1Sx81Xy4Aq5rmat9MNwAXImu7jIXLwY5upiqxLTorL3wWn4ZrL/LbKCXgp1OnQnIV/gLOyGKya7sMicvA4mQnUCF4/vYK9Kz5nsP6cvrIJ66JHwt5xIV+3y0F432fkZA1tghgsrsimzHg7Bd5PtV9ibYYQLM7Jg26P/48c0y14GG5zfzgw9R2GlVnuqZMvCa7UOcd1ceiLz9wq4nRbZv0RvdPFvbyYh92EhPGiPG1/WhwsaYFNKRUtGwwGoCbmyRfRy2J5i0b9X+BK4EWJly1y11UTnVbi8ks0MqbJF7hpY6/wxpCU/0jixDXY6f6aeWNmjdMU9DzqY179GDlOO6Wvow6TJltafOmh0vrHAUlgeww7Y70qw4xa3bJE8WTcPZpm7/85J2AXX4pQel2wZoifAIlgAvc1X0ZGt1SNwEG66GNqgipUtbUFTnN/fnu38ObQl3rx1vgXqOFx1/ty8rLJlHpZmv1qtaKvk8lS6VPgZOKfze0lkSwUPhUkwVT+lXTdjDtpl5S797bIZc1E/nxZS8SJbdraqdd7NKNJML419I50/a65R2X1McMWJz6ls6XG/B4/gOXzW71t0vm/7KcAAZrXH8DQAa2EAAAAASUVORK5CYII=');
+			background-position: 50% 100%;
+			background-repeat: no-repeat;
+			@include size(111px, 26px);
+		}
+
+		&:before{
+			background-color: rgba($black, 0.5);
+		}
+	}
+
+	&.introBannerBlockViv{
+
+		&:before{
+			background-color: rgba($black, 0.6);
+		}
+	}
+
+	&.introBannerBlockVv{
+
+		&:before{
+			background: none;
+		}
+	}
+
+	&:before{
+		@extend .inaccessible;
+		background-color: rgba($black, 0.3);
+	}
+
+	.holder{
+		z-index: 1;
+	}
+}
+
+.ibbAlignHolder{
+	min-height: inherit;
+}
+
+/*------------------------------------------------------------------
+Main Heading Title / .mainHeadingTitle
+-------------------------------------------------------------------*/
+.mainHeadingTitle{
+	font-size: 17px;
+	line-height: (22/17);
+}
+
+/*------------------------------------------------------------------
+Intro Banner Heading / .ibbHeading
+-------------------------------------------------------------------*/
+.ibbHeading{
+	font-size: 35px;
+	line-height: (40/35);
+
+	&.ibbHeadingHasMark{
+		z-index: 1;
+		@include pseudo(before, 50%, 0, null, 0);
+
+		&:before{
+			background-color: $yellow2;
+			transform: translateY(-50%);
+			z-index: -1;
+			margin-top: 16px;
+			height: 30px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+SDA Column / .sdaColumn
+-------------------------------------------------------------------*/
+.sdaColumn{
+	font-size: 14px;
+	line-height: (20/14);
+
+	.icnWrap{
+		width: 38px;
+	}
+
+	.btn{
+		min-width: 135px;
+	}
+
+	h3, .h3{
+		font-size: 20px;
+	}
+}
+
+/*------------------------------------------------------------------
+Tee See All Button / .teeSeeAllBtn
+-------------------------------------------------------------------*/
+.teeSeeAllBtn{
+	color: $gray-800;
+	text-decoration: none;
+	transition: color 0.3s ease;
+	letter-spacing: 0.4px;
+	font-size: 17px;
+
+	&.inDark{
+		color: $gray-400;
+
+		&:hover{
+			color: $white;
+		}
+	}
+
+	.icn{
+		color: $gray-400;
+		font-size: 1.7em;
+	}
+}
+
+/*------------------------------------------------------------------
+Category Title / .catagoryTitle
+-------------------------------------------------------------------*/
+.catagoryTitle{
+	color: $gray-600;
+	font-size: 14px;
+}
+
+/*------------------------------------------------------------------
+Current Exhibition Column / .currExibitColumn
+-------------------------------------------------------------------*/
+.currExibitColumn{
+	max-width: 290px;
+
+	&.gridView{
+		max-width: none;
+
+		h2, .h2{
+			font-size: 17px;
+			line-height: (22/17);
+		}
+
+		.imgHolder{
+			max-width: 123px;
+		}
+	}
+
+	&:hover{
+
+		.imgHolder{
+			transform: scale(1.02);
+		}
+	}
+
+	.imgHolder{
+		transition: transform 0.3s ease;
+		transform-origin: 50% 50% 0;
+		transform: scale(1);
+	}
+
+	h2, .h2{
+		font-size: 22px;
+		line-height: (29/22);
+
+		a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $black;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+CecTime / .cecTime
+-------------------------------------------------------------------*/
+.cecTime{
+	font-size: 15px;
+	line-height: (17/15);
+}
+
+/*------------------------------------------------------------------
+H2 Medium / .h2Medium
+-------------------------------------------------------------------*/
+.h2Medium{
+	font-size: 25px;
+	line-height: (30/25);
+}
+
+/*------------------------------------------------------------------
+H2 Small / .h2Small
+-------------------------------------------------------------------*/
+.h2Small{
+	font-size: 20px;
+	line-height: (26/20);
+}
+
+/*------------------------------------------------------------------
+Bullet List / .bulletList
+-------------------------------------------------------------------*/
+.bulletList{
+	font-size: 18px;
+	line-height: (26/18);
+
+	&.bulletListViv{
+		font-size: 16px;
+		line-height: (26/16);
+	}
+
+	&.bulletListVvii{
+		font-size: inherit;
+		line-height: inherit;
+
+		> li{
+			margin-bottom: 16px;
+		}
+	}
+
+	&.bulletListII{
+		font-size: 18px;
+		line-height: (26/18);
+	}
+
+	&.bulletListIII,
+	&.bulletListIV{
+		font-size: inherit;
+		line-height: inherit;
+
+		> li{
+			margin-bottom: 2px;
+		}
+	}
+
+	&.bulletListIV{
+
+		> li{
+			margin-bottom: 16px;
+		}
+	}
+
+	&.isBgDark{
+
+		> li{
+
+			&:before{
+				background-color: $white;
+			}
+		}
+	}
+
+	> li{
+		padding-left: 16px;
+		margin-bottom: 9px;
+		position: relative;
+		@include pseudo(before, 10px, null, null, 0);
+
+		&:before{
+			border-radius: 100%;
+			background-color: $gray-800;
+			@include size(6px);
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+H3 Small / .h3Small
+-------------------------------------------------------------------*/
+.h3Small{
+	font-size: 18px;
+	line-height: (22/18);
+}
+
+/*------------------------------------------------------------------
+Has Border / .hasBdr
+-------------------------------------------------------------------*/
+.hasBdr{
+	border: solid $grayeee;
+	border-width: 1px 0;
+}
+
+/*------------------------------------------------------------------
+Description Text Medium / .decrTextMedium
+-------------------------------------------------------------------*/
+.decrTextMedium{
+	font-size: 18px;
+	line-height: (29/18);
+}
+
+/*------------------------------------------------------------------
+Top Heading Title / .tpHeadingTitle
+-------------------------------------------------------------------*/
+.tpHeadingTitle{
+	color: $gray-600;
+	font-size: 14px;
+	line-height: (18/14);
+	letter-spacing: 0.7px;
+}
+
+/*------------------------------------------------------------------
+Collection Column / .collectionColumn
+-------------------------------------------------------------------*/
+.collectionColumn{
+
+	&:hover{
+
+		.ccCaption{
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+	}
+
+	&.captionOnlyMedium{
+		height: 262px;
+	}
+
+	> a{
+		text-decoration: none;
+	}
+
+	h2, .h2{
+		font-size: 16px;
+		line-height: (19/16);
+
+		&.fzMedium{
+			font-size: 16px;
+			line-height: (22/16);
+		}
+
+		a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+	}
+
+	.imgHolder{
+		transition: transform 0.3s ease;
+		transform-origin: 50% 50% 0;
+		height: 250px;
+
+		img{
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	h3, .h3{
+		font-size: 15px;
+		line-height: (20/15);
+	}
+}
+
+/*------------------------------------------------------------------
+Collection Column Caption / .ccCaption
+-------------------------------------------------------------------*/
+.ccCaption{
+	left: 15px;
+	top: 15px;
+	bottom: 15px;
+	right: 15px;
+	opacity: 0;
+	visibility: hidden;
+	transform: scale(0);
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+	transform-origin: 50% 50% 0;
+}
+
+/*------------------------------------------------------------------
+Sub Feature Column / .subFeatureColumn
+-------------------------------------------------------------------*/
+.subFeatureColumn{
+	line-height: (24/17);
+
+	h2, .h2{
+		font-size: 22px;
+		line-height: (27/22);
+	}
+
+	.icnWrap{
+		height: 88px;
+	}
+}
+
+/*------------------------------------------------------------------
+Animation Class One / .animItVi
+-------------------------------------------------------------------*/
+.animItVi{
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+
+	.subFeatureColumn:hover &,
+	.qlColum:hover &{
+		animation-name: icnScaleX;
+	}
+}
+
+/*------------------------------------------------------------------
+Sponsor Logo Wrap / .spLogoWrap
+-------------------------------------------------------------------*/
+.spLogoWrap{
+	opacity: 0.55;
+	transition: opacity 0.3s ease;
+	height: 105px;
+
+	&:hover{
+		opacity: 0.9;
+	}
+}
+
+/*------------------------------------------------------------------
+Map / .saMap
+-------------------------------------------------------------------*/
+.saMap{
+	height: 200px;
+
+	iframe{
+		left: 0;
+		top: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+Newsletter Aside / .newsletterAside
+-------------------------------------------------------------------*/
+.newsletterAside{
+
+	h2, .h2{
+		line-height: (40/30);
+	}
+
+	.form-group{
+		width: 100%;
+	}
+
+	.form-control{
+		width: 100%;
+	}
+
+	.btn{
+		min-width: 1px;
+		width: 100%;
+		display: block;
+	}
+}
+
+/*------------------------------------------------------------------
+Footer Aside / .footerAside
+-------------------------------------------------------------------*/
+.footerAside{
+	font-size: 14px;
+	line-height: (24/17);
+
+	&.footerAsideVii{
+		line-height: (26/17);
+
+		.btn{
+			min-width: 200px;
+		}
+	}
+
+	p{
+
+		a{
+			color: inherit;
+			text-decoration: none;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $warning;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Footer Contact List / .ftContactList
+-------------------------------------------------------------------*/
+.ftContactList{
+
+	> li{
+		margin-bottom: 3px;
+	}
+
+	a{
+		color: inherit;
+		transition: color 0.3s ease;
+		text-decoration: none;
+
+		&:hover{
+			color: $warning;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Footer Pin Link / .ftPinLink
+-------------------------------------------------------------------*/
+.ftPinLink{
+	line-height: 1;
+	text-decoration: none;
+	transition: color 0.3s ease;
+	color: $clr1;
+
+	&:hover{
+		color: $clr1;
+	}
+
+	.icn{
+		font-size: 0.9em;
+	}
+}
+
+.textAaa{
+	color: $gray-500;
+}
+
+/*------------------------------------------------------------------
+Footer Logo / .ftLogo
+-------------------------------------------------------------------*/
+.ftLogo{
+	max-width: 105px;
+
+	&.ftLogoVii{
+		max-width: none;
+	}
+}
+
+/*------------------------------------------------------------------
+Footer Social Networks / .ftSocialNetworks
+-------------------------------------------------------------------*/
+.ftSocialNetworks{
+	font-size: 17px;
+	line-height: 1;
+
+	&.ftSocialNetworksViii{
+
+		> li{
+
+			> a{
+
+				&:hover{
+					color: $dark;
+				}
+			}
+		}
+	}
+
+	&.ftSocialNetworksVix{
+		margin-left: -9px;
+
+		> li{
+
+			> a{
+
+				&:hover{
+					color: $warning;
+				}
+			}
+		}
+	}
+
+	> li{
+		margin-left: 9px;
+		margin-right: 9px;
+
+		> a{
+			color: $gray-500;
+			transition: color 0.3s ease;
+			text-decoration: none;
+
+			&:hover{
+				color: $white;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Page Footer / #pageFooter
+-------------------------------------------------------------------*/
+#pageFooter{
+	font-size: 14px;
+	line-height: (18/14);
+
+	p{
+
+		a{
+			transition: color 0.3s ease;
+			color: inherit;
+			text-decoration: none;
+
+			&:hover{
+				color: $orange;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Footer Term Links / .ftTermLinks
+-------------------------------------------------------------------*/
+.ftTermLinks{
+
+	&.ftTermLinksViii{
+
+		> li{
+
+			&.active{
+
+				> a{
+					color: $dark;
+				}
+			}
+
+			> a{
+
+				&:hover{
+					color: $dark;
+				}
+			}
+		}
+	}
+
+	&.ftTermLinksVix{
+		font-size: 15px;
+
+		> li{
+
+			&.active{
+
+				> a{
+					color: $warning;
+				}
+			}
+
+			> a{
+
+				&:hover{
+					color: $warning;
+				}
+			}
+		}
+	}
+
+	> li{
+
+		&.active{
+
+			> a{
+				color: $white;
+			}
+		}
+
+		+ li{
+
+			&:before{
+				content: '/';
+				margin-left: 3px;
+				display: inline-block;
+			}
+		}
+
+		> a{
+			color: inherit;
+			text-decoration: none;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $white;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Header Top Bar / .htTopBar
+-------------------------------------------------------------------*/
+.htTopBar{
+	font-size: 12px;
+	border-bottom: 1px solid $grayeee;
+
+	&.htTopBarVvi{
+		color: $gray-400;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Top Bar Links / .httbLinks
+-------------------------------------------------------------------*/
+.httbLinks{
+
+	&.httbLinksVvi{
+
+		> li{
+
+			&.active{
+
+				> a{
+					color: $white;
+				}
+			}
+
+			> a{
+				color: inherit;
+
+				&:hover{
+					color: $white;
+				}
+			}
+		}
+	}
+
+	> li{
+		margin-left: 5px;
+		margin-right: 5px;
+
+		&.active{
+
+			> a{
+				color: $dark;
+			}
+		}
+
+		> a{
+			text-decoration: none;
+			color: $gray777;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $dark;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+EstStamp / .estStamp
+-------------------------------------------------------------------*/
+.estStamp{
+	color: $gray-700;
+	font-size: 15px;
+	line-height: 1;
+	border: 1px solid $graye0e0e0;
+	@include size(96px);
+}
+
+/*------------------------------------------------------------------
+Ea Description Text / .eabDescrText
+-------------------------------------------------------------------*/
+.eabDescrText{
+	font-size: 20px;
+	line-height: (30/20);
+
+	&.eabDescrTextIV{
+		line-height: (32/20);
+	}
+
+	&.eabDescrTextV{
+		font-size: 18px;
+		line-height: (28/18);
+	}
+}
+
+/*------------------------------------------------------------------
+Slider Arrow One / .ssArrowVi
+-------------------------------------------------------------------*/
+.ssArrowVi{
+	color: $gray-400;
+	top: 50%;
+	transition: color 0.3s ease;
+	border: solid currentColor;
+	border-width: 2px 2px 0 0;
+	z-index: 1;
+	margin-top: -81px;
+	@include size(20px);
+
+	&.slickNext{
+		right: -15px;
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	&.slickPrev{
+		left: -15px;
+		transform: translateY(-50%) rotate(-135deg);
+	}
+}
+
+/*------------------------------------------------------------------
+Quote Column Wrap / .qlColumnsWrap
+-------------------------------------------------------------------*/
+.qlColumnsWrap{
+
+	.col{
+
+		&:first-child{
+			border-left-width: 0;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Quick Link Block / .quickLinkBlock
+-------------------------------------------------------------------*/
+.quickLinkBlock{
+
+	&.quickLinkBlockII{
+
+		h2, .h2{
+			color: $headings-color;
+		}
+	}
+
+	h2, .h2{
+		color: $gray-400;
+	}
+}
+
+/*------------------------------------------------------------------
+Quick Column / .qlColum
+-------------------------------------------------------------------*/
+.qlColum{
+
+	h3, .h3{
+		font-size: 20px;
+	}
+
+	h4, .h4{
+		color: $gray-600;
+		font-size: 15px;
+		line-height: (30/15);
+	}
+
+	.icnWrap{
+		height: 65px;
+	}
+}
+
+/*------------------------------------------------------------------
+Button Go / .btnGo
+-------------------------------------------------------------------*/
+.btnGo{
+	font-size: 40px;
+	color: $gray-400;
+	text-decoration: none;
+	transition: color 0.3s ease, transform 0.3s ease;
+
+	.hClassVi &{
+
+		&:hover{
+			color: $warning;
+		}
+	}
+
+	.hClassVii &{
+
+		&:hover{
+			color: $orange;
+		}
+	}
+
+	.hClassViii &{
+
+		&:hover{
+			color: $clr1;
+		}
+	}
+
+	.hClassViv &{
+
+		&:hover{
+			color: $clr7;
+		}
+	}
+
+	.hClassVv &{
+
+		&:hover{
+			color: $danger;
+		}
+	}
+
+	.hClassVvi &{
+
+		&:hover{
+			color: $yellow2;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+EPC Time Stamp / .epcTimeStamp
+-------------------------------------------------------------------*/
+.epcTimeStamp{
+	line-height: 1;
+	font-size: 15px;
+	width: 115px;
+	float: left;
+
+	.textDate{
+		font-size: 30px;
+		margin-right: 2px;
+	}
+
+	.textDay{
+		color: $gray-500;
+		font-size: 15px;
+		letter-spacing: 0.7px;
+	}
+}
+
+/*------------------------------------------------------------------
+Event Pro Column / .eveProColumn
+-------------------------------------------------------------------*/
+.eveProColumn{
+
+	address{
+		font-size: 18px;
+		line-height: (22/18);
+	}
+
+	h2, .h2{
+
+		a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+	}
+
+	.imgHolder{
+		width: 130px;
+		float: right;
+	}
+
+	.btn{
+		min-width: 72px;
+	}
+
+	.btn-outline-light{
+		min-width: 109px;
+	}
+
+	.descrWrap{
+		overflow: hidden;
+		width: 100%;
+	}
+}
+
+/*------------------------------------------------------------------
+Link Absolute / .linkAbsolute
+-------------------------------------------------------------------*/
+.linkAbsolute{
+	left: 0;
+	top: 0;
+	z-index: 1;
+	transition: background-color 0.3s ease;
+
+	&:hover{
+		background-color: rgba($black, 0.06);
+	}
+}
+
+/*------------------------------------------------------------------
+News Column / .newsColumn
+-------------------------------------------------------------------*/
+.newsColumn{
+	line-height: (26/17);
+	max-width: 310px;
+
+	h2, .h2{
+
+		&:not(.h2Medium){
+			font-size: 28px;
+			line-height: (35/28);
+		}
+
+		a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+	}
+
+	.descrWrap{
+		width: 85%;
+	}
+}
+
+/*------------------------------------------------------------------
+Read More Link / .readMore
+-------------------------------------------------------------------*/
+.readMore{
+	color: $secondary;
+	font-size: 16px;
+	position: relative;
+	text-decoration: none;
+	@include pseudo(after, null, 0, -2px, 0);
+
+	&:after{
+		@extend .inaccessible;
+		border-bottom: 2px solid currentColor;
+		transform-origin: 0 0 0;
+	}
+
+	&:hover{
+		color: $secondary;
+		text-decoration: none;
+
+		&:after{
+			animation: lftDoubt 0.7s ease forwards;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Insta Feed List / .instaFeedList
+-------------------------------------------------------------------*/
+.instaFeedList{
+
+	> li{
+		width: 16.667%;
+	}
+}
+
+/*------------------------------------------------------------------
+Bes Column / .besColumn
+-------------------------------------------------------------------*/
+.besColumn{
+	font-size: 18px;
+	line-height: (28/18);
+	min-height: 100vh;
+
+	&.hdIsViii{
+		min-height: calc(100vh - 49px);
+	}
+
+	time{
+		font-size: 20px;
+		line-height: (22/20);
+		color: $gray-700;
+	}
+
+	.imgHolder{
+		z-index: 1;
+		max-width: 240px;
+	}
+
+	.bgLayer{
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: -1;
+		@include size(237px, 243px);
+	}
+}
+
+.bescAlignHolder{
+	min-height: inherit;
+}
+
+/*------------------------------------------------------------------
+Slider Arrow, Slider Counter / .ssArrowVii, .ssCountOnly
+-------------------------------------------------------------------*/
+.ssArrowVii,
+.ssCountOnly{
+	@extend .inaccessible;
+	left: 15px;
+	right: 15px;
+	bottom: 60px;
+	z-index: 1;
+}
+
+.ssArrowVii{
+	color: $gray-400;
+	font-size: 50px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+
+	&.slickNext{
+		transform: translateX(60px);
+	}
+
+	&.slickPrev{
+		transform: translateX(-60px);
+	}
+
+	&:before{
+		pointer-events: auto;
+	}
+}
+
+.ssCountOnly{
+	counter-reset: item;
+	color: $gray-700;
+	margin-bottom: 11px;
+	padding-left: 10px;
+
+	li{
+
+		&.slick-active{
+
+			&:after{
+				opacity: 1;
+				visibility: visible;
+				position: static;
+				margin-left: -18px;
+				margin-right: 12px;
+			}
+		}
+
+		&:after{
+			position: absolute;
+			opacity: 0;
+			display: inline-block;
+			visibility: hidden;
+			counter-increment: item;
+			content: counters(item, ".", decimal) " ";
+		}
+
+		&:first-child{
+
+			&:before{
+				display: inline-block;
+				content: '/';
+			}
+		}
+
+		&:last-child{
+
+			&:after{
+				position: static;
+				opacity: 1;
+				visibility: visible;
+			}
+
+			&.slick-active{
+
+				button{
+					display: inline-block;
+					margin-left: 4px;
+					margin-right: -16px;
+				}
+			}
+		}
+	}
+
+	button{
+		display: none;
+		padding: 0;
+		margin: 0;
+		background: none;
+		border: 0;
+		color: inherit;
+	}
+}
+
+/*------------------------------------------------------------------
+Button Next Scroll / .btnNxtBlock
+-------------------------------------------------------------------*/
+.btnNxtBlock{
+	left: 50%;
+	border: solid rgba($dark, 0.3);
+	border-width: 1px 1px 0 0;
+	transition: border-color 0.3s ease;
+	transform: rotate(135deg) translateX(-50%);
+	bottom: 15px;
+	margin-left: -25px;
+	@include size(30px);
+
+	&:hover{
+		border-color: rgba($dark, 0.5);
+	}
+}
+
+/*------------------------------------------------------------------
+About Intro Aside / .aboutIntroAside
+-------------------------------------------------------------------*/
+.aboutIntroAside{
+	color: $gray-400;
+	font-size: 17px;
+	line-height: (28/17);
+}
+
+/*------------------------------------------------------------------
+Get Here Column / .getHereColumn
+-------------------------------------------------------------------*/
+.getHereColumn{
+	z-index: 1;
+	font-size: 15px;
+	line-height: (22/15);
+	@include pseudo(before, 0, -9999px, 0, -9999px);
+
+	&:before{
+		background-color: $dark;
+		z-index: -1;
+	}
+}
+
+/*------------------------------------------------------------------
+GHC Button Go / .ghcBtnGo
+-------------------------------------------------------------------*/
+.ghcBtnGo{
+	top: 50%;
+	transform: translateY(-50%);
+	text-decoration: none;
+	color: $white;
+	transition: color 0.3s ease;
+	right: 10px;
+	font-size: 24px;
+
+	&:hover{
+		color: $dark;
+	}
+}
+
+/*------------------------------------------------------------------
+GHC Address List / .ghcAdrList
+-------------------------------------------------------------------*/
+.ghcAdrList{
+
+	> li{
+		display: flex;
+		margin-bottom: 24px;
+	}
+
+	.icnWrap{
+		max-width: 39px;
+	}
+}
+
+/*------------------------------------------------------------------
+GHC Heading Wrap / .ghcHeadingWrap
+-------------------------------------------------------------------*/
+.ghcHeadingWrap{
+	left: 0;
+	bottom: 100%;
+	right: 0;
+}
+
+/*------------------------------------------------------------------
+Live Counter Block / .liveCounterBlock
+-------------------------------------------------------------------*/
+.liveCounterBlock{
+	color: $gray-500;
+}
+
+.lcbContList{
+
+	> li{
+		margin-bottom: 0;
+		flex-grow: 1;
+		flex-basis: 0;
+		min-width: 100%;
+		padding-left: 40px;
+		padding-right: 40px;
+		margin-bottom: 30px;
+	}
+
+	.icnWrap{
+		height: 60px;
+	}
+
+	h3, .h3{
+		font-size: 35px;
+		line-height: 1;
+	}
+
+	h4, .h4{
+		color: $gray-500;
+		font-size: 18px;
+		line-height: (26/18);
+	}
+}
+
+/*------------------------------------------------------------------
+Slider Dots List / .dotsList
+-------------------------------------------------------------------*/
+.dotsList{
+
+	&.dotsListViv{
+		bottom: 10px;
+		left: 0;
+		right: 0;
+	}
+
+	&.dotsListII{
+
+		> li{
+			margin-left: 6px;
+			margin-right: 6px;
+
+			&.slick-active{
+
+				button{
+					background-color: $dark;
+				}
+			}
+		}
+
+		button{
+			border: 0;
+			background-color: rgba($black, 0.15);
+			@include size(6px);
+
+			&:hover{
+				background-color: $dark;
+			}
+		}
+	}
+
+	&.dotsListIII{
+
+		li{
+
+			&.slick-active{
+
+				button{
+					border-color: $orange;
+					background-color: $orange;
+				}
+			}
+		}
+
+		button{
+
+			&:hover{
+				border-color: $orange;
+				background-color: $orange;
+			}
+		}
+	}
+
+	&.dotsListIV{
+
+		> li{
+
+			&.slick-active{
+
+				button{
+					background-color: $secondary;
+					border-color: $secondary;
+				}
+			}
+		}
+
+		button{
+			opacity: 0.6;
+			border-color: $secondary;
+			@include size(8px);
+
+			&:hover{
+				background-color: $secondary;
+				border-color: $secondary;
+			}
+		}
+	}
+
+	> li{
+		margin-left: 5px;
+		margin-right: 5px;
+
+		&.slick-active{
+
+			button{
+				background-color: $clr1;
+				border-color: $clr1;
+			}
+		}
+	}
+
+	button{
+		font-size: 0;
+		line-height: 0;
+		color: transparent;
+		border-radius: 100%;
+		padding: 0;
+		margin: 0;
+		border: 1px solid $graybdbdc3;
+		background-color: transparent;
+		transition: background-color 0.3s ease, border-color 0.3s ease;
+		@include size(10px);
+
+		&:hover{
+			background-color: $clr1;
+			border-color: $clr1;
+		}
+	}
+
+	.vsQuoteSliderII &{
+
+		li{
+
+			&.slick-active{
+
+				button{
+					background-color: $secondary;
+					border-color: $secondary;
+				}
+			}
+		}
+
+		button{
+			border: 1px solid $graybdbdc3;
+			background-color: transparent;
+			@include size(10px);
+
+			&:hover{
+				background-color: $secondary;
+				border-color: $secondary;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+CQS Quote / .cqsQuote
+-------------------------------------------------------------------*/
+.cqsQuote{
+	font-size: 20px;
+	line-height: (30/20);
+
+	cite{
+		font-style: normal;
+		font-size: 16px;
+		line-height: (22/16);
+	}
+}
+
+/*------------------------------------------------------------------
+Slider Arrow Three / .ssArrowViii
+-------------------------------------------------------------------*/
+.ssArrowViii{
+	top: 50%;
+	color: $gray-400;
+	transform: rotateY(-50%);
+	transition: color 0.3s ease;
+	border: solid currentColor;
+	border-width: 2px 2px 0 0;
+	transform: rotate(45deg);
+	margin-top: -74px;
+	z-index: 2;
+	@include size(30px);
+
+	&.ssArrowViiiII{
+		margin-top: -42px;
+
+		&.slickPrev{
+			left: -50px;
+		}
+
+		&.slickNext{
+			right: -50px;
+		}
+	}
+
+	&.ssArrowViiiVII{
+
+		&:hover{
+			color: $orange;
+		}
+	}
+
+	&:hover{
+		color: $dark;
+	}
+
+	&.slickPrev{
+		transform: rotate(225deg);
+		left: 15px;
+	}
+
+	&.slickNext{
+		right: 15px;
+	}
+}
+
+/*------------------------------------------------------------------
+Heading Icn Behind / .thhIcnBehind
+-------------------------------------------------------------------*/
+.thhIcnBehind{
+	color: rgba($dark, 0.08);
+	font-size: 200px;
+	line-height: (100/200);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*------------------------------------------------------------------
+FOM Column / .fomColumn
+-------------------------------------------------------------------*/
+.fomColumn{
+	height: 200px;
+	transition: transform 0.3s ease;
+	text-decoration: none;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:hover{
+
+		&:before{
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		> .bgCover{
+			transform: scale(1.08);
+		}
+	}
+
+	&:before{
+		@extend .inaccessible;
+		z-index: 1;
+		transition: transform 0.1s ease, opacity 0.3s ease, visibility 0.3s ease;
+		transform: scale(1);
+		background-image: linear-gradient(to bottom, rgba($white,0) 0%,rgba($black,0.8) 100%);
+	}
+
+	> .bgCover{
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		transform: scale(1);
+		transition: transform 0.5s ease;
+	}
+}
+
+.fomCaption{
+	z-index: 1;
+}
+
+.txtInHeading{
+	font-size: 1.6em;
+}
+
+/*------------------------------------------------------------------
+Become Member Aside / .becomeMemberAside
+-------------------------------------------------------------------*/
+.becomeMemberAside{
+	font-size: 18px;
+	line-height: (28/18);
+
+	h2, .h2{
+		font-size: 35px;
+	}
+}
+
+/*------------------------------------------------------------------
+Header Address / .hdrAddress
+-------------------------------------------------------------------*/
+.hdrAddress{
+	color: $gray-400;
+	font-size: 12px;
+	line-height: (19/12);
+	letter-spacing: 0.3px;
+
+	.icnWrap{
+		max-width: 29px;
+	}
+
+	a{
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.3s ease;
+
+		&:hover{
+			color: $white;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Slider Arrow Four / .ssArrowViv
+-------------------------------------------------------------------*/
+.ssArrowViv{
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+	transition: background-color 0.3s ease;
+	background-color: rgba($black, 0.3);
+	@include size(50px);
+
+	&:before{
+		content: '';
+		display: block;
+		border: solid currentColor;
+		border-width: 2px 2px 0 0;
+		transform: rotate(45deg) translate(-2px, 2px);
+		@include size(10px);
+	}
+
+	&.slickPrev{
+		left: 10px;
+
+		&:before{
+			transform: rotate(225deg) translate(-2px, 2px);
+		}
+	}
+
+	&.slickNext{
+		right: 10px;
+	}
+
+	&:hover{
+		background-color: $black;
+	}
+}
+
+/*------------------------------------------------------------------
+Callout Aside / .calloutAside
+-------------------------------------------------------------------*/
+.calloutAside{
+	font-size: 16px;
+	line-height: (22/16);
+
+	p{
+
+		a{
+			text-decoration: none;
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.calloutBtn{
+	padding: 8px 15px;
+}
+
+/*------------------------------------------------------------------
+About Onview Block / .aboutOnviewBlock
+-------------------------------------------------------------------*/
+.aboutOnviewBlock{
+
+	.imgHolder{
+		z-index: 1;
+		max-height: 266px;
+		max-width: 220px;
+		@include pseudo(before, 50%, null, null, 50%);
+		@include pseudo(after, 50%, null, null, 50%);
+
+		&:before,
+		&:after{
+			background-color: $secondary;
+			border-radius: 100%;
+			transform: translate(-50%, -50%);
+			margin-top: -19px;
+		}
+
+		&:before{
+			z-index: -1;
+			opacity: 0.04;
+			transform-origin: 50% 50% 0;
+			@include size(154px);
+		}
+
+		&:after{
+			z-index: -2;
+			opacity: 0.05;
+			@include size(186px);
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Onview Museum Aside / .onviewMuseumAside
+-------------------------------------------------------------------*/
+.onviewMuseumAside{
+	z-index: 1;
+
+	h3, .h3{
+		font-size: 35px;
+		line-height: (40/35);
+	}
+}
+
+/*------------------------------------------------------------------
+UE Event Column / .ueEveColumn
+-------------------------------------------------------------------*/
+.ueEveColumn{
+	font-size: 16px;
+	line-height: (22/16);
+	transition: border-color 0.3s ease;
+
+	&.gridView{
+		max-width: 300px;
+
+		.imgHolder{
+			width: auto;
+		}
+	}
+
+	&:hover{
+
+		.ueecTimeTag{
+			top: 0;
+		}
+	}
+
+	h2, .h2{
+
+		a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $black;
+			}
+		}
+	}
+
+	.imgHolder{
+		@include size(100%, 200px);
+	}
+
+	.btn-sm{
+		padding-top: 7px;
+		padding-bottom: 7px;
+	}
+}
+
+/*------------------------------------------------------------------
+UE Event Time Tag / .ueecTimeTag
+-------------------------------------------------------------------*/
+.ueecTimeTag{
+	left: 0;
+	top: 20px;
+	height: 36px;
+	font-size: 14px;
+	line-height: (20/14);
+	transition: top 0.3s ease;
+	z-index: 1;
+
+	.day{
+		font-size: 18px;
+	}
+
+	.hClassVi &{
+
+		.day{
+			background-color: $warning !important;
+		}
+	}
+
+	.hClassVii &{
+
+		.day{
+			background-color: $orange !important;
+		}
+	}
+
+	.hClassViii &{
+
+		.day{
+			background-color: $clr1 !important;
+		}
+	}
+
+	.hClassViv &{
+
+		.day{
+			background-color: $clr7 !important;
+		}
+	}
+
+	.hClassVv &{
+
+		.day{
+			background-color: $danger !important;
+		}
+	}
+
+	.hClassVvi &{
+
+		.day{
+			background-color: $yellow2 !important;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Filters List / .ogFiltersList
+-------------------------------------------------------------------*/
+.ogFiltersList{
+	font-size: 15px;
+	line-height: (20/15);
+
+	&.ogFiltersListII{
+
+		> li{
+			margin-left: 15px;
+			margin-right: 15px;
+
+			&.active{
+
+				> a{
+
+					&:after{
+						transform: scale(1);
+					}
+				}
+			}
+
+			> a{
+				position: relative;
+				display: block;
+				padding-bottom: 16px;
+				@include pseudo(after, null, 0, -1px, 0);
+
+				&:after{
+					transition: transform 0.3s ease;
+					transform-origin: 50% 100% 0;
+					transform: scale(0);
+					border-bottom: 1px solid $clr1;
+				}
+
+				&:hover{
+
+					&:after{
+						transform: scale(1);
+					}
+				}
+			}
+		}
+	}
+
+	> li{
+		margin: 0 10px 5px;
+
+		&.active{
+
+			> a{
+				color: $secondary;
+			}
+		}
+
+		> a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+			color: $gray-600;
+
+			&:hover{
+				color: $secondary;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Gallery Figure / .galFig
+-------------------------------------------------------------------*/
+.galFig{
+	max-width: 290px;
+	@include pseudo(before, 20px, 20px, 20px, 20px);
+	@include pseudo(after, 20px, 20px, 20px, 20px);
+
+	&.galFigII{
+
+		&:before,
+		&:after{
+			display: none;
+		}
+
+		&:hover{
+
+			.gafCaption{
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	&.galFigIII{
+
+		&:hover{
+
+			.icnWrap,
+			.imgHolder:before{
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		&:after,
+		&:before{
+			display: none;
+		}
+
+		.icnWrap{
+			left: 50%;
+			top: 50%;
+			z-index: 1;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease, visibility 0.3s ease;
+		}
+
+		.gafCaption{
+			opacity: 1;
+			visibility: visible;
+			transition: none;
+			background-color: transparent;
+		}
+	}
+
+	&:hover{
+
+		&:before{
+			transform: scaleX(1);
+		}
+
+		&:after{
+			transform: scaleY(1);
+		}
+	}
+
+	&:before,
+	&:after{
+		@extend .inaccessible;
+		border: solid rgba($warning, 0.7);
+		transition: transform 0.3s ease-out;
+	}
+
+	&:before{
+		transform-origin: 50% 0 0;
+		transform: scaleX(0);
+		border-width: 2px 0;
+	}
+
+	&:after{
+		border-width: 0 2px;
+		transform-origin: 0 50% 0;
+		transform: scaleY(0);
+	}
+
+	.imgHolder{
+		@include pseudo(before, 0, 0, 0, 0);
+
+		&:before{
+			@extend .inaccessible;
+			background-color: rgba($black, 0.6);
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease, visibility 0.3s ease;
+		}
+	}
+
+	.icnWrap{
+		font-size: 16px;
+		@include size(42px);
+	}
+
+	h3, .h3{
+		font-size: 18px;
+		line-height: (22/18);
+
+		a{
+			transition: color 0.3s ease;
+		}
+	}
+
+	.igSlider &{
+		max-width: none;
+	}
+}
+
+/*------------------------------------------------------------------
+VS Quote / .vsQuote
+-------------------------------------------------------------------*/
+.vsQuote{
+	border: 1px solid $graye5e5e5;
+	border-radius: 8px;
+	letter-spacing: 0.3px;
+	@include pseudo(before, 25px, null, null, 10px);
+
+	&:before{
+		@extend .fontSerif;
+		line-height: 1;
+		content: '”';
+		color: $graye0e0e0;
+		font-size: 110px;
+	}
+
+	q{
+		quotes: none;
+	}
+
+	.vsqImage{
+		@include size(45px);
+	}
+
+	cite{
+		font-size: 14px;
+	}
+}
+
+/*------------------------------------------------------------------
+Rating Star List / .ratingStarListSpan
+-------------------------------------------------------------------*/
+.ratingStarListSpan{
+	font-size: 14px;
+	line-height: 1;
+
+	&.ratingStarListSpan{
+		font-size: 13px;
+	}
+
+	&.ratingStarListSpanIII{
+		color: $gray-400;
+
+		.rslsItem{
+			margin-left: 2px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+UPC Event Column / .upcEveColumn
+-------------------------------------------------------------------*/
+.upcEveColumn{
+	font-size: 16px;
+	line-height: (26/16);
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	max-width: 290px;
+
+	&:hover{
+		box-shadow: $box-shadow-sm;
+
+		.imgHolder{
+
+			img{
+				transform: scale(1.07) rotate(-1deg);
+			}
+		}
+	}
+
+	.imgHolder{
+		margin: -41px -21px;
+
+		img{
+			transform-origin: 50% 50% 0;
+			transform: scale(1);
+			transition: transform 0.7s ease;
+		}
+	}
+
+	h2, .h2{
+		font-size: 24px;
+		line-height: (35/24);
+
+		a{
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+	}
+
+	.icn{
+		font-size: 0.9em;
+	}
+
+	.btn-sm{
+		padding-top: 7px;
+		padding-bottom: 7px;
+	}
+}
+
+/*------------------------------------------------------------------
+Intro Banner Full Block / .introBannerFullBlock
+-------------------------------------------------------------------*/
+.introBannerFullBlock{
+	min-height: 100vh;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&.overlayDbl{
+		@include pseudo(after, 0, 0, 0, 0);
+
+		&:after{
+			@extend .inaccessible;
+			z-index: 0;
+			background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%,rgba(255,255,255,0) 100%);
+		}
+	}
+
+	&:before{
+		@extend .inaccessible;
+		z-index: 1;
+		background-color: rgba($black, 0.2);
+	}
+}
+
+.ibfbAlignHolder{
+	min-height: inherit;
+	z-index: 2;
+}
+
+.ibfbText{
+	font-size: 18px;
+	line-height: (20/18);
+}
+
+/*------------------------------------------------------------------
+Full Link Nav / .hmFullLinkingNav
+-------------------------------------------------------------------*/
+.hmFullLinkingNav{
+	@extend .inaccessible;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9;
+	right: 10px;
+
+	li{
+		margin-top: 10px;
+		margin-bottom: 10px;
+
+		&.active{
+
+			a{
+				background-color: $white;
+			}
+		}
+	}
+
+	a{
+		pointer-events: auto;
+		border-radius: 100%;
+		border: 1px solid $white;
+		display: block;
+		transition: background-color 0.3s ease;
+		@include size(10px);
+
+		&:hover{
+			background-color: $white;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Widget Callout / .widgetCllout
+-------------------------------------------------------------------*/
+.widgetCllout{
+	background-image: linear-gradient(-2deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%), linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	background-size: 100% 10px, 100% calc(100% - 50px);
+	background-position: 0 0, 0 10px;
+	background-repeat: no-repeat;
+	font-size: 15px;
+	line-height: (22/15);
+	max-width: 243px;
+	z-index: 3;
+
+	.title{
+		font-size: 18px;
+	}
+}
+
+/*------------------------------------------------------------------
+Widget Callout Button / .wcBtn
+-------------------------------------------------------------------*/
+.wcBtn{
+	font-size: 16px;
+	line-height: (20/16);
+	color: $white;
+	background-image: linear-gradient(187deg, rgba($secondary,1) 0%, rgba($secondary,1) 50%, rgba($secondary,0) 50%, rgba($secondary,0) 100%), linear-gradient(173deg, rgba($secondary,1) 0%, rgba($secondary,1) 50%, rgba($secondary,0) 50%, rgba($secondary,0) 100%), linear-gradient(90deg, rgba($secondary ,1) 0%, rgba($secondary,1) 100%);
+	background-size: 50% 15px, 50% 15px, 100% calc(100% - 15px);
+	background-position: 0 100%, 100% 100%, 0 0;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	transition: color 0.3s ease;
+	padding: 17px 10px 28px;
+}
+
+/*------------------------------------------------------------------
+VN Figure / .vnFig
+-------------------------------------------------------------------*/
+.vnFig{
+	max-width: 270px;
+
+	&:hover{
+
+		.caption{
+			background-color: $orange;
+			margin-top: -10px;
+			padding-top: 22px;
+			padding-bottom: 22px;
+		}
+	}
+
+	a{
+		text-decoration: none;
+	}
+
+	.imgHolder{
+		height: 250px;
+	}
+
+	.caption{
+		transition: background-color 0.3s ease, padding 0.3s ease, margin-top 0.3s ease;
+		background-color: $secondary;
+		padding: 17px 10px;
+	}
+
+	h3, .h3{
+		font-size: 20px;
+		line-height: (26/20);
+		white-space: nowrap;
+		overflow: hidden;
+		width: 100%;
+		text-overflow: ellipsis;
+	}
+}
+
+/*------------------------------------------------------------------
+Venues Block / .venuesBlock
+-------------------------------------------------------------------*/
+.venuesBlock{
+
+	.headHeading{
+
+		.btn{
+			min-width: 144px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+FAS Frame Wrap / .fasFrameWrap
+-------------------------------------------------------------------*/
+.fasFrameWrap{
+	position: relative;
+	height: 150px;
+
+	iframe{
+		left: 0;
+		top: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+Main Heading Head / .mainHeadingHead
+-------------------------------------------------------------------*/
+.mainHeadingHead{
+	min-height: 150px;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		@extend .inaccessible;
+		background-color: rgba($black, 0.3);
+	}
+}
+
+.mhhAlignHolder{
+	z-index: 1;
+	min-height: inherit;
+}
+
+/*------------------------------------------------------------------
+Scroll To Nav / .scrollToNav
+-------------------------------------------------------------------*/
+.scrollToNav{
+	border-bottom: 1px solid $grayeee;
+	letter-spacing: 0.3px;
+	font-size: 15px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+
+	&.scrollToNavII{
+
+		li{
+
+			&.active{
+
+				a{
+
+					&:after{
+						transform: scaleX(1);
+					}
+				}
+			}
+		}
+
+		a{
+			position: relative;
+			@include pseudo(after, null, 0, -25px, 0);
+
+			&:after{
+				border-bottom: 1px solid $clr1;
+				transition: transform 0.3s ease;
+				transform: scaleX(0);
+			}
+		}
+	}
+
+	li{
+		margin-right: 16px;
+
+		&.active{
+
+			a{
+				color: $secondary;
+			}
+		}
+	}
+
+	a{
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.3s ease;
+
+		&:hover{
+			color: $secondary;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+AP Data Table / .apDataTable
+-------------------------------------------------------------------*/
+.apDataTable{
+	table-layout: fixed;
+
+	&.apDataTableII{
+
+		td{
+			border-bottom: 0;
+
+			&:first-child{
+				width: 40%;
+			}
+		}
+
+		tr{
+
+			+ tr{
+
+				td{
+					border-top: 1px solid $gray-200;
+				}
+			}
+		}
+	}
+
+	&.apDataTableIII{
+
+		td{
+			border-bottom: 0;
+
+			&:first-child{
+				width: 35%;
+				color: $gray-700;
+			}
+		}
+
+		tr{
+
+			+ tr{
+
+				td{
+					border-top: 1px solid $gray-200;
+				}
+			}
+		}
+	}
+
+	td{
+		border-bottom: 1px solid $gray-200;
+		padding: 10px 0;
+
+		&:first-child{
+			width: 69%;
+			padding-right: 10px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+VTC Button Wrap / .vtcBtnsWrap
+-------------------------------------------------------------------*/
+.vtcBtnsWrap{
+
+	.btn{
+		width: 100%;
+	}
+}
+
+/*------------------------------------------------------------------
+VTC Frame Wrap / .vtcFrameWrap
+-------------------------------------------------------------------*/
+.vtcFrameWrap{
+	padding-top: 73%;
+
+	iframe{
+		top: 0;
+		left: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+VTC Accordion Item / .vctAccItem
+-------------------------------------------------------------------*/
+.vctAccItem{
+	border: 1px solid $graye5e5e5;
+	margin-bottom: -1px;
+}
+
+.vtcAccSlide{
+	line-height: (28/17);
+}
+
+/*------------------------------------------------------------------
+VTC Accordion Opener / .vctOpener
+-------------------------------------------------------------------*/
+.vctOpener{
+	background-color: transparent;
+	border: 0;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid transparent;
+	@include pseudo(after, 50%, 13px, null, null);
+
+	&:after{
+		border: solid $gray-600;
+		border-width: 2px 2px 0 0;
+		transform: rotate(135deg) translate(-2px, 3px);
+		@include size(8px);
+	}
+
+	&:focus{
+		outline: none;
+	}
+
+	&[aria-expanded="true"]{
+		border-bottom-color: $graye5e5e5;
+
+		&:after{
+			transform: rotate(-45deg) translate(0, -1px);
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Learn More / .btnLearnMore
+-------------------------------------------------------------------*/
+.btnLearnMore{
+	color: $secondary;
+	font-size: 17px;
+	line-height: 1;
+	transition: color 0.3s ease;
+
+	.icn{
+		font-size: 0.9em;
+	}
+}
+
+/*------------------------------------------------------------------
+Shop Post Column / .shopPostColumn
+-------------------------------------------------------------------*/
+.shopPostColumn{
+	min-height: 160px;
+	transform-origin: 50% 50% 0;
+	transition: transform 0.3s ease;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:hover{
+		transform: scale(1.02);
+	}
+
+	&:before{
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+	}
+}
+
+/*------------------------------------------------------------------
+ISO Content Holder / .isoContentHolderStatic
+-------------------------------------------------------------------*/
+.isoContentHolderStatic{
+	height: auto !important;
+
+	> .isoCol{
+		position: static !important;
+		transform: none !important;
+	}
+}
+
+/*------------------------------------------------------------------
+Exhibition Tab List / .exhiTabList
+-------------------------------------------------------------------*/
+.exhiTabList{
+	font-size: 16px;
+	line-height: (18/16);
+	border-bottom-color: $border-color;
+
+	&.exhiTabListII{
+
+		.nav-item{
+			margin: 0 14px 0 0;
+		}
+	}
+
+	&.exhiTabListIII{
+
+		.nav-item{
+			margin: 0 0 -1px;
+
+			+ .nav-item{
+				margin-left: -1px;
+			}
+
+			&.show{
+
+				.nav-link{
+					background-color: $secondary;
+					color: $white;
+				}
+			}
+		}
+
+		.nav-link{
+			border: 1px solid $border-color;
+			color: $secondary;
+			font-size: 17px;
+			line-height: 1;
+			padding: 15px 23px;
+
+			&:after{
+				display: none;
+			}
+		}
+
+		.icn{
+			font-size: 0.8em;
+			margin-left: 4px;
+			margin-right: -4px;
+		}
+	}
+
+	&.exhiTabListIV{
+		border-bottom: 0;
+
+		.nav-link{
+			padding-bottom: 7px;
+
+			&:after{
+				border-bottom-width: 2px;
+				border-bottom-color: $secondary;
+			}
+		}
+	}
+
+	.nav-item{
+		margin: 0 10px;
+	}
+
+	.nav-link{
+		position: relative;
+		border: 0;
+		color: $gray-600;
+		background-color: transparent;
+		transition: color 0.3s ease;
+		padding: 0 0 16px;
+		text-decoration: none;
+		@include pseudo(after, null, 0, -1px, 0);
+
+		&:after{
+			transition: transform 0.3s ease;
+			transform-origin: 50% 100% 0;
+			transform: scale(0);
+			border-bottom: 1px solid $clr1;
+		}
+
+		&.active,
+		&:hover{
+			color: $secondary;
+			background-color: transparent;
+
+			&:after{
+				transform: scale(1);
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Time Table Aside / .timetableAside
+-------------------------------------------------------------------*/
+.timetableAside{
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		background-color: rgba($black, 0.3);
+	}
+}
+
+.ttaHolderBox{
+	max-width: 570px;
+	z-index: 1;
+}
+
+/*------------------------------------------------------------------
+Shop Item Column / .shopItemColumn
+-------------------------------------------------------------------*/
+.shopItemColumn{
+	max-width: 290px;
+
+	&:hover{
+
+		.btn{
+			transform: translateY(0);
+
+			.hClassVi &{
+				border-color: $warning !important;
+				background-color: $warning !important;
+			}
+
+			.hClassVii &{
+				border-color: $orange !important;
+				background-color: $orange !important;
+			}
+
+			.hClassViii &{
+				border-color: $clr1 !important;
+				background-color: $clr1 !important;
+			}
+
+			.hClassViv &{
+				border-color: $clr7 !important;
+				background-color: $clr7 !important;
+			}
+
+			.hClassVv &{
+				border-color: $danger !important;
+				background-color: $danger !important;
+			}
+
+			.hClassVvi &{
+				border-color: $yellow2 !important;
+				background-color: $yellow2 !important;
+			}
+		}
+	}
+
+	h3, .h3,
+	h4, .h4{
+		font-size: 17px;
+		line-height: (24/17);
+
+		a{
+			transition: color 0.3s ease;
+			text-decoration: none;
+		}
+	}
+
+	h4, .h4{
+		color: $gray-700;
+	}
+
+	.btn{
+		transform: translateY(110%);
+		transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+	}
+}
+
+/*------------------------------------------------------------------
+SIC Button Cart / .sicBtnCart
+-------------------------------------------------------------------*/
+.sicBtnCart{
+	left: 0;
+	bottom: 0;
+}
+
+/*------------------------------------------------------------------
+Slider Arrow Nine / .ssArrowVix
+-------------------------------------------------------------------*/
+.ssArrowVix{
+	background-color: rgba($black, 0.6);
+	z-index: 2;
+	top: 50%;
+	font-size: 24px;
+	transition: background-color 0.3s ease;
+	transform: translateY(-50%);
+	@include size(30px, 40px);
+
+	&.slickPrev{
+		left: 0;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+
+		&:before{
+			transform: rotate(225deg) translate(-2px, 2px);
+		}
+	}
+
+	&.slickNext{
+		right: 0;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+
+		&:before{
+			transform: rotate(45deg) translate(-4px, 4px);
+		}
+	}
+
+	&:before{
+		content: '';
+		display: block;
+		border: solid currentColor;
+		border-width: 2px 2px 0 0;
+		@include size(10px);
+	}
+
+	&:hover{
+		background-color: $black;
+	}
+}
+
+/*------------------------------------------------------------------
+Footer Quick Links / .ftQuickLinks
+-------------------------------------------------------------------*/
+.ftQuickLinks{
+	font-size: 16px;
+	line-height: (20/16);
+
+	> li{
+		margin-bottom: 15px;
+
+		> a{
+			color: inherit;
+			text-decoration: none;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $black;
+			}
+		}
+	}
+
+	.bg-secondary &{
+
+		> li{
+
+			> a{
+
+				&:hover{
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+SC Button Back / .scBtnBack
+-------------------------------------------------------------------*/
+.scBtnBack{
+	color: $gray-600;
+	transition: color 0.3s ease;
+	font-size: 18px;
+	line-height: 1;
+
+	.icn{
+		font-size: 0.9em;
+	}
+}
+
+/*------------------------------------------------------------------
+SC Time / .scTime
+-------------------------------------------------------------------*/
+.scTime{
+	font-size: 20px;
+	line-height: (22/20);
+}
+
+.scFrameWrap{
+	font-size: 16px;
+
+	iframe{
+		width: 100%;
+		display: block;
+		border: 0;
+	}
+}
+
+.sepTransparent{
+	border-color: transparent;
+}
+
+/*------------------------------------------------------------------
+Button Share / .btnShare
+-------------------------------------------------------------------*/
+.btnShare{
+	font-size: 16px;
+
+	&.btnShareII{
+
+		&:hover{
+
+			.icn{
+				background-color: $white;
+			}
+		}
+	}
+
+	&:hover{
+
+		.icn{
+			background-color: $secondary;
+		}
+	}
+
+	.icn{
+		transition: background-color 0.3s ease;
+		background-color: $graybfbfbf;
+		font-size: 1.1em;
+		@include size(41px);
+	}
+}
+
+/*------------------------------------------------------------------
+SCS Info List / .scsInfosList
+-------------------------------------------------------------------*/
+.scsInfosList{
+	line-height: (24/17);
+}
+
+/*------------------------------------------------------------------
+SCS Sidebar / .scSidebar
+-------------------------------------------------------------------*/
+.scSidebar{
+	@include pseudo(before, 0, 0, null, 0);
+
+	&.scSidebarII{
+
+		&:before{
+			display: none;
+		}
+	}
+
+	&:before{
+		border: solid $graye5e5e5;
+		border-width: 1px 0 0;
+	}
+}
+
+/*------------------------------------------------------------------
+Slider Arrow Ten / .ssArrowVx
+-------------------------------------------------------------------*/
+.ssArrowVx{
+	text-decoration: none;
+	color: $white;
+	font-size: 16px;
+	z-index: 2;
+	top: 0;
+	border: 2px solid $gray777;
+	transition: background-color 0.3s ease;
+	@include size(40px);
+
+	&.slickPrev{
+		left: 19px;
+	}
+
+	&.slickNext{
+		left: 70px;
+	}
+
+	&.slick-disabled{
+		@extend .inaccessible;
+		opacity: 0.5;
+	}
+
+	&:hover{
+		background-color: $gray777;
+	}
+}
+
+.igSlider{
+
+	.slick-list{
+		overflow: visible !important;
+	}
+}
+
+/*------------------------------------------------------------------
+IG Image Wrap / .igImageWrap
+-------------------------------------------------------------------*/
+.igImageWrap{
+	height: 200px;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		@extend .inaccessible;
+		transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+		transform: scale(0);
+		opacity: 0;
+		visibility: hidden;
+		background-color: rgba($black, 0.6);
+	}
+
+	&:hover{
+
+		&:before{
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+	}
+
+	img{
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/*------------------------------------------------------------------
+SC Page NAV / .scPagerNav
+-------------------------------------------------------------------*/
+.scPagerNav{
+	color: $gray-600;
+	font-size: 11px;
+	line-height: (16/11);
+
+	a{
+		color: inherit;
+		padding-top: 18px;
+		padding-bottom: 18px;
+		transition: color 0.3s ease, background-color 0.3s ease;
+		@include pseudo(before, 50%, null, null, null);
+
+		&:before{
+			border: solid currentColor;
+			border-width: 1px 1px  0 0;
+			margin-top: -9px;
+			transition: margin 0.3s ease;
+			@include size(20px);
+		}
+
+		&:hover{
+
+			h3, .h3{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.scpnPrev{
+		padding-left: 25px;
+
+		&:before{
+			transform: rotate(225deg);
+			left: 0;
+		}
+
+		&:hover{
+
+			&:before{
+				margin-left: -5px;
+			}
+		}
+	}
+
+	.scpnNext{
+		padding-right: 25px;
+
+		&:before{
+			right: 0;
+			transform: rotate(45deg);
+		}
+
+		&:hover{
+
+			&:before{
+				margin-right: -5px;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Event Pro Filter Box / .eveProFiltersBox
+-------------------------------------------------------------------*/
+.eveProFiltersBox{
+
+	.form-row{
+		margin-left: -8px;
+		margin-right: -8px;
+	}
+
+	.form-group{
+		width: 100%;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+}
+
+/*------------------------------------------------------------------
+Datepicker Wrap / .dtPickerWrap
+-------------------------------------------------------------------*/
+.dtPickerWrap{
+	@include pseudo(after, 50%, 20px, null, null);
+
+	&:after{
+		@extend .inaccessible;
+		border: solid $gray-500;
+		border-width: 2px 2px 0 0;
+		transform: rotate(135deg);
+		margin-top: -6px;
+		@include size(8px);
+	}
+}
+
+/*------------------------------------------------------------------
+CS Paging / .csPaging
+-------------------------------------------------------------------*/
+.csPaging{
+
+	.page-link{
+		text-decoration: none;
+		transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+	}
+
+	.icn{
+		font-size: 0.9em;
+	}
+}
+
+/*------------------------------------------------------------------
+SB Caption / .sbisCaption
+-------------------------------------------------------------------*/
+.sbisCaption{
+	bottom: 15px;
+	left: 15px;
+	max-width: 250px;
+
+	h1, .h1{
+		font-size: 18px;
+		line-height: (22/18);
+	}
+
+	time{
+		font-size: 18px;
+		line-height: (22/18);
+	}
+}
+
+/*------------------------------------------------------------------
+Become Member Block / .becomeMemberBlock
+-------------------------------------------------------------------*/
+.becomeMemberBlock{
+
+	.imgHolder{
+		@include size(100%, 250px);
+
+		img{
+			@include size(100%);
+		}
+	}
+}
+
+.aeaHolder{
+	min-height: inherit;
+}
+
+/*------------------------------------------------------------------
+About Explore Aside / .aboutExploreAside
+-------------------------------------------------------------------*/
+.aboutExploreAside{
+	border-top: 1px solid $grayeee;
+	min-height: 200px;
+}
+
+/*------------------------------------------------------------------
+SB Column / .sbisColumn
+-------------------------------------------------------------------*/
+.sbisColumn{
+
+	.imgHolder{
+		height: 250px;
+	}
+}
+
+/*------------------------------------------------------------------
+LC Frame Wrap / .lcFrameWrap
+-------------------------------------------------------------------*/
+.lcFrameWrap{
+	height: 210px;
+
+	iframe{
+		top: 0;
+		left: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+About Links / .abtLinks
+-------------------------------------------------------------------*/
+.abtLinks{
+
+	> li{
+		margin-right: 16px;
+
+		> a{
+			color: $gray-700;
+			text-decoration: none;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $warning;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+CD Info List / .cdInfoList
+-------------------------------------------------------------------*/
+.cdInfoList{
+	margin-left: -10px;
+	margin-right: -10px;
+	line-height: (24/17);
+
+	> li{
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-bottom: 15px;
+	}
+}
+
+.ibdGalImage{
+	transition: transform 0.3s ease;
+
+	&:hover{
+		transform: scale(1.02);
+	}
+}
+
+/*------------------------------------------------------------------
+ON Image Column / .onImageColumn
+-------------------------------------------------------------------*/
+.onImageColumn{
+	animation-duration: 0.2s;
+	animation-fill-mode: forwards;
+	height: 155px;
+
+	&.onImageColumnLarge{
+		height: 220px;
+	}
+
+	&:hover{
+		animation-name: imgAnimBounce;
+	}
+}
+
+/*------------------------------------------------------------------
+History List / .historyList
+-------------------------------------------------------------------*/
+.historyList{
+
+	> li{
+		display: flex;
+		margin-bottom: 16px;
+	}
+
+	time{
+		width: 90px;
+		font-size: 16px;
+		line-height: (19/16);
+	}
+}
+
+.queryCalloutBlock{
+	min-height: 250px;
+}
+
+.qcbHolder{
+	min-height: inherit;
+}
+
+/*------------------------------------------------------------------
+BR List / .brList
+-------------------------------------------------------------------*/
+.brList{
+	line-height: (24/17);
+
+	> li{
+		margin-bottom: 31px;
+	}
+
+	.title{
+		font-size: 20px;
+		line-height: (22/20);
+		margin-bottom: 2px;
+	}
+
+	a{
+		color: inherit;
+		transition: color 0.3s ease;
+
+		&:hover{
+			color: $secondary;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Artist Profile Column / .artistProfileColumn
+-------------------------------------------------------------------*/
+.artistProfileColumn{
+	max-width: 290px;
+
+	h2, .h2{
+		font-size: 22px;
+		line-height: (24/22);
+		margin-bottom: 2px;
+	}
+
+	h3, .h3{
+		font-size: 17px;
+		line-height: (24/17);
+		color: $gray-700;
+	}
+
+	p{
+
+		a{
+			transition: color 0.3s ease;
+			color: inherit;
+
+			&:hover{
+				color: $dark;
+			}
+		}
+	}
+}
+
+.vctSubtitle{
+	font-size: 18px;
+	line-height: (21/18);
+}
+
+/*------------------------------------------------------------------
+Contribute Column / .contributeColumn
+-------------------------------------------------------------------*/
+.contributeColumn{
+	line-height: (26/17);
+	max-width: 290px;
+
+	&:hover{
+
+		.imgHolder{
+
+			img{
+				transform: scale(1.02);
+			}
+		}
+	}
+
+	.imgHolder{
+
+		img{
+			transition: transform 0.3s ease;
+			transform: scale(1);
+		}
+	}
+
+	.btn{
+		min-width: 155px;
+	}
+}
+
+/*------------------------------------------------------------------
+Logos List / .logosList
+-------------------------------------------------------------------*/
+.logosList{
+	max-width: 290px;
+
+	li{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 17px;
+		position: relative;
+		width: 25%;
+		min-height: 76px;
+
+		+ li{
+			border-left: 1px solid $grayeee;
+
+			&:nth-child(4n + 1){
+				border-left-width: 0;
+			}
+		}
+
+		&:nth-child(n + 5){
+			@include pseudo(before, -8px, 15px, null, 15px);
+
+			&:before{
+				border-top: 1px solid $grayeee;
+			}
+		}
+	}
+
+	a{
+		opacity: 0.75;
+		transition: opacity 0.3s ease;
+		padding-left: 10px;
+		padding-right: 10px;
+
+		&:hover{
+			opacity: 1;
+		}
+	}
+}
+
+.contactFormWrap{
+
+	.formCol{
+		&.has-error .form-control{
+			color: #ff3333;
+			border-color: #ff3333;
+		}
+	}
+
+	.formCol6{
+		width: 100%;
+	}
+
+	.formCol12{
+		width: 100%;
+	}
+
+	textarea{
+
+		&,
+		&.form-control{
+			resize: none;
+			height: 102px;
+		}
+	}
+	.form-message{
+		color: $white;
+		font-size: 11px;
+		font-weight: 600;
+		position: relative;
+		&:after{
+			top: 14px;
+			left: 17px;
+			width: 20px;
+			content: "";
+			height: 20px;
+			border-radius: 50%;
+			position: absolute;
+			text-align: center;
+			font-family:'FontAwesome';
+		}
+		&.error{
+			margin: 0 0 20px;
+			background: #ff3333;
+			padding: 15px 5px 13px 50px;
+			&:after{
+				content:"\f00d";
+				background: #cc2929;
+				padding-right: 2px;
+			}
+		}
+		&.success{
+			margin: 0 0 20px;
+			background: #698cf0;
+			padding: 15px 5px 13px 50px;
+			&:after{
+				content:"\f00c";
+				background: #5470c0;
+				padding-right: 2px;
+			}
+		}
+	}
+}
+
+.ctInfoWrap{
+	line-height: (24/17);
+
+	p{
+
+		a{
+			color: inherit;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $gray-700;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+CT Social Networks / .ctSocialNetworks
+-------------------------------------------------------------------*/
+.ctSocialNetworks{
+	margin-left: -4px;
+	margin-right: -4px;
+
+	> li{
+		padding-left: 4px;
+		padding-right: 4px;
+		margin-bottom: 8px;
+
+		> a{
+			@extend .textDecorationNone;
+			display: flex;
+			transition: background-color 0.3s ease;
+			font-size: 22px;
+			align-items: center;
+			justify-content: center;
+			color: $white;
+			background-color: $grayc8c9cb;
+			@include size(36px);
+	
+			&:hover{
+				background-color: darken($grayc8c9cb, 10%);
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Flt Dropdown / .fltDropdown
+-------------------------------------------------------------------*/
+.fltDropdown{
+	border-color: $secondary;
+	width: 250px;
+	margin-left: 1px;
+
+	&.dropdown-menu-right{
+		margin-left: 0;
+		margin-right: 1px;
+	}
+
+	.dropdown-item{
+		color: $gray-400;
+		font-size: 16px;
+		line-height: (20/16);
+		padding: 15px 18px;
+		text-decoration: none;
+		transition: background-color 0.3s ease, color 0.3s ease;
+
+		+ .dropdown-item{
+			border-top: 1px solid rgba($white, 0.08);
+		}
+
+		&:hover,
+		&.active{
+			background-color: $dark;
+			color: $white;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Custom Select / .custSelect
+-------------------------------------------------------------------*/
+.custSelect{
+	@include pseudo(after, 50%, 15px, null, null);
+
+	&.custSelectSmall{
+
+		select{
+			height: 40px;
+			font-size: 15px;
+			padding: 7px 10px;
+		}
+	}
+
+	&:after{
+		border: solid $gray777;
+		border-width: 1px 1px 0 0;
+		transform: rotate(135deg);
+		margin-top: -4px;
+		@include size(6px);
+	}
+
+	select{
+		border: 1px solid $border-color;
+		font-size: 16px;
+		line-height: (20/16);
+		color: $gray777;
+		-webkit-appearance: none;
+		padding: 8px 30px 8px 10px;
+		@include size(100%, 50px);
+	}
+}
+
+/*------------------------------------------------------------------
+Sorter Head / .sorterHead
+-------------------------------------------------------------------*/
+.sorterHead{
+
+	.chosen-container{
+		text-align: left;
+		display: inline-block;
+	}
+}
+
+.csSelectSmall{
+
+	+ .chosen-container{
+		height: 40px;
+
+		.chosen-single{
+			font-size: 15px;
+			padding: 9px 0 9px 14px;
+		}
+	}
+}
+
+.acbFig{
+	font-size: 15px;
+	line-height: (24/15);
+}
+
+/*------------------------------------------------------------------
+Fig Rel Action List / .figRelActionList
+-------------------------------------------------------------------*/
+.figRelActionList{
+	margin-left: -4px;
+	margin-right: -4px;
+
+	> li{
+		padding-left: 4px;
+		padding-right: 4px;
+		margin-bottom: 8px;
+
+		> a{
+			@extend .textDecorationNone;
+			display: flex;
+			font-size: 18px;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid $graye5e5e5;
+			transition: background-color 0.3s ease;
+			color: $secondary;
+			@include size(40px);
+
+			&:hover{
+				background-color: $graye5e5e5;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+widget Search / .widgetSearch
+-------------------------------------------------------------------*/
+.widgetSearch{
+	.form-control{ padding-right: 50px; }
+	.btn{
+		right: 20px;
+		top: 16px;
+		font-size: 19px;
+	}
+}
+
+/*------------------------------------------------------------------
+widget Nav List / .widgetNavList
+-------------------------------------------------------------------*/
+.widgetNavList{
+	font-size: 16px;
+
+	> ul{
+		padding-left: 0;
+
+		> li{
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 9px;
+			@include pseudo(before, 11px, null, null, 4px);
+
+			&:before{
+				background-color: $secondary;
+				border-radius: 100%;
+				@include size(5px);
+			}
+
+			> a{
+				@extend .textDecorationNone;
+				transition: color 0.3s ease;
+				color: inherit;
+
+				&:hover{
+					color: $secondary;
+				}
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+RPC Caption / .rpcCaption
+-------------------------------------------------------------------*/
+.rpcCaption{
+	top: 0;
+	left: 0;
+	background: linear-gradient(to bottom, rgba($white,0) 50%,rgba($black,1) 100%);
+	font-size: 13px;
+
+	h4, .h4{
+		font-size: 14px;
+		line-height: (20/14);
+	}
+}
+
+/*------------------------------------------------------------------
+Widget Tag Cloud / .widgetTagCloud
+-------------------------------------------------------------------*/
+.widgetTagCloud{
+	font-size: 15px;
+
+	> ul{
+		margin-left: -4px;
+		margin-right: -4px;
+
+		> li{
+			padding-left: 4px;
+			padding-right: 4px;
+			margin-bottom: 12px;
+
+			> a{
+				@extend .textDecorationNone;
+				display: block;
+				border: 1px solid $graye5e5e5;
+				color: $gray-700;
+				transition: background-color 0.3s ease;
+				padding: 2px 16px;
+
+				&:hover{
+					background-color: $graye5e5e5;
+				}
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Play / .btnPlay
+-------------------------------------------------------------------*/
+.btnPlay{
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	border: 3px solid currentColor;
+	@include size(60px);
+
+	&:before{
+		display: block;
+		content: '';
+		border-style: solid;
+		border-width: 9px 0 9px 16px;
+		border-color: transparent transparent transparent currentColor;
+		@include size(0);
+	}
+}
+
+.twoFigWrap{
+	margin-left: -12px;
+	margin-right: -12px;
+
+	.imgHolder{
+		width: calc(50% - 24px);
+		margin: 0 12px 14px;
+	}
+}
+
+.shPostersImageWrap{
+	color: $gray-600;
+	font-size: 16px;
+}
+
+.tagsWrap{
+
+	.title{
+		margin-right: 8px;
+	}
+
+	p{
+
+		a{
+			transition: color 0.3s ease;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+TW Tags List / .twTagsList
+-------------------------------------------------------------------*/
+.twTagsList{
+
+	> li{
+		margin-right: 13px;
+
+		> a{
+			@extend .textDecorationNone;
+			transition: color 0.3s ease;
+			color: inherit;
+
+			&:hover{
+				color: $dark;
+			}
+		}
+	}
+}
+
+.colorInherit{
+	color: inherit;
+}
+
+/*------------------------------------------------------------------
+Share Drop Menu / .shareDropMenu
+-------------------------------------------------------------------*/
+.shareDropMenu{
+	width: 160px;
+	font-size: 15px;
+	line-height: (20/15);
+	margin-top: 8px;
+	left: -12px !important;
+
+	&[x-placement="top-start"]{
+		margin-top: -8px;
+	}
+
+	.dropdown-item{
+		text-decoration: none;
+		padding: 10px 17px;
+		transition: color 0.3s ease;
+
+		+ .dropdown-item{
+			border-top: 1px solid $grayeee;
+		}
+
+		&:hover{
+			color: $clr1;
+		}
+	}
+}
+
+.socialNetworksII{
+	margin-left: -4px;
+	margin-right: -4px;
+
+	> li{
+		padding-left: 4px;
+		padding-right: 4px;
+		margin-bottom: 8px;
+
+		> a{
+			@extend .textDecorationNone;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: $graybfbfbf;
+			color: $white;
+			transition: background-color 0.3s ease;
+			font-size: 22px;
+			@include size(36px);
+
+			&:hover{
+				background-color: darken($graybfbfbf, 10%);
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Author Info Column / .authorInfoColumn
+-------------------------------------------------------------------*/
+.authorInfoColumn{
+	line-height: (25/17);
+
+	h3, .h3{
+		font-size: 20px;
+		line-height: (26/20);
+	}
+
+	.imgHolder{
+		max-width: 51px;
+	}
+}
+
+/*------------------------------------------------------------------
+Comment & Review List / .commentsList, .reviewList
+-------------------------------------------------------------------*/
+.commentsList,
+.reviewList{
+
+	> ul{
+
+		> li{
+
+			&:first-child{
+				border-top: 0;
+			}
+		}
+	}
+
+	li{
+		border-top: 1px solid $border-color;
+	}
+
+	.imgHolder{
+		@include size(50px);
+	}
+
+	time{
+		color: $gray-700;
+	}
+
+	h3, .h3{
+		font-size: 18px;
+	}
+
+	.btn{
+		padding: 3px 16px;
+		font-size: 15px;
+	}
+}
+
+.reviewList{
+	font-size: 16px;
+	line-height: (24/16);
+
+	li{
+		border-top: 0;
+		margin-bottom: 30px;
+	}
+
+	h3, .h3{
+		font-size: 17px;
+	}
+
+	time{
+
+		&:before{
+			content: '–';
+			color: $secondary;
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Comment Opener / .commentsOpener
+-------------------------------------------------------------------*/
+.commentsOpener{
+	@extend .textDecorationNone;
+	background-color: $gray-100;
+	font-size: 20px;
+	padding: 8px 19px;
+	@include pseudo(after, 50%, 26px, null, null);
+
+	&[aria-expanded="true"]{
+
+		&:after{
+			margin-top: 0;
+			transform: rotate(-45deg);
+		}
+	}
+
+	&:after{
+		border: solid $gray-600;
+		border-width: 2px 2px 0 0;
+		transform: rotate(135deg);
+		margin-top: -3px;
+		@include size(8px);
+	}
+}
+
+.commentsList{
+	font-size: 16px;
+	line-height: (24/16);
+
+	ul{
+
+		li{
+			padding-left: 35px;
+		}
+	}
+}
+
+.commentsForm{
+
+	textarea{
+
+		&,
+		&.form-control{
+			height: 105px;
+			resize: none;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Product Tag / .prdctTag
+-------------------------------------------------------------------*/
+.prdctTag{
+	font-size: 12px;
+	line-height: 1;
+	left: 15px;
+	top: 15px;
+	z-index: 1;
+	@include size(42px);
+}
+
+/*------------------------------------------------------------------
+Button Zoom / .btnZoom
+-------------------------------------------------------------------*/
+.btnZoom{
+	right: 20px;
+	top: 25px;
+	border: 2px solid $gray-400;
+	color: $gray-400;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+	font-size: 15px;
+	@include size(34px);
+
+	&:hover{
+		background-color: $secondary;
+		color: $white;
+		border-color: $secondary;
+	}
+}
+
+.prSwitcherWrap{
+	width: 105px;
+}
+
+/*------------------------------------------------------------------
+Product Switcher Slider / .productSwitcherSlider
+-------------------------------------------------------------------*/
+.productSwitcherSlider{
+
+	.slick-current{
+
+		.imgHolder{
+
+			&:before{
+				border-color: rgba($secondary, 0.12);
+			}
+		}
+	}
+
+	.imgHolder{
+		cursor: pointer;
+		@include pseudo(before, 0, 0, 0, 0);
+
+		&:before{
+			@extend .inaccessible;
+			border: 2px solid transparent;
+			transition: border-color 0.3s ease;
+		}
+	}
+}
+
+.reViewWrap{
+	color: $gray-600;
+}
+
+.prSliderWrap{
+	width: calc(100% - 105px);
+}
+
+.prDecriptionWrap{
+	line-height: (24/17);
+}
+
+.prPrice{
+	font-size: 20px;
+}
+
+.ratingWrap{
+	direction: rtl;
+	color: $gray-400;
+
+	input{
+
+		&:checked{
+
+			~ label{
+				color: $secondary;
+
+				&:hover{
+					color: rgba($secondary, 0.8);
+				}
+			}
+		}
+	}
+
+	label{
+		margin-bottom: 0;
+		cursor: pointer;
+		font-size: 14px;
+		line-height: 1;
+		margin-right: 2px;
+		transition: color 0.3s ease;
+
+		&:hover{
+			color: rgba($secondary, 0.8);
+
+			~ label{
+				color: rgba($secondary, 0.8);
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Review Form / .reviewForm
+-------------------------------------------------------------------*/
+.reviewForm{
+
+	.label{
+		width: 150px;
+	}
+
+	.form-control{
+		height: 45px;
+	}
+
+	textarea{
+
+		&,
+		&.form-control{
+			resize: none;
+			height: 121px;
+		}
+	}
+}
+
+.quantityII{
+
+	input{
+		font-size: 16px;
+		padding: 6px 23px 6px 3px;
+		@include size(70px, 34px);
+	}
+
+	.quantity-button{
+		background-color: $grayeee;
+		border: 0;
+		top: 50%;
+		right: 5px;
+		@include size(15px, 11px);
+
+		&.quantity-down{
+			margin-top: 1px;
+
+			&:before{
+				border-color: $gray-700 transparent transparent transparent;
+			}
+		}
+
+		&.quantity-up{
+			margin-top: -11px;
+
+			&:before{
+				border-color: transparent transparent $gray-700 transparent;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Button Cart Remove / .btnCartRemove
+-------------------------------------------------------------------*/
+.btnCartRemove{
+	transition: border-color 0.3s ease, background-color 0.3s ease;
+	@include size(26px);
+	@include pseudo(before, 0, null, null, 0);
+	@include pseudo(after, 0, null, null, 0);
+
+	&:before,
+	&:after{
+		transition: background-color 0.3s ease;
+		background-color: $secondary;
+		margin: 12px 6px;
+		@include size(12px, 1px);
+	}
+
+	&:before{
+		transform: rotate(45deg);
+	}
+
+	&:after{
+		transform: rotate(-45deg);
+	}
+
+	&:hover{
+		background-color: $danger;
+		border-color: $danger !important;
+
+		&:before,
+		&:after{
+			background-color: $white;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Cart Table / .cartTable
+-------------------------------------------------------------------*/
+.cartTable{
+	font-size: 16px;
+
+	thead{
+
+		tr{
+			background-color: $graye9ebed;
+		}
+	}
+
+	th,
+	td{
+		padding: 14px 30px;
+		vertical-align: middle;
+	}
+
+	th{
+		font-weight: normal;
+		font-size: 17px;
+	}
+
+	tbody{
+
+		tr{
+
+			+ tr{
+				border-top: 1px solid $border-color;
+			}
+		}
+	}
+
+	td{
+		padding-top: 19px;
+		padding-bottom: 20px;
+	}
+
+	.tbCol1{
+		width: 55%;
+	}
+
+	.tbCol2{
+		width: 13%;
+	}
+
+	.tbCol3{
+		width: 15.6%;
+	}
+
+	.tbCol4{
+		width: 16%;
+	}
+
+	.tbCol5{
+		width: 5%;
+	}
+
+	.coupenField{
+		font-size: 15px;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		@include size(160px, 39px);
+	}
+
+	.btnCoupen{
+		font-size: 16px;
+		padding: 4px 20px;
+	}
+
+	.btnUpdateCart{
+		padding: 8px 19px;
+		margin-top: 8px;
+	}
+
+	.imgHolder{
+		max-width: 61px;
+	}
+}
+
+.custom-radio{
+
+	.custom-control-input{
+
+		&:checked {
+
+			~ .custom-control-label{
+
+				&:before{
+					background-color: $white;
+					border-color: $gray-400;
+				}
+
+				&:after{
+					background: $dark !important;
+				}
+			}
+		}
+	}
+}
+
+.custom-control-label{
+
+	&:before,
+	&:after{
+		top: 3px;
+	}
+
+	.custom-radio &{
+
+		&:after{
+			border-radius: 100%;
+			background: none;
+			margin-top: 4px;
+			margin-left: 4px;
+			@include size(8px);
+		}
+	}
+
+	.ccSmall &{
+		font-size: 15px;
+
+		&:before,
+		&:after{
+			transform: scale(0.9);
+		}
+	}
+
+	.custom-checkbox &{
+
+		&.h2{
+
+			&:before,
+			&:after{
+				top: 6px;
+			}
+		}
+
+		&:before,
+		&:after{
+			top: 4px;
+			left: -30px;
+		}
+
+		&:before{
+			@include size(20px);
+		}
+	}
+}
+
+.custom-checkbox{
+	padding-left: 30px;
+
+	.small &{
+
+		&:before,
+		&:after{
+			transform: scale(0.9);
+		}
+	}
+
+	.custom-control-label{
+
+		&:after{
+			margin-top: 1px;
+			@include size(1.3rem, 1.2rem);
+		}
+	}
+
+	.custom-control-input{
+
+		&:checked {
+
+			~ .custom-control-label{
+
+				&:before{
+					background-color: $secondary;
+					border-color: $secondary;
+				}
+			}
+		}
+	}
+}
+
+.btnCalcShipment{
+	background: none;
+	color: $clr1;
+	font-size: 15px;
+	transition: color 0.3s ease;
+
+	&:hover{
+		color: darken($clr1, 10%);
+	}
+}
+
+.cartField{
+	height: 40px;
+	font-size: 15px;
+	padding: 7px 10px;
+}
+
+/*------------------------------------------------------------------
+Cart Totals / .cartTotals
+-------------------------------------------------------------------*/
+.cartTotals{
+	table-layout: fixed;
+	font-size: 16px;
+	border: 1px solid $border-color;
+
+	td{
+		border: 1px solid $border-color;
+		padding: 13px 19px;
+		vertical-align: top;
+
+		&:first-child{
+			font-size: 17px;
+		}
+	}
+
+	.chosen-container{
+		margin-bottom: 10px;
+	}
+}
+
+.cartBtn{
+	padding: 9px 17px;
+	font-size: 16px;
+}
+
+.alert-light{
+	background-color: $light;
+	border-color: $light;
+}
+
+.caCheckBox{
+	font-size: 16px;
+}
+
+.caTextarea{
+	height: 80px;
+	resize: none;
+}
+
+.formControlMedium{
+	height: 45px;
+	font-size: 15px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.orderTable{
+	table-layout: fixed;
+	font-size: 16px;
+
+	th{
+		font-weight: normal;
+		color: $secondary;
+	}
+
+	th,
+	td{
+		border: solid $border-color;
+		border-width: 1px 0;
+		padding: 14px 25px;
+
+		&:first-child{
+			width: 57.6%;
+		}
+	}
+
+	td{
+		vertical-align: top;
+	}
+
+	.textLarge{
+		font-size: 17px;
+	}
+}
+
+/*------------------------------------------------------------------
+Order Placer Box / .orderPlacerBox
+-------------------------------------------------------------------*/
+.orderPlacerBox{
+	font-size: 16px;
+	line-height: (22/16);
+
+	.custom-control-label{
+		font-size: 16px;
+	}
+
+	.btn{
+		width: 100%;
+	}
+}
+
+.boxNoter{
+	margin-left: -24px;
+	@include pseudo(before, null, null, 100%, 30px);
+
+	&:before{
+		border-style: solid;
+		border-width: 0 7.5px 9px 7.5px;
+		border-color: transparent transparent $white transparent;
+		@include size(0);
+	}
+}
+
+.btnHelp{
+	transition: color 0.3s ease;
+}
+
+.checkoutBtnWrap{
+	border-top: 1px solid $graye0e0e0;
+}
+
+.cardImage{
+	max-width: 50%;
+}
+
+.loginBlock,
+.pageNotFoundBlock{
+
+	&.hdIsVii{
+		min-height: calc(100vh - 80px);
+	}
+}
+
+/*------------------------------------------------------------------
+Login Block / .loginBlock
+-------------------------------------------------------------------*/
+.loginBlock{
+	font-size: 16px;
+
+	.custom-control{
+		padding-left: 21px;
+	}
+
+	.custom-control-label{
+		
+		&:before,
+		&:after{
+			left: -21px;
+			transform: scale(0.7);
+			transform-origin: 0 0 0;
+			top: 6px;
+		}
+	}
+
+	.btnForget{
+		font-size: 13px;
+	}
+}
+
+.lbAlignWrap{
+	min-height: inherit;
+}
+
+.pageNotFoundBlock{
+	line-height: (24/17);
+
+	h2, .h2{
+		font-size: 32px;
+	}
+}
+
+.quickSupportAside{
+	font-size: 18px;
+	line-height: (28/18);
+}
+
+/*------------------------------------------------------------------
+Member Column / .memberColumn
+-------------------------------------------------------------------*/
+.memberColumn{
+	font-size: 16px;
+	line-height: (24/16);
+
+	&:hover,
+	&.active{
+
+		.icnWrap{
+			color: $white;
+			background-color: $clr1;
+		}
+
+		.btn{
+			background-color: $secondary;
+			border-color: $secondary;
+			color: $white;
+		}
+	}
+
+	h2, .h2{
+		font-size: 20px;
+		line-height: (28/20);
+	}
+
+	h3, .h3{
+		font-size: 30px;
+		line-height: (28/30);
+	}
+
+	.textSmall{
+		font-size: 16px;
+	}
+
+	.icnWrap{
+		background-color: $grayeee;
+		color: $secondary;
+		font-size: 25px;
+		transition: background-color 0.3s ease, color 0.3s ease;
+		@include size(81px);
+	}
+
+	.btn{
+		padding: 7px 30px;
+	}
+}
+
+/*------------------------------------------------------------------
+Space Column / .spaceColumn
+-------------------------------------------------------------------*/
+.spaceColumn{
+	font-size: 16px;
+	line-height: (26/16);
+
+	h2, .h2{
+
+		a{
+			transition: color 0.3s ease;
+		}
+	}
+
+	.titleText{
+		font-size: 18px;
+		line-height: (22/18);
+	}
+}
+
+.specialRequestAside{
+
+	p{
+
+		a{
+			color: $gray-700;
+			transition: color 0.3s ease;
+
+			&:hover{
+				color: $secondary;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+DP Spent Show / .dbSpentShow
+-------------------------------------------------------------------*/
+.dbSpentShow{
+	font-size: 20px;
+	line-height: 1;
+
+	&.dbSpentShowII{
+
+		.showField{
+			padding-left: 180px;
+			@include size(232px, 45px);
+		}
+	}
+
+	.curr{
+		left: 1px;
+		top: 1px;
+		bottom: 1px;
+		min-width: 43px;
+	}
+
+	.showField{
+		border: 1px solid $border-color;
+		padding: 5px 5px 5px 60px;
+		color: $secondary;
+		font-size: 20px;
+		@include size(173px, 40px);
+	}
+}
+
+/*------------------------------------------------------------------
+DN Radio List / .dnRadioList
+-------------------------------------------------------------------*/
+.dnRadioList{
+	margin-left: -5px;
+	margin-right: -5px;
+	font-size: 16px;
+	line-height: 1;
+
+	> li{
+		padding-left: 5px;
+		padding-right: 5px;
+		margin-bottom: 10px;
+	}
+
+	label{
+		margin-bottom: 0;
+		display: block;
+		padding: 18px 10px;
+		min-width: 100px;
+		cursor: pointer;
+		border: 1px solid $border-color;
+	}
+
+	.custom-control-input{
+
+		&:checked ~ label{
+			background-color: $grayeee;
+		}
+	}
+}
+
+.gafCaption{
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	background-color: rgba($black, 0.6);
+}
+
+.exhibitDescrColumn{
+	min-height: 453px;
+
+	.alignWrap{
+		min-height: inherit;
+	}
+
+	.imgHolder{
+		padding-top: 50%;
+	}
+}
+
+.aiaTitle{
+	font-size: 16px;
+}
+
+/*------------------------------------------------------------------
+Navbar Side / .navbarSide
+-------------------------------------------------------------------*/
+.navbarSide{
+	right: 0;
+	top: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: $clr3;
+	width: 300px;
+	z-index: 9999;
+	flex-wrap: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	transform: scaleX(0);
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+	transform-origin: 100% 0 0;
+
+	.hdMenuOpener{
+		top: 30px;
+		right: 30px;
+		color: $clr6;
+		@include size(15px);
+
+		&:before{
+			transform: rotate(45deg) translate(4px, 4px);
+		}
+
+		&:after{
+			transform: rotate(-45deg) translate(5px, -5px);
+		}
+
+		.icnBar{
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	.hdSideMenuActive &{
+		transform: scaleX(1);
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.nvbBottomWrap{
+	font-size: 16px;
+	line-height: (26/16);
+
+	p{
+
+		a{
+			transition: color 0.3s ease;
+		}
+	}
+}
+
+.maxLstWrap{
+	max-width: 560px;
+}
+
+.nextCounterAside{
+
+	.textLarge,
+	.countdown-amount{
+		font-size: 22px;
+		padding-left: 15px;
+		padding-right: 15px;
+		white-space: normal;
+		word-break: break-word;
+	}
+}
+
+.checkScheduleBlock{
+
+	h1, .h1{
+		line-height: (50/50);
+	}
+}
+
+/*------------------------------------------------------------------
+VT Tab Links / .vtTabLinks
+-------------------------------------------------------------------*/
+.vtTabLinks{
+
+	li{
+
+		&.active{
+
+			a{
+				color: $white;
+				background-color: $clr8;
+			}
+		}
+	}
+
+	a{
+		display: block;
+		color: $gray777;
+		background-color: $grayeee;
+		font-size: 18px;
+		line-height: (22/18);
+		max-width: 120px;
+		text-decoration: none;
+		margin-bottom: 20px;
+		padding: 9px 10px;
+
+		&:hover,
+		&.active{
+			color: $white;
+			background-color: $clr8;
+		}
+	}
+}
+
+.tcsbHeadWrap{
+	font-size: 19px;
+	line-height: (23/19);
+}
+
+.ibtbtOpener{
+	border: 0;
+	padding: 0;
+	background: none;
+	top: 4px;
+	right: 2px;
+	font-size: 13px;
+	color: $gray-600;
+
+	&[aria-expanded="true"]{
+		transform: scaleY(-1);
+	}
+}
+
+.ibfOpenerTime{
+	font-size: 16px;
+	width: 100px;
+}
+
+/*------------------------------------------------------------------
+IB Row / .ibftRow
+-------------------------------------------------------------------*/
+.ibftRow{
+
+	+ .ibftRow{
+		border-top: 1px solid $border-color;
+	}
+
+	h4, .h4{
+		font-size: 17px;
+	}
+
+	h5, .h5{
+		color: $gray-700;
+		font-size: 14px;
+	}
+
+	.imgHolder{
+		width: 66px;
+	}
+}
+
+.lociAside{
+	line-height: (24/17);
+
+	.imgHolder{
+		top: 0;
+		left: 0;
+		width: calc(50% - 270px);
+	}
+}
+
+.ttTableWrap{
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+/*------------------------------------------------------------------
+Order Ticket Table / .ticketTable
+-------------------------------------------------------------------*/
+.ticketTable{
+	min-width: 480px;
+
+	td,
+	th{
+		border: solid $grayeee;
+		border-width: 1px 0;
+
+		&:first-child{
+			width: 50%;
+		}
+	}
+
+	tbody{
+
+		td{
+			font-size: 15px;
+			padding: 7px 0;
+		}
+	}
+
+	th{
+		font-weight: normal;
+		color: $body-color;
+		padding: 2px 0 6px;
+		border-top: 0;
+	}
+
+	tfoot{
+		color: $body-color;
+
+		td{
+			padding: 15px 0px;
+			border-bottom-width: 0;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Order Ticket Modal / .orderTicketModal
+-------------------------------------------------------------------*/
+.orderTicketModal{
+	color: $gray-600;
+
+	.sdLabelTitle{
+		font-size: 15px;
+	}
+
+	.form-control{
+		height: 40px;
+		padding: 6px 11px;
+		font-size: 15px;
+	}
+
+	textarea{
+
+		&,
+		&.form-control{
+			height: 140px;
+			resize: none;
+		}
+	}
+
+	.mxInput{
+		max-width: 260px;
+	}
+}
+
+.boardListingBlock{
+	h1, .h1{ font-size: 2.1rem; }
+}
+
+/*------------------------------------------------------------------
+Insta Poster / .instaPoster
+-------------------------------------------------------------------*/
+.instaPoster{
+
+	&:hover{
+
+		.hovIcn{
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+	}
+
+	.hovIcn{
+		left: 0;
+		top: 0;
+		font-size: 50px;
+		background-color: rgba($black, 0.7);
+		opacity: 0;
+		visibility: hidden;
+		transform: scale(0);
+		transform-origin: 50% 50% 0;
+		transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+	}
+}

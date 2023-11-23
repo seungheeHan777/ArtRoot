@@ -96,7 +96,7 @@ router.get("/exhibitions", (req, res) => {
 });
 
 // 전시회 추가
-router.post("/exhibitions", (req, res) => {
+router.post("/exhibitionss", (req, res) => {
   const newExhibition = req.body; // 클라이언트에서 전송된 전시회 정보
 
   const sql = "INSERT INTO exhibition SET ?"; // 전시회 정보를 삽입하는 SQL 쿼리

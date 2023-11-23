@@ -123,6 +123,9 @@ const NavBarElement = ({ user, onLogout }) => {
             <Nav.Link href="/MyPage" style={{ marginRight: "50px" }}>
               마이페이지
             </Nav.Link>
+            <Nav.Link href="/Test" style={{ marginRight: "50px" }}>
+              테스트
+            </Nav.Link>
             {user && user.username === "admin" ? (
               <Nav.Link href="/AdminMain" style={{ marginRight: "50px" }}>
                 관리자 페이지
