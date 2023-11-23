@@ -1,0 +1,71 @@
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-container .intro-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.form-container button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #45a049;
+}
+
+.form-container .personal_info {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.form-container .subtitle {
+  font-size: 12.5px;
+  margin-top: -20px;
+}
+
+.form-container .detail_info {
+  font-size: 14px;
+}
+
+.form-container .last_info {
+  font-weight: bold;
+  text-align: center;
+}

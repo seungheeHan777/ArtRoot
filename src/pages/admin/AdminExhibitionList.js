@@ -19,7 +19,7 @@ const AdminExhibitionList = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ paddingTop: "200px" }}>
       <h1>전시회 목록</h1>
       <Button href="/ExhibitionAdd">전시회 추가</Button>
       {data.length > 0 ? (
@@ -45,7 +45,6 @@ const AdminExhibitionList = () => {
                   ART_PREFER={exhibition.ART_PREFER}
                   ART_BACK={exhibition.ART_BACK}
                 />
-                <Button>삭제</Button>
               </li>
             ))}
           </ul>

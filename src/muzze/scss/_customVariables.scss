@@ -1,0 +1,393 @@
+// Color system
+$white:    #fff !default;
+$gray-100: #edeff1;
+$gray-200: #e8e8e8;
+$gray-300: #dee2e6 !default;
+$gray-400: #ccc;
+$gray-500: #aaa;
+$gray-600: #999;
+$gray-700: #555;
+$gray-800: #25282e;
+$gray-900: #212329;
+$black:    #000 !default;
+
+$grayeee: #eee;
+$graydfdfdf: #dfdfdf;
+$gray444: #444;
+$gray777: #777;
+$gray888: #888;
+$grayf8f8f8: #f8f8f8;
+$graye5e5e5: #e5e5e5;
+$graye0e0e0: #e0e0e0;
+$graybdbdc3: #bdbdc3;
+$gray1b1d1f: #1b1d1f;
+$grayf7f7f7: #f7f7f7;
+$graybfbfbf: #bfbfbf;
+$graye9ebed: #e9ebed;
+$grayc8c9cb: #c8c9cb;
+$grayf9f9f9: #f9f9f9;
+$grayf6f6f6: #f6f6f6;
+
+$grays: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+	(
+		"100": $gray-100,
+		"200": $gray-200,
+		"300": $gray-300,
+		"400": $gray-400,
+		"500": $gray-500,
+		"600": $gray-600,
+		"700": $gray-700,
+		"800": $gray-800,
+		"900": $gray-900
+	),
+	$grays
+);
+
+$blue:    #3485b1;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #e4002b;
+$orange:  #ff8b2f;
+$yellow:  #e4b33d;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$clr1:	#c1b696;
+$clr2:	#fff04d;
+$clr3:	#1b1f26;
+$clr4:	#303339;
+$clr5:	#f6c33b;
+$clr6:	#bbb;
+$clr7:	#006cff;
+$clr8:	#1276ff;
+
+$colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+	(
+		"blue":       $blue,
+		"indigo":     $indigo,
+		"purple":     $purple,
+		"pink":       $pink,
+		"red":        $red,
+		"yellow":     $yellow,
+		"green":      $green,
+		"teal":       $teal,
+		"cyan":       $cyan,
+		"white":      $white,
+		"gray":       $gray-600,
+		"gray-dark":  $gray-900,
+		"grayf8f8f8": $grayf8f8f8,
+		"graye5e5e5": $graye5e5e5,
+		"graye0e0e0": $graye0e0e0,
+		"graybdbdc3": $graybdbdc3,
+		"gray1b1d1f": $gray1b1d1f,
+		"grayf7f7f7": $grayf7f7f7,
+		"graye9ebed": $graye9ebed,
+		"grayf9f9f9": $grayf9f9f9,
+		"grayf6f6f6": $grayf6f6f6,
+		"blueClr7":   $clr7
+	),
+	$colors
+);
+
+$primary:       $blue;
+$secondary:     $gray-800;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow;
+$yellow2:       $clr2;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-900;
+
+$theme-colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+	(
+		"primary":    $primary,
+		"secondary":  $secondary,
+		"success":    $success,
+		"info":       $info,
+		"warning":    $warning,
+		"orange":     $orange,
+		"danger":     $danger,
+		"light":      $light,
+		"dark":       $dark,
+		"yellow2":    $yellow2,
+		"grayeee":    $grayeee,
+		"graydfdfdf": $graydfdfdf,
+		"gray444":    $gray444,
+		"gray777":    $gray777,
+		"gray888":    $gray888,
+		"brown":      $clr1,
+		"grayf8f8f8": $grayf8f8f8,
+		"graye5e5e5": $graye5e5e5,
+		"graye0e0e0": $graye0e0e0,
+		"graybdbdc3": $graybdbdc3,
+		"gray1b1d1f": $gray1b1d1f,
+		"yellowClr5": $clr5,
+		"grayf7f7f7": $grayf7f7f7,
+		"graye9ebed": $graye9ebed,
+		"grayf9f9f9": $grayf9f9f9,
+		"grayf6f6f6": $grayf6f6f6,
+		"blueClr7":   $clr7
+	),
+	$theme-colors
+);
+
+// Options
+$enable-caret:	false;
+$enable-rounded:	false;
+$enable-shadows:	true;
+$enable-validation-icons:	false;
+$enable-deprecation-messages:	false;
+
+// Spacing
+$spacer: 5px;
+$spacers: ();
+$spacers: map-merge(
+	(
+		0: 0,
+		1: $spacer,
+		2: ($spacer * 2),
+		3: ($spacer * 3),
+		4: ($spacer * 4),
+		5: ($spacer * 5),
+		6: ($spacer * 6),
+		7: ($spacer * 7),
+		8: ($spacer * 8),
+		9: ($spacer * 9),
+		10: ($spacer * 10),
+		11: ($spacer * 11),
+		12: ($spacer * 12),
+		13: ($spacer * 13),
+		14: ($spacer * 14),
+		15: ($spacer * 15),
+		16: ($spacer * 16),
+		17: ($spacer * 17),
+		18: ($spacer * 18),
+		19: ($spacer * 19),
+		20: ($spacer * 20),
+		21: ($spacer * 21),
+		22: ($spacer * 22),
+		23: ($spacer * 23),
+		24: ($spacer * 24),
+		25: ($spacer * 25),
+		26: ($spacer * 26),
+		27: ($spacer * 27),
+		28: ($spacer * 28),
+		29: ($spacer * 29),
+		30: ($spacer * 30),
+		31: ($spacer * 31),
+		32: ($spacer * 32),
+		33: ($spacer * 33),
+		34: ($spacer * 34),
+		35: ($spacer * 35),
+		36: ($spacer * 36),
+		37: ($spacer * 37),
+		38: ($spacer * 38),
+		39: ($spacer * 39),
+		40: ($spacer * 40),
+		41: ($spacer * 41),
+		42: ($spacer * 42),
+		43: ($spacer * 43),
+		44: ($spacer * 44),
+		45: ($spacer * 45),
+		46: ($spacer * 46),
+		47: ($spacer * 47),
+		48: ($spacer * 48),
+		49: ($spacer * 49),
+		50: ($spacer * 50),
+		51: ($spacer * 51),
+		52: ($spacer * 52),
+		53: ($spacer * 53),
+		54: ($spacer * 54),
+		55: ($spacer * 55),
+		56: ($spacer * 56),
+		57: ($spacer * 57),
+		58: ($spacer * 58),
+		59: ($spacer * 59),
+		60: ($spacer * 60)
+	),
+	$spacers
+);
+
+$sizes: ();
+$sizes: map-merge(
+	(
+		20: 20%,
+		25: 25%,
+		33: 33.333%,
+		50: 50%,
+		66: 66.667%,
+		80: 80%,
+		100: 100%,
+		auto: auto
+	),
+	$sizes
+);
+
+// Body
+$body-color:	$gray-700;
+
+// Links
+$link-color:	theme-color("warning");
+$link-decoration:	underline;
+$link-hover-color:	darken($link-color, 15%);
+$link-hover-decoration:	none;
+
+// Grid breakpoints
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	lgwd: 1025px,
+	xl: 1230px,
+	xlwd: 1366px,
+	xxl: 1920px
+);
+
+// Grid containers
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1200px
+);
+
+// Components
+$border-color:	$gray-200;
+$box-shadow-sm:	0 .125rem .25rem rgba($black, .15);
+$box-shadow:	5px 5px 20px rgba($black, .15);
+$box-shadow-lg:	0 1rem 3rem rgba($black, .175);
+$component-active-bg:	theme-color("orange");
+$transition-base:	all .3s ease;
+$transition-fade:	opacity .3s ease;
+$transition-collapse:	height .3s ease;
+$border-radius:	5px;
+$border-radius-lg:	10px;
+$border-radius-sm:	3px;
+
+// Typography
+$font-family-sans-serif:	"Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$fontMuli:	"Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$fontMerriweather:	"Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$base-font-serif: "Lora", "Times New Roman", Times, Baskerville, Georgia, serif;
+$font-family-base:	$font-family-sans-serif;
+$font-size-base:	(17);
+$line-height-base:	(28/17);
+$h1-font-size:	(35);
+$h2-font-size:	(25);
+$h3-font-size:	(22);
+$h4-font-size:	(20);
+$h5-font-size:	(17);
+$h6-font-size:	(15);
+$headings-margin-bottom:	$spacer * 3;
+$headings-font-family:	$base-font-serif;
+$headings-font-weight:	$font-weight-normal;
+$headings-line-height:	(60/50);
+$headings-color:	$gray-800;
+$hr-border-color:	$border-color;
+$mark-bg:	$yellow2;
+
+// Buttons + Forms
+$input-btn-padding-y:	0.8125rem;
+$input-btn-padding-x:	0.625rem;
+$input-btn-font-size:	1.0625rem;
+$input-btn-line-height:	(21/17);
+$input-btn-focus-width:	0;
+$input-btn-focus-color:	rgba($component-active-bg, 0);
+$input-btn-focus-box-shadow:	0 0 0 $input-btn-focus-width $input-btn-focus-color;
+$input-btn-border-width:	$border-width;
+$input-btn-padding-y-sm:	0.625rem;
+$input-btn-padding-x-sm:	0.625rem;
+$input-btn-font-size-sm:	$input-btn-font-size;
+$input-btn-line-height-sm:	$input-btn-line-height;
+
+// Buttons
+$btn-padding-y:	$input-btn-padding-y;
+$btn-padding-x:	$input-btn-padding-x;
+$btn-font-family:	$input-btn-font-family;
+$btn-font-size:	$input-btn-font-size;
+$btn-line-height:	$input-btn-line-height;
+$btn-border-width:	$input-btn-border-width;
+$btn-font-weight:	$font-weight-normal;
+$btn-box-shadow:	none;
+$btn-focus-width:	$input-btn-focus-width;
+$btn-focus-box-shadow:	none;
+$btn-active-box-shadow:	none;
+$btn-transition:	color .3s ease, background-color .3s ease, border-color .3s ease;
+$btn-padding-y-sm:	$input-btn-padding-y-sm;
+$btn-padding-x-sm:	$input-btn-padding-x-sm;
+$btn-font-size-sm:	$input-btn-font-size-sm;
+$btn-line-height-sm:	$input-btn-line-height-sm;
+
+// Forms
+$input-padding-y:	$input-btn-padding-y;
+$input-padding-x:	$input-btn-padding-x;
+$input-font-family:	$input-btn-font-family;
+$input-font-size:	$input-btn-font-size;
+$input-font-weight:	$font-weight-base;
+$input-line-height:	$input-btn-line-height;
+$input-color:	$body-color;
+$input-border-color:	$border-color;
+$input-border-width:	$input-btn-border-width;
+$input-box-shadow:	none;
+$input-focus-border-color:	$input-border-color;
+$input-focus-color:	$input-color;
+$input-focus-width:	$input-btn-focus-width;
+$input-focus-box-shadow:	$input-btn-focus-box-shadow;
+$input-placeholder-color:	$gray-600;
+$input-height:	50px;
+$input-transition:	border-color .3s ease;
+$input-padding-y-sm:	$input-btn-padding-y-sm;
+$input-padding-x-sm:	$input-btn-padding-x-sm;
+$input-font-size-sm:	$input-btn-font-size-sm;
+$input-line-height-sm:	$input-btn-line-height-sm;
+
+// Dropdowns
+$dropdown-font-size:	(15);
+$dropdown-color:	$gray777;
+$dropdown-border-color:	$grayeee;
+$dropdown-divider-bg:	$grayeee;
+$dropdown-box-shadow:	$box-shadow;
+$dropdown-link-color:	$gray777;
+$dropdown-link-hover-color:	$clr1;
+$dropdown-link-hover-bg:	$white;
+$dropdown-link-active-color:	$dropdown-link-hover-color;
+$dropdown-link-active-bg:	$dropdown-link-hover-bg;
+
+// Navbar
+$navbar-toggler-padding-x:	.45rem;
+$navbar-toggler-font-size:	0.95rem;
+$navbar-toggler-border-radius:	$btn-border-radius;
+$navbar-light-toggler-icon-bg:	str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$dark}' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+$navbar-light-toggler-border-color: rgba($black, .1) !default;
+$navbar-light-toggler-border-color: $dark;
+
+// Pagination
+$pagination-padding-x:	0.94rem;
+$pagination-color:	$secondary;
+$pagination-border-color:	$graye5e5e5;
+$pagination-focus-box-shadow:	$input-btn-focus-box-shadow;
+$pagination-active-color:	$white;
+$pagination-active-bg:	$secondary;
+$pagination-active-border-color:	$secondary;
+$pagination-hover-color:	$white;
+$pagination-hover-bg:	$secondary;
+$pagination-hover-border-color:	$secondary;
+
+// Alerts
+$alert-padding-y:	0.9375rem;
+$alert-padding-x:	1.5rem;
+$alert-margin-bottom:	1.875rem;
+
+// Modals
+$modal-lg:	600px;
+$modal-content-box-shadow-sm-up:	none;

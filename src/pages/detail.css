@@ -1,3 +1,74 @@
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-container .intro-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.form-container button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #45a049;
+}
+
+.form-container .personal_info {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.form-container .subtitle {
+  font-size: 12.5px;
+  margin-top: -20px;
+}
+
+.form-container .detail_info {
+  font-size: 14px;
+}
+
+.form-container .last_info {
+  font-weight: bold;
+  text-align: center;
+}
 .contents {
   display: inline-block;
   float: none;
@@ -8,7 +79,6 @@
 
 .product_detail {
   padding: 35px 0 0;
-
   position: relative;
   margin: 0 auto;
   width: 1200px;
@@ -23,18 +93,19 @@
 .imgArea {
   background-image: initial;
   float: left;
-  width: 660px;
+  width: 600px;
   margin: 0;
   padding: 0;
 }
 .product_img {
-  width: 660px;
+  width: 600px;
+  height: 600px;
 }
 .infoArea {
   position: relative;
   float: right;
-  width: 480px;
-  padding: 25px 0 0;
+  width: 600px;
+  padding: 0 0 0;
   margin: 0;
 }
 .summary {
@@ -43,27 +114,46 @@
 }
 .headingArea {
   padding: 0 0 20px;
-  margin: 0 0 22px;
-  border-bottom: 1px solid;
   line-height: 1.4;
-}
-.ev {
-  float: right;
 }
 
 .t_row {
   padding: 5px 0 6px;
-  width: 115px;
+  width: 150px;
 }
 
 table {
   border-collapse: separate;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 th,
 td {
-  padding: 0;
+  padding: 0px;
 }
 tr.space {
   border-bottom: 40px solid transparent;
+}
+
+.evaluate_line {
+  border: 1px solid;
+  width: 100%;
+  margin-top: -20px;
+}
+
+.evaluation-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.evaluation-section p {
+  margin-right: 20px;
+}
+
+.evaluation-section .evaluate_button {
+  background-color: #cabfbf;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  margin-top: -20px;
 }

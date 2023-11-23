@@ -1,88 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
-// 사용자 ID로부터 사용자의 취향을 읽어오는 함수
-async function getUserPreferences(username) {
-  // 먼저 사용자의 ID를 가져오기
-  const getUserIdQuery = `
-        SELECT id
-        FROM user
-        WHERE user_id = ?
-      `;
-
-  const userId = await new Promise((resolve, reject) => {
-    db.query(getUserIdQuery, [username], (err, results) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      console.log("results 결과", results[0].id);
-      resolve(results[0].id);
-    });
-  });
-
-  // 사용자 ID를 사용하여 취향을 읽어오기
-  const getUserPreferencesQuery = `
-          SELECT category_id
-          FROM user_prefer
-          WHERE user_id = ?
-        `;
-
-  const category_id = await new Promise((resolve, reject) => {
-    db.query(getUserPreferencesQuery, [userId], (err, results) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      const ids = results.map((row) => row.category_id);
-      resolve(ids);
-    });
-  });
-
-  // 이제 userId 및 category_id를 사용할 수 있습니다.
-  console.log("유저 아이디", userId);
-  console.log("카테고리 아이디", category_id);
-  // category_id를 반환합니다.
-  return category_id;
-}
-
-// 카테고리에 해당하는 키워드를 읽어오는 함수
-async function getCategoryKeywords(categoryId) {
-  const query = `
-      SELECT keyword_id
-      FROM category
-      WHERE category_id = ?
-    `;
-  console.log("카테고리 id :", categoryId);
-  db.query(query, [categoryId], (err, result) => {
-    if (err) {
-      reject(err);
-      return;
-    }
-    console.log(result);
-    return result;
-  });
-  //return result.rows.map((row) => row.keyword_id);
-}
-
-// // 키워드에 해당하는 전시회를 추천하는 함수
-// async function recommendExhibitionsByKeywords(keywordIds) {
-//   const query = `
-//       SELECT e.*
-//       FROM exhibition e
-//       JOIN exhibition_keyword ek ON e.exhibition_id = ek.exhibition_id
-//       WHERE ek.keyword_id = ANY($1)
-//     `;
-//   const values = [keywordIds];
-
-//   try {
-//     const result = await db.query(query, values);
-//     return result.rows;
-//   } catch (error) {
-//     console.error("Error recommending exhibitions:", error);
-//     throw error;
-//   }
-// }
 
 // 사용자의 취향에 따라 전시회를 추천하는 엔드포인트
 router.get("/:username", (req, res) => {
@@ -164,7 +82,6 @@ router.get("/:username", (req, res) => {
 
           // 여기에서 중복된 키워드를 제거하고 전시회를 추천합니다.
           const uniqueKeywordIds = Array.from(new Set(categoryKeywords.flat()));
-          console.log(uniqueKeywordIds);
           // 키워드에 해당하는 전시회를 추천하는 함수
           const recommendExhibitionsByKeywords = () => {
             const query = `
@@ -178,7 +95,7 @@ router.get("/:username", (req, res) => {
               (id) => id !== null
             );
             console.log(validKeywordIds);
-            db.query(query, validKeywordIds, (err, result) => {
+            db.query(query, [validKeywordIds], (err, result) => {
               if (err) {
                 console.error("Error recommending exhibitions:", err);
                 return res
@@ -208,4 +125,42 @@ router.get("/:username", (req, res) => {
   });
 });
 
+router.get("/keyword/detail/:id", (req, res) => {
+  const art_num = req.params.id; // Retrieve the 'id' parameter from the URL
+
+  const sql1 = "SELECT keyword_id FROM exhibition_keyword where ART_NUM = ?";
+  db.query(sql1, [art_num], (err, result) => {
+    if (err) {
+      console.error("Error getting keyword_id:", err);
+      return res
+        .status(500)
+        .json({ success: false, error: "Internal Server Error" });
+    }
+    if (result.length === 0) {
+      return res.status(404).json({
+        success: false,
+        error: "No keyword found for the given ART_NUM",
+      });
+    }
+    const keyword_id = result[0].keyword_id;
+    const sql2 = "SELECT name,detail FROM keyword WHERE keyword_id = ?";
+    db.query(sql2, keyword_id, (err, result) => {
+      if (err) {
+        console.error("키워드 세부 정보를 가져오는 중 오류 발생:", err);
+        return res
+          .status(500)
+          .json({ success: false, error: "내부 서버 오류" });
+      }
+      if (result.length === 0) {
+        return res.status(404).json({
+          success: false,
+          error: "주어진 키워드 ID에 대한 키워드 세부 정보를 찾을 수 없습니다.",
+        });
+      }
+      const keywordDetail = result[0];
+      // 키워드 세부 정보 반환
+      res.json({ success: true, keywordDetail });
+    });
+  });
+});
 module.exports = router;

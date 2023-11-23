@@ -1,0 +1,380 @@
+@include media-breakpoint-up(xl){
+	h1, .h1{
+		font-size: (50/16) + rem;
+	}
+
+	h2, .h2{
+		font-size: (30/16) + rem;
+	}
+
+	h3, .h3{
+		font-size: (24/16) + rem;
+	}
+
+	.phStickyWrap{
+
+		&.phViii{
+			height: 110px;
+		}
+
+		&.phViv{
+			height: 169px;
+		}
+
+		&.phVx{
+			min-height: 214px;
+		}
+
+		&.phVxi{
+			min-height: 130px;
+		}
+	}
+
+	.introBannerBlock{
+
+		&.hdIsViv{
+			min-height: calc(100vh - 169px);
+		}
+
+		&.hdIsViClActive{
+			min-height: calc(100vh - 236px);
+		}
+	}
+
+	.ibbHeading{
+		font-size: 60px;
+		line-height: (65/60);
+
+		&.ibbHeadingViv{
+			font-size: 70px;
+			line-height: (75/70);
+		}
+
+		&.ibbHeadingIII{
+			font-size: 90px;
+		}
+
+		&.ibbHeadingIV{
+			font-size: 80px;
+		}
+
+		&.ibbHeadingHasMark{
+
+			&:before{
+				height: 60px;
+			}
+		}
+	}
+
+	.currExibitColumn{
+
+		&.gridView{
+
+			h2, .h2{
+				font-size: 32px;
+				line-height: (35/32);
+			}
+
+			.imgHolder{
+				width: 363px;
+			}
+		}
+
+		h2, .h2{
+			font-size: 28px;
+			line-height: (35/28);
+		}
+	}
+
+	.h2Small{
+
+		&.h2SmallViv{
+			font-size: 22px;
+			line-height: (26/22);
+		}
+	}
+
+	.saMap{
+
+		&.saMapII{
+			height: 501px;
+		}
+	}
+
+	.newsletterAside{
+
+		&.newsletterAsideViv{
+
+			.form-control{
+				width: 300px;
+			}
+		}
+	}
+
+	.eabDescrText{
+
+		&.eabDescrTextIII{
+			font-size: 24px;
+			line-height: (35/24);
+		}
+	}
+
+	.eveProColumn{
+
+		h2, .h2{
+			font-size: 28px;
+		}
+	}
+
+	.besColumn{
+
+		&.hdIsViii{
+			min-height: calc(100vh - 110px);
+		}
+
+		.imgHolder{
+			max-width: 100%;
+		}
+
+		.bgLayer{
+			@include size(677px, 683px);
+		}
+	}
+
+	.ssArrowVii,
+	.ssCountOnly{
+		max-width: 1170px;
+	}
+
+	.btnNxtBlock{
+		bottom: 65px;
+	}
+
+	.aboutIntroAside{
+		font-size: 24px;
+		line-height: (35/24);
+
+		.btn{
+			min-width: 182px;
+		}
+	}
+
+	.ghcBtnGo{
+		font-size: 40px;
+	}
+
+	.ghcAdrList{
+
+		> li{
+			margin-bottom: 44px;
+		}
+	}
+
+	.fomColumn{
+
+		h2, .h2{
+			font-size: 32px;
+			line-height: (35/32);
+		}
+	}
+
+	.becomeMemberAside{
+
+		h2, .h2{
+			font-size: 50px;
+		}
+	}
+
+	.calloutAside{
+		font-size: 20px;
+		line-height: (28/20);
+
+		&.calloutAsideVvi{
+			font-size: 24px;
+			line-height: (28/24);
+		}
+	}
+
+	.calloutBtn{
+		font-size: 18px;
+		line-height: (22/18);
+	}
+
+	.aboutOnviewBlock{
+
+		.imgHolder{
+
+			&:before,
+			&:after{
+				margin-left: 24px;
+			}
+
+			&:before{
+				@include size(334px);
+			}
+
+			&:after{
+				@include size(426px);
+			}
+		}
+	}
+
+	.ueEveColumn{
+
+		&.gridView{
+
+			.imgHolder{
+				width: auto;
+			}
+		}
+
+		.imgHolder{
+			width: 271px;
+		}
+	}
+
+	.ueecTimeTag{
+		font-size: 16px;
+		line-height: (22/16);
+
+		.day{
+			font-size: 20px;
+		}
+	}
+
+	.ogFiltersList{
+
+		&.ogFiltersListII{
+			font-size: 20px;
+			line-height: (23/20);
+		}
+	}
+
+	.vsQuote{
+
+		&:before{
+			font-size: 150px;
+			left: 33px;
+			top: 40px;
+		}
+
+		.vsqImage{
+			@include size(61px);
+		}
+
+		cite{
+			font-size: 17px;
+		}
+	}
+
+	.upcEveColumn{
+
+		.btn-sm{
+			min-width: 153px;
+		}
+	}
+
+	.fasFrameWrap{
+		width: calc(50% + 194px);
+
+		&.fasFrameWrapII{
+			width: 50%;
+		}
+	}
+
+	.mainHeadingHead{
+		min-height: 300px;
+
+		h1, .h1{
+			font-size: 60px;
+			line-height: (60/60);
+		}
+	}
+
+	.sbisCaption{
+
+		h1, .h1{
+			font-size: 35px;
+			line-height: (40/35);
+		}
+	}
+
+	.aboutExploreAside{
+		min-height: 450px;
+	}
+
+	.sbisColumn{
+
+		.imgHolder{
+			height: 600px;
+		}
+	}
+
+	.onImageColumn{
+		height: 250px;
+
+		&.onImageColumnLarge{
+			height: 540px;
+		}
+	}
+
+	.queryCalloutBlock{
+		min-height: 482px;
+	}
+
+	.contributeColumn{
+
+		h3, .h3{
+			font-size: 28px;
+			line-height: (32/28);
+		}
+	}
+
+	.custom-control-label{
+
+		.custom-checkbox &{
+
+			&.h2{
+
+				&:before,
+				&:after{
+					top: 10px;
+				}
+			}
+		}
+	}
+
+	.specialRequestAside{
+
+		h2, .h2{
+			font-size: 36px;
+		}
+	}
+
+	.exhibitDescrColumn{
+		min-height: 653px;
+	}
+
+	.acwColLarge{
+		max-width: 565px;
+	}
+
+	.acwColSmall{
+		max-width: 363px;
+	}
+
+	.vtTabLinks{
+		justify-content: center;
+	}
+
+	.lociAside{
+
+		.imgHolder{
+			width: calc(50% - 480px);
+		}
+	}
+
+	.sceHeadStick{
+		max-width: 305px;
+	}
+}

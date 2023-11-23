@@ -26,13 +26,6 @@ const NavBarElement = ({ user, onLogout }) => {
   };
   const [searchTerm, setSearchTerm] = useState("");
 
-  // const handleSearch = (e) => {
-  //   if (searchTerm.trim() !== "") {
-  //     const encodedSearchTerm = encodeURIComponent(searchTerm);
-  //     console.log("검색어(nbe):", encodedSearchTerm); // 검색어 출력
-  //     navigate(`/ExhibitionSearchList?query=${encodedSearchTerm}`);
-  //   }
-  // };
   const handleSearch = (e) => {
     if (searchTerm.trim() !== "") {
       localStorage.setItem("searchTerm", searchTerm);
@@ -41,101 +34,301 @@ const NavBarElement = ({ user, onLogout }) => {
   };
 
   return (
-    <Container>
-      <br />
-      <Row>
-        <Col className="d-flex justify-content-center">
-          <Navbar.Brand href="/">
-            <img
-              src="images/artroot_logo.png"
-              width="100"
-              height="100"
-              alt="Artroot"
-            ></img>
-          </Navbar.Brand>
-        </Col>
-        <Col
-          xs={8}
-          className="d-flex justify-content-center align-items-center"
+    <div id="pageWrapper">
+      <div className="phStickyWrap phVi w-100">
+        {/* pageHeader */}
+        <header
+          id="pageHeader"
+          className="position-absolute w-100 bg-white"
+          style={{ zIndex: 1 }}
         >
-          <Form onSubmit={handleSearch}>
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </Form>
-        </Col>
-        <Col className="d-flex justify-content-center">
-          {user ? (
-            <div className="right d-flex align-items-center">
-              <UserInfo>{user.username}</UserInfo>
-              <Button onClick={handleLogout} className="btn btn-lg">
-                로그아웃
-              </Button>
-            </div>
-          ) : (
-            <div className="right d-flex align-items-center">
-              <Button href="/LogIn" className="btn btn-lg">
-                로그인
-              </Button>
-            </div>
-          )}
-        </Col>
-      </Row>
-      <br />
-      <Navbar expand="sm" className="bg-body-tertiary">
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link
-              href="/"
-              style={{
-                marginRight: "50px",
-                marginLeft: "50px",
-              }}
-            >
-              Home
-            </Nav.Link>
-            <NavDropdown
-              title="전시회"
-              style={{ marginRight: "50px" }}
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="/ExhibitionList">
-                전시회 목록
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/RecommendedExhibition">
-                추천 전시회
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/DiscountExhibition">
-                할인 전시회
-              </NavDropdown.Item>
+          {/* hTopHolder */}
+          <div className="hTopHolder pt-1 pb-1 pt-lg-2 pb-lg-3">
+            <div className="container">
+              <div className="row">
+                <div className="col-4 col-sm-3 col-lg-2">
+                  {/* logo */}
+                  <div className="logo mt-1">
+                    <a href="/">
+                      <img
+                        src="images/artroot_logo.png"
+                        className="img-fluid"
+                        alt="Muzze || Art & History Museum"
+                        style={{ width: "150px", height: "auto" }}
+                      />
+                    </a>
+                  </div>
+                </div>
 
-              <NavDropdown.Divider />
-            </NavDropdown>
-            <Nav.Link href="/RatingList" style={{ marginRight: "50px" }}>
-              평가
-            </Nav.Link>
-            <Nav.Link href="/Recommend" style={{ marginRight: "50px" }}>
-              취향 추천
-            </Nav.Link>
-            <Nav.Link href="/MyPage" style={{ marginRight: "50px" }}>
-              마이페이지
-            </Nav.Link>
-            <Nav.Link href="/Test" style={{ marginRight: "50px" }}>
-              테스트
-            </Nav.Link>
-            {user && user.username === "admin" ? (
-              <Nav.Link href="/AdminMain" style={{ marginRight: "50px" }}>
-                관리자 페이지
-              </Nav.Link>
-            ) : null}
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-      <br />
-    </Container>
+                <div className="col-8 col-sm-9 col-lg-10 d-flex align-items-end justify-content-end">
+                  {/* btn */}
+                  {user ? (
+                    <div className="d-flex align-items-center">
+                      <UserInfo>{user.username}</UserInfo>
+                      <Button onClick={handleLogout} className="btn btn-lg">
+                        로그아웃
+                      </Button>
+                    </div>
+                  ) : (
+                    <a
+                      href="/LogIn"
+                      data-toggle="modal"
+                      data-target="#exampleModalLong"
+                      className="btn btn-outline-secondary text-capitalize bdr2 mt-2 hdBtn"
+                      style={{ fontSize: "20px" }}
+                    >
+                      로그인
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div className="hdHolder headerFixer">
+            <div className="container">
+              {/* navbar */}
+              <nav className="navbar navbar-expand-md navbar-light d-block px-0 pt-0 pb-0 pt-md-2 pb-md-2 pt-lg-3">
+                <div className="row">
+                  <div className="col-9 position-static">
+                    {/* navbar collapse */}
+                    <div
+                      className="collapse navbar-collapse pageNavigationCollapse"
+                      id="pageNavigationCollapse"
+                    >
+                      {/* mainNavigation */}
+                      <ul className="navbar-nav mainNavigation text-capitalize">
+                        <li className="nav-item active dropdown">
+                          <a
+                            className="nav-link"
+                            href="/"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            Home
+                          </a>
+                          {/* dropdown menu */}
+                        </li>
+                        <li className="nav-item dropdown">
+                          <a
+                            className="nav-link"
+                            href="javascript:void(0);"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            전시
+                          </a>
+                          {/* dropdown menu */}
+                          <div className="dropdown-menu mndDropMenu mndDropMenuSmall p-0">
+                            {/* mnDropList */}
+                            <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
+                              <li className="hasDropdown">
+                                <a
+                                  href="/ExhibitionList"
+                                  style={{
+                                    fontSize: "20px",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  전시
+                                </a>
+                                {/* mnDropList */}
+                              </li>
+                              <li className="hasDropdown">
+                                <a
+                                  href="/RecommendedExhibition"
+                                  style={{
+                                    fontSize: "20px",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  추천 전시
+                                </a>
+                                {/* mnDropList */}
+                              </li>
+                              <li className="hasDropdown">
+                                <a
+                                  href="/DiscountExhibition"
+                                  style={{
+                                    fontSize: "20px",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  할인 전시
+                                </a>
+                                {/* mnDropList */}
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li className="nav-item dropdown">
+                          <a
+                            className="nav-link"
+                            href="/RatingList"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            평가
+                          </a>
+                        </li>
+                        <li className="nav-item dropdown">
+                          <a
+                            className="nav-link"
+                            href="/Recommend"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            취향 추천
+                          </a>
+                        </li>
+
+                        <li className="nav-item dropdown">
+                          <a
+                            className="nav-link"
+                            href="/MyPage"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            MyPages
+                          </a>
+                        </li>
+                        <li className="nav-item dropdown">
+                          <a
+                            className="nav-link"
+                            href="/Question"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            문의사항
+                          </a>
+                        </li>
+                        {user && user.username === "admin" ? (
+                          <li className="nav-item dropdown">
+                            <a
+                              className="nav-link"
+                              href="/AdminMain"
+                              role="button"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              style={{ fontSize: "30px" }}
+                            >
+                              관리자
+                            </a>
+                            <div className="dropdown-menu mndDropMenu mndDropMenuSmall p-0">
+                              {/* mnDropList */}
+                              <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
+                                <li className="hasDropdown">
+                                  <a
+                                    href="/AdminPage"
+                                    style={{
+                                      fontSize: "20px",
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    유저 관리
+                                  </a>
+                                  {/* mnDropList */}
+                                </li>
+                                <li className="hasDropdown">
+                                  <a
+                                    href="/AdminExhibitionList"
+                                    style={{
+                                      fontSize: "20px",
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    전시회 관리
+                                  </a>
+                                  {/* mnDropList */}
+                                </li>
+                                <li className="hasDropdown">
+                                  <a
+                                    href="/AdminRatingList"
+                                    style={{
+                                      fontSize: "20px",
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    한줄평 관리
+                                  </a>
+                                  {/* mnDropList */}
+                                </li>
+                                <li className="hasDropdown">
+                                  <a
+                                    href="/AdminRecommend"
+                                    style={{
+                                      fontSize: "20px",
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    전시회 추천 관리
+                                  </a>
+                                  {/* mnDropList */}
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                        ) : null}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-3 position-static">
+                    <div className="d-flex justify-content-end align-items-center w-100">
+                      {/* hdsfcHolder */}
+                      <div className="hdsfcHolder w-100 mx-auto py-4 px-3">
+                        <div className="input-group">
+                          <Form onSubmit={handleSearch} className="w-100">
+                            <div className="input-group">
+                              <Form.Control
+                                type="text"
+                                placeholder="Search..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                              />
+                              <div className="input-group-append">
+                                <Button
+                                  type="submit"
+                                  className="btn btn-secondary"
+                                >
+                                  <i className="icomoon-search">
+                                    <span className="sr-only">Search</span>
+                                  </i>
+                                </Button>
+                              </div>
+                            </div>
+                          </Form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </header>
+      </div>
+    </div>
   );
 };
+
 export default NavBarElement;

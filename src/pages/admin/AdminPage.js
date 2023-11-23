@@ -16,7 +16,7 @@ const AdminPage = () => {
     fetchData();
   }, []);
   return (
-    <div className="home-container">
+    <div className="home-container" margintop>
       <h1>관리자 - 유저 목록</h1>
       {data.length > 0 ? (
         <div>

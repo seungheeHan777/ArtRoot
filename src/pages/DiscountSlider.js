@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+
 import { discount } from "../lib/api/exhibition.js";
 import { Link } from "react-router-dom";
 import "./home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-//https://blog.naver.com/PostView.naver?blogId=jaeeun_98&logNo=222835174514  Âü°íÇÑ »çÀÌÆ®
+//https://blog.naver.com/PostView.naver?blogId=jaeeun_98&logNo=222835174514  ì°¸ê³ í•œ ì‚¬ì´íŠ¸
 
 export default function DiscountSlider() {
   const [sliderInitialized, setSliderInitialized] = useState(false);
@@ -26,7 +26,7 @@ export default function DiscountSlider() {
 
     const fetchData = async () => {
       try {
-        const response = await discount(); // µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ Àü½ÃÈ¸ Á¤º¸¸¦ °¡Á®¿À´Â ¿£µåÆ÷ÀÎÆ®·Î º¯°æÇØ¾ß ÇÕ´Ï´Ù.
+        const response = await discount(); // ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ì „ì‹œíšŒ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ì—”ë“œí¬ì¸íŠ¸ë¡œ ë³€ê²½í•´ì•¼ í•©ë‹ˆë‹¤.
 
         setData(response.data);
       } catch (e) {
@@ -38,23 +38,59 @@ export default function DiscountSlider() {
   }, []);
 
   return (
-    <div className="slidediv">
-      {sliderInitialized && (
-        <Slider {...settings}>
-          {data.slice(0, 4).map((exhibition, index) => (
-            <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`} key={index}>
-              <div>
-                <img
-                  src={exhibition.ART_PICTURE}
-                  alt={`img-${index}`}
-                  width="350px"
-                  height="350px"
-                />
+    <section className="currentExibitionBlock hasBdr pt-6 pt-md-9 pt-lg-14 pt-xl-20 pb-6 pb-lg-10 pb-xl-16">
+      <div className="container">
+        <header className="teeSideHead mb-6 mb-lg-11 text-center text-right">
+          <h1
+            className="text-capitalize mb-0"
+            style={{ paddingBottom: "100px", fontSize: "60px" }}
+          >
+            í• ì¸ ì „ì‹œ
+          </h1>
+        </header>
+        {sliderInitialized && (
+          <div className="row" style={{ width: "100%" }}>
+            {data.slice(0, 3).map((exhibition, index) => (
+              <div key={index} className="col-12 col-sm-6 col-md-4">
+                <div className="currExibitColumn mb-6 mx-auto">
+                  <div className="imgHolder mb-3 mb-lg-6">
+                    <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`}>
+                      <img
+                        src={exhibition.ART_PICTURE}
+                        alt={`img-${index}`}
+                        style={{ width: "365px", height: "350px" }}
+                        className="img-fluid w-100 d-block"
+                      />
+                    </Link>
+                  </div>
+
+                  <h2
+                    className="catagoryTitle d-block font-weight-normal text-uppercase mb-4"
+                    style={{ fontSize: "25px" }}
+                  >
+                    {exhibition.ART_NAME}
+                  </h2>
+                  <h3 className="mb-3">{exhibition.ART_PRICE}</h3>
+                  <time className="d-block cecTime text-gray777">
+                    {exhibition.ART_ARTIST}
+                  </time>
+                </div>
               </div>
-            </Link>
-          ))}
-        </Slider>
-      )}
-    </div>
+            ))}
+          </div>
+        )}
+
+        <div style={{ paddingBottom: "20px" }}></div>
+        <footer class="btnWrap text-center">
+          <a
+            href="/RecommendedExhibition"
+            class="btn btnGre5 btnGre5Outline bdr2 btnLgMinWidth"
+          >
+            í• ì¸ ì „ì‹œ ë”ë³´ê¸°
+          </a>
+        </footer>
+        <hr />
+      </div>
+    </section>
   );
 }

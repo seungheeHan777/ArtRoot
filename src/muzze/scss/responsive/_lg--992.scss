@@ -1,0 +1,796 @@
+@include media-breakpoint-up(lg){
+	h1, .h1{
+		font-size: (40/16) + rem;
+	}
+
+	.form-control{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.phStickyWrap{
+
+		&.phVi{
+			height: 149px;
+		}
+
+		&.phVii{
+			height: 136px;
+		}
+
+		&.phViii{
+			height: 88px;
+		}
+
+		&.phViv{
+			height: 139px;
+		}
+
+		&.phVix{
+			min-height: 44px;
+		}
+
+		&.phVx{
+			min-height: 185px;
+		}
+
+		&.phVxi{
+			min-height: 90px;
+		}
+	}
+
+	.logo{
+
+		&.logoVii{
+			max-width: 136px;
+		}
+
+		&.logoViv{
+			max-width: 136px;
+		}
+	}
+
+	.mainNavigation{
+
+		&.mainNavigationVii{
+
+			.nav-item{
+				margin-left: 23px;
+
+				&.dropdown{
+
+					&:hover{
+
+						> .dropdown-menu{
+							transform: translateY(28px);
+						}
+					}
+				}
+
+				> .dropdown-menu{
+
+					&:before{
+						height: 30px;
+						top: -30px;
+					}
+				}
+			}
+
+			.dropdown-menu{
+				transform: translateY(33px);
+			}
+		}
+
+		&.mainNavigationVv,
+		.navbar-light &{
+
+			&.mainNavigationVv{
+
+				.nav-item{
+					margin-left: 23px;
+				}
+			}
+		}
+	}
+
+	.introBannerBlock{
+
+		&.hdIsVi{
+			min-height: calc(100vh - 149px);
+		}
+
+		&.hdIsVii{
+			min-height: calc(100vh - 136px);
+		}
+
+		&.hdIsViv{
+			min-height: calc(100vh - 139px);
+		}
+
+		&.hdIsVix{
+			min-height: calc(100vh - 44px);
+		}
+
+		&.hdIsViClActive{
+			min-height: calc(100vh - 205px);
+		}
+	}
+
+	.mainHeadingTitle{
+
+		&.mainHeadingTitleII{
+			font-size: 30px;
+			line-height: (32/30);
+		}
+	}
+
+	.ibbHeading{
+		font-size: 50px;
+		line-height: (55/50);
+
+		&.ibbHeadingIII{
+			font-size: 70px;
+		}
+
+		&.ibbHeadingHasMark{
+
+			&:before{
+				margin-top: 32px;
+				height: 50px;
+			}
+		}
+	}
+
+	.sdaColumn{
+		font-size: 17px;
+		line-height: (24/17);
+
+		.icnWrap{
+			width: 48px;
+		}
+
+		.btn{
+			min-width: 155px;
+		}
+
+		h3, .h3{
+			font-size: 24px;
+		}
+	}
+
+	.catagoryTitle{
+		font-size: 16px;
+	}
+
+	.currExibitColumn{
+
+		&.gridView{
+
+			h2, .h2{
+				font-size: 25px;
+				line-height: (32/25);
+			}
+
+			.imgHolder{
+				width: 303px;
+			}
+		}
+
+		h2, .h2{
+			font-size: 25px;
+			line-height: (32/25);
+		}
+	}
+
+	.cecTime{
+		font-size: 18px;
+		line-height: (20/18);
+	}
+
+	.h2Medium{
+		font-size: 40px;
+		line-height: (50/40);
+	}
+
+	.h2Mid{
+		font-size: 28px;
+	}
+
+	.h3Medium{
+		font-size: 26px;
+	}
+
+	.h3Small{
+		font-size: 24px;
+		line-height: (28/24);
+	}
+
+	.decrTextMedium{
+		font-size: 24px;
+		line-height: (35/24);
+	}
+
+	.collectionColumn{
+
+		&.captionOnlyMedium{
+			height: 332px;
+		}
+
+		h2, .h2{
+			font-size: 18px;
+			line-height: (22/18);
+
+			&.fzMedium{
+				font-size: 20px;
+				line-height: (26/20);
+			}
+		}
+
+		h3, .h3{
+			font-size: 17px;
+			line-height: (22/17);
+		}
+	}
+
+	.subFeatureColumn{
+
+		h2, .h2{
+			font-size: 28px;
+			line-height: (32/28);
+		}
+	}
+
+	.saMap{
+		height: 351px;
+	}
+
+	.newsletterAside{
+
+		&.newsletterAsideViv{
+
+			.form-control{
+				width: 200px;
+			}
+		}
+
+		h3, .h3{
+			font-size: 30px;
+			line-height: (40/30);
+		}
+
+		.form-control{
+			width: 300px;
+		}
+	}
+
+	.footerAside{
+		font-size: 17px;
+	}
+
+	#pageFooter{
+		font-size: 16px;
+		line-height: (20/16);
+	}
+
+	.htTopBar{
+		font-size: 15px;
+	}
+
+	.eabDescrText{
+
+		&.eabDescrTextII{
+			font-size: 22px;
+			line-height: (32/22);
+		}
+
+		&.eabDescrTextIII{
+			font-size: 22px;
+			line-height: (32/22);
+		}
+	}
+
+	.ssArrowVi{
+		margin-top: -101px;
+
+		&.ssArrowViII{
+			margin-top: -30px;
+		}
+	}
+
+	.qlColum{
+		min-height: 352px;
+
+		h3, .h3{
+			font-size: 24px;
+		}
+
+		h4, .h4{
+			font-size: 20px;
+			line-height: (35/20);
+		}
+	}
+
+	.eveProColumn{
+
+		.imgHolder{
+			width: 210px;
+		}
+	}
+
+	.hhFzMedium{
+		font-size: 18px;
+		line-height: (24/18);
+
+		&.hhFzMediumVvi{
+			line-height: (28/18);
+		}
+	}
+
+	.newsColumn{
+
+		&.newsColumnMdMax{
+			max-width: none;
+		}
+	}
+
+	.besColumn{
+
+		&.hdIsViii{
+			min-height: calc(100vh - 88px);
+		}
+
+		.imgHolder{
+			max-width: 460px;
+		}
+
+		.bgLayer{
+			@include size(497px, 513px);
+		}
+	}
+
+	.ssArrowVii,
+	.ssCountOnly{
+		max-width: 930px;
+	}
+
+	.aboutIntroAside{
+		font-size: 20px;
+		line-height: (31/20);
+	}
+
+	.getHereColumn{
+		font-size: 17px;
+		line-height: (24/17);
+	}
+
+	.ghcBtnGo{
+		right: 30px;
+		font-size: 30px;
+	}
+
+	.ghcAdrList{
+
+		.icnWrap{
+			max-width: 49px;
+		}
+	}
+
+	.lcbContList{
+
+		> li{
+			min-width: 25%;
+		}
+
+		h3, .h3{
+			font-size: 45px;
+		}
+	}
+
+	.ssArrowViii{
+
+		&.slickPrev{
+			left: 56px;
+		}
+
+		&.slickNext{
+			right: 56px;
+		}
+	}
+
+	.becomeMemberAside{
+
+		h2, .h2{
+			font-size: 40px;
+		}
+	}
+
+	.hdrAddress{
+		font-size: 15px;
+		line-height: (22/15);
+
+		.icnWrap{
+			max-width: 37px;
+		}
+	}
+
+	.ssArrowViv{
+
+		&.slickPrev{
+			left: 25px;
+		}
+
+		&.slickNext{
+			right: 25px;
+		}
+	}
+
+	.aboutOnviewBlock{
+
+		.imgHolder{
+
+			&:before{
+				@include size(234px);
+			}
+
+			&:after{
+				@include size(326px);
+			}
+		}
+	}
+
+	.ueEveColumn{
+
+		&.gridView{
+
+			.imgHolder{
+				width: auto;
+			}
+		}
+
+		.imgHolder{
+			width: 171px;
+		}
+
+		.btn-sm{
+			min-width: 71px;
+
+			&.btnSmMinWidth{
+				min-width: 107px;
+			}
+		}
+	}
+
+	.ogFiltersList{
+		font-size: 18px;
+		line-height: (22/18);
+		letter-spacing: 0.3px;
+
+		&.isLeft{
+
+			> li{
+				margin-left: initial;
+				margin-right: 27px;
+			}
+		}
+
+		> li{
+			margin-left: 27px;
+		}
+	}
+
+	.galFig{
+
+		.icnWrap{
+			font-size: 19px;
+			@include size(52px);
+		}
+
+		h3, .h3{
+			font-size: 24px;
+			line-height: (35/24);
+		}
+	}
+
+	.ibfbText{
+		font-size: 20px;
+		line-height: (22/20);
+	}
+
+	.fasFrameWrap{
+		width: calc(50% + 154px);
+
+		&.fasFrameWrapII{
+			width: 50%;
+		}
+	}
+
+	.scrollToNav{
+		font-size: 17px;
+		overflow: visible;
+
+		li{
+			margin-right: 26px;
+		}
+	}
+
+	.apDataTable{
+
+		&.apDataTableII{
+
+			td{
+
+				&:first-child{
+					width: 34%;
+				}
+			}
+		}
+
+		&.apDataTableIII{
+
+			td{
+
+				&:first-child{
+					width: 21%;
+				}
+			}
+		}
+
+		td{
+
+			&:first-child{
+				width: 43%;
+			}
+		}
+	}
+
+	.vtcBtnsWrap{
+
+		.btn{
+			width: 43.5%;
+		}
+	}
+
+	.vctOpener{
+		padding-top: 22px;
+		padding-bottom: 22px;
+
+		&.vctOpenerII{
+			padding-top: 16px;
+			padding-bottom: 16px;
+		}
+
+		&:after{
+			right: 30px;
+		}
+	}
+
+	.shopPostColumn{
+		min-height: 200px;
+
+		h3, .h3{
+			font-size: 32px;
+			line-height: (35/32);
+		}
+	}
+
+	.exhiTabList{
+		font-size: 20px;
+		line-height: (22/20);
+
+		&.exhiTabListIII{
+
+			.nav-item{
+				margin: 0 0 -1px;
+			}
+		}
+
+		.nav-item{
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+	}
+
+	.ttaHolderBox{
+		font-size: 18px;
+		line-height: (28/18);
+
+		h3, .h3{
+			font-size: 36px;
+			line-height: (40/36);
+		}
+	}
+
+	.scSidebar{
+
+		&:before{
+			left: 10px;
+		}
+	}
+
+	.igImageWrap{
+		height: auto;
+
+		img{
+			height: auto;
+			width: auto;
+		}
+	}
+
+	.scPagerNav{
+
+		a{
+			padding-top: 38px;
+			padding-bottom: 38px;
+		}
+	}
+
+	.eveProFiltersBox{
+
+		.form-row{
+			margin-left: -13px;
+			margin-right: -13px;
+		}
+
+		.form-group{
+			padding-left: 13px;
+			padding-right: 13px;
+		}
+	}
+
+	.sbisCaption{
+		bottom: 50px;
+		left: 50px;
+
+		h1, .h1{
+			font-size: 30px;
+			line-height: (35/30);
+		}
+	}
+
+	.becomeMemberBlock{
+		font-size: 18px;
+		line-height: (28/18);
+	}
+
+	.aboutExploreAside{
+		min-height: 350px;
+	}
+
+	.sbisColumn{
+
+		.imgHolder{
+			height: 500px;
+		}
+	}
+
+	.onImageColumn{
+		height: 205px;
+
+		&.onImageColumnLarge{
+			height: 440px;
+		}
+	}
+
+	.queryCalloutBlock{
+		min-height: 382px;
+	}
+
+	.contactFormWrap{
+
+		textarea{
+
+			&,
+			&.form-control{
+				height: 220px;
+			}
+		}
+	}
+
+	.rpcCaption{
+		font-size: 17px;
+
+		h4, .h4{
+			font-size: 18px;
+			line-height: (24/18);
+		}
+	}
+
+	.commentsOpener{
+		font-size: 26px;
+	}
+
+	.loginBlock,
+	.pageNotFoundBlock{
+
+		&.hdIsVii{
+			min-height: calc(100vh - 136px);
+		}
+	}
+
+	.specialRequestAside{
+		font-size: 18px;
+		line-height: (28/18);
+
+		h2, .h2{
+			font-size: 30px;
+		}
+	}
+
+	.exhibitDescrColumn{
+		min-height: 523px;
+	}
+
+	.acwColLarge{
+		max-width: 465px;
+	}
+
+	.acwColSmall{
+		max-width: 263px;
+	}
+
+	.acwColII{
+		margin-top: 110px;
+	}
+
+	.acwColIII{
+		margin-top: 120px;
+	}
+
+	.acwColIV{
+		margin-top: 250px;
+	}
+
+	.acwColV{
+		margin-top: 110px;
+	}
+
+	.nextCounterAside{
+		font-size: 20px;
+
+		.textLarge,
+		.countdown-amount{
+			font-size: 80px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+
+	.tcsbHeadWrap{
+		font-size: 28px;
+		line-height: (32/28);
+	}
+
+	.ibtbtOpener{
+		top: 30px;
+	}
+
+	.ibftRow{
+
+		h4, .h4{
+			font-size: 20px;
+		}
+
+		h5, .h5{
+			font-size: 16px;
+		}
+
+		.imgHolder{
+			width: 86px;
+		}
+	}
+
+	.lociAside{
+
+		.imgHolder{
+			width: calc(50% - 380px);
+		}
+	}
+
+	.hTopHolder{
+		font-size: 16px;
+	}
+
+	.sceHeadStick{
+		max-width: 255px;
+	}
+}

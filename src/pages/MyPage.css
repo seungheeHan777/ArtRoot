@@ -1,0 +1,50 @@
+.my-page-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.my-page-form {
+  margin-bottom: 20px;
+}
+
+.my-page-form .btn {
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.my-page-form .btn:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.my-page-form .btn-change-password {
+  background-color: #ffffff;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+}
+
+.my-page-form .btn-update-info {
+  background-color: #ffffff;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+}
+
+.my-page-form .btn-logout {
+  background-color: #ffffff;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+}
+
+.my-page-container .btn-custom {
+  background-color: #ffffff;
+  color: #3498db;
+  border: 2px solid #3498db;
+  margin-right: 10px;
+}
+
+.my-page-container .btn-custom:hover {
+  background-color: #297fb8;
+  border-color: #297fb8;
+}

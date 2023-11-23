@@ -1,4 +1,4 @@
-footer {
+/* footer {
   position: absolute;
   width: 100%;
   margin: 40px 0 0 0;
@@ -9,10 +9,11 @@ footer {
   align-items: center;
   justify-content: center;
   background-color: #62679b;
-}
+} */
+
 .home-container {
   display: flex;
-  margin-top: 40px;
+  margin-top: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -20,15 +21,18 @@ footer {
 
 .slider {
   display: flex;
-  width: 1300px; /* just for this demo */
-  margin: 10 auto; /* just for this demo */
-  /* overflow: hidden; /* Uncomment once you understand the demo */
+  justify-content: center; /* 가로 방향 중앙 정렬 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+  width: 100%;
+  height: 70vh; /* 높이를 화면 전체 높이로 설정 */
 }
 
 .slidediv {
-  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin: 10 auto;
   height: 100%;
-  width: 100%;
+  width: 1300px;
 }
 .recommand {
   width: 1250px;

@@ -32,7 +32,7 @@ const AdminExhibitiondetail = () => {
       try {
         const response = await detail({ id }); // Use the 'id' parameter in the URL
         setExhibitionData(response.data);
-        setIsDiscount(response.data.ART_DISCOUNT === "1");//할인 여부 설정 불러오기
+        setIsDiscount(response.data.ART_DISCOUNT === "1"); //할인 여부 설정 불러오기
       } catch (e) {
         console.error(e);
       }
@@ -55,7 +55,7 @@ const AdminExhibitiondetail = () => {
         {}
       );
       // 할인 여부 값을 '0' 또는 '1'로 설정
-      updatedData.ART_DISCOUNT = isDiscount ? '1' : '0';
+      updatedData.ART_DISCOUNT = isDiscount ? "1" : "0";
       // 서버로 업데이트 데이터를 보내거나 필요한 작업을 수행
       const response = await exhibitionUpdate(id, updatedData);
       // 서버 응답에 따른 작업 수행 (예: 성공 메시지 표시)
@@ -82,7 +82,7 @@ const AdminExhibitiondetail = () => {
   }
 
   return (
-    <div className="contents">
+    <div className="contents" style={{ paddingTop: "200px" }}>
       <div className="product_detail">
         <div className="imgArea">
           <img

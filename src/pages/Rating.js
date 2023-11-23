@@ -70,7 +70,7 @@ const Rating = ({ totalStars = 5 }) => {
       });
   };
   return (
-    <div className="contents">
+    <div className="contents" style={{ paddingTop: "200px" }}>
       <div className="imgArea">
         <img
           src={exhibitionData.ART_PICTURE}

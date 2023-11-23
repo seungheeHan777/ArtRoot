@@ -42,7 +42,7 @@ const AuthTemplate = ({ children }) => {
   return (
     <AuthTemplateBlock>
       <WhiteBox>
-        <div className="logo-area">
+        <div className="logo-area" style={{ paddingTop: "100px" }}>
           <Link to="/">ARTROOT</Link>
         </div>
         {children}

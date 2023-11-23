@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ExhibitionItem from "../ExhibitionItem";
+import axios from "axios";
 import "./home.css";
-const DiscountExhibition = () => {
+import "../muzze/css/responsive.css";
+import "../muzze/css/vendor/bootstrap/_bootstrap-grid.css";
+
+const ExhibitionList = () => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [exhibitionsPerPage] = useState(10);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/ex/DiscountExhibitions"); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
-
+        const response = await axios.get("/ex/DiscountExhibitions");
         setData(response.data);
-        console.log("sk:", response.data);
       } catch (e) {
         console.error(e);
       }
@@ -18,15 +22,42 @@ const DiscountExhibition = () => {
 
     fetchData();
   }, []);
-  console.log("data", data);
+
+  // Get current exhibitions
+  const indexOfLastExhibition = currentPage * exhibitionsPerPage;
+  const indexOfFirstExhibition = indexOfLastExhibition - exhibitionsPerPage;
+  const currentExhibitions = data.slice(
+    indexOfFirstExhibition,
+    indexOfLastExhibition
+  );
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
-    <div className="home-container">
-      <h1>할인 전시회 목록</h1>
-      {data.length > 0 ? (
-        <div>
-          <ul>
-            {data.map((exhibition, index) => (
-              <li key={index}>
+    <section className="exhibitionBlock pt-6 pb-6 pt-md-9 pb-md-9 pt-lg-11 pb-lg-13 pt-xl-20 pb-xl-21">
+      <div className="home-container">
+        <header className="topHeadingHead text-center mb-6 mb-lg-9 mb-xl-12">
+          <div className="row">
+            <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+              <h1 className="h1Large mb-4">Exhibitions</h1>
+              <div className="fontSerif eabDescrText eabDescrTextII">
+                <p>
+                  Find out what's on at the museum’s: from current and upcoming
+                  exhibitions, to guided tours, workshops, children's activities
+                  and events.
+                </p>
+              </div>
+            </div>
+          </div>
+        </header>
+        <hr></hr>
+        <h1>할인 전시 목록</h1>
+
+        {data.length > 0 ? (
+          <div>
+            {currentExhibitions.map((exhibition, index) => (
+              <div key={index}>
                 <ExhibitionItem
                   ART_NUM={exhibition.ART_NUM}
                   ART_NAME={exhibition.ART_NAME}
@@ -45,15 +76,27 @@ const DiscountExhibition = () => {
                   ART_PREFER={exhibition.ART_PREFER}
                   ART_BACK={exhibition.ART_BACK}
                 />
-              </li>
+              </div>
             ))}
-          </ul>
-        </div>
-      ) : (
-        <p>데이터를 불러오는 중입니다...</p>
-      )}
-    </div>
+
+            {/* Pagination */}
+            <div className="pagination">
+              {Array.from(
+                { length: Math.ceil(data.length / exhibitionsPerPage) },
+                (_, index) => (
+                  <button key={index} onClick={() => paginate(index + 1)}>
+                    {index + 1}
+                  </button>
+                )
+              )}
+            </div>
+          </div>
+        ) : (
+          <p>데이터를 불러오는 중입니다...</p>
+        )}
+      </div>
+    </section>
   );
 };
 
-export default DiscountExhibition;
+export default ExhibitionList;

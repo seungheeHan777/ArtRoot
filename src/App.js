@@ -30,7 +30,6 @@ import Calendar from "./pages/calendar";
 import Recommend from "./pages/Recommend";
 import AdminRecommend from "./pages/admin/AdminRecommend";
 import DiscountExhibition from "./pages/DiscountExhibition";
-import Test from "./pages/Test";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -92,16 +91,18 @@ function App() {
         />
         <Route path="/Question" element={<Question />} />
         <Route path="/Calendar" element={<Calendar />} />
-        <Route path="/Test" element={<Test />} />
       </Routes>
 
-      <footer>
-        <div>
-          Copyright @artroot
-          <br />
-          <Link to="/Question">문의사항</Link>
-        </div>
-      </footer>
+      <div class="ftAreaWrap bg-secondary text-gray888">
+        <footer
+          id="pageFooter"
+          class="bg-dark text-gray777 text-center pt-7 pb-5 pt-lg-10 pb-lg-9"
+        >
+          <div class="container" style={{ paddingTop: "50px" }}>
+            <p class="mb-2">ART ROOT &copy; All Rights Reserved</p>
+          </div>
+        </footer>
+      </div>
     </Router>
   );
 }

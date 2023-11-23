@@ -120,7 +120,7 @@ const Recommend = () => {
     }
   };
   return (
-    <div>
+    <div style={{ paddingTop: "200px" }}>
       {user ? (
         <div>
           <h1>추천</h1>

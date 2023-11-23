@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import { allList } from "../lib/api/exhibition.js";
 import { Link } from "react-router-dom";
 import "./home.css";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -16,18 +17,18 @@ export default function SimpleSlider() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "50px",
+    centerMode: true, // 중앙 정렬 활성화
+    centerPadding: "0%", // 가운데 정렬 후 양쪽으로 추가 여백 없음
     autoplay: true,
   };
   const [data, setData] = useState([]);
+
   useEffect(() => {
     setSliderInitialized(true);
 
     const fetchData = async () => {
       try {
-        const response = await allList(); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
-
+        const response = await allList();
         setData(response.data);
       } catch (e) {
         console.error(e);
@@ -38,17 +39,25 @@ export default function SimpleSlider() {
   }, []);
 
   return (
-    <div className="slidediv">
+    <div
+      className="slidediv"
+      style={{
+        position: "relative",
+        zIndex: 1,
+        marginTop: "200px",
+        width: "90%",
+      }}
+    >
       {sliderInitialized && (
         <Slider {...settings}>
           {data.slice(0, 7).map((exhibition, index) => (
             <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`} key={index}>
-              <div>
+              <div className="slider-slide">
                 <img
                   src={exhibition.ART_PICTURE}
                   alt={`img-${index}`}
-                  width="350px"
-                  height="350px"
+                  width="630px"
+                  height="400px"
                 />
               </div>
             </Link>

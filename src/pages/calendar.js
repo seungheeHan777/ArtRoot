@@ -36,7 +36,9 @@ const MyCalendar = () => {
   const getImageForDate = (currentDate) => {
     const dateStr = formatDate(currentDate);
     const imageInfo = oneInfo.filter((info) => info.date === dateStr);
-    return imageInfo.map((info) => info.picture);
+    const images = imageInfo.map((info) => info.picture);
+
+    return [images.length > 0 ? [images[0]] : [], images.length - 1];
   };
 
   const handlePrevMonth = () => {
@@ -56,7 +58,6 @@ const MyCalendar = () => {
       date.getMonth() + 1,
       0
     ).getDate();
-
     const daysInPreviousMonth = new Date(
       date.getFullYear(),
       date.getMonth(),
@@ -69,7 +70,7 @@ const MyCalendar = () => {
     grid.push(
       <div
         key="month-year"
-        style={{ marginBottom: "50px", textAlign: "center" }}
+        style={{ marginBottom: "50px", textAlign: "center", fontSize: "50px" }}
       >
         {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
       </div>
@@ -81,7 +82,8 @@ const MyCalendar = () => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          marginBottom: "100px",
+          marginBottom: "50px",
+          marginTop: "50px",
         }}
       >
         <button onClick={handlePrevMonth}>&lt; 이전 달</button>
@@ -99,18 +101,38 @@ const MyCalendar = () => {
         date.getMonth() - 1,
         day
       );
-      const image = getImageForDate(currentDate);
+      const [images, overlapCount] = getImageForDate(currentDate);
 
       currentWeek.push(
         <div
           key={currentDate.toDateString()}
-          style={{ display: "grid", gap: "50px" }}
+          style={{
+            display: "grid",
+            gap: "50px",
+            marginBottom: "100px",
+          }}
         >
-          <div onClick={() => handleDateChange(currentDate)}>{day}</div>
-          {image &&
-            image.map((image, index) => (
-              <img key={index} src={image} alt="Event" width="20" height="20" />
-            ))}
+          <div onClick={() => handleDateChange(currentDate)}>
+            {day} {/* Display the day */}
+          </div>
+          {images.length > 0 ? (
+            images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt="Event"
+                width="50px"
+                height="50px"
+              />
+            ))
+          ) : (
+            <div style={{ width: "50px", height: "50px" }}>
+              {/* Placeholder for empty image */}
+            </div>
+          )}
+          {overlapCount > 0 && (
+            <div style={{ marginTop: "5px" }}>{overlapCount} overlapped</div>
+          )}
         </div>
       );
     }
@@ -118,19 +140,58 @@ const MyCalendar = () => {
     // 현재 달의 날짜
     for (let day = 1; day <= daysInMonth; day++) {
       const currentDate = new Date(date.getFullYear(), date.getMonth(), day);
-
-      const image = getImageForDate(currentDate);
+      const [representativeImage, overlappingCount] =
+        getImageForDate(currentDate);
 
       currentWeek.push(
         <div
           key={currentDate.toDateString()}
-          style={{ display: "grid", gap: "8px" }}
+          style={{
+            display: "grid",
+            gap: "8px",
+            position: "relative", // Set position to relative for overlapping count
+          }}
         >
-          <div onClick={() => handleDateChange(currentDate)}>{day}</div>
-          {image &&
-            image.map((image, index) => (
-              <img key={index} src={image} alt="Event" width="50" height="50" />
-            ))}
+          <div onClick={() => handleDateChange(currentDate)}>
+            {day} {/* Display the day */}
+          </div>
+          {Array.isArray(representativeImage) &&
+          representativeImage.length > 0 ? (
+            <>
+              {representativeImage.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt="Event"
+                  width="200"
+                  height="200"
+                  onClick={() => handleImageClick(currentDate)}
+                  style={{ cursor: "pointer" }} // Add cursor style for clickable images
+                />
+              ))}
+              {overlappingCount > 0 && (
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "-20px", // Adjust the position as needed
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    background: "rgba(255, 255, 255, 0.8)",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    fontSize: "14px",
+                  }}
+                  onClick={() => handleImageClick(currentDate)}
+                >
+                  +{overlappingCount}
+                </div>
+              )}
+            </>
+          ) : (
+            <div style={{ width: "200px", height: "200px" }}>
+              {/* Placeholder for empty image */}
+            </div>
+          )}
         </div>
       );
 
@@ -142,8 +203,8 @@ const MyCalendar = () => {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(7, 1fr)",
-              gap: "100px", // 날짜 사이의 간격
-              marginBottom: "100px", // 각 주 사이의 간격
+              gap: "100px",
+              marginBottom: "150px",
             }}
           >
             {currentWeek}
@@ -155,9 +216,56 @@ const MyCalendar = () => {
 
     return grid;
   };
+
   const handleDateChange = (newDate) => {
     setDate(newDate);
     console.log(newDate);
+  };
+
+  const handleImageClick = (currentDate) => {
+    const dateStr = formatDate(currentDate);
+    const imagesForDate = oneInfo.filter((info) => info.date === dateStr);
+
+    // 여기에서 이미지 클릭 시 모든 이미지를 보여주는 방법을 구현하면 됩니다.
+    // 예를 들어, 모달 창이나 화면의 다른 부분에 이미지를 렌더링하는 등의 방식을 선택할 수 있습니다.
+    // 아래는 간단한 모달 창을 이용한 예시입니다. (모달 관련 라이브러리를 사용하거나 직접 모달을 만들어야 할 수 있습니다.)
+
+    const modal = document.createElement("div");
+    modal.style.position = "fixed";
+    modal.style.top = "0";
+    modal.style.left = "0";
+    modal.style.width = "100%";
+    modal.style.height = "100%";
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    modal.style.display = "flex";
+    modal.style.justifyContent = "center";
+    modal.style.alignItems = "center";
+    modal.style.zIndex = "1000";
+
+    const modalContent = document.createElement("div");
+    modalContent.style.backgroundColor = "#fff";
+    modalContent.style.padding = "20px";
+    modalContent.style.borderRadius = "10px";
+    modalContent.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
+    modalContent.style.overflowY = "auto";
+
+    imagesForDate.forEach((info) => {
+      const imageElement = document.createElement("img");
+      imageElement.src = info.picture;
+      imageElement.alt = "Event";
+      imageElement.width = "200";
+      imageElement.height = "200";
+      imageElement.style.marginRight = "10px";
+      modalContent.appendChild(imageElement);
+    });
+
+    modal.appendChild(modalContent);
+
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", () => {
+      modal.remove();
+    });
   };
 
   return (
@@ -166,13 +274,18 @@ const MyCalendar = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        height: "auto",
+        width: "95%",
+        paddingTop: "250px", // Adjusted paddingTop
+        paddingBottom: "50px",
+        marginLeft: "150px",
+        marginRight: "100px",
       }}
     >
-      <div style={{ flex: 1, marginRight: "20px" }}>
+      <div style={{ flex: 1, border: "1px solid black", paddingLeft: "50px" }}>
         {generateCalendarGrid()}
       </div>
-      <div style={{ flex: 1 }}>
+      <div>
         <div>내가 본 전시</div>
         <div>
           {oneInfo.map((one, index) => (
@@ -181,8 +294,9 @@ const MyCalendar = () => {
                 <img
                   src={one.picture ? one.picture : ""}
                   alt="Profile Picture"
-                  width="100"
-                  height="100"
+                  width="150" // Adjusted image width
+                  height="150" // Adjusted image height
+                  style={{ marginBottom: "10px" }} // Added margin to separate images
                 />
                 <br />
                 <br />

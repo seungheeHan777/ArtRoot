@@ -48,7 +48,7 @@ const AdminRatingList = ({ totalStars = 5 }) => {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container" style={{ paddingTop: "200px" }}>
       <h1>평점 테이블</h1>
       <table border="1">
         <thead>
