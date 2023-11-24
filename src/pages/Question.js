@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import { qna } from "../lib/api/auth";
 import "./Question.css";
 
 const Question = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await qna(formData);
+
+      if (response.status === 200) {
+        console.log("폼이 성공적으로 제출되었습니다!");
+        // 성공 시 처리
+        window.alert("성공적으로 제출되었습니다!");
+      } else {
+        console.error("폼 제출 실패.");
+        // 실패 시 처리
+        window.alert("실패했습니다. 다시 확인해주세요.");
+      }
+    } catch (error) {
+      console.error("폼 제출 중 오류 발생:", error);
+    }
+  };
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <section className="my-28" id="contact" style={{ paddingTop: "200px" }}>
       <div className="form-container">
@@ -18,6 +51,7 @@ const Question = () => {
             name="name"
             id="name"
             className="gradient"
+            onChange={handleChange}
             required
           ></input>
           <label htmlFor="email">이메일</label>
@@ -27,6 +61,7 @@ const Question = () => {
             id="email"
             className="gradient"
             required
+            onChange={handleChange}
           ></input>
           <label htmlFor="message">문의사항</label>
           <textarea
@@ -35,6 +70,7 @@ const Question = () => {
             cols="25"
             rows="5"
             className="gradient"
+            onChange={handleChange}
             required
           ></textarea>
           <hr style={{ border: "1px solid silver", width: "100%" }} />
@@ -53,7 +89,9 @@ const Question = () => {
             모든 답변은 작성하신 이메일로 가므로 반드시 정확하게 기입해주세요.
           </p>
           <hr style={{ border: "1px solid silver", width: "100%" }} />
-          <button type="submit">확인</button>
+          <button type="submit" onSubmit={handleFormSubmit}>
+            확인
+          </button>
         </form>
       </div>
       <div
