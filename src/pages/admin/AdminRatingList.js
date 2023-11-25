@@ -9,6 +9,8 @@ const createArray = (length) => [...Array(length)];
 
 const AdminRatingList = ({ totalStars = 5 }) => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +39,16 @@ const AdminRatingList = ({ totalStars = 5 }) => {
     }
   };
 
+  //페이지 변경
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  // 현재 페이지에 표시할 항목 범위 계산
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
   const Star = ({ selected = false }) => (
     <FaStar color={selected ? "yellow" : "gray"} />
   );
@@ -60,7 +72,7 @@ const AdminRatingList = ({ totalStars = 5 }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
+          {currentItems.map((item, index) => (
             <tr key={index}>
               <td>
                 <img
@@ -88,6 +100,17 @@ const AdminRatingList = ({ totalStars = 5 }) => {
           ))}
         </tbody>
       </table>
+      <div style={{ marginTop: "20px" }}>
+        {createArray(Math.ceil(data.length / itemsPerPage)).map((_, index) => (
+          <Button
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            style={{ margin: "5px" }}
+          >
+            {index + 1}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

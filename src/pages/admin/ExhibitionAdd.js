@@ -38,6 +38,7 @@ const ExhibitionAdd = () => {
         },
         {}
       );
+      updatedData.ART_DISCOUNT = isDiscount;
       // 서버로 업데이트 데이터를 보내거나 필요한 작업을 수행
       const response = await exhibitionAdd(updatedData);
       // 서버 응답에 따른 작업 수행 (예: 성공 메시지 표시)
@@ -48,13 +49,22 @@ const ExhibitionAdd = () => {
   };
 
   return (
-    <div className="contents">
+    <div className="contents" style={{ paddingTop: "250px" }}>
       <div className="product_detail">
         <div className="imgArea">
           <img className="product_img" alt="Exhibition Image" />
         </div>
         <hr />
         <Form>
+          <FormGroup>
+            <Form.Label>전시 이미지 </Form.Label>
+            <Form.Control
+              class="form-control"
+              placeholder="이미지 URL 입력"
+              name="ART_PICTURE"
+              onChange={handleInputChange}
+            />
+          </FormGroup>
           <FormGroup>
             <Form.Label>ART_NUM</Form.Label>
             <Form.Control

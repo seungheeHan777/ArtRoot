@@ -84,7 +84,7 @@ const AdminExhibitiondetail = () => {
   return (
     <div className="contents" style={{ paddingTop: "200px" }}>
       <div className="product_detail">
-        <div className="imgArea">
+        <div className="imgArea" style={{ width: "100%", textAlign: "center" }}>
           <img
             src={exhibitionData.ART_PICTURE}
             className="product_img"

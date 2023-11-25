@@ -102,6 +102,7 @@ async function fetchAndStoreData() {
 fetchAndStoreData();
 // 여기까지 주석처리
 */
+
 // app.use(express.static(path.join(__dirname, "../build"))); //주소 바꾸기
 // app.get("/", (req, res) =>
 //   res.sendFile(path.join(__dirname, "../build/index.html"))
@@ -112,60 +113,6 @@ app.use("/ex", exhibitionRoutes);
 app.use("/admin", adminRoutes);
 app.use("/keyword", keywordRoutes);
 app.use("/rec", recRoutes);
-// 유저 정보 수정
-
-// 관리자 카테고리, 이미지 관리하는 부분
-
-// // 사용자 이미지 장르 업데이트
-// app.post("/saveImages", (req, res) => {
-//   const images = req.body.images;
-//   const user_id = req.session.username; // 세션에서 로그인한 사용자 아이디 가져오기
-//   console.log("이미지 장르 : ", images);
-
-//   if (!user_id) {
-//     res.status(401).json({ error: "로그인되지 않음" });
-//     return;
-//   }
-
-//   if (images && images.length > 0) {
-//     // 중복된 카테고리를 제거하기 위해 SET으로 변환하고 다시 CSV 문자열로 조합
-//     const uniqueImages = Array.from(new Set(images));
-//     const user_imageprefer = uniqueImages.join(","); // NULL 값도 처리 가능
-
-//     const updateQuery =
-//       "UPDATE user SET user_imageprefer = ? WHERE user_id = ?";
-//     const values = [user_imageprefer || null, user_id]; // user_imageprefer 값이 NULL이면 NULL을 저장
-
-//     con.query(updateQuery, values, (err, result) => {
-//       if (err) {
-//         console.error("이미지 장르 저장 오류: " + err.message);
-//         res
-//           .status(500)
-//           .json({ error: "이미지 장르를 저장하는 중 오류가 발생했습니다." });
-//       } else {
-//         console.log("이미지 장르가 성공적으로 저장되었습니다.");
-//         res.status(200).json({ message: "이미지 장르가 저장되었습니다." });
-//       }
-//     });
-//   } else {
-//     // 선택된 이미지 장르가 없을 때도 NULL 값을 저장
-//     const updateQuery =
-//       "UPDATE user SET user_imageprefer = NULL WHERE user_id = ?";
-//     const values = [user_id];
-
-//     con.query(updateQuery, values, (err, result) => {
-//       if (err) {
-//         console.error("이미지 장르 저장 오류: " + err.message);
-//         res
-//           .status(500)
-//           .json({ error: "이미지 장르를 저장하는 중 오류가 발생했습니다." });
-//       } else {
-//         console.log("이미지 장르가 성공적으로 저장되었습니다.");
-//         res.status(200).json({ message: "이미지 장르가 저장되었습니다." });
-//       }
-//     });
-//   }
-// });
 
 // app.get("/*", (req, res) =>
 //   res.sendFile(path.join(__dirname, "../build/index.html"))

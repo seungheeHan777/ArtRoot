@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { qna } from "../lib/api/auth";
+import { useNavigate } from "react-router-dom";
 import "./Question.css";
 
 const Question = () => {
@@ -8,6 +9,7 @@ const Question = () => {
     email: "",
     message: "",
   });
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -19,6 +21,7 @@ const Question = () => {
         console.log("폼이 성공적으로 제출되었습니다!");
         // 성공 시 처리
         window.alert("성공적으로 제출되었습니다!");
+        navigate("/");
       } else {
         console.error("폼 제출 실패.");
         // 실패 시 처리
@@ -89,7 +92,7 @@ const Question = () => {
             모든 답변은 작성하신 이메일로 가므로 반드시 정확하게 기입해주세요.
           </p>
           <hr style={{ border: "1px solid silver", width: "100%" }} />
-          <button type="submit" onSubmit={handleFormSubmit}>
+          <button type="submit" onClick={handleFormSubmit}>
             확인
           </button>
         </form>

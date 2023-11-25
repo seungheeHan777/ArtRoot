@@ -159,4 +159,32 @@ router.get("/ex/addkeyword", (req, res) => {
   }
 });
 
+router.get("/search", function (req, res) {
+  const client_id = "Rzqh4xXOyCONHeud9ciK";
+  const client_secret = "_O4gSpW4Qv";
+  //console.log(req.query.query);
+  const api_url =
+    "https://openapi.naver.com/v1/search/encyc?query=" +
+    encodeURI("인상주의") +
+    "&display=1"; // JSON 결과
+  //   var api_url = 'https://openapi.naver.com/v1/search/blog.xml?query=' + encodeURI(req.query.query); // XML 결과
+  const request = require("request");
+  const options = {
+    url: api_url,
+    headers: {
+      "X-Naver-Client-Id": client_id,
+      "X-Naver-Client-Secret": client_secret,
+    },
+  };
+  request.get(options, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.writeHead(200, { "Content-Type": "text/json;charset=utf-8" });
+      res.end(body);
+      console.log(response.body["items"]);
+    } else {
+      res.status(response.statusCode).end();
+      console.log("error = " + response.statusCode);
+    }
+  });
+});
 module.exports = router;

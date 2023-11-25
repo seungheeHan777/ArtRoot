@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { rating, submit } from "../lib/api/exhibition";
 import { useParams, useNavigate } from "react-router-dom";
-import "./detail.css";
+import "./Rating.css";
 
 const createArray = (length) => [...Array(length)];
 
@@ -30,7 +30,7 @@ const Rating = ({ totalStars = 5 }) => {
   }, [id]);
 
   const Star = ({ selected = false, onSelect = (f) => f }) => (
-    <FaStar color={selected ? "yellow" : "gray"} onClick={onSelect} />
+    <FaStar color={selected ? "gold" : "gray"} onClick={onSelect} />
   );
 
   if (!exhibitionData) {
@@ -70,46 +70,57 @@ const Rating = ({ totalStars = 5 }) => {
       });
   };
   return (
-    <div className="contents" style={{ paddingTop: "200px" }}>
-      <div className="imgArea">
+    <div className="rate_contents" style={{ paddingTop: "200px" }}>
+      <div className="rate_imgArea">
         <img
           src={exhibitionData.ART_PICTURE}
-          className="product_img"
+          className="rate_product_img"
           alt="전시 이미지"
         />
       </div>
-      {createArray(totalStars).map((n, i) => (
-        <Star key={i} selected={stars > i} onSelect={() => setStars(i + 1)} />
-      ))}
-      <p>
-        {stars} of {totalStars} stars
-      </p>
-      <p>{stars}점입니다.</p>
-      <label>
-        Comment:
+      <div className="rate_other_content">
+        <p className="rate_title1">관람평</p>
+        <div className="rate_stars">
+          <p>평점</p>
+          {createArray(totalStars).map((n, i) => (
+            <Star
+              key={i}
+              selected={stars > i}
+              onSelect={() => setStars(i + 1)}
+            />
+          ))}
+        </div>
+        <div className="rate_date_input">
+          <p>날짜</p>
+          <input
+            type="text"
+            style={{ width: "150px" }}
+            placeholder="YYYY-MM-DD"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </div>
+        <hr style={{ border: "1px solid", width: "100%" }} />
+        <p className="rate_title2">코멘트</p>
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-      </label>
-      <label>
-        관람한 날짜:
-        <textarea
-          placeholder="YYYY-MM-DD로 입력해주세요"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-      </label>
-      <button type="submit" onClick={handleSubmitComment}>
-        제출
-      </button>
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <p>평가가 성공적으로 제출되었습니다.</p>
+        <button
+          type="submit"
+          onClick={handleSubmitComment}
+          className="comment_button"
+        >
+          제출
+        </button>
+        {showModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <p>평가가 성공적으로 제출되었습니다.</p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
