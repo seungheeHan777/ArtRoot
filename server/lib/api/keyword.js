@@ -1,5 +1,4 @@
 const express = require("express");
-const wikipedia = require("wikipedia");
 const router = express.Router();
 const db = require("../db");
 
