@@ -1,6 +1,20 @@
 const express = require("express");
+const wikipedia = require("wikipedia");
 const router = express.Router();
 const db = require("../db");
+
+// 관리자 키워드 조회
+router.get("/admin/keywords", (req, res) => {
+  const query = "SELECT * FROM keyword";
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("카테고리 데이터를 가져오는 중 오류가 발생했습니다:", err);
+      res.status(500).send("서버 오류");
+    } else {
+      res.json(results);
+    }
+  });
+});
 
 // 관리자 카테고리 조회
 router.get("/admin/categories", (req, res) => {
@@ -67,6 +81,58 @@ router.post("/admin/addimage", (req, res) => {
       res.status(500).send("서버 오류");
     } else {
       res.sendStatus(200); // 성공적으로 추가되면 응답을 보냅니다.
+    }
+  });
+});
+
+// exhibition_keyword 데이터 가져오기
+router.get("/admin/getExkeyword", (req, res) => {
+  const query = `
+  SELECT ek.ART_NUM, ek.keyword_id, e.ART_NAME, k.name
+  FROM exhibition_keyword AS ek
+  JOIN exhibition AS e ON ek.ART_NUM = e.ART_NUM
+  JOIN keyword AS k ON ek.keyword_id = k.keyword_id
+`;
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("exhibition_keyword 데이터를 가져오는 중 오류 발생:", err);
+      res.status(500).json({ error: "내부 서버 오류" });
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+// exhibition_keyword 데이터 추가
+router.post("/admin/exhibition_keywords", (req, res) => {
+  const { ART_NUM, keyword_id } = req.body;
+  console.log(ART_NUM);
+  console.log(keyword_id);
+  const query =
+    "INSERT INTO exhibition_keyword (ART_NUM, keyword_id) VALUES (?, ?)";
+  db.query(query, [ART_NUM, keyword_id], (err, results) => {
+    if (err) {
+      console.error("exhibition_keyword 데이터 추가 중 오류 발생:", err);
+      res.status(500).json({ error: "내부 서버 오류" });
+    } else {
+      res.status(201).json({
+        message: "exhibition_keyword 데이터가 성공적으로 추가되었습니다",
+      });
+    }
+  });
+});
+// exhibition_keyword 데이터 삭제
+router.delete("/admin/exhibition_keywords", (req, res) => {
+  const { ART_NUM, keyword_id } = req.query; // req.query를 통해 URL 파라미터를 받아옴
+  const query =
+    "DELETE FROM exhibition_keyword WHERE ART_NUM = ? AND keyword_id = ?";
+  db.query(query, [ART_NUM, keyword_id], (err, results) => {
+    if (err) {
+      console.error("exhibition_keyword 데이터 삭제 중 오류 발생:", err);
+      res.status(500).json({ error: "내부 서버 오류" });
+    } else {
+      res.status(200).json({
+        message: "exhibition_keyword 데이터가 성공적으로 삭제되었습니다",
+      });
     }
   });
 });
@@ -159,32 +225,46 @@ router.get("/ex/addkeyword", (req, res) => {
   }
 });
 
-router.get("/search", function (req, res) {
-  const client_id = "Rzqh4xXOyCONHeud9ciK";
-  const client_secret = "_O4gSpW4Qv";
-  //console.log(req.query.query);
-  const api_url =
-    "https://openapi.naver.com/v1/search/encyc?query=" +
-    encodeURI("인상주의") +
-    "&display=1"; // JSON 결과
-  //   var api_url = 'https://openapi.naver.com/v1/search/blog.xml?query=' + encodeURI(req.query.query); // XML 결과
-  const request = require("request");
-  const options = {
-    url: api_url,
-    headers: {
-      "X-Naver-Client-Id": client_id,
-      "X-Naver-Client-Secret": client_secret,
-    },
-  };
-  request.get(options, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.writeHead(200, { "Content-Type": "text/json;charset=utf-8" });
-      res.end(body);
-      console.log(response.body["items"]);
-    } else {
-      res.status(response.statusCode).end();
-      console.log("error = " + response.statusCode);
-    }
-  });
-});
+// router.get("/search", function (req, res) {
+//   const client_id = "Rzqh4xXOyCONHeud9ciK";
+//   const client_secret = "_O4gSpW4Qv";
+//   //console.log(req.query.query);
+//   const api_url =
+//     "https://openapi.naver.com/v1/search/encyc?query=" +
+//     encodeURI("인상주의") +
+//     "&display=1"; // JSON 결과
+//   //   var api_url = 'https://openapi.naver.com/v1/search/blog.xml?query=' + encodeURI(req.query.query); // XML 결과
+//   const request = require("request");
+//   const options = {
+//     url: api_url,
+//     headers: {
+//       "X-Naver-Client-Id": client_id,
+//       "X-Naver-Client-Secret": client_secret,
+//     },
+//   };
+//   request.get(options, function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//       // JSON 데이터를 JavaScript 객체로 파싱
+//       const responseData = JSON.parse(body);
+
+//       // console.log를 사용하여 데이터를 출력
+//       console.log("lastBuildDate:", responseData.lastBuildDate);
+//       console.log("total:", responseData.total);
+//       console.log("start:", responseData.start);
+//       console.log("display:", responseData.display);
+
+//       // items 배열을 순회하면서 각 항목의 정보를 출력
+//       responseData.items.forEach((item, index) => {
+//         console.log(`Item ${index + 1}:`);
+//         console.log("  title:", item.title);
+//         console.log("  link:", item.link);
+//         console.log("  description:", item.description);
+//         console.log("  thumbnail:", item.thumbnail);
+//       });
+//     } else {
+//       // 오류가 발생한 경우
+//       console.log("Error:", response.statusCode);
+//     }
+//   });
+// });
 module.exports = router;

@@ -109,7 +109,7 @@ const MyCalendar = () => {
           style={{
             display: "grid",
             gap: "50px",
-            marginBottom: "100px",
+            marginBottom: "50px",
           }}
         >
           <div onClick={() => handleDateChange(currentDate)}>
@@ -121,8 +121,8 @@ const MyCalendar = () => {
                 key={index}
                 src={image}
                 alt="Event"
-                width="50px"
-                height="50px"
+                width="40px"
+                height="40px"
               />
             ))
           ) : (
@@ -163,8 +163,8 @@ const MyCalendar = () => {
                   key={index}
                   src={image}
                   alt="Event"
-                  width="200"
-                  height="200"
+                  width="100"
+                  height="100"
                   onClick={() => handleImageClick(currentDate)}
                   style={{ cursor: "pointer" }} // Add cursor style for clickable images
                 />
@@ -188,7 +188,7 @@ const MyCalendar = () => {
               )}
             </>
           ) : (
-            <div style={{ width: "200px", height: "200px" }}>
+            <div style={{ width: "50px", height: "50px" }}>
               {/* Placeholder for empty image */}
             </div>
           )}
@@ -203,8 +203,8 @@ const MyCalendar = () => {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(7, 1fr)",
-              gap: "100px",
-              marginBottom: "150px",
+              gap: "70px",
+              marginBottom: "100px",
             }}
           >
             {currentWeek}
@@ -274,19 +274,27 @@ const MyCalendar = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "auto",
-        width: "95%",
+        height: "80%",
+        width: "75%",
         paddingTop: "250px", // Adjusted paddingTop
         paddingBottom: "50px",
         marginLeft: "150px",
         marginRight: "100px",
       }}
     >
-      <div style={{ flex: 1, border: "1px solid black", paddingLeft: "50px" }}>
+      <div
+        style={{
+          flex: 1,
+          border: "1px solid black",
+          paddingLeft: "50px",
+          paddingRight: "50px",
+          marginRight: "100px",
+        }}
+      >
         {generateCalendarGrid()}
       </div>
       <div>
-        <div>내가 본 전시</div>
+        <div style={{ marginBottom: "20px" }}>내가 본 전시</div>
         <div>
           {oneInfo.map((one, index) => (
             <div key={index}>
@@ -294,8 +302,8 @@ const MyCalendar = () => {
                 <img
                   src={one.picture ? one.picture : ""}
                   alt="Profile Picture"
-                  width="150" // Adjusted image width
-                  height="150" // Adjusted image height
+                  width="75" // Adjusted image width
+                  height="75" // Adjusted image height
                   style={{ marginBottom: "10px" }} // Added margin to separate images
                 />
                 <br />

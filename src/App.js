@@ -29,6 +29,7 @@ import AdminRatingList from "./pages/admin/AdminRatingList";
 import Calendar from "./pages/calendar";
 import Recommend from "./pages/Recommend";
 import AdminRecommend from "./pages/admin/AdminRecommend";
+import ExhibitionKeyword from "./pages/admin/ExhibitionKeyword";
 import DiscountExhibition from "./pages/DiscountExhibition";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -77,6 +78,7 @@ function App() {
         <Route path="/AdminRatingList" element={<AdminRatingList />} />
         <Route path="/AdminExhibitionList" element={<AdminExhibitionList />} />
         <Route path="/AdminRecommend" element={<AdminRecommend />} />
+        <Route path="/ExhibitionKeyword" element={<ExhibitionKeyword />} />
         <Route
           path="/AdminExhibitiondetail/:id"
           element={<AdminExhibitiondetail />}

@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  NavDropdown,
-  Navbar,
-  Nav,
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { NavDropdown, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const UserInfo = styled.div`
@@ -63,22 +54,31 @@ const NavBarElement = ({ user, onLogout }) => {
                 <div className="col-8 col-sm-9 col-lg-10 d-flex align-items-end justify-content-end">
                   {/* btn */}
                   {user ? (
-                    <div className="d-flex align-items-center">
-                      <UserInfo>{user.username}</UserInfo>
-                      <Button onClick={handleLogout} className="btn btn-lg">
-                        로그아웃
-                      </Button>
-                    </div>
-                  ) : (
-                    <a
-                      href="/LogIn"
-                      data-toggle="modal"
-                      data-target="#exampleModalLong"
-                      className="btn btn-outline-secondary text-capitalize bdr2 mt-2 hdBtn"
+                    <NavDropdown
+                      title={user.username}
+                      id="nav-dropdown-user"
+                      className="text-capitalize bdr2 mt-2 hdBtn"
                       style={{ fontSize: "20px" }}
                     >
-                      로그인
-                    </a>
+                      <NavDropdown.Item onClick={handleLogout}>
+                        로그아웃
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/MyPage">
+                        마이페이지
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  ) : (
+                    <NavDropdown
+                      title="로그인"
+                      id="nav-dropdown"
+                      className="text-capitalize bdr2 mt-2 hdBtn"
+                      style={{ fontSize: "20px" }}
+                    >
+                      <NavDropdown.Item href="/Login">로그인</NavDropdown.Item>
+                      <NavDropdown.Item href="/Register">
+                        회원가입
+                      </NavDropdown.Item>
+                    </NavDropdown>
                   )}
                 </div>
               </div>
@@ -198,19 +198,6 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
-                            href="/MyPage"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style={{ fontSize: "30px" }}
-                          >
-                            MyPages
-                          </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                          <a
-                            className="nav-link"
                             href="/Question"
                             role="button"
                             data-toggle="dropdown"
@@ -282,6 +269,19 @@ const NavBarElement = ({ user, onLogout }) => {
                                     }}
                                   >
                                     전시회 추천 관리
+                                  </a>
+                                  {/* mnDropList */}
+                                </li>
+                                {/* 11/27 추가 */}
+                                <li className="hasDropdown">
+                                  <a
+                                    href="/ExhibitionKeyword"
+                                    style={{
+                                      fontSize: "20px",
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    전시회 키워드 관리
                                   </a>
                                   {/* mnDropList */}
                                 </li>

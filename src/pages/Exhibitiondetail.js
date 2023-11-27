@@ -4,6 +4,7 @@ import { detail } from "../lib/api/exhibition.js";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { keywordDetail } from "../lib/api/rec.js";
+import parse from "html-react-parser";
 const Exhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
@@ -122,7 +123,7 @@ const Exhibitiondetail = () => {
         <div>
           <h3>배경 정보</h3>
           <span>{keyword ? keyword.name : "Loading..."}</span>
-          <span>{keyword ? keyword.detail : "Loading..."}</span>
+          {keyword ? parse(keyword.detail) : "Loading..."}
         </div>
       </div>
     </div>

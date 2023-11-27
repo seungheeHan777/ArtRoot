@@ -1,6 +1,8 @@
 //키워드 관련 api
 import client from "./client";
 
+// 관리자 키워드 조회
+export const ADkeyword = () => client.get("/keyword/admin/keywords");
 // 관리자 카테고리 조회
 export const ADcategory = () => client.get("/keyword/admin/categories");
 
@@ -40,3 +42,16 @@ export const userImage = (username) => {
 export const getKeyword = () => {
   return client.get("/keyword/ex/addkeyword");
 };
+
+// 전시회 키워드 조회
+export const getExkeyword = () => client.get("/keyword/admin/getExkeyword");
+
+// 전시회 키워드 추가
+export const addExkeyword = ({ ART_NUM, keyword_id }) =>
+  client.post("keyword/admin/exhibition_keywords", { ART_NUM, keyword_id });
+
+// 전시회 키워드 삭제
+export const delExkeyword = ({ ART_NUM, keyword_id }) =>
+  client.delete("keyword/admin/exhibition_keywords", {
+    params: { ART_NUM, keyword_id },
+  });

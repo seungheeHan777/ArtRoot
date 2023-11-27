@@ -51,7 +51,7 @@ router.get("/exhibitiondetail/:id", (req, res) => {
 router.get("/ExhibitionSearchList", (req, res) => {
   const searchTerm = req.query.query;
   console.log("검색어(server):", searchTerm); // 검색어 출력
-  const sql = `SELECT ART_PICTURE, ART_NAME, ART_ARTIST, ART_PRICE, ART_PLACE, ART_START, ART_END FROM exhibition WHERE ART_NAME LIKE '%${searchTerm}%'`;
+  const sql = `SELECT ART_PICTURE, ART_NAME, ART_ARTIST, ART_PRICE, ART_PLACE, ART_START, ART_END,ART_NUM FROM exhibition WHERE ART_NAME LIKE '%${searchTerm}%' OR ART_PREFER LIKE '%${searchTerm}%'`;
   db.query(sql, (err, results) => {
     if (err) {
       console.error(err);
@@ -64,7 +64,7 @@ router.get("/ExhibitionSearchList", (req, res) => {
 
 // 전시회 랜덤으로 불러오기 --> 나중에 꼭 추천 으로 변경
 router.get("/random", (req, res) => {
-  const sql = "SELECT * FROM exhibition ORDER BY RAND() LIMIT 3"; // exhibition 테이블에서 랜덤으로 3개의 정보를 가져오는 SQL 쿼리
+  const sql = "SELECT * FROM exhibition ORDER BY RAND() LIMIT 6"; // exhibition 테이블에서 랜덤으로 3개의 정보를 가져오는 SQL 쿼리
   db.query(sql, (err, results) => {
     if (err) {
       console.log("에러 발생");
