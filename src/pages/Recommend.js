@@ -6,6 +6,7 @@ import {
   userImage,
 } from "../lib/api/keyword";
 import { useSelector } from "react-redux";
+import "./Recommend.css"; // CSS 파일을 직접 import
 const Recommend = () => {
   const { user } = useSelector(({ user }) => ({ user: user.user }));
   const [categories, setCategories] = useState([]);
@@ -124,18 +125,23 @@ const Recommend = () => {
       {user ? (
         <div>
           <h1>추천</h1>
-          <h2>카테고리 선택</h2>
-          {categories.map((category) => (
-            <label key={category.name}>
-              <input
-                type="checkbox"
-                checked={selectedCategories.includes(category.category_id)}
-                onChange={() => handleCheckboxChange(category.category_id)}
-              />{" "}
-              {category.name}
-            </label>
-          ))}
-          <button onClick={handleCategoryRecommend}>등록</button>
+          <h2>카테고리 키워드 선택</h2>
+          <div className="button-container">
+            {categories.map((category) => (
+              <button
+                key={category.name}
+                className={
+                  selectedCategories.includes(category.category_id)
+                    ? "selected"
+                    : ""
+                }
+                onClick={() => handleCheckboxChange(category.category_id)}
+              >
+                {category.name}
+              </button>
+            ))}
+            <button onClick={handleCategoryRecommend}>등록</button>
+          </div>
           <hr />
           <div>
             <h2>이미지 선택</h2>

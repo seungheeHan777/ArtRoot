@@ -1,0 +1,19 @@
+/* styles.css */
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* 왼쪽에서 오른쪽으로 정렬 */
+}
+button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px; /* 테두리를 둥글게 만듭니다. */
+}
+
+.selected {
+  background-color: #dd7328; /* 선택된 상태의 배경색을 지정하세요 */
+  /* 추가적인 스타일 지정 가능 */
+}
