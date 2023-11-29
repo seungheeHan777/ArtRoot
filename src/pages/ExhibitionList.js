@@ -58,7 +58,7 @@ const ExhibitionList = () => {
         <hr></hr>
         <h1>전시 목록</h1>
         {data.length > 0 ? (
-          <div style={{ width: "70%" }}>
+          <div style={{ width: "70%", paddingTop: "50px" }}>
             {currentExhibitions.map((exhibition, index) => (
               <div key={index}>
                 <ExhibitionItem
@@ -87,7 +87,11 @@ const ExhibitionList = () => {
               {Array.from(
                 { length: Math.ceil(data.length / exhibitionsPerPage) },
                 (_, index) => (
-                  <button key={index} onClick={() => paginate(index + 1)}>
+                  <button
+                    key={index}
+                    onClick={() => paginate(index + 1)}
+                    style={{ marginRight: "10px" }}
+                  >
                     {index + 1}
                   </button>
                 )
