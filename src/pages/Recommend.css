@@ -6,7 +6,7 @@
   justify-content: flex-start; /* 왼쪽에서 오른쪽으로 정렬 */
 }
 .button-container button {
-  flex: 0 0 calc(25% - 10px); /* 한 줄에 4개의 버튼이므로 각 버튼의 너비는 25% */
+  flex: 0 0 calc(25% - 100px); /* 한 줄에 4개의 버튼이므로 각 버튼의 너비는 25% */
 }
 .selected {
   background-color: #dd7328; /* 선택된 상태의 배경색을 지정하세요 */

@@ -121,7 +121,7 @@ const Recommend = () => {
     }
   };
   return (
-    <div style={{ paddingTop: "400px" }}>
+    <div style={{ paddingTop: "250px", textAlign: "center" }}>
       {user ? (
         <div>
           <h1>추천</h1>
@@ -136,7 +136,8 @@ const Recommend = () => {
                     : ""
                 }
                 style={{
-                  marginRight: "10px",
+                  marginRight: "40px",
+                  marginLeft: "40px",
                   marginBottom: "10px",
                   padding: "5px 10px",
                   cursor: "pointer",
@@ -152,7 +153,7 @@ const Recommend = () => {
             style={{
               textAlign: "center",
               fontSize: "25px", // 적절한 크기로 조절하세요
-              padding: "10px 20px", // 적절한 패딩 설정
+              padding: "10px", // 적절한 패딩 설정
               cursor: "pointer",
             }}
           >
@@ -168,16 +169,16 @@ const Recommend = () => {
                     <img
                       src={image.image_url}
                       alt={`이미지 ${image.category_id}`}
-                      style={{ width: "200px", height: "150px" }}
+                      style={{
+                        width: "200px",
+                        height: "150px",
+                        border: selectedCategories.includes(image.category_id)
+                          ? "5px solid red"
+                          : "none",
+                      }}
+                      onClick={() => handleCheckboxChange(image.category_id)}
                     />
                     <p>이미지 카테고리: {image.name}</p>
-                  </div>
-                  <div className="checkbox">
-                    <input
-                      type="checkbox"
-                      checked={selectedCategories.includes(image.category_id)}
-                      onChange={() => handleCheckboxChange(image.category_id)}
-                    />
                   </div>
                 </div>
               ))}
@@ -205,7 +206,16 @@ const Recommend = () => {
                 }
               `}</style>
             </div>
-            <button onClick={handleCategoryRecommend}>이미지 등록</button>
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "25px", // 적절한 크기로 조절하세요
+                padding: "10px 20px", // 적절한 패딩 설정
+                cursor: "pointer",
+              }}
+            >
+              <button onClick={handleCategoryRecommend}>이미지 등록</button>
+            </div>
           </div>
         </div>
       ) : (
