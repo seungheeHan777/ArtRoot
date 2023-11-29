@@ -121,12 +121,12 @@ const Recommend = () => {
     }
   };
   return (
-    <div style={{ paddingTop: "200px" }}>
+    <div style={{ paddingTop: "400px" }}>
       {user ? (
         <div>
           <h1>추천</h1>
           <h2>카테고리 키워드 선택</h2>
-          <div className="button-container">
+          <div className="button-container" style={{ paddingTop: "20px" }}>
             {categories.map((category) => (
               <button
                 key={category.name}
@@ -135,11 +135,27 @@ const Recommend = () => {
                     ? "selected"
                     : ""
                 }
+                style={{
+                  marginRight: "10px",
+                  marginBottom: "10px",
+                  padding: "5px 10px",
+                  cursor: "pointer",
+                  borderRadius: "25px",
+                }}
                 onClick={() => handleCheckboxChange(category.category_id)}
               >
                 {category.name}
               </button>
             ))}
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "25px", // 적절한 크기로 조절하세요
+              padding: "10px 20px", // 적절한 패딩 설정
+              cursor: "pointer",
+            }}
+          >
             <button onClick={handleCategoryRecommend}>등록</button>
           </div>
           <hr />
