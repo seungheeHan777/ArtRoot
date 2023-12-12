@@ -63,7 +63,9 @@ const Exhibitiondetail = () => {
                   <span>일정</span>
                 </th>
                 <td>
-                  <span>{exhibitionData.date}</span>
+                  <span>
+                    {exhibitionData.ART_START} ~ {exhibitionData.ART_END}
+                  </span>
                 </td>
               </tr>
               <tr className="space">

@@ -6,7 +6,7 @@ import DiscountSlider from "./DiscountSlider.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { random } from "../lib/api/exhibition";
-import NavBarElement from "../components/common/NavBarElement.js";
+//import NavBarElement from "../components/common/NavBarElement.js";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -37,11 +37,17 @@ const Home = () => {
   return (
     <main>
       <section>
-        <div style={{ paddingTop: "250px", minHeight: "70vh" }}>
+        <div
+          style={{
+            paddingTop: "250px",
+            minHeight: "70vh",
+            textAlign: "center",
+          }}
+        >
           <img
             src="images/18948.jpg"
             alt="18948.jpg"
-            style={{ width: "100vw", height: "500px" }}
+            style={{ width: "75vw", height: "500px" }}
           />
         </div>
         <div
@@ -54,7 +60,7 @@ const Home = () => {
         >
           ART Root가 추천하는 특별한 전시들
         </div>
-        <div class="bsSlidViv">
+        <div className="bsSlidViv">
           <div className="slider">
             <SimpleSlider />
           </div>
@@ -64,11 +70,11 @@ const Home = () => {
       <div>
         <DiscountSlider />
       </div>
-      <section class="collectionsBlock pt-6 pt-md-11 pt-lg-16 pt-xl-21 pb-6 pb-md-10 pb-lg-14 pb-xl-20">
-        <div class="container">
-          <header class="topHeadingHead text-center mb-7 mb-lg-11">
+      <section className="collectionsBlock pt-6 pt-md-11 pt-lg-16 pt-xl-21 pb-6 pb-md-10 pb-lg-14 pb-xl-20">
+        <div className="container">
+          <header className="topHeadingHead text-center mb-7 mb-lg-11">
             <strong
-              class="tpHeadingTitle text-uppercase font-weight-normal d-block mb-2 mb-md-5"
+              className="tpHeadingTitle text-uppercase font-weight-normal d-block mb-2 mb-md-5"
               style={{ paddingTop: "50px" }}
             >
               KEYWORD & RECOMMEND
@@ -78,15 +84,15 @@ const Home = () => {
             </h1>
           </header>
 
-          <div class="row makeItMasonery">
+          <div className="row makeItMasonery">
             {data.map((exhibition, index) => (
-              <div class="mimItem col-12 col-sm-6 col-md-4" key={index}>
-                <article class="collectionColumn mb-6 mb-lg-11">
-                  <div class="imgHolder mb-4">
+              <div className="mimItem col-12 col-sm-6 col-md-4" key={index}>
+                <article className="collectionColumn mb-6 mb-lg-11">
+                  <div className="imgHolder mb-4">
                     <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`}>
                       <img
                         src={exhibition.ART_PICTURE}
-                        class="img-fluid w-100 d-block"
+                        className="img-fluid w-100 d-block"
                         alt={`exhibition-${index}`}
                         width={imageSizes[index].width}
                         height={imageSizes[index].height}
@@ -94,19 +100,21 @@ const Home = () => {
                       />
                     </Link>
                   </div>
-                  <h2 class="mb-1">
+                  <h2 className="mb-1">
                     <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`}>
                       {exhibition.ART_NAME}
                     </Link>
                   </h2>
-                  <h3 class="text-gray777 fontBase">{exhibition.ART_ARTIST}</h3>
-                  <div class="product_mon">{` ${exhibition.ART_PRICE}`}</div>
+                  <h3 className="text-gray777 fontBase">
+                    {exhibition.ART_ARTIST}
+                  </h3>
+                  <div className="product_mon">{` ${exhibition.ART_PRICE}`}</div>
                 </article>
               </div>
             ))}
           </div>
 
-          <footer class="btnWrap text-center">
+          <footer className="btnWrap text-center">
             <a
               href="single-works.html"
               class="btn btnGre5 btnGre5Outline bdr2 btnLgMinWidth"
