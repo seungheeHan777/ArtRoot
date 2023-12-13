@@ -13,7 +13,7 @@ const Recommend = () => {
   const [images, setImages] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState([]);
-
+  const [showAlert, setShowAlert] = useState(true); // 새로운 상태 추가
   useEffect(() => {
     // Fetch category and image data when the component mounts
     fetchData("word"); // Fetch categories
@@ -22,7 +22,11 @@ const Recommend = () => {
       fetchUserPrefer();
       fetchUserImagePrefer(); // Fetch user image preferences
     }
-  }, [user]);
+    if (!user && showAlert) {
+      window.alert("로그인을 먼저하세요.");
+      setShowAlert(false); // 한 번만 알림을 표시하도록 상태 업데이트
+    }
+  }, [user, showAlert]);
 
   const fetchData = (type) => {
     ADcategory()
@@ -219,7 +223,15 @@ const Recommend = () => {
           </div>
         </div>
       ) : (
-        <div>{window.alert("로그인을 먼저하세요.")}</div> //세번뜸!!!!!!
+        // 아래의 코드 블록을 수정
+        showAlert && (
+          <div>
+            {(() => {
+              window.alert("로그인을 먼저하세요.");
+              setShowAlert(false);
+            })()}
+          </div>
+        )
       )}
     </div>
   );

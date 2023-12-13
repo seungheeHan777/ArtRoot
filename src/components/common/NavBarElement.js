@@ -208,6 +208,20 @@ const NavBarElement = ({ user, onLogout }) => {
                             문의사항
                           </a>
                         </li>
+                        <li className="nav-item dropdown">
+                          <a
+                            className="nav-link"
+                            href="/museum"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            style={{ fontSize: "30px" }}
+                          >
+                            미술관
+                          </a>
+                        </li>
+
                         {user && user.username === "admin" ? (
                           <li className="nav-item dropdown">
                             <a

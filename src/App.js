@@ -31,6 +31,7 @@ import Recommend from "./pages/Recommend";
 import AdminRecommend from "./pages/admin/AdminRecommend";
 import ExhibitionKeyword from "./pages/admin/ExhibitionKeyword";
 import DiscountExhibition from "./pages/DiscountExhibition";
+import Museum from "./pages/Museum";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -93,6 +94,7 @@ function App() {
         />
         <Route path="/Question" element={<Question />} />
         <Route path="/Calendar" element={<Calendar />} />
+        <Route path="/museum" element={<Museum />} />
       </Routes>
 
       <div class="ftAreaWrap bg-secondary text-gray888">
