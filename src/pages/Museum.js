@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import NaverMap from "./NaverMap"; // NaverMap 컴포넌트 import
-
+import AddressMuseum from "./AddressMuseum";
 const Museum = () => {
   return (
     <div style={{ textAlign: "center" }}>
@@ -21,6 +21,11 @@ const Museum = () => {
       <br />
       위도는 37.52385131569311, 경도는 126.9801945332582
       <hr />
+      <br />
+      <div>
+        {" "}
+        fd <AddressMuseum address="서울 용산구 서빙고로 137 국립중앙박물관" />
+      </div>
       {/* NaverMap 컴포넌트 사용 */}
       <NaverMap />
       dfsdfsdfdsf

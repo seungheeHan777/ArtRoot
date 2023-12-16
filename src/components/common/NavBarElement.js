@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { NavDropdown, Form, Button } from "react-bootstrap";
+import {
+  NavDropdown,
+  Navbar,
+  Nav,
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const UserInfo = styled.div`
@@ -36,9 +45,9 @@ const NavBarElement = ({ user, onLogout }) => {
           {/* hTopHolder */}
           <div className="hTopHolder pt-1 pb-1 pt-lg-2 pb-lg-3">
             <div className="container">
-              <div className="row">
-                <div className="col-4 col-sm-3 col-lg-2">
-                  {/* logo */}
+              <div className="row align-items-center">
+                {/* Logo (left) */}
+                <div className="col-4 col-sm-3 col-lg-2 text-center">
                   <div className="logo mt-1">
                     <a href="/">
                       <img
@@ -51,11 +60,16 @@ const NavBarElement = ({ user, onLogout }) => {
                   </div>
                 </div>
 
-                <div className="col-8 col-sm-9 col-lg-10 d-flex align-items-end justify-content-end">
-                  {/* btn */}
+                {/* "ART ROOT" heading (center) */}
+                <div className="col-4 col-sm-6 col-lg-8 text-center">
+                  <h1 style={{ fontSize: "60px" }}>ART ROOT</h1>
+                </div>
+
+                {/* Login button (right) */}
+                <div className="col-12 col-sm-3 col-lg-2 d-flex align-items-end justify-content-end mt-2 mt-sm-0">
                   {user ? (
                     <NavDropdown
-                      title={user.username}
+                      title={`${user.username} 님`}
                       id="nav-dropdown-user"
                       className="text-capitalize bdr2 mt-2 hdBtn"
                       style={{ fontSize: "20px" }}
@@ -65,6 +79,9 @@ const NavBarElement = ({ user, onLogout }) => {
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/MyPage">
                         마이페이지
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/Myaccount">
+                        내 정보
                       </NavDropdown.Item>
                     </NavDropdown>
                   ) : (
@@ -221,7 +238,6 @@ const NavBarElement = ({ user, onLogout }) => {
                             미술관
                           </a>
                         </li>
-
                         {user && user.username === "admin" ? (
                           <li className="nav-item dropdown">
                             <a
@@ -286,7 +302,6 @@ const NavBarElement = ({ user, onLogout }) => {
                                   </a>
                                   {/* mnDropList */}
                                 </li>
-                                {/* 11/27 추가 */}
                                 <li className="hasDropdown">
                                   <a
                                     href="/ExhibitionKeyword"
@@ -297,7 +312,6 @@ const NavBarElement = ({ user, onLogout }) => {
                                   >
                                     전시회 키워드 관리
                                   </a>
-                                  {/* mnDropList */}
                                 </li>
                               </ul>
                             </div>
@@ -344,5 +358,4 @@ const NavBarElement = ({ user, onLogout }) => {
     </div>
   );
 };
-
 export default NavBarElement;

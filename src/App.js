@@ -32,6 +32,7 @@ import AdminRecommend from "./pages/admin/AdminRecommend";
 import ExhibitionKeyword from "./pages/admin/ExhibitionKeyword";
 import DiscountExhibition from "./pages/DiscountExhibition";
 import Museum from "./pages/Museum";
+import Myaccount from "./pages/Myaccount";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -65,6 +66,7 @@ function App() {
         <Route path="/Rating/:id" element={<Rating />} />
         <Route path="/RatingList" element={<RatingList />} />
         <Route path="/SignUpComplete" element={<SignUpComplete />} />
+        <Route path="/Myaccount" element={<Myaccount />} />
         <Route
           path="/Welcome"
           element={

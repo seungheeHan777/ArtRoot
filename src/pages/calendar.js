@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { myone } from "../lib/api/auth";
 import Form from "react-bootstrap/Form";
 
-const MyCalendar = () => {
+export default function MyCalendar() {
   const [date, setDate] = useState(new Date());
   const [oneInfo, setOneInfo] = useState([]);
 
@@ -50,8 +50,16 @@ const MyCalendar = () => {
     const newDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);
     setDate(newDate);
   };
+  const isSameDay = (date1, date2) => {
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
+  };
 
   const generateCalendarGrid = () => {
+    const today = new Date(); // 현재 날짜 가져오기
     const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
     const daysInMonth = new Date(
       date.getFullYear(),
@@ -67,14 +75,6 @@ const MyCalendar = () => {
     const grid = [];
 
     // 추가된 부분: 현재 월과 년도를 보여주는 부분
-    grid.push(
-      <div
-        key="month-year"
-        style={{ marginBottom: "50px", textAlign: "center", fontSize: "50px" }}
-      >
-        {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
-      </div>
-    );
 
     grid.unshift(
       <div
@@ -82,12 +82,49 @@ const MyCalendar = () => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          marginBottom: "50px",
-          marginTop: "50px",
+          alignItems: "center", // 수직 가운데 정렬 추가
+          marginBottom: "10px", // 간격 조절
+          marginTop: "10px", // 간격 조절
         }}
       >
-        <button onClick={handlePrevMonth}>&lt; 이전 달</button>
-        <button onClick={handleNextMonth}>다음 달 &gt;</button>
+        <button
+          onClick={handlePrevMonth}
+          style={{
+            fontSize: "20px", // 버튼 크기 조절
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          &lt;
+        </button>
+
+        <div
+          key="month-year"
+          style={{
+            marginBottom: "20px",
+            textAlign: "center",
+            paddingtop: "10px",
+            fontSize: "20px", // 폰트 크기 조절
+            fontWeight: "bold", // 폰트 굵기 추가
+          }}
+        >
+          {date.getFullYear()}
+          {"년  "}
+          {date.toLocaleString("default", { month: "long" })}
+        </div>
+
+        <button
+          onClick={handleNextMonth}
+          style={{
+            fontSize: "20px", // 버튼 크기 조절
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          &gt;
+        </button>
       </div>
     );
 
@@ -108,11 +145,29 @@ const MyCalendar = () => {
           key={currentDate.toDateString()}
           style={{
             display: "grid",
-            gap: "50px",
-            marginBottom: "50px",
+            gap: "4px", // 간격 조절
+            marginBottom: "10px", // 간격 조절
+            position: "relative", // Adjusted position for overlapping count
+            border:
+              today.toDateString() === currentDate.toDateString()
+                ? "2px solid red"
+                : "none", // Check if it's today's date
+            borderRadius: "50%", // Make it circular
+            width: "30px", // 간격 및 크기 조절
+            height: "30px", // 간격 및 크기 조절
           }}
         >
-          <div onClick={() => handleDateChange(currentDate)}>
+          <div
+            onClick={() => handleDateChange(currentDate)}
+            style={{
+              borderRadius: "50%",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {day} {/* Display the day */}
           </div>
           {images.length > 0 ? (
@@ -121,17 +176,19 @@ const MyCalendar = () => {
                 key={index}
                 src={image}
                 alt="Event"
-                width="40px"
-                height="40px"
+                width="30px" // 크기 조절
+                height="30px" // 크기 조절
+                onClick={() => handleImageClick(currentDate)}
+                style={{ cursor: "pointer" }}
               />
             ))
           ) : (
-            <div style={{ width: "50px", height: "50px" }}>
+            <div style={{ width: "30px", height: "30px" }}>
               {/* Placeholder for empty image */}
             </div>
           )}
           {overlapCount > 0 && (
-            <div style={{ marginTop: "5px" }}>{overlapCount} overlapped</div>
+            <div style={{ marginTop: "2px" }}>{overlapCount} overlapped</div>
           )}
         </div>
       );
@@ -143,17 +200,43 @@ const MyCalendar = () => {
       const [representativeImage, overlappingCount] =
         getImageForDate(currentDate);
 
+      const isCurrentDate = isSameDay(currentDate, new Date());
+
       currentWeek.push(
         <div
           key={currentDate.toDateString()}
           style={{
             display: "grid",
-            gap: "8px",
+            gap: "4px", // 간격 조절
             position: "relative", // Set position to relative for overlapping count
+            textAlign: "center",
           }}
         >
-          <div onClick={() => handleDateChange(currentDate)}>
-            {day} {/* Display the day */}
+          <div
+            onClick={() => handleDateChange(currentDate)}
+            style={{
+              position: "relative",
+              display: "inline-block",
+              cursor: "pointer",
+              borderRadius: "50%", // 동그라미 모양을 위해 추가
+              width: "30px", // 동그라미 너비
+              height: "30px", // 동그라미 높이
+              lineHeight: "30px", // 동그라미 내부 텍스트 중앙 정렬
+              border: isCurrentDate ? "2px solid red" : "none", // Check if it's today's date
+              background: isCurrentDate ? "red" : "transparent",
+              margin: "auto", // 숫자를 동그라미 정 중앙에 위치시키기 위한 추가 스타일
+              fontSize: "12px", // 동그라미 내부 텍스트 크기 조절
+            }}
+          >
+            <span
+              style={{
+                fontSize: "12px",
+                fontWeight: isCurrentDate ? "bold" : "normal",
+                color: isCurrentDate ? "white" : "black",
+              }}
+            >
+              {day} {/* Display the day */}
+            </span>
           </div>
           {Array.isArray(representativeImage) &&
           representativeImage.length > 0 ? (
@@ -163,8 +246,8 @@ const MyCalendar = () => {
                   key={index}
                   src={image}
                   alt="Event"
-                  width="100"
-                  height="100"
+                  width="30" // 크기 조절
+                  height="30" // 크기 조절
                   onClick={() => handleImageClick(currentDate)}
                   style={{ cursor: "pointer" }} // Add cursor style for clickable images
                 />
@@ -173,13 +256,13 @@ const MyCalendar = () => {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "-20px", // Adjust the position as needed
+                    bottom: "-12px", // Adjust the position as needed
                     left: "50%",
                     transform: "translateX(-50%)",
                     background: "rgba(255, 255, 255, 0.8)",
-                    padding: "5px",
-                    borderRadius: "5px",
-                    fontSize: "14px",
+                    padding: "2px",
+                    borderRadius: "3px",
+                    fontSize: "10px",
                   }}
                   onClick={() => handleImageClick(currentDate)}
                 >
@@ -188,7 +271,7 @@ const MyCalendar = () => {
               )}
             </>
           ) : (
-            <div style={{ width: "50px", height: "50px" }}>
+            <div style={{ width: "30px", height: "30px" }}>
               {/* Placeholder for empty image */}
             </div>
           )}
@@ -203,8 +286,8 @@ const MyCalendar = () => {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(7, 1fr)",
-              gap: "70px",
-              marginBottom: "100px",
+              gap: "12px", // 간격 조절
+              marginBottom: "20px",
             }}
           >
             {currentWeek}
@@ -225,10 +308,6 @@ const MyCalendar = () => {
   const handleImageClick = (currentDate) => {
     const dateStr = formatDate(currentDate);
     const imagesForDate = oneInfo.filter((info) => info.date === dateStr);
-
-    // 여기에서 이미지 클릭 시 모든 이미지를 보여주는 방법을 구현하면 됩니다.
-    // 예를 들어, 모달 창이나 화면의 다른 부분에 이미지를 렌더링하는 등의 방식을 선택할 수 있습니다.
-    // 아래는 간단한 모달 창을 이용한 예시입니다. (모달 관련 라이브러리를 사용하거나 직접 모달을 만들어야 할 수 있습니다.)
 
     const modal = document.createElement("div");
     modal.style.position = "fixed";
@@ -256,6 +335,7 @@ const MyCalendar = () => {
       imageElement.width = "200";
       imageElement.height = "200";
       imageElement.style.marginRight = "10px";
+
       modalContent.appendChild(imageElement);
     });
 
@@ -274,47 +354,24 @@ const MyCalendar = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "80%",
-        width: "75%",
-        paddingTop: "250px", // Adjusted paddingTop
+        height: "100%",
+        width: "100%",
+        paddingTop: "20px", // Adjusted paddingTop
         paddingBottom: "50px",
-        marginLeft: "150px",
-        marginRight: "100px",
+        marginLeft: "50px", // 조정
+        marginRight: "50px", // 조정
       }}
     >
       <div
         style={{
           flex: 1,
           border: "1px solid black",
-          paddingLeft: "50px",
-          paddingRight: "50px",
-          marginRight: "100px",
+          paddingLeft: "10px", // 조정
+          paddingRight: "10px", // 조정
         }}
       >
         {generateCalendarGrid()}
       </div>
-      <div>
-        <div style={{ marginBottom: "20px" }}>내가 본 전시</div>
-        <div>
-          {oneInfo.map((one, index) => (
-            <div key={index}>
-              <Form.Group controlId={`comment-${index}`}>
-                <img
-                  src={one.picture ? one.picture : ""}
-                  alt="Profile Picture"
-                  width="75" // Adjusted image width
-                  height="75" // Adjusted image height
-                  style={{ marginBottom: "10px" }} // Added margin to separate images
-                />
-                <br />
-                <br />
-              </Form.Group>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
-};
-
-export default MyCalendar;
+}
