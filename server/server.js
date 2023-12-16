@@ -15,6 +15,7 @@ const exhibitionRoutes = require("./lib/api/exhibition.js"); // api/user.js를 �
 const adminRoutes = require("./lib/api/admin.js");
 const keywordRoutes = require("./lib/api/keyword.js");
 const recRoutes = require("./lib/api/rec.js");
+const museumRoutes = require("./lib/api/museum.js");
 // //db.js 로 이동
 
 //세션
@@ -113,6 +114,7 @@ app.use("/ex", exhibitionRoutes);
 app.use("/admin", adminRoutes);
 app.use("/keyword", keywordRoutes);
 app.use("/rec", recRoutes);
+app.use("/museum", museumRoutes);
 
 // app.get("/*", (req, res) =>
 //   res.sendFile(path.join(__dirname, "../build/index.html"))

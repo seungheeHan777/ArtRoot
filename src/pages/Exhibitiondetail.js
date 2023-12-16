@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./detail.css";
 import { detail } from "../lib/api/exhibition.js";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { keywordDetail } from "../lib/api/rec.js";
 import parse from "html-react-parser";
+import NaverMap from "../components/common/NaverMap"; // NaverMap 컴포넌트 import
+import { getMuseumCoordinates } from "../lib/api/museum.js";
 const Exhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
   const [keyword, setKeyword] = useState(null);
+  const [show, setShow] = useState(false);
+  const [museumCoordinates, setMuseumCoordinates] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,7 +38,6 @@ const Exhibitiondetail = () => {
         //키워드 배경지식 불러오기
         const res = await keywordDetail(id);
         setKeyword(res.data.keywordDetail);
-        console.log(keyword);
       } catch (e) {
         console.error(e);
       }
@@ -36,6 +45,28 @@ const Exhibitiondetail = () => {
 
     fetchData2();
   }, []);
+  // exhibitionData가 변경될 때 실행되는 효과
+  useEffect(() => {
+    const fetchMuseumCoordinates = async () => {
+      try {
+        // exhibitionData.ART_PLACE가 정의되어 있는지 확인
+        if (exhibitionData && exhibitionData.ART_PLACE) {
+          const museumResponse = await getMuseumCoordinates(
+            exhibitionData.ART_PLACE
+          );
+          console.log(museumResponse);
+          setMuseumCoordinates({
+            latitude: museumResponse.data.x,
+            longitude: museumResponse.data.y,
+          });
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchMuseumCoordinates();
+  }, [exhibitionData]);
 
   if (!exhibitionData) {
     return <div>Loading...</div>;
@@ -73,7 +104,27 @@ const Exhibitiondetail = () => {
                   <span className="t_row">장소</span>
                 </th>
                 <td>
-                  <span>{exhibitionData.ART_PLACE}</span>
+                  <span onClick={handleShow}>{exhibitionData.ART_PLACE}</span>
+                  <Button variant="primary" onClick={handleShow}>
+                    장소 확인하기
+                  </Button>
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>미술관 장소</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      {/* NaverMap 컴포넌트 사용 */}
+                      <NaverMap
+                        latitude={museumCoordinates.latitude}
+                        longitude={museumCoordinates.longitude}
+                      />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        닫기
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </td>
               </tr>
               <tr className="space">

@@ -99,13 +99,13 @@ function App() {
         <Route path="/museum" element={<Museum />} />
       </Routes>
 
-      <div class="ftAreaWrap bg-secondary text-gray888">
+      <div className="ftAreaWrap bg-secondary text-gray888">
         <footer
           id="pageFooter"
-          class="bg-dark text-gray777 text-center pt-7 pb-5 pt-lg-10 pb-lg-9"
+          className="bg-dark text-gray777 text-center pt-7 pb-5 pt-lg-10 pb-lg-9"
         >
-          <div class="container" style={{ paddingTop: "50px" }}>
-            <p class="mb-2">ART ROOT &copy; All Rights Reserved</p>
+          <div className="container" style={{ paddingTop: "50px" }}>
+            <p className="mb-2">ART ROOT &copy; All Rights Reserved</p>
           </div>
         </footer>
       </div>

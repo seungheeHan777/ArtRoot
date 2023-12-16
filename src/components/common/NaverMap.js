@@ -1,23 +1,17 @@
 import React, { useEffect } from "react";
 
-const NaverMap = () => {
+const NaverMap = ({ latitude, longitude }) => {
   useEffect(() => {
     // 네이버 지도 초기화 함수
     const initMap = () => {
       const map = new window.naver.maps.Map("map", {
-        center: new window.naver.maps.LatLng(
-          37.52385131569311,
-          126.9801945332582
-        ), // 국립중앙박물관 좌표
-        zoom: 16, // 줌 레벨 조절
+        center: new window.naver.maps.LatLng(latitude, longitude), // 국립중앙박물관 좌표
+        zoom: 17, // 줌 레벨 조절
       });
 
       // 마커 추가
       const marker = new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(
-          37.52385131569311,
-          126.9801945332582
-        ),
+        position: new window.naver.maps.LatLng(latitude, longitude),
         map: map,
       });
     };
@@ -45,6 +39,7 @@ const NaverMap = () => {
         id="map"
         style={{ width: "70%", height: "300px", display: "inline-block" }}
       ></div>
+      <div></div>
     </div>
   );
 };
