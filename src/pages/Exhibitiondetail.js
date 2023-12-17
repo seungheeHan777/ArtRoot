@@ -54,7 +54,6 @@ const Exhibitiondetail = () => {
           const museumResponse = await getMuseumCoordinates(
             exhibitionData.ART_PLACE
           );
-          console.log(museumResponse);
           setMuseumCoordinates({
             latitude: museumResponse.data.x,
             longitude: museumResponse.data.y,
@@ -105,9 +104,6 @@ const Exhibitiondetail = () => {
                 </th>
                 <td>
                   <span onClick={handleShow}>{exhibitionData.ART_PLACE}</span>
-                  <Button variant="primary" onClick={handleShow}>
-                    장소 확인하기
-                  </Button>
                   <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                       <Modal.Title>미술관 장소</Modal.Title>
@@ -148,7 +144,13 @@ const Exhibitiondetail = () => {
                   <span className="t_row">사이트</span>
                 </th>
                 <td>
-                  <span>{exhibitionData.ART_SITE}</span>
+                  <a
+                    href={exhibitionData.ART_SITE}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {exhibitionData.ART_SITE}
+                  </a>
                 </td>
               </tr>
               <tr className="space">
