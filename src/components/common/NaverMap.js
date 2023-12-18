@@ -33,11 +33,24 @@ const NaverMap = ({ latitude, longitude }) => {
   }, []); // useEffect의 의존성 배열을 빈 배열로 설정하여 한 번만 실행되도록 함
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div
+      style={{
+        textAlign: "center",
+        border: "3px solid black",
+        borderRadius: "10px",
+        padding: "10px",
+      }}
+    >
       {/* 네이버 지도를 표시할 영역 */}
       <div
         id="map"
-        style={{ width: "70%", height: "300px", display: "inline-block" }}
+        style={{
+          width: "70%",
+          height: "300px",
+          display: "inline-block",
+          border: "3px solid red",
+          borderRadius: "10px",
+        }}
       ></div>
       <div></div>
     </div>

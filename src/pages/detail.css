@@ -157,3 +157,19 @@ tr.space {
   border-radius: 5px;
   margin-top: -20px;
 }
+
+.place-text {
+  cursor: pointer;
+  color: initial;
+  transition: font-size 0.3s, color 0.3s;
+}
+
+.place-text:hover {
+  font-size: 1.1em; /* 예시로 크기를 1.2배로 변경 */
+  color: blue; /* 예시로 파란색으로 변경 */
+  cursor: pointer;
+  font-weight: bold;
+}
+.modal-text {
+  font-weight: bold;
+}

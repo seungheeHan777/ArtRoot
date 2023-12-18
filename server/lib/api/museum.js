@@ -14,7 +14,7 @@ router.get("/getMuseumCoordinates", (req, res) => {
   }
 
   // 미술관 이름을 이용하여 DB에서 좌표 조회
-  const query = "SELECT x, y FROM museum WHERE name = ?";
+  const query = "SELECT name,x, y FROM museum WHERE name = ?";
 
   db.query(query, [museumName], (err, results) => {
     if (err) {
@@ -28,8 +28,8 @@ router.get("/getMuseumCoordinates", (req, res) => {
     }
 
     // 좌표를 응답
-    const { x, y } = results[0];
-    res.json({ x, y });
+    const { x, y, name } = results[0];
+    res.json({ x, y, name });
   });
 });
 

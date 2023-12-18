@@ -13,6 +13,7 @@ const Exhibitiondetail = () => {
   const [keyword, setKeyword] = useState(null);
   const [show, setShow] = useState(false);
   const [museumCoordinates, setMuseumCoordinates] = useState({
+    name: "",
     latitude: 0,
     longitude: 0,
   });
@@ -55,6 +56,7 @@ const Exhibitiondetail = () => {
             exhibitionData.ART_PLACE
           );
           setMuseumCoordinates({
+            name: museumResponse.data.name,
             latitude: museumResponse.data.x,
             longitude: museumResponse.data.y,
           });
@@ -103,13 +105,18 @@ const Exhibitiondetail = () => {
                   <span className="t_row">장소</span>
                 </th>
                 <td>
-                  <span onClick={handleShow}>{exhibitionData.ART_PLACE}</span>
+                  <span onClick={handleShow} className="place-text">
+                    {exhibitionData.ART_PLACE}
+                  </span>
                   <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                       <Modal.Title>미술관 장소</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                       {/* NaverMap 컴포넌트 사용 */}
+                      <span className="modal-text">
+                        {museumCoordinates.name}
+                      </span>
                       <NaverMap
                         latitude={museumCoordinates.latitude}
                         longitude={museumCoordinates.longitude}
