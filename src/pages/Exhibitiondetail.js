@@ -7,11 +7,15 @@ import { keywordDetail } from "../lib/api/rec.js";
 import parse from "html-react-parser";
 import NaverMap from "../components/common/NaverMap"; // NaverMap 컴포넌트 import
 import { getMuseumCoordinates } from "../lib/api/museum.js";
-const Exhibitiondetail = () => {
+import { rate } from "../lib/api/exhibition.js";
+import { FaStar } from "react-icons/fa";
+const createArray = (length) => [...Array(length)];
+const Exhibitiondetail = ({ totalStars = 5 }) => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
   const [keyword, setKeyword] = useState(null);
   const [show, setShow] = useState(false);
+  const [exhibitionRate, setExhibitionRate] = useState(null);
   const [museumCoordinates, setMuseumCoordinates] = useState({
     name: "",
     latitude: 0,
@@ -33,6 +37,7 @@ const Exhibitiondetail = () => {
 
     fetchData();
   }, [id]);
+
   useEffect(() => {
     const fetchData2 = async () => {
       try {
@@ -46,6 +51,20 @@ const Exhibitiondetail = () => {
 
     fetchData2();
   }, []);
+  useEffect(() => {
+    const fetchData3 = async () => {
+      try {
+        const response = await rate({ id });
+
+        setExhibitionRate(response.data);
+        console.log(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchData3();
+  }, [id]);
   // exhibitionData가 변경될 때 실행되는 효과
   useEffect(() => {
     const fetchMuseumCoordinates = async () => {
@@ -73,6 +92,29 @@ const Exhibitiondetail = () => {
     return <div>Loading...</div>;
   }
 
+  const Star = ({ selected = false }) => (
+    <FaStar color={selected ? "yellow" : "gray"} />
+  );
+
+  const renderStars = (stars) => {
+    return createArray(totalStars).map((n, i) => (
+      <Star key={i} selected={i + 0.5 < stars} />
+    ));
+  };
+
+  const calculateAverageStars = () => {
+    if (!exhibitionRate || exhibitionRate.length === 0) {
+      return 0; // Default value when no data is available
+    }
+
+    const totalStars = exhibitionRate.reduce((acc, item) => {
+      const stars = parseInt(item.ONE_STARS); // Convert stars to an integer
+      return acc + stars;
+    }, 0);
+
+    const averageStars = totalStars / exhibitionRate.length;
+    return averageStars.toFixed(1);
+  };
   return (
     <div className="contents" style={{ paddingTop: "500px" }}>
       <div className="product_detail">
@@ -86,7 +128,11 @@ const Exhibitiondetail = () => {
           </div>
           <div className="infoArea">
             <div className="headingArea">
-              <h2> {exhibitionData.ART_NAME}</h2>
+              <h1> {exhibitionData.ART_NAME}</h1>
+              <h3>
+                평균{renderStars(calculateAverageStars())}
+                {calculateAverageStars()}점
+              </h3>
             </div>
             <hr style={{ border: "1px solid", width: "100%" }} />
             <table>

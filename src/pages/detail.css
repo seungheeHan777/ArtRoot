@@ -160,7 +160,8 @@ tr.space {
 
 .place-text {
   cursor: pointer;
-  color: initial;
+  color: rgba(16, 165, 43, 0.416);
+  font-weight: bold;
   transition: font-size 0.3s, color 0.3s;
 }
 

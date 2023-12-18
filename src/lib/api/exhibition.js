@@ -25,3 +25,5 @@ export const ratingDel = (ONE_USER, ONE_ARTNUM) =>
 
 //할인 전시회
 export const discount = () => client.get("/ex/DiscountExhibitions");
+//평균 추가
+export const rate = ({ id }) => client.get(`/ex/exhibitionrate/${id}`);
