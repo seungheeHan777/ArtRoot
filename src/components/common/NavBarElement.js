@@ -32,6 +32,10 @@ const NavBarElement = ({ user, onLogout }) => {
       navigate(`/ExhibitionSearchList`);
     }
   };
+  // 여기서 navigate 사용
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   return (
     <div id="pageWrapper">
@@ -49,7 +53,7 @@ const NavBarElement = ({ user, onLogout }) => {
                 {/* Logo (left) */}
                 <div className="col-4 col-sm-3 col-lg-2 text-center">
                   <div className="logo mt-1">
-                    <a href="/">
+                    <a onClick={() => handleNavigate("/")}>
                       <img
                         src="images/artroot_logo.png"
                         className="img-fluid"
@@ -77,10 +81,14 @@ const NavBarElement = ({ user, onLogout }) => {
                       <NavDropdown.Item onClick={handleLogout}>
                         로그아웃
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/MyPage">
+                      <NavDropdown.Item
+                        onClick={() => handleNavigate("/MyPage")}
+                      >
                         마이페이지
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/Myaccount">
+                      <NavDropdown.Item
+                        onClick={() => handleNavigate("/Myaccount")}
+                      >
                         내 정보
                       </NavDropdown.Item>
                     </NavDropdown>
@@ -91,8 +99,14 @@ const NavBarElement = ({ user, onLogout }) => {
                       className="text-capitalize bdr2 mt-2 hdBtn"
                       style={{ fontSize: "20px" }}
                     >
-                      <NavDropdown.Item href="/Login">로그인</NavDropdown.Item>
-                      <NavDropdown.Item href="/Register">
+                      <NavDropdown.Item
+                        onClick={() => handleNavigate("/Login")}
+                      >
+                        로그인
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavigate("/Register")}
+                      >
                         회원가입
                       </NavDropdown.Item>
                     </NavDropdown>
@@ -119,7 +133,7 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item active dropdown">
                           <a
                             className="nav-link"
-                            href="/"
+                            onClick={() => handleNavigate("/")}
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"
@@ -148,7 +162,9 @@ const NavBarElement = ({ user, onLogout }) => {
                             <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
                               <li className="hasDropdown">
                                 <a
-                                  href="/ExhibitionList"
+                                  onClick={() =>
+                                    handleNavigate("/ExhibitionList")
+                                  }
                                   style={{
                                     fontSize: "20px",
                                     textDecoration: "none",
@@ -160,7 +176,9 @@ const NavBarElement = ({ user, onLogout }) => {
                               </li>
                               <li className="hasDropdown">
                                 <a
-                                  href="/RecommendedExhibition"
+                                  onClick={() =>
+                                    handleNavigate("/RecommendedExhibition")
+                                  }
                                   style={{
                                     fontSize: "20px",
                                     textDecoration: "none",
@@ -172,7 +190,9 @@ const NavBarElement = ({ user, onLogout }) => {
                               </li>
                               <li className="hasDropdown">
                                 <a
-                                  href="/DiscountExhibition"
+                                  onClick={() =>
+                                    handleNavigate("/DiscountExhibition")
+                                  }
                                   style={{
                                     fontSize: "20px",
                                     textDecoration: "none",
@@ -188,7 +208,7 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
-                            href="/RatingList"
+                            onClick={() => handleNavigate("/RatingList")}
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"
@@ -201,7 +221,7 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
-                            href="/Recommend"
+                            onClick={() => handleNavigate("/Recommend")}
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"
@@ -215,7 +235,7 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
-                            href="/Question"
+                            onClick={() => handleNavigate("/Question")}
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"
@@ -228,7 +248,7 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
-                            href="/museum"
+                            onClick={() => handleNavigate("/museum")}
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"
@@ -242,7 +262,7 @@ const NavBarElement = ({ user, onLogout }) => {
                           <li className="nav-item dropdown">
                             <a
                               className="nav-link"
-                              href="/AdminMain"
+                              onClick={() => handleNavigate("/AdminMain")}
                               role="button"
                               data-toggle="dropdown"
                               aria-haspopup="true"
@@ -256,7 +276,7 @@ const NavBarElement = ({ user, onLogout }) => {
                               <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
                                 <li className="hasDropdown">
                                   <a
-                                    href="/AdminPage"
+                                    onClick={() => handleNavigate("/AdminPage")}
                                     style={{
                                       fontSize: "20px",
                                       textDecoration: "none",
@@ -268,7 +288,9 @@ const NavBarElement = ({ user, onLogout }) => {
                                 </li>
                                 <li className="hasDropdown">
                                   <a
-                                    href="/AdminExhibitionList"
+                                    onClick={() =>
+                                      handleNavigate("/AdminExhibitionList")
+                                    }
                                     style={{
                                       fontSize: "20px",
                                       textDecoration: "none",
@@ -280,7 +302,9 @@ const NavBarElement = ({ user, onLogout }) => {
                                 </li>
                                 <li className="hasDropdown">
                                   <a
-                                    href="/AdminRatingList"
+                                    onClick={() =>
+                                      handleNavigate("/AdminRatingList")
+                                    }
                                     style={{
                                       fontSize: "20px",
                                       textDecoration: "none",
@@ -292,7 +316,9 @@ const NavBarElement = ({ user, onLogout }) => {
                                 </li>
                                 <li className="hasDropdown">
                                   <a
-                                    href="/AdminRecommend"
+                                    onClick={() =>
+                                      handleNavigate("/AdminRecommend")
+                                    }
                                     style={{
                                       fontSize: "20px",
                                       textDecoration: "none",
@@ -304,7 +330,9 @@ const NavBarElement = ({ user, onLogout }) => {
                                 </li>
                                 <li className="hasDropdown">
                                   <a
-                                    href="/ExhibitionKeyword"
+                                    onClick={() =>
+                                      handleNavigate("/ExhibitionKeyword")
+                                    }
                                     style={{
                                       fontSize: "20px",
                                       textDecoration: "none",
