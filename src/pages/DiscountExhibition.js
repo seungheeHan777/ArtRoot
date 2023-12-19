@@ -84,7 +84,11 @@ const ExhibitionList = () => {
               {Array.from(
                 { length: Math.ceil(data.length / exhibitionsPerPage) },
                 (_, index) => (
-                  <button key={index} onClick={() => paginate(index + 1)}>
+                  <button
+                    key={index}
+                    onClick={() => paginate(index + 1)}
+                    className={currentPage === index + 1 ? "current-page" : ""}
+                  >
                     {index + 1}
                   </button>
                 )

@@ -1,0 +1,21 @@
+.dropdown-menu {
+  text-align: center;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f8f9fa; /* 마우스를 올렸을 때 배경색 변경 */
+}
+.navbar-nav {
+  width: 500%;
+}
+.nav-item.dropdown {
+  width: 300%;
+}
