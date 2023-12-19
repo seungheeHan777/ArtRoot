@@ -90,7 +90,7 @@ const ExhibitionList = () => {
                   <button
                     key={index}
                     onClick={() => paginate(index + 1)}
-                    style={{ marginRight: "10px" }}
+                    className={currentPage === index + 1 ? "current-page" : ""}
                   >
                     {index + 1}
                   </button>

@@ -81,10 +81,10 @@ export default function DiscountSlider() {
         )}
 
         <div style={{ paddingBottom: "20px" }}></div>
-        <footer class="btnWrap text-center">
+        <footer className="btnWrap text-center">
           <a
             href="/RecommendedExhibition"
-            class="btn btnGre5 btnGre5Outline bdr2 btnLgMinWidth"
+            className="btn btnGre5 btnGre5Outline bdr2 btnLgMinWidth"
           >
             할인 전시 더보기
           </a>

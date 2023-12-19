@@ -21,10 +21,10 @@
 
 .slider {
   display: flex;
-  justify-content: center; /* °¡·Î ¹æÇâ Áß¾Ó Á¤·Ä */
-  align-items: center; /* ¼¼·Î ¹æÇâ Áß¾Ó Á¤·Ä */
+  justify-content: center; /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+  align-items: center; /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾ï¿½ ï¿½ï¿½ï¿½ï¿½ */
   width: 100%;
-  height: 70vh; /* ³ôÀÌ¸¦ È­¸é ÀüÃ¼ ³ôÀÌ·Î ¼³Á¤ */
+  height: 70vh; /* ï¿½ï¿½ï¿½Ì¸ï¿½ È­ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½Ì·ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 
 .slidediv {
@@ -79,4 +79,31 @@
 
 #right {
   margin-left: 30px;
+}
+
+/* ì „ì‹œíšŒ ë¦¬ìŠ¤íŠ¸ ë²„íŠ¼ */
+
+.pagination {
+  text-align: center;
+  margin: 40px;
+}
+.pagination button {
+  /* ì¼ë°˜ì ì¸ í˜ì´ì§€ ë²„íŠ¼ì˜ ìŠ¤íƒ€ì¼ */
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin-right: 20px;
+  border-radius: 15px;
+}
+
+.pagination button.current-page {
+  /* í˜„ì¬ í˜ì´ì§€ ë²„íŠ¼ì˜ ìŠ¤íƒ€ì¼ */
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.pagination button:hover {
+  transform: scale(1.1); /* Increase the size on hover */
+  font-weight: bold;
 }

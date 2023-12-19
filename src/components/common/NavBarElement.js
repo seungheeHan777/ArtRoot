@@ -11,7 +11,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import "./nav.css";
 const UserInfo = styled.div`
   font-weight: 800;
   margin-right: 1rem;
@@ -147,7 +147,6 @@ const NavBarElement = ({ user, onLogout }) => {
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
-                            href="javascript:void(0);"
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"

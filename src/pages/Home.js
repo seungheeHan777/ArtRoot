@@ -12,7 +12,6 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log("imageSizes:", imageSizes);
     const fetchData = async () => {
       try {
         const response = await random();
@@ -117,7 +116,7 @@ const Home = () => {
           <footer className="btnWrap text-center">
             <a
               href="single-works.html"
-              class="btn btnGre5 btnGre5Outline bdr2 btnLgMinWidth"
+              className="btn btnGre5 btnGre5Outline bdr2 btnLgMinWidth"
             >
               Explore All Collections
             </a>
