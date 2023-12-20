@@ -47,10 +47,9 @@ const Rating = ({ totalStars = 5 }) => {
       exhibitionId: id,
       date: date,
     };
-    console.log(data);
     submit(data)
       .then((response) => {
-        if (response.data.message === "이미 평가를 제출했습니다.") {
+        if (response.data.message === "완료") {
           // 이미 평가를 제출한 경우
           window.confirm("이미 평가한 전시입니다.");
         } else {

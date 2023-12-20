@@ -121,8 +121,8 @@ router.post("/submitRating", (req, res) => {
 
     if (checkResult.length > 0) {
       // User has already rated this exhibition
-      return res.status(400).json({
-        message: "이미 평가를 제출했습니다.",
+      return res.status(200).json({
+        message: "완료",
       });
     } else {
       // Insert the data into your "one" database table using an SQL query
@@ -212,7 +212,6 @@ router.get("/DiscountExhibitions", (req, res) => {
         error: "데이터베이스에서 전시회 정보를 가져오는 중 에러가 발생했습니다",
       });
     }
-
     // 결과를 클라이언트에게 응답
     res.status(200).json(results);
   });

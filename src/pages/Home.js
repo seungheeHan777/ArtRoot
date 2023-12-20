@@ -6,6 +6,7 @@ import DiscountSlider from "./DiscountSlider.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { random } from "../lib/api/exhibition";
+import TOPExhibitionItem from "./TopExhibitionItem.js";
 //import NavBarElement from "../components/common/NavBarElement.js";
 
 const Home = () => {
@@ -48,7 +49,13 @@ const Home = () => {
             alt="18948.jpg"
             style={{ width: "75vw", height: "500px" }}
           />
+
+          <h2 style={{ fontSize: "1.5em", textAlign: "center", color: "#666" }}>
+            이번주 가장 핫한 전시들
+          </h2>
+          <TOPExhibitionItem />
         </div>
+        <hr></hr>
         <div
           style={{
             textAlign: "center",

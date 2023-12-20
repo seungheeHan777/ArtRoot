@@ -14,6 +14,8 @@ const Recommend = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState([]);
   const [showAlert, setShowAlert] = useState(true); // 새로운 상태 추가
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 추가
+  const imagesPerPage = 8; // 페이지당 이미지 수
   useEffect(() => {
     // Fetch category and image data when the component mounts
     fetchData("word"); // Fetch categories
@@ -124,12 +126,23 @@ const Recommend = () => {
       );
     }
   };
+
+  // 현재 페이지에 해당하는 이미지 목록을 반환
+  const getCurrentImages = () => {
+    const indexOfLastImage = currentPage * imagesPerPage;
+    const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+    return images.slice(indexOfFirstImage, indexOfLastImage);
+  };
+
+  // 페이지 변경 함수
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div style={{ paddingTop: "250px", textAlign: "center" }}>
       {user ? (
         <div>
           <h1>추천</h1>
-          <h2>카테고리 키워드 선택</h2>
+          {/* <h2>카테고리 키워드 선택</h2>
           <div className="button-container" style={{ paddingTop: "20px" }}>
             {categories.map((category) => (
               <button
@@ -152,8 +165,8 @@ const Recommend = () => {
                 {category.name}
               </button>
             ))}
-          </div>
-          <div
+          </div> */}
+          {/* <div
             style={{
               textAlign: "center",
               fontSize: "25px", // 적절한 크기로 조절하세요
@@ -162,12 +175,12 @@ const Recommend = () => {
             }}
           >
             <button onClick={handleCategoryRecommend}>등록</button>
-          </div>
+          </div> */}
           <hr />
           <div>
             <h2>이미지 선택</h2>
             <div className="image-container">
-              {images.map((image) => (
+              {getCurrentImages().map((image) => (
                 <div key={image.category_id} className="image-item">
                   <div className="image-content">
                     <img
@@ -186,29 +199,22 @@ const Recommend = () => {
                   </div>
                 </div>
               ))}
-              <style jsx>{`
-                .image-container {
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: flex-start; /* 왼쪽에서 오른쪽으로 정렬 */
+            </div>
+            <div>
+              <button
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                이전
+              </button>
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                disabled={
+                  currentPage === Math.ceil(images.length / imagesPerPage)
                 }
-
-                .image-item {
-                  width: calc(33.33% - 10px);
-                  margin-bottom: 20px;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                }
-
-                .image-content {
-                  text-align: center;
-                }
-
-                .checkbox {
-                  margin-top: 10px;
-                }
-              `}</style>
+              >
+                다음
+              </button>
             </div>
             <div
               style={{
