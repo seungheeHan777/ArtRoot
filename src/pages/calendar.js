@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { myone } from "../lib/api/auth";
+import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
 export default function MyCalendar() {
   const [date, setDate] = useState(new Date());
   const [oneInfo, setOneInfo] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOneInfo = async () => {
@@ -176,8 +178,8 @@ export default function MyCalendar() {
                 key={index}
                 src={image}
                 alt="Event"
-                width="30px" // 크기 조절
-                height="30px" // 크기 조절
+                width="50px" // 크기 조절
+                height="50px" // 크기 조절
                 onClick={() => handleImageClick(currentDate)}
                 style={{ cursor: "pointer" }}
               />
@@ -225,12 +227,12 @@ export default function MyCalendar() {
               border: isCurrentDate ? "2px solid red" : "none", // Check if it's today's date
               background: isCurrentDate ? "red" : "transparent",
               margin: "auto", // 숫자를 동그라미 정 중앙에 위치시키기 위한 추가 스타일
-              fontSize: "12px", // 동그라미 내부 텍스트 크기 조절
+              fontSize: "15px", // 동그라미 내부 텍스트 크기 조절
             }}
           >
             <span
               style={{
-                fontSize: "12px",
+                fontSize: "18px",
                 fontWeight: isCurrentDate ? "bold" : "normal",
                 color: isCurrentDate ? "white" : "black",
               }}
@@ -246,8 +248,8 @@ export default function MyCalendar() {
                   key={index}
                   src={image}
                   alt="Event"
-                  width="30" // 크기 조절
-                  height="30" // 크기 조절
+                  width="50px" // 크기 조절
+                  height="50px" // 크기 조절
                   onClick={() => handleImageClick(currentDate)}
                   style={{ cursor: "pointer" }} // Add cursor style for clickable images
                 />
@@ -262,7 +264,7 @@ export default function MyCalendar() {
                     background: "rgba(255, 255, 255, 0.8)",
                     padding: "2px",
                     borderRadius: "3px",
-                    fontSize: "10px",
+                    fontSize: "20px",
                   }}
                   onClick={() => handleImageClick(currentDate)}
                 >
@@ -309,43 +311,9 @@ export default function MyCalendar() {
     const dateStr = formatDate(currentDate);
     const imagesForDate = oneInfo.filter((info) => info.date === dateStr);
 
-    const modal = document.createElement("div");
-    modal.style.position = "fixed";
-    modal.style.top = "0";
-    modal.style.left = "0";
-    modal.style.width = "100%";
-    modal.style.height = "100%";
-    modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-    modal.style.display = "flex";
-    modal.style.justifyContent = "center";
-    modal.style.alignItems = "center";
-    modal.style.zIndex = "1000";
+    // Use React Router's useHistory hook for navigation
 
-    const modalContent = document.createElement("div");
-    modalContent.style.backgroundColor = "#fff";
-    modalContent.style.padding = "20px";
-    modalContent.style.borderRadius = "10px";
-    modalContent.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
-    modalContent.style.overflowY = "auto";
-
-    imagesForDate.forEach((info) => {
-      const imageElement = document.createElement("img");
-      imageElement.src = info.picture;
-      imageElement.alt = "Event";
-      imageElement.width = "200";
-      imageElement.height = "200";
-      imageElement.style.marginRight = "10px";
-
-      modalContent.appendChild(imageElement);
-    });
-
-    modal.appendChild(modalContent);
-
-    document.body.appendChild(modal);
-
-    modal.addEventListener("click", () => {
-      modal.remove();
-    });
+    navigate(`/calendardetail/${dateStr}`);
   };
 
   return (
