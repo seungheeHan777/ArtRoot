@@ -1,0 +1,34 @@
+.FormGroup {
+  margin-top: 15px;
+}
+
+.save_btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save_btn:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.delete_btn {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  background-color: #ff0000;
+  border: 1px solid #ff0000;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete_btn:hover {
+  background-color: #fff;
+  color: #ff0000;
+}

@@ -29,8 +29,8 @@ app.use(
 
 // 미들웨어 설정
 app.use(cors()); // CORS 설정
-app.use(bodyParser.json()); // 요청 본문 파싱
-
+//app.use(bodyParser.json()); // 요청 본문 파싱
+app.use(bodyParser.json({ limit: "10mb" }));
 //11/2 추가
 /*
 // API 호출 및 MySQL 연결 설정
@@ -115,7 +115,6 @@ app.use("/admin", adminRoutes);
 app.use("/keyword", keywordRoutes);
 app.use("/rec", recRoutes);
 app.use("/museum", museumRoutes);
-
 // app.get("/*", (req, res) =>
 //   res.sendFile(path.join(__dirname, "../build/index.html"))
 // );

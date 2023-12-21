@@ -1,117 +1,104 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import React from "react";
+
 const StyledExhibitionItem = styled.div`
+  .exhibitionContainer {
+    width: 70%;
+    margin: 0 280px;
+  }
+
+  .exhibitionRow {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    justify-content: center;
+  }
+
+  .customColumn {
+    flex: 0 0 calc(25% - 15px);
+    margin: 0 auto 10px auto;
+    width: calc(25% - 15px);
+  }
+
   .currExibitColumn {
-    max-width: 290px;
-
-    &.gridView {
-      max-width: none;
-
-      h2,
-      .h2 {
-        font-size: 17px;
-        line-height: (22/17);
-      }
-
-      .imgHolder {
-        max-width: 123px;
-      }
-    }
-
-    &:hover {
-      .imgHolder {
-        transform: scale(1.02);
-      }
-    }
+    text-align: center;
+    margin-bottom: 20px;
 
     .imgHolder {
+      max-width: 123px;
       transition: transform 0.3s ease;
-      transform-origin: 50% 50% 0;
-      transform: scale(1);
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
     }
 
     h2,
     .h2 {
-      font-size: 22px;
-      line-height: (29/22);
-
+      font-size: 14px;
+      line-height: 1.32;
+      text-align: center;
       a {
         text-decoration: none;
         transition: color 0.3s ease;
 
         &:hover {
-          color: $black;
+          color: black;
         }
       }
     }
   }
 `;
+
 const AdminExhibitionItem = (props) => {
-  const {
-    ART_NUM,
-    ART_NAME,
-    ART_PICTURE,
-    ART_EXPLAIN,
-    ART_START,
-    ART_END,
-    ART_TIME,
-    ART_CLOSED,
-    ART_PLACE,
-    ART_ADDR,
-    ART_PRICE,
-    ART_CALL,
-    ART_SITE,
-    ART_ARTIST,
-    ART_PREFER,
-    ART_BACK,
-  } = props;
+  const { data } = props;
 
   return (
     <StyledExhibitionItem className="tab-content">
-      <div
-        className="tab-pane fade show active"
-        id="current"
-        role="tabpanel"
-        aria-labelledby="current-tab"
-      >
-        <div className="row">
-          <div className="col-12">
-            <article className="currExibitColumn gridView d-flex mb-6 mb-lg-9 mb-xl-12 mx-auto">
-              <div className="imgHolder flex-shrink-0 mr-4 mr-lg-6 mr-xl-8">
-                <Link to={`/Adminexhibitiondetail/${ART_NUM}`}>
-                  <img
-                    src={ART_PICTURE}
-                    className="img-fluid w-100 d-block"
-                    alt="image description"
-                    style={{ width: "100%", height: "200px" }}
-                  />
-                </Link>
+      <div className="exhibitionContainer">
+        <div
+          className="tab-pane fade show active"
+          id="current"
+          role="tabpanel"
+          aria-labelledby="current-tab"
+        >
+          <div className="exhibitionRow">
+            {data.map((exhibition, index) => (
+              <div key={index} className="customColumn">
+                <article className="currExibitColumn gridView d-flex mb-6 mb-lg-9 mb-xl-12 mx-auto">
+                  <div className="imgHolder flex-shrink-0 mr-4 mr-lg-6 mr-xl-8">
+                    <Link to={`/Adminexhibitiondetail/${exhibition.ART_NUM}`}>
+                      <img
+                        src={exhibition.ART_PICTURE}
+                        className="img-fluid"
+                        alt="image description"
+                      />
+                    </Link>
+                    <h2 className="mb-1 mb-sm-3">
+                      <Link
+                        to={`/Adminexhibitiondetail/${exhibition.ART_NUM}`}
+                        style={{ textDecoration: "none", color: "#333" }}
+                      >
+                        {exhibition.ART_NAME}
+                      </Link>
+                    </h2>
+                  </div>
+                </article>
               </div>
-              <div className="descrWrap pt-md-2 pt-lg-5">
-                <h2
-                  className="mb-1 mb-sm-3"
-                  style={{ fontSize: "1.5rem", marginBottom: "1rem" }}
-                >
-                  <a style={{ textDecoration: "none", color: "#333" }}>
-                    {ART_NAME}
-                  </a>
-                </h2>
-                <time
-                  dateTime="2011-01-12"
-                  className="d-block cecTime text-gray777"
-                  style={{ fontSize: "1rem" }}
-                >
-                  <p>
-                    전시 기간: {ART_START} - {ART_END}
-                  </p>
-                </time>
-              </div>
-            </article>
+            ))}
           </div>
         </div>
       </div>
     </StyledExhibitionItem>
   );
 };
+
 export default AdminExhibitionItem;

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+const fileUpload = require("express-fileupload");
 
 // 관리자 유저
 // API로부터 모든 유저 정보를 가져와 클라이언트에게 제공
@@ -96,20 +97,34 @@ router.get("/exhibitions", (req, res) => {
 });
 
 // 전시회 추가
-router.post("/exhibitionss", (req, res) => {
-  const newExhibition = req.body; // 클라이언트에서 전송된 전시회 정보
+router.post("/exhibitionss", fileUpload(), async (req, res) => {
+  try {
+    const { ART_WORK, ...exhibitionData } = req.body;
 
-  const sql = "INSERT INTO exhibition SET ?"; // 전시회 정보를 삽입하는 SQL 쿼리
+    // exhibition 테이블에 값 삽입
+    const insertExhibitionQuery = "INSERT INTO exhibition SET ?";
+    const insertExhibitionResult = await db.query(
+      insertExhibitionQuery,
+      exhibitionData
+    );
+    const exhibitionId = exhibitionData.ART_NUM;
 
-  db.query(sql, newExhibition, (err, results) => {
-    if (err) {
-      console.error("Failed to insert new exhibition:", err);
-      res.status(500).json({ message: "전시회 추가 실패" });
-    } else {
-      console.log("전시회 추가 성공");
-      res.status(201).json({ message: "전시회 추가 성공" });
+    console.log("전시아이디", exhibitionId);
+    // ART_WORK 배열이 존재하고, exhibitionId도 있을 때 이미지 삽입 수행
+    if (Array.isArray(ART_WORK) && exhibitionId) {
+      const insertImageQuery =
+        "INSERT INTO exhibition_images (exhibition_id, image_data) VALUES (?, ?)";
+      for (const compressedImage of ART_WORK) {
+        await db.query(insertImageQuery, [exhibitionId, compressedImage]);
+      }
     }
-  });
+
+    console.log("전시회 추가 성공");
+    res.status(201).json({ message: "전시회 추가 성공" });
+  } catch (error) {
+    console.error("전시회 추가 실패:", error);
+    res.status(500).json({ message: "전시회 추가 실패" });
+  }
 });
 
 // 전시회 정보 수정

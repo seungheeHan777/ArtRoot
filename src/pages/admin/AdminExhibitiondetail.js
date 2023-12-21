@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Form, FormGroup, Button } from "react-bootstrap";
+import { Form, FormGroup } from "react-bootstrap";
 import { exhibitionUpdate, exhibitionDel } from "../../lib/api/admin";
 import { detail } from "../../lib/api/exhibition";
+import "./AdminExhibitiondetail.css";
+
 const AdminExhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
@@ -94,7 +96,7 @@ const AdminExhibitiondetail = () => {
         <hr />
         <Form>
           <FormGroup>
-            <Form.Label>전시회 명</Form.Label>
+            <Form.Label>전시명</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_NAME"
@@ -103,7 +105,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 설명</Form.Label>
+            <Form.Label>전시 설명</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_EXPLAIN"
@@ -112,7 +114,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 시작일</Form.Label>
+            <Form.Label>시작일</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_START"
@@ -121,7 +123,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 종료일</Form.Label>
+            <Form.Label>종료일</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_END"
@@ -130,7 +132,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 시간</Form.Label>
+            <Form.Label>시간</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_TIME"
@@ -139,7 +141,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 휴관일</Form.Label>
+            <Form.Label>휴관일</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_CLOSED"
@@ -148,7 +150,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 장소</Form.Label>
+            <Form.Label>장소</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_PLACE"
@@ -157,7 +159,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 주소</Form.Label>
+            <Form.Label>주소</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_ADDR"
@@ -166,7 +168,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 가격</Form.Label>
+            <Form.Label>가격</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_PRICE"
@@ -182,7 +184,7 @@ const AdminExhibitiondetail = () => {
             onChange={() => setIsDiscount(!isDiscount)}
           />
           <FormGroup>
-            <Form.Label>전시회 링크</Form.Label>
+            <Form.Label>링크</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_SITE"
@@ -191,16 +193,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>전시회 배경지식</Form.Label>
-            <Form.Control
-              class="form-control"
-              name="ART_BACK"
-              onChange={handleInputChange}
-              placeholder={exhibitionData ? exhibitionData.ART_BACK : ""}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Form.Label>전시회 분야</Form.Label>
+            <Form.Label>분야</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_PREFER"
@@ -209,7 +202,7 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>참여 아티스트</Form.Label>
+            <Form.Label>작가</Form.Label>
             <Form.Control
               class="form-control"
               name="ART_ARTIST"
@@ -218,12 +211,20 @@ const AdminExhibitiondetail = () => {
             />
           </FormGroup>
         </Form>
-        <Button onClick={handleSubmit} href={`/AdminExhibitiondetail/${id}`}>
-          저장
-        </Button>
-        <Button onClick={handleDelete} href="/AdminExhibitionList">
-          삭제
-        </Button>
+        <button
+          onClick={handleSubmit}
+          href={`/AdminExhibitiondetail/${id}`}
+          className="save_btn"
+        >
+          정보 수정
+        </button>
+        <button
+          onClick={handleDelete}
+          href="/AdminExhibitionList"
+          className="delete_btn"
+        >
+          전시회 삭제
+        </button>
       </div>
     </div>
   );

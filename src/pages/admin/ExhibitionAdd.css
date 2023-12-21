@@ -1,0 +1,43 @@
+.exhibitionaddtitle {
+  font-size: 25px;
+  color: #872323;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-group .form-label {
+  min-width: 150px;
+  margin-right: 5px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.form-group .form-control {
+  flex: 1;
+}
+
+.artwork_script {
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.savebtn {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #872323;
+  border: 1px solid #872323;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.savebtn:hover {
+  background-color: #6d1d1d;
+  color: #ffffff;
+}
