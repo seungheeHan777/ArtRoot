@@ -34,6 +34,7 @@ import DiscountExhibition from "./pages/DiscountExhibition";
 import Myaccount from "./pages/Myaccount";
 import Calendardetail from "./pages/calendardetail";
 import Loading from "./pages/Loading";
+import Aiuser from "./pages/aiuser";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -99,6 +100,7 @@ function App() {
         <Route path="/Calendar" element={<Calendar />} />
         <Route path="/calendardetail/:date" element={<Calendardetail />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/aiuser" element={<Aiuser />} />
       </Routes>
 
       <div className="ftAreaWrap bg-secondary text-gray888">

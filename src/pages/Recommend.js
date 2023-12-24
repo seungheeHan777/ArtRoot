@@ -7,7 +7,10 @@ import {
 } from "../lib/api/keyword";
 import { useSelector } from "react-redux";
 import "./Recommend.css"; // CSS 파일을 직접 import
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Recommend = () => {
+  const navigate = useNavigate();
   const { user } = useSelector(({ user }) => ({ user: user.user }));
   const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
@@ -48,6 +51,7 @@ const Recommend = () => {
             );
           } else if (type === "image") {
             setImages(filteredData);
+            console.log("이미지 정보", images);
           }
         } else {
           console.error(
@@ -97,6 +101,20 @@ const Recommend = () => {
       setSelectedCategories([...selectedCategories, categoryId]);
     }
   };
+  // 예전 코드
+  // const handleCategoryRecommend = () => {
+  //   // 유저가 선택한 카테고리를 서버로 전송
+  //   getUser({ user_id: user.username, categories: selectedCategories })
+  //     .then((response) => {
+  //       console.log(response.data.message);
+  //     })
+  //     .catch((error) => {
+  //       console.error(
+  //         "카테고리 정보를 서버에 전송하는 중 오류가 발생했습니다.",
+  //         error
+  //       );
+  //     });
+  // };
   const handleCategoryRecommend = () => {
     // 유저가 선택한 카테고리를 서버로 전송
     getUser({ user_id: user.username, categories: selectedCategories })
@@ -137,8 +155,35 @@ const Recommend = () => {
   // 페이지 변경 함수
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const handleShowAnalysisResult = () => {
+    // 이미지 분석 결과 보기 기능
+    const selectedImageUrls = images
+      .filter((image) => selectedCategories.includes(image.category_id))
+      .map((image) => image.image_url);
+
+    if (selectedImageUrls.length > 0) {
+      const baseurl = "http://localhost:60008/ai/predicted";
+      const imagePathParam = selectedImageUrls
+        .map((url) => encodeURIComponent(url))
+        .join(",");
+      const url = `${baseurl}?imagePath=${imagePathParam}`;
+
+      axios
+        .get(url)
+        .then((response) => {
+          console.log("서버 응답:", response.data);
+          navigate("/aiuser", { state: { responseData: response.data } });
+        })
+        .catch((error) => {
+          console.error("서버 요청 오류:", error);
+        });
+    } else {
+      console.warn("선택한 이미지가 없습니다.");
+    }
+  };
+
   return (
-    <div style={{ paddingTop: "250px", textAlign: "center" }}>
+    <div style={{ textAlign: "center" }}>
       {user ? (
         <div>
           <h1>추천</h1>
@@ -225,6 +270,18 @@ const Recommend = () => {
               }}
             >
               <button onClick={handleCategoryRecommend}>이미지 등록</button>
+            </div>
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "25px", // 적절한 크기로 조절하세요
+                padding: "10px 20px", // 적절한 패딩 설정
+                cursor: "pointer",
+              }}
+            >
+              <button onClick={handleShowAnalysisResult}>
+                이미지 분석 결과
+              </button>
             </div>
           </div>
         </div>

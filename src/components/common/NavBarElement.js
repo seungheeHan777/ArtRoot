@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import "./NavBarElement.css";
 import {
   NavDropdown,
   Navbar,
@@ -11,7 +12,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./nav.css";
+
 const UserInfo = styled.div`
   font-weight: 800;
   margin-right: 1rem;
@@ -46,89 +47,29 @@ const NavBarElement = ({ user, onLogout }) => {
           className="position-absolute w-100 bg-white"
           style={{ zIndex: 1 }}
         >
-          {/* hTopHolder */}
-          <div className="hTopHolder pt-1 pb-1 pt-lg-2 pb-lg-3">
-            <div className="container">
-              <div className="row align-items-center">
-                {/* Logo (left) */}
-                <div className="col-4 col-sm-3 col-lg-2 text-center">
-                  <div className="logo mt-1">
-                    <a onClick={() => handleNavigate("/")}>
-                      <img
-                        src="images/artroot_logo.png"
-                        className="img-fluid"
-                        alt="Muzze || Art & History Museum"
-                        style={{ width: "150px", height: "auto" }}
-                      />
-                    </a>
-                  </div>
-                </div>
-
-                {/* "ART ROOT" heading (center) */}
-                <div className="col-4 col-sm-6 col-lg-8 text-center">
-                  <h1 style={{ fontSize: "60px" }}>ART ROOT</h1>
-                </div>
-
-                {/* Login button (right) */}
-                <div className="col-12 col-sm-3 col-lg-2 d-flex align-items-end justify-content-end mt-2 mt-sm-0">
-                  {user ? (
-                    <NavDropdown
-                      title={`${user.username} 님`}
-                      id="nav-dropdown-user"
-                      className="text-capitalize bdr2 mt-2 hdBtn"
-                      style={{ fontSize: "20px" }}
-                    >
-                      <NavDropdown.Item onClick={handleLogout}>
-                        로그아웃
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
-                        onClick={() => handleNavigate("/MyPage")}
-                      >
-                        마이페이지
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
-                        onClick={() => handleNavigate("/Myaccount")}
-                      >
-                        내 정보
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  ) : (
-                    <NavDropdown
-                      title="로그인"
-                      id="nav-dropdown"
-                      className="text-capitalize bdr2 mt-2 hdBtn"
-                      style={{ fontSize: "20px" }}
-                    >
-                      <NavDropdown.Item
-                        onClick={() => handleNavigate("/Login")}
-                      >
-                        로그인
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
-                        onClick={() => handleNavigate("/Register")}
-                      >
-                        회원가입
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  )}
-                </div>
-              </div>
-            </div>
-            <hr />
-          </div>
-
           <div className="hdHolder headerFixer">
-            <div className="container">
+            <div className="nav-container">
               {/* navbar */}
               <nav className="navbar navbar-expand-md navbar-light d-block px-0 pt-0 pb-0 pt-md-2 pb-md-2 pt-lg-3">
-                <div className="row">
-                  <div className="col-9 position-static">
+                <div className="nav-row">
+                  <div className="site-container">
+                    <p className="site_name">
+                      <span className="highlight">ART</span> ROOT
+                    </p>
+                  </div>
+                  <div className="menu-container">
                     {/* navbar collapse */}
                     <div
                       className="collapse navbar-collapse pageNavigationCollapse"
                       id="pageNavigationCollapse"
                     >
                       {/* mainNavigation */}
+                      {/* <img
+                        src="images/artroot_logo.png"
+                        className="img-fluid"
+                        alt="Muzze || Art & History Museum"
+                        style={{ width: "50px", height: "50px" }}
+                      /> */}
                       <ul className="navbar-nav mainNavigation text-capitalize">
                         <li className="nav-item active dropdown">
                           <a
@@ -138,20 +79,21 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "30px" }}
+                            style={{ fontSize: "20px" }}
                           >
-                            Home
+                            홈
                           </a>
                           {/* dropdown menu */}
                         </li>
                         <li className="nav-item dropdown">
                           <a
                             className="nav-link"
+                            href="javascript:void(0);"
                             role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "30px" }}
+                            style={{ fontSize: "20px" }}
                           >
                             전시
                           </a>
@@ -165,7 +107,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                     handleNavigate("/ExhibitionList")
                                   }
                                   style={{
-                                    fontSize: "20px",
+                                    fontSize: "17px",
                                     textDecoration: "none",
                                   }}
                                 >
@@ -179,7 +121,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                     handleNavigate("/RecommendedExhibition")
                                   }
                                   style={{
-                                    fontSize: "20px",
+                                    fontSize: "17px",
                                     textDecoration: "none",
                                   }}
                                 >
@@ -193,7 +135,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                     handleNavigate("/DiscountExhibition")
                                   }
                                   style={{
-                                    fontSize: "20px",
+                                    fontSize: "17px",
                                     textDecoration: "none",
                                   }}
                                 >
@@ -212,7 +154,7 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "30px" }}
+                            style={{ fontSize: "20px" }}
                           >
                             평가
                           </a>
@@ -225,9 +167,9 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "30px" }}
+                            style={{ fontSize: "20px" }}
                           >
-                            취향 추천
+                            취향 분석
                           </a>
                         </li>
 
@@ -239,22 +181,9 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "30px" }}
+                            style={{ fontSize: "20px" }}
                           >
                             문의사항
-                          </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                          <a
-                            className="nav-link"
-                            onClick={() => handleNavigate("/museum")}
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style={{ fontSize: "30px" }}
-                          >
-                            미술관
                           </a>
                         </li>
                         {user && user.username === "admin" ? (
@@ -266,7 +195,7 @@ const NavBarElement = ({ user, onLogout }) => {
                               data-toggle="dropdown"
                               aria-haspopup="true"
                               aria-expanded="false"
-                              style={{ fontSize: "30px" }}
+                              style={{ fontSize: "20px" }}
                             >
                               관리자
                             </a>
@@ -277,7 +206,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                   <a
                                     onClick={() => handleNavigate("/AdminPage")}
                                     style={{
-                                      fontSize: "20px",
+                                      fontSize: "17px",
                                       textDecoration: "none",
                                     }}
                                   >
@@ -291,7 +220,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                       handleNavigate("/AdminExhibitionList")
                                     }
                                     style={{
-                                      fontSize: "20px",
+                                      fontSize: "17px",
                                       textDecoration: "none",
                                     }}
                                   >
@@ -305,7 +234,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                       handleNavigate("/AdminRatingList")
                                     }
                                     style={{
-                                      fontSize: "20px",
+                                      fontSize: "17px",
                                       textDecoration: "none",
                                     }}
                                   >
@@ -319,7 +248,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                       handleNavigate("/AdminRecommend")
                                     }
                                     style={{
-                                      fontSize: "20px",
+                                      fontSize: "17px",
                                       textDecoration: "none",
                                     }}
                                   >
@@ -333,7 +262,7 @@ const NavBarElement = ({ user, onLogout }) => {
                                       handleNavigate("/ExhibitionKeyword")
                                     }
                                     style={{
-                                      fontSize: "20px",
+                                      fontSize: "17px",
                                       textDecoration: "none",
                                     }}
                                   >
@@ -347,28 +276,30 @@ const NavBarElement = ({ user, onLogout }) => {
                       </ul>
                     </div>
                   </div>
-                  <div className="col-3 position-static">
-                    <div className="d-flex justify-content-end align-items-center w-100">
-                      {/* hdsfcHolder */}
-                      <div className="hdsfcHolder w-100 mx-auto py-4 px-3">
-                        <div className="input-group">
-                          <Form onSubmit={handleSearch} className="w-100">
+
+                  {/* 검색창 */}
+                  <div className="search-container">
+                    <div>
+                      <div>
+                        <div>
+                          <Form
+                            onSubmit={handleSearch}
+                            className="search-input"
+                          >
                             <div className="input-group">
                               <Form.Control
                                 type="text"
-                                placeholder="Search..."
+                                placeholder="전시명 또는 카테고리를 입력해보세요."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                               />
                               <div className="input-group-append">
-                                <Button
-                                  type="submit"
-                                  className="btn btn-secondary"
-                                >
-                                  <i className="icomoon-search">
-                                    <span className="sr-only">Search</span>
-                                  </i>
-                                </Button>
+                                <button type="submit" className="btn-search">
+                                  {/* <i className="icomoon-search">
+                                    <span className="sr-only">검색</span>
+                                  </i> */}
+                                  검색
+                                </button>
                               </div>
                             </div>
                           </Form>
@@ -376,9 +307,54 @@ const NavBarElement = ({ user, onLogout }) => {
                       </div>
                     </div>
                   </div>
+
+                  {/* Login button (right) */}
+                  <div className="login-container">
+                    {user ? (
+                      <NavDropdown
+                        title={`${user.username} 님`}
+                        id="nav-dropdown-user"
+                        className="text-capitalize bdr2 mt-2 hdBtn"
+                        style={{ fontSize: "17px" }}
+                      >
+                        <NavDropdown.Item onClick={handleLogout}>
+                          로그아웃
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={() => handleNavigate("/MyPage")}
+                        >
+                          마이페이지
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={() => handleNavigate("/Myaccount")}
+                        >
+                          내 정보
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    ) : (
+                      <NavDropdown
+                        title="로그인"
+                        id="nav-dropdown"
+                        className="text-capitalize bdr2 mt-2 hdBtn"
+                        style={{ fontSize: "17px" }}
+                      >
+                        <NavDropdown.Item
+                          onClick={() => handleNavigate("/Login")}
+                        >
+                          로그인
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={() => handleNavigate("/Register")}
+                        >
+                          회원가입
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    )}
+                  </div>
                 </div>
               </nav>
             </div>
+            <hr className="last_hr" />
           </div>
         </header>
       </div>
