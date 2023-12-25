@@ -5,9 +5,9 @@ import {
   userCategory,
   userImage,
 } from "../lib/api/keyword";
+import { AIuse } from "../lib/api/ai";
 import { useSelector } from "react-redux";
 import "./Recommend.css"; // CSS 파일을 직접 import
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Recommend = () => {
   const navigate = useNavigate();
@@ -162,14 +162,11 @@ const Recommend = () => {
       .map((image) => image.image_url);
 
     if (selectedImageUrls.length > 0) {
-      const baseurl = "http://localhost:60008/ai/predicted";
       const imagePathParam = selectedImageUrls
         .map((url) => encodeURIComponent(url))
         .join(",");
-      const url = `${baseurl}?imagePath=${imagePathParam}`;
 
-      axios
-        .get(url)
+      AIuse(imagePathParam)
         .then((response) => {
           console.log("서버 응답:", response.data);
           navigate("/aiuser", { state: { responseData: response.data } });
