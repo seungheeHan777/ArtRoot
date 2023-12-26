@@ -198,7 +198,10 @@ const MyPage = () => {
   };
 
   return (
-    <div className="my-page-container" style={{ paddingTop: "250px" }}>
+    <div
+      className="my-page-container"
+      style={{ border: "1px solid silver", width: "50%" }}
+    >
       <h5>개인 정보 수정</h5>
       <hr style={{ border: "1px solid silver", width: "100%" }} />
       <Form className="my-page-form">

@@ -1,0 +1,107 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter_container {
+  width: 70%;
+  margin-left: 300px;
+  margin-bottom: 10px;
+}
+
+.exhibition-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.exhibition-container > div {
+  width: calc(33.33% - 10px);
+  margin-bottom: 20px;
+}
+
+.region-label {
+  margin-right: 30px;
+  font-size: 20px;
+  color: #872323;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.region-dropdown-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.region-dropdown-label {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.region-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100px;
+  gap: 5px;
+  background-color: white;
+}
+
+.region-dropdown.active {
+  border: 1px solid #872323;
+}
+
+.region-dropdown div {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.date-label {
+  margin-right: 30px;
+  font-size: 20px;
+  color: #872323;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.date-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.date-dropdown-label {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.date-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100px;
+  gap: 5px;
+  background-color: white;
+}
+
+.date-dropdown.active {
+  border: 1px solid #872323;
+}
+
+.date-dropdown div {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.pagination {
+  margin-bottom: 30px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+}

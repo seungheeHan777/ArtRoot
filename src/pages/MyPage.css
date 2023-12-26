@@ -1,6 +1,6 @@
 .my-page-container {
   padding: 20px;
-  max-width: 600px;
+  width: 60%;
   margin: auto;
 }
 
@@ -47,4 +47,39 @@
 .my-page-container .btn-custom:hover {
   background-color: #297fb8;
   border-color: #297fb8;
+}
+.nav-link {
+  color: #db908a;
+  font-size: 30px;
+  padding-top: 10px; /* Adjust as needed */
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.3s; /* Add transition for smooth color change */
+  position: relative;
+}
+
+/* Display underline by default */
+.nav-link::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #db908a;
+  margin-top: 5px; /* Adjust as needed */
+  width: 0; /* Initially set to 0 width */
+  transition: width 0.3s; /* Add transition for smooth width change */
+}
+
+/* Hover styles */
+.nav-link:hover {
+  color: #fff; /* Change text color on hover */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Expand the underline on hover */
+  background-color: #db6a5c; /* Adjust hover background color */
+}
+
+/* Optional: Add style for the currently active link */
+.nav-link.active {
+  color: #fff;
+  background-color: #db908a;
 }

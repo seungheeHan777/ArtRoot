@@ -7,29 +7,26 @@ import "./home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-//https://blog.naver.com/PostView.naver?blogId=jaeeun_98&logNo=222835174514  ¬¸∞Ì«— ªÁ¿Ã∆Æ
-
 export default function SimpleSlider() {
   const [sliderInitialized, setSliderInitialized] = useState(false);
   const settings = {
     dots: true,
     arrows: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
-    centerMode: true, // ¡ﬂæ” ¡§∑ƒ »∞º∫»≠
-    centerPadding: "0%", // ∞°øÓµ• ¡§∑ƒ »ƒ æÁ¬ ¿∏∑Œ √ﬂ∞° ø©πÈ æ¯¿Ω
+    centerMode: true,
+    centerPadding: "0%",
     autoplay: true,
   };
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setSliderInitialized(true);
-
     const fetchData = async () => {
       try {
         const response = await allList();
         setData(response.data);
+        setSliderInitialized(true);
       } catch (e) {
         console.error(e);
       }
@@ -43,24 +40,25 @@ export default function SimpleSlider() {
       className="slidediv"
       style={{
         position: "relative",
-        zIndex: 1,
-        marginTop: "200px",
-        width: "90%",
+        marginTop: "auto",
+        width: "85%",
       }}
     >
+      <h2 className="slider-text">ART ROOTÏùò Ï†ÑÏãúÎì§</h2>
       {sliderInitialized && (
         <Slider {...settings}>
           {data.slice(0, 7).map((exhibition, index) => (
-            <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`} key={index}>
-              <div className="slider-slide">
+            <div className="slider-slide" key={index}>
+              <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`}>
                 <img
                   src={exhibition.ART_PICTURE}
                   alt={`img-${index}`}
-                  width="630px"
+                  width="300px"
                   height="400px"
                 />
-              </div>
-            </Link>
+              </Link>
+              <p style={{ marginTop: "10px" }}>{exhibition.ART_NAME}</p>
+            </div>
           ))}
         </Slider>
       )}

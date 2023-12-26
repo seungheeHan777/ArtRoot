@@ -12,10 +12,7 @@ const Aiuser = () => {
         {responseData.map((result, index) => (
           <div key={index}>
             <p>예측된 스타일: {result.predicted_style}</p>
-            <img
-              src={process.env.PUBLIC_URL + result.image_path}
-              alt={`이미지 ${index}`}
-            />
+            <img src={result.image_path} alt={`이미지 ${index}`} />
             <p> result.image_path:{result.image_path}</p>
             <p>예측 정확도: {result.prediction_probability.toFixed(2)}%</p>
           </div>

@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { myone } from "../lib/api/auth";
 
-const MyCalendarDetail = () => {
-  const { date } = useParams();
+const MyCalendarDetail = ({ dateStr }) => {
+  console.log(dateStr);
   const [selectedDateInfo, setSelectedDateInfo] = useState([]);
 
   useEffect(() => {
     const fetchSelectedDateInfo = async () => {
       try {
         const response = await myone();
-        console.log("API Response:", response.data); // Log the response
-        const dateInfo = response.data.filter((info) => info.date === date);
+        console.log("API Response:", response.data);
+        const dateInfo = response.data.filter((info) => info.date === dateStr); // Fix the comparison here
         setSelectedDateInfo(dateInfo);
         console.log(dateInfo);
       } catch (error) {
@@ -21,37 +21,44 @@ const MyCalendarDetail = () => {
     };
 
     fetchSelectedDateInfo();
-  }, [date]);
+  }, [dateStr]);
 
   return (
     <div
       style={{
-        paddingTop: "200px",
-        paddingLeft: "100px", // Adjusted paddingTop
+        paddingTop: "20px",
+        paddingLeft: "20px",
       }}
     >
-      <h1>{date}날 본 전시입니다</h1>
+      <h1>{dateStr}날 본 전시</h1>
       {selectedDateInfo.map((item) => (
         <div
-          style={{
-            paddingTop: "50px",
-            // Adjusted paddingTop
-          }}
           key={item.artnum}
+          style={{
+            border: "1px solid #ddd",
+            borderRadius: "8px",
+            padding: "16px",
+            marginBottom: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          }}
         >
           {item.picture && (
             <a href={`exhibitiondetail/${item.artnum}`}>
               <img
                 src={item.picture}
                 alt="Event"
-                width="200"
-                height="200"
-                style={{ margin: "10px" }}
+                width="300px"
+                height="300px"
+                style={{ marginBottom: "10px", borderRadius: "8px" }}
               />
             </a>
           )}
-          <h2>한줄평 : {item.comment}</h2>
-          <p style={{ color: "#FFD700" }}>평가함 {item.stars} ★</p>
+          <h2 style={{ fontSize: "18px", marginBottom: "10px" }}>
+            한줄평 : {item.comment}
+          </h2>
+          <p style={{ color: "#FFD700", fontSize: "16px" }}>
+            평가함 {item.stars} ★
+          </p>
 
           {/* Add more details as needed */}
         </div>

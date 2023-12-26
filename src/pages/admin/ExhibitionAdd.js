@@ -100,7 +100,7 @@ const ExhibitionAdd = () => {
   };
 
   return (
-    <div className="contents" style={{ paddingTop: "250px" }}>
+    <div className="contents">
       <div className="product_detail">
         <p className="exhibitionaddtitle">전시회 등록</p>
         <hr />

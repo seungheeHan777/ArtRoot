@@ -1,0 +1,62 @@
+.rating_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rating_list_box {
+  width: 300px;
+  height: 450px;
+  border: 1px solid #f6eded;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.imgHolder img {
+  width: 100%;
+  height: 300px;
+}
+
+.rate_user_date {
+  height: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+  color: #872323;
+}
+
+.rate_line {
+  border: 0;
+  height: 1px;
+  background-color: #872323;
+}
+
+.rate_comment {
+  font-weight: bold;
+  font-size: 15px;
+  height: 50px;
+  margin-left: 10px;
+  overflow: auto;
+}
+
+.rate_star {
+  height: 30px;
+  margin-left: 10px;
+}
+
+.rate_list_sort {
+  font-size: 20px;
+  color: #872323;
+  font-weight: bold;
+  margin-left: 20px;
+}
+.rate_sort {
+  margin-left: 20px;
+  border: none;
+  outline: none;
+  /* border-bottom: 1px solid #872323; */
+}

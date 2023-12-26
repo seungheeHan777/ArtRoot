@@ -178,7 +178,7 @@ function AdminRecommend() {
   };
 
   return (
-    <div style={{ paddingTop: "200px" }}>
+    <div>
       <h1>카테고리/이미지 관리 페이지</h1>
       <table>
         <thead>

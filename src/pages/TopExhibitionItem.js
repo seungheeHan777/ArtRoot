@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { allRating } from "../lib/api/exhibition";
 import { Link } from "react-router-dom";
+import "./home.css";
 
 const TOPExhibitionItem = () => {
   const [date, setDate] = useState(new Date());
@@ -64,13 +65,13 @@ const TOPExhibitionItem = () => {
   }, [date]);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", justifyContent: "space-around" }}>
       {topImages.map((item, index) => (
         <div
           key={index}
           style={{
             position: "relative",
-            marginRight: "20px",
+            marginRight: index < topImages.length - 1 ? "10px" : "0", // Adjust the marginRight value
             textAlign: "left",
           }}
         >
@@ -97,8 +98,8 @@ const TOPExhibitionItem = () => {
               src={item.image}
               alt={`Top Image ${index + 1}`}
               style={{
-                width: "200px",
-                height: "200px",
+                width: "250px",
+                height: "250px",
                 borderRadius: "10px",
                 position: "relative", // 이미지가 자신의 위치를 기준으로 함
                 zIndex: "0", // 이미지가 순위 글씨보다 뒤에 있도록 함

@@ -5,14 +5,14 @@ import React from "react";
 const StyledExhibitionItem = styled.div`
   .exhibitionContainer {
     width: 70%;
-    margin: 0 280px;
+    margin-left: 70px;
   }
 
   .exhibitionRow {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
-    justify-content: center;
+    justify-content: flex-start; /* Adjusted to left-align */
   }
 
   .customColumn {

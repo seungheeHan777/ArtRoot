@@ -1,0 +1,85 @@
+/* footer {
+  position: absolute;
+  width: 100%;
+  margin: 40px 0 0 0;
+  height: 150px;
+  border-top: 5px solid;
+  border-bottom: 5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #62679b;
+} /
+
+/ .main {
+  background-color: #0ae2a5;
+} /
+.home-container {
+  display: flex;
+  margin-top: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
+}
+
+.slidediv {
+  align-items: center;
+  justify-content: center;
+  margin: 10 auto;
+  height: 100%;
+  width: 1300px;
+}
+.recommand {
+  width: 1250px;
+  padding-top: 50px;
+}
+
+.product_container {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.product {
+  width: 25%;
+  height: 100%;
+  margin-bottom: 4%;
+  / border: 1px solid black; */
+
+.product_img_div {
+  text-align: center;
+}
+.product_img {
+  max-width: 95%;
+  max-height: 100%;
+}
+.product_title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 4%;
+}
+.product_des {
+  font-size: 0.8rem;
+  margin: 2% 3% 2% 4%;
+}
+.product_mon {
+  font-size: 1rem;
+  margin: 2% 3% 1% 4%;
+}
+.product_link_div {
+  text-align: center;
+}
+
+#right {
+  margin-left: 30px;
+}

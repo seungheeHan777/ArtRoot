@@ -81,10 +81,13 @@ router.get("/random", (req, res) => {
 
 // 전시회 평가 기능
 // 별점 & 한줄평 id 별로
+// 별점 & 한줄평 id 별로
 router.get("/rating/:id", (req, res) => {
   const art_num = req.params.id; // Retrieve the 'id' parameter from the URL
   console.log(art_num);
-  const sql = "SELECT ART_PICTURE FROM exhibition where ART_NUM = ?";
+  // const sql = "SELECT ART_PICTURE, ART_NAME FROM exhibition where ART_NUM = ?";
+  const sql =
+    "SELECT exhibition.ART_PICTURE, exhibition.ART_NAME, one.ONE_USER, one.ONE_COMMENT, one.ONE_STARS, one.ONE_DATE FROM exhibition LEFT JOIN one ON exhibition.ART_NUM = one.ONE_ARTNUM WHERE exhibition.ART_NUM = ?";
 
   db.query(sql, [art_num], (err, results) => {
     if (err) {
@@ -101,7 +104,7 @@ router.get("/rating/:id", (req, res) => {
     }
     // Respond with the first result (assuming only one result is expected)
     console.log(results[0] + "hi");
-    res.status(200).json(results[0]);
+    res.status(200).json(results);
   });
 });
 

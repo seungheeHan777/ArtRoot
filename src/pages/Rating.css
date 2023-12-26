@@ -1,7 +1,16 @@
+.rate_name {
+  font-weight: bold;
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 .rate_contents {
   display: flex;
   margin: 0 auto;
   width: 70%;
+  margin-bottom: 30px;
 }
 
 .rate_imgArea {
@@ -9,36 +18,39 @@
 }
 
 .rate_product_img {
-  max-width: 100%;
+  width: 300px;
   max-height: 500px;
-  height: auto;
+  height: 400px;
 }
 
 .rate_other_content {
   display: flex;
   flex-direction: column;
-  width: 100%;
-}
-
-.rate_description {
-  text-align: center;
-  margin-bottom: 20px;
+  width: 70%;
 }
 
 .rate_stars_and_date {
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .rate_stars {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  font-size: 30px;
 }
 
-.rate_stars p {
-  margin-right: 20px;
+.rate_middle_title {
+  font-size: 13px;
+  font-weight: bold;
+  color: gray;
+}
+
+.average_rate {
+  font-size: 25px;
+  color: #872323;
+  font-weight: bold;
 }
 
 .rate_other_content {
@@ -46,34 +58,43 @@
   flex-direction: column;
 }
 
+.rate_section_title {
+  display: flex;
+  justify-content: space-between;
+}
+
 .rate_other_content textarea {
-  border-radius: 5px;
-  border: 2px solid #b9bdb2;
+  border-radius: 1px;
+  border: 1px solid #872323;
 }
 
 .rate_date_input {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-}
-
-.rate_date_input p {
-  margin-right: 20px;
 }
 
 .rate_date_input input {
-  border-radius: 5px;
-  border: 2px solid #b9bdb2;
+  border: 2px solid #872323;
 }
 
-.rate_title1 {
-  font-size: 18px;
+.rate_middle_people {
+  font-size: 13px;
   font-weight: bold;
+  color: gray;
+  margin-left: 70px;
+}
+
+.rate_middle_date {
+  font-size: 13px;
+  font-weight: bold;
+  color: gray;
 }
 
 .rate_title2 {
-  font-size: 18px;
+  font-size: 20px;
+  color: #872323;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 input {
@@ -82,13 +103,38 @@ input {
   margin-top: 5px;
 }
 
+.rate_middle_recomd {
+  font-size: 13px;
+  font-weight: bold;
+  color: gray;
+  margin-left: 10px;
+}
+.rate_recommend {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.thumbs-up-icon {
+  font-size: 40px; /* 초기 크기 */
+  color: #95a082;
+  margin-right: 10px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out; /* 부드러운 트랜지션을 위해 추가 */
+}
+
+.rate_recommend.liked .thumbs-up-icon {
+  transform: scale(1.1); /* 변경할 크기 */
+  color: #872323; /* 변경할 색상 */
+}
+
 .comment_button {
   margin-top: 10px;
   width: 100px;
   border-radius: 5px;
+  font-weight: bold;
   /* padding: 8px; */
   font-size: 15px;
-  background-color: #b9bdb2;
+  background-color: #872323;
   color: #ffffff;
   border: 2px solid #b9bdb2;
   cursor: pointer;
@@ -112,4 +158,116 @@ input {
   padding: 20px;
   border-radius: 5px;
   text-align: center;
+}
+
+.other_container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.other_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  align-self: center;
+}
+
+.other_more {
+  color: #872323;
+  font-weight: bold;
+  font-size: 20px;
+  align-self: center;
+}
+
+.ot_highlight {
+  color: #872323;
+}
+
+.rate_filter {
+  border: none;
+  outline: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.comment-container {
+  background-color: #fcf8f8;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.comment-item {
+  width: calc(25% - 10px);
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.user-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -20px;
+}
+
+.rate_title_user {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.rate_title_star {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.rts_star {
+  margin-right: 5px;
+}
+
+.rate_body_comment {
+  height: 150px; /* 원하는 높이 설정 */
+  overflow: auto;
+  margin-left: 10px;
+}
+
+.rate_foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5px;
+}
+
+.foot_good_icon {
+  margin-top: -15px;
+}
+
+.good_count {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.foot_good {
+  margin-left: auto;
+  color: #872323;
+  font-weight: bold;
+  margin-right: 10px;
 }

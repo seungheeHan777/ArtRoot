@@ -204,60 +204,6 @@ const NavBarElement = ({ user, onLogout }) => {
                               <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
                                 <li className="hasDropdown">
                                   <a
-                                    onClick={() => handleNavigate("/AdminPage")}
-                                    style={{
-                                      fontSize: "17px",
-                                      textDecoration: "none",
-                                    }}
-                                  >
-                                    유저 관리
-                                  </a>
-                                  {/* mnDropList */}
-                                </li>
-                                <li className="hasDropdown">
-                                  <a
-                                    onClick={() =>
-                                      handleNavigate("/AdminExhibitionList")
-                                    }
-                                    style={{
-                                      fontSize: "17px",
-                                      textDecoration: "none",
-                                    }}
-                                  >
-                                    전시회 관리
-                                  </a>
-                                  {/* mnDropList */}
-                                </li>
-                                <li className="hasDropdown">
-                                  <a
-                                    onClick={() =>
-                                      handleNavigate("/AdminRatingList")
-                                    }
-                                    style={{
-                                      fontSize: "17px",
-                                      textDecoration: "none",
-                                    }}
-                                  >
-                                    한줄평 관리
-                                  </a>
-                                  {/* mnDropList */}
-                                </li>
-                                <li className="hasDropdown">
-                                  <a
-                                    onClick={() =>
-                                      handleNavigate("/AdminRecommend")
-                                    }
-                                    style={{
-                                      fontSize: "17px",
-                                      textDecoration: "none",
-                                    }}
-                                  >
-                                    전시회 추천 관리
-                                  </a>
-                                  {/* mnDropList */}
-                                </li>
-                                <li className="hasDropdown">
-                                  <a
                                     onClick={() =>
                                       handleNavigate("/ExhibitionKeyword")
                                     }
@@ -324,11 +270,6 @@ const NavBarElement = ({ user, onLogout }) => {
                           onClick={() => handleNavigate("/MyPage")}
                         >
                           마이페이지
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          onClick={() => handleNavigate("/Myaccount")}
-                        >
-                          내 정보
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) : (

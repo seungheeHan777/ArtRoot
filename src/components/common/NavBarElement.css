@@ -1,0 +1,63 @@
+.nav-container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.site-container {
+  text-align: left;
+  margin-right: 20px;
+}
+
+.menu-container {
+  text-align: center;
+  margin-top: 5px;
+  margin-right: auto;
+}
+
+.search-container {
+  text-align: center;
+  margin-right: 20px;
+}
+
+.login-container {
+  text-align: right;
+}
+
+.nav-row {
+  display: flex;
+}
+
+.input-group .form-control {
+  margin-right: 10px;
+}
+
+.last_hr {
+  margin-top: -5px;
+}
+
+.site_name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #872323;
+}
+
+.search-input {
+  width: 400px;
+}
+
+.btn-search {
+  background-color: #872323;
+  border: 1px solid #872323;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: #6d1d1d;
+  color: #fff;
+}

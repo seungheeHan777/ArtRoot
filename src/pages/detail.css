@@ -1,3 +1,228 @@
+.contents {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.detailArea_title {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.imgArea {
+  background-image: initial;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  background-color: #f5faf6;
+}
+
+.product_img {
+  width: 500px;
+  height: 600px;
+}
+
+.infoArea {
+  width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+  align-items: center;
+  /* background-color: #f5faf6; */
+}
+
+.summary {
+  margin: 6px 0 8px;
+  margin-top: 20px;
+}
+
+.headingArea {
+  padding: 0 0 20px;
+  width: 60%;
+  margin: 50px auto;
+}
+
+.stars-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ss_avg_title {
+  font-size: 20px;
+  color: #872323;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.ss_avg_stars {
+  font-size: 16px;
+  color: #872323;
+  font-weight: bold;
+  margin-right: 15px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.bar-chart-container {
+  margin-top: 20px;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar {
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+  color: #872323;
+}
+
+.bar-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.bar-fill {
+  background-color: #872323; /* Set your preferred bar color */
+  height: 0;
+  transition: height 0.5s ease; /* Add a smooth transition effect */
+}
+
+.detail_area {
+  background-color: #f5faf6;
+  border: 1px solid #b8c8bc;
+  padding: 20px; /* Add padding for spacing */
+  margin: 20px 0; /* Adjust margin for spacing */
+  max-width: 800px; /* Set a max-width if needed */
+}
+
+.middle_title1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 3px solid #000;
+  width: fit-content;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.middle_title2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 3px solid #000;
+  width: fit-content;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.middle_title3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 3px solid #000;
+  width: fit-content;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.middle_title4 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 3px solid #000;
+  width: fit-content;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail_area table {
+  width: 100%;
+  text-align: left; /* Align table contents to the left */
+}
+
+.t_row {
+  padding: 5px 0 6px;
+  width: 150px;
+}
+
+table {
+  border-collapse: separate;
+  margin-top: 30px;
+}
+th,
+td {
+  padding: 0px;
+}
+tr.space {
+  border-bottom: 40px solid transparent;
+}
+
+.evaluation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.evaluation-section {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: flex-start; /* Align items to the left */
+  margin-top: 20px;
+}
+
+.evaluation-section p {
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.evaluation-container .evaluate_button {
+  background-color: #c97e7e;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.evaluation-section .evaluate_button:hover {
+  background-color: #872323;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  margin-top: -20px;
+}
+
+.place-text {
+  cursor: pointer;
+  color: #872323;
+  font-weight: bold;
+  transition: font-size 0.3s, color 0.3s;
+}
+
+.place-text:hover {
+  font-size: 1.1em; /* 예시로 크기를 1.2배로 변경 */
+  color: #390505; /* 예시로 파란색으로 변경 */
+  cursor: pointer;
+  font-weight: bold;
+}
+.modal-text {
+  font-weight: bold;
+}
+
 #contact {
   display: flex;
   flex-direction: column;
@@ -68,109 +293,4 @@ textarea {
 .form-container .last_info {
   font-weight: bold;
   text-align: center;
-}
-.contents {
-  display: inline-block;
-  float: none;
-  position: relative;
-  width: 100%;
-  padding: 0;
-}
-
-.product_detail {
-  padding: 35px 0 0;
-  position: relative;
-  margin: 0 auto;
-  width: 1200px;
-}
-
-.detailArea {
-  position: relative;
-  padding: 0 0 50px;
-  margin: 0;
-}
-
-.imgArea {
-  background-image: initial;
-  float: left;
-  width: 600px;
-  margin: 0;
-  padding: 0;
-}
-.product_img {
-  width: 600px;
-  height: 600px;
-}
-.infoArea {
-  position: relative;
-  float: right;
-  width: 600px;
-  padding: 0 0 0;
-  margin: 0;
-}
-.summary {
-  margin: 6px 0 8px;
-  margin-top: 20px;
-}
-.headingArea {
-  padding: 0 0 20px;
-  line-height: 1.4;
-}
-
-.t_row {
-  padding: 5px 0 6px;
-  width: 150px;
-}
-
-table {
-  border-collapse: separate;
-  margin-top: 30px;
-}
-th,
-td {
-  padding: 0px;
-}
-tr.space {
-  border-bottom: 40px solid transparent;
-}
-
-.evaluate_line {
-  border: 1px solid;
-  width: 100%;
-  margin-top: -20px;
-}
-
-.evaluation-section {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.evaluation-section p {
-  margin-right: 20px;
-}
-
-.evaluation-section .evaluate_button {
-  background-color: #cabfbf;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  border-radius: 5px;
-  margin-top: -20px;
-}
-
-.place-text {
-  cursor: pointer;
-  color: rgba(16, 165, 43, 0.416);
-  font-weight: bold;
-  transition: font-size 0.3s, color 0.3s;
-}
-
-.place-text:hover {
-  font-size: 1.1em; /* 예시로 크기를 1.2배로 변경 */
-  color: blue; /* 예시로 파란색으로 변경 */
-  cursor: pointer;
-  font-weight: bold;
-}
-.modal-text {
-  font-weight: bold;
 }

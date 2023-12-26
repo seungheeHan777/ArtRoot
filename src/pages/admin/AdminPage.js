@@ -1,13 +1,15 @@
+// AdminPage.js
 import React, { useState, useEffect } from "react";
 import { userlist } from "../../lib/api/admin";
 import Adminuseritem from "./Adminuseritem";
+import "./AdminExhibitionList.css";
 
 const AdminPage = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await userlist(); // 데이터베이스에서 전시회 정보를 가져오는 엔드포인트로 변경해야 합니다.
+        const response = await userlist();
         setData(response.data);
       } catch (e) {
         console.error(e);
@@ -15,24 +17,43 @@ const AdminPage = () => {
     };
     fetchData();
   }, []);
+
   return (
-    <div className="home-container" margintop>
-      <h1>관리자 - 유저 목록</h1>
+    <div>
+      <h1
+        style={{
+          fontSize: "25px",
+          color: "#872323",
+          fontWeight: "bold",
+        }}
+      >
+        유저 목록
+      </h1>
+      <hr className="customhr" />
       {data.length > 0 ? (
-        <div>
-          <ul>
+        <table className="user-table" style={{ paddingLeft: "100px" }}>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
             {data.map((user, index) => (
-              <li key={index}>
-                <Adminuseritem
-                  user_id={user.user_id}
-                  user_name={user.user_name}
-                  user_mail={user.user_mail}
-                  user_pw={user.user_pw}
-                />
-              </li>
+              <Adminuseritem
+                key={index}
+                user_id={user.user_id}
+                user_name={user.user_name}
+                user_mail={user.user_mail}
+                user_pw={user.user_pw}
+              />
             ))}
-          </ul>
-        </div>
+          </tbody>
+        </table>
       ) : (
         <p>데이터를 불러오는 중입니다...</p>
       )}

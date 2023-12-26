@@ -64,7 +64,7 @@ function App() {
           element={<RecommendedExhibition />}
         />
         <Route path="/MyPage" element={<MyPage />} />
-        <Route path="/Recommend" element={<Recommend />} />
+        {/* <Route path="/Recommend" element={<Recommend />} /> */}
         <Route path="/Rating/:id" element={<Rating />} />
         <Route path="/RatingList" element={<RatingList />} />
         <Route path="/SignUpComplete" element={<SignUpComplete />} />
@@ -101,6 +101,7 @@ function App() {
         <Route path="/calendardetail/:date" element={<Calendardetail />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/aiuser" element={<Aiuser />} />
+        <Route path="/Recommend" element={<Recommend />} />
       </Routes>
 
       <div className="ftAreaWrap bg-secondary text-gray888">

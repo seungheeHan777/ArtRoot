@@ -50,9 +50,24 @@ const TasteAnalysisChart = ({ oneInfo }) => {
   );
 
   return (
-    <div>
-      <h5>별점 분석 도표</h5>
-      <ResponsiveContainer width="100%" height={300}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <h1
+        style={{
+          color: "#DB908A",
+          fontSize: "30px",
+          paddingBottom: "20px",
+        }}
+      >
+        별점 분석 도표
+      </h1>
+      <ResponsiveContainer width="70%" height={300}>
         <BarChart
           data={ratingDistributionData}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
@@ -62,10 +77,20 @@ const TasteAnalysisChart = ({ oneInfo }) => {
           <YAxis tickCount={5} tickFormatter={formatYAxisTick} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="count" fill="#8884d8" />
+          <Bar
+            dataKey="count"
+            fill="#872323
+"
+          />
         </BarChart>
       </ResponsiveContainer>
-      <div>
+      <div
+        style={{
+          color: "#DB908A",
+          fontSize: "20px",
+          paddingTop: "40px",
+        }}
+      >
         <p>별점 평균: {averageRating.toFixed(2)}</p>
         <p>별점 갯수: {totalCount}</p>
         <p>가장 많이 준 별점: {mostFrequentRating.rating}</p>

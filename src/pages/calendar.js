@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { myone } from "../lib/api/auth";
 import { useNavigate } from "react-router-dom";
+import MyCalendarDetail from "./calendardetail";
 
 export default function MyCalendar() {
   const [date, setDate] = useState(new Date());
   const [oneInfo, setOneInfo] = useState([]);
+  const [selectDate, setselectDate] = useState(null);
+  const [showMycalendardetail, setShowMycalendardetail] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -106,7 +109,8 @@ export default function MyCalendar() {
             marginBottom: "20px",
             textAlign: "center",
             paddingtop: "10px",
-            fontSize: "20px", // 폰트 크기 조절
+            paddingBottom: "50px",
+            fontSize: "40px", // 폰트 크기 조절
             fontWeight: "bold", // 폰트 굵기 추가
           }}
         >
@@ -308,11 +312,11 @@ export default function MyCalendar() {
 
   const handleImageClick = (currentDate) => {
     const dateStr = formatDate(currentDate);
-    const imagesForDate = oneInfo.filter((info) => info.date === dateStr);
+    setShowMycalendardetail(true);
+    setselectDate(dateStr);
+    console.log(dateStr);
 
-    // Use React Router's useHistory hook for navigation
-
-    navigate(`/calendardetail/${dateStr}`);
+    //navigate(`/calendardetail/${dateStr}`);
   };
 
   return (
@@ -321,23 +325,28 @@ export default function MyCalendar() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100%",
-        width: "100%",
-        paddingTop: "20px", // Adjusted paddingTop
+        height: "100%", // 높이를 뷰포트의 100%로 변경
+        width: "65%",
+        paddingTop: "20px",
         paddingBottom: "50px",
-        marginLeft: "50px", // 조정
-        marginRight: "50px", // 조정
+        marginLeft: "auto", // 우측 여백을 자동으로 조정
+        marginRight: "auto", // 좌측 여백을 자동으로 조정
       }}
     >
       <div
         style={{
           flex: 1,
           border: "1px solid black",
-          paddingLeft: "10px", // 조정
-          paddingRight: "10px", // 조정
+          paddingLeft: "10px",
+          paddingRight: "10px",
         }}
       >
         {generateCalendarGrid()}
+        {showMycalendardetail && (
+          <section>
+            <MyCalendarDetail dateStr={selectDate} />
+          </section>
+        )}
       </div>
     </div>
   );
