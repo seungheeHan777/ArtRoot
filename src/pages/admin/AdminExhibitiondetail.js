@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Form, FormGroup } from "react-bootstrap";
 import { exhibitionUpdate, exhibitionDel, eximages } from "../../lib/api/admin";
 import { detail } from "../../lib/api/exhibition";
-import { AIuse } from "../../lib/api/ai";
+import { AIuse, saveEx } from "../../lib/api/ai";
 import "./AdminExhibitiondetail.css";
 import Loading from "../../components/common/Loading";
 const AdminExhibitiondetail = () => {
@@ -96,6 +96,19 @@ const AdminExhibitiondetail = () => {
         AIuse(imagePathParam)
           .then((res) => {
             console.log("서버 응답", res.data);
+            const predictedStyles = res.data.map(
+              (item) => item.predicted_style
+            );
+            saveEx({ ART_NUM: exhibitionData.ART_NUM, styles: predictedStyles })
+              .then((response) => {
+                console.log(response.data.message);
+              })
+              .catch((error) => {
+                console.error(
+                  "카테고리 정보를 서버에 전송하는 중 오류가 발생했습니다.",
+                  error
+                );
+              });
             setAiResult(res.data);
           })
           .catch((error) => {

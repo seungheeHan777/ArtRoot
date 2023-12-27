@@ -88,11 +88,11 @@ router.post("/savestyle/user", (req, res) => {
 router.post("/savestyle/exhibition", (req, res) => {
   try {
     const { ART_NUM, styles } = req.body;
-    const query1 = "DELETE FROM exhibition_style WHERE user_id = ?";
+    const query1 = "DELETE FROM exhibition_style WHERE ART_NUM = ?";
     db.query(query1, [ART_NUM]);
     // 새로 선택한 카테고리 정보 추가
     const query2 =
-      "INSERT INTO exhibition_style (ART_NUM, styles) VALUES (?,(SELECT num FROM styles WHERE styles =?))";
+      "INSERT INTO exhibition_style (ART_NUM, style_id) VALUES ((?),(SELECT num FROM styles WHERE styles =?))";
     for (const style of styles) {
       db.query(query2, [ART_NUM, style]);
     }
@@ -101,11 +101,87 @@ router.post("/savestyle/exhibition", (req, res) => {
       .json({ message: "전시회 스타일 정보가 성공적으로 저장되었습니다." });
   } catch (error) {
     console.error("전시회 스타일 정보 저장 중 에러 발생:", error);
-    res
-      .status(500)
-      .json({
-        message: "서버 오류로 전시회 스타일 정보를 저장할 수 없습니다.",
-      });
+    res.status(500).json({
+      message: "서버 오류로 전시회 스타일 정보를 저장할 수 없습니다.",
+    });
   }
+});
+
+// 유저 전시 추천
+router.get("/:username", (req, res) => {
+  const username = req.params.username;
+  console.log("username: ", username);
+
+  // 먼저 사용자의 ID를 가져오기
+  const getUserIdQuery = `
+    SELECT id
+    FROM user
+    WHERE user_id = ?
+  `;
+
+  db.query(getUserIdQuery, [username], (err, userRows) => {
+    if (err) {
+      console.error("Error getting user ID:", err);
+      return res
+        .status(500)
+        .json({ success: false, error: "Internal Server Error" });
+    }
+
+    const userId = userRows[0].id;
+
+    // 사용자 ID를 사용하여 사용자의 취향(스타일)을 읽어오기
+    const getUserStylesQuery = `
+      SELECT style_id
+      FROM user_style
+      WHERE user_id = ?
+    `;
+
+    db.query(getUserStylesQuery, [userId], (err, styleRows) => {
+      if (err) {
+        console.error("Error getting user styles:", err);
+        return res
+          .status(500)
+          .json({ success: false, error: "Internal Server Error" });
+      }
+
+      const styleIds = styleRows.map((row) => row.style_id);
+
+      // 스타일에 해당하는 전시회를 추천하는 함수
+      const recommendExhibitionsByStyles = () => {
+        const query = `
+          SELECT e.*
+          FROM exhibition e
+          JOIN exhibition_style es ON e.ART_NUM = es.ART_NUM
+          WHERE es.style_id IN (?)
+        `;
+        // null인 값은 필터링하여 유효한 값만 추출
+        const validStyleIds = styleIds.filter((id) => id !== null);
+        console.log(validStyleIds);
+        db.query(query, [validStyleIds], (err, result) => {
+          if (err) {
+            console.error("Error recommending exhibitions:", err);
+            return res
+              .status(500)
+              .json({ success: false, error: "Internal Server Error" });
+          }
+
+          const recommendedExhibitions = result.map((row) => ({
+            ART_NUM: row.ART_NUM,
+            ART_NAME: row.ART_NAME,
+            ART_START: row.ART_START,
+            ART_END: row.ART_END,
+            ART_PICTURE: row.ART_PICTURE,
+            // 다른 필드도 필요한 경우 추가
+          }));
+
+          console.log(recommendedExhibitions);
+          res.json({ success: true, result: recommendedExhibitions });
+        });
+      };
+
+      // 호출
+      recommendExhibitionsByStyles();
+    });
+  });
 });
 module.exports = router;

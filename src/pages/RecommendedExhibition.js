@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ExhibitionItem from "./ExhibitionItem";
 import { useSelector } from "react-redux";
 import { userRec } from "../lib/api/rec";
+import { airec } from "../lib/api/ai";
 import { Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
@@ -30,8 +31,9 @@ const RecommendedExhibition = () => {
     const fetchData = async () => {
       try {
         if (user && user.username) {
-          const response = await userRec(user.username);
+          const response = await airec(user.username);
           setData(response.data.result);
+          console.log(response.data.result);
         } else {
           // 모달을 표시하는 상태 설정
           setShowLoginAlert(true);
