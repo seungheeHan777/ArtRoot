@@ -213,5 +213,57 @@ router.get("/eximages/:id", async (req, res) => {
     res.status(500).json({ message: "이미지 데이터 불러오기 실패" });
   }
 });
+// 크롤링 추가
+router.post("/cw", async (req, res) => {
+  const data = req.body;
+  const checkExistenceSql = "SELECT * FROM exhibition WHERE ART_NUM = ?";
+  const insertSql =
+    "INSERT INTO exhibition (ART_NUM, ART_NAME, ART_PICTURE, ART_EXPLAIN, ART_START, ART_END, ART_TIME, ART_CLOSED, ART_PLACE, ART_ADDR, ART_PRICE, ART_CALL, ART_SITE, ART_ARTIST, ART_PREFER, ART_BACK) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM exhibition WHERE ART_NUM = ?)";
 
+  // Check if ART_NUM already exists
+  db.query(checkExistenceSql, [data.DP_SEQ], (err, result) => {
+    if (err) {
+      console.error("Failed to check ART_NUM existence", err);
+      res.status(500).json({ message: "크롤링 저장 실패" });
+    } else {
+      if (result.length > 0) {
+        // ART_NUM already exists
+        res.status(200).json({ message: "이미 존재하는 전시입니다" });
+      } else {
+        // ART_NUM does not exist, proceed with insertion
+        db.query(
+          insertSql,
+          [
+            data.DP_SEQ,
+            data.DP_NAME,
+            data.DP_MAIN_IMG,
+            data.DP_VIEWPOINT,
+            data.DP_START,
+            data.DP_END,
+            data.DP_VIEWTIME,
+            "",
+            data.DP_PLACE,
+            data.DP_HOMEPAGE,
+            data.DP_VIEWCHARGE,
+            "",
+            data.DP_LNK,
+            data.DP_ARTIST,
+            data.DP_ART_PART,
+            data.DP_INFO,
+            data.DP_SEQ,
+          ],
+          (err, results) => {
+            if (err) {
+              console.error("Failed to cw", err);
+              res.status(500).json({ message: "크롤링 저장 실패" });
+            } else {
+              console.log("크롤링 성공");
+              res.status(200).json({ message: "크롤링 성공" });
+            }
+          }
+        );
+      }
+    }
+  });
+});
 module.exports = router;

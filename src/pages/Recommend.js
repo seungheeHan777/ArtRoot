@@ -5,12 +5,11 @@ import {
   userCategory,
   userImage,
 } from "../lib/api/keyword";
-import { AIuse } from "../lib/api/ai";
+import { AIuse, saveuser } from "../lib/api/ai";
 import { useSelector } from "react-redux";
 import "./Recommend.css"; // CSS 파일을 직접 import
-import { useNavigate } from "react-router-dom";
+import Loading from "../components/common/Loading";
 const Recommend = () => {
-  const navigate = useNavigate();
   const { user } = useSelector(({ user }) => ({ user: user.user }));
   const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
@@ -18,6 +17,8 @@ const Recommend = () => {
   const [selectedImage, setSelectedImage] = useState([]);
   const [showAlert, setShowAlert] = useState(true); // 새로운 상태 추가
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 추가
+  const [aiResult, setAiResult] = useState(null); // AI 결과를 저장할 상태
+  const [showAiResult, setShowAiResult] = useState(false); // 표시 여부를 제어하는 상태
   const imagesPerPage = 8; // 페이지당 이미지 수
   useEffect(() => {
     // Fetch category and image data when the component mounts
@@ -101,22 +102,10 @@ const Recommend = () => {
       setSelectedCategories([...selectedCategories, categoryId]);
     }
   };
-  // 예전 코드
-  // const handleCategoryRecommend = () => {
-  //   // 유저가 선택한 카테고리를 서버로 전송
-  //   getUser({ user_id: user.username, categories: selectedCategories })
-  //     .then((response) => {
-  //       console.log(response.data.message);
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         "카테고리 정보를 서버에 전송하는 중 오류가 발생했습니다.",
-  //         error
-  //       );
-  //     });
-  // };
+
   const handleCategoryRecommend = () => {
     // 유저가 선택한 카테고리를 서버로 전송
+    console.log("selectedCategories", selectedCategories);
     getUser({ user_id: user.username, categories: selectedCategories })
       .then((response) => {
         console.log(response.data.message);
@@ -165,10 +154,25 @@ const Recommend = () => {
       const imagePathParam = selectedImageUrls
         .map((url) => encodeURIComponent(url))
         .join(",");
+      setShowAiResult(true);
       AIuse(imagePathParam)
         .then((response) => {
           console.log("서버 응답:", response.data);
-          navigate("/aiuser", { state: { responseData: response.data } });
+          const predictedStyles = response.data.map(
+            (item) => item.predicted_style
+          );
+          console.log("predictedStyles", predictedStyles);
+          saveuser({ user_id: user.username, styles: predictedStyles })
+            .then((response) => {
+              console.log(response.data.message);
+            })
+            .catch((error) => {
+              console.error(
+                "카테고리 정보를 서버에 전송하는 중 오류가 발생했습니다.",
+                error
+              );
+            });
+          setAiResult(response.data);
         })
         .catch((error) => {
           console.error("서버 요청 오류:", error);
@@ -183,40 +187,6 @@ const Recommend = () => {
       {user ? (
         <div>
           <h1>추천</h1>
-          {/* <h2>카테고리 키워드 선택</h2>
-          <div className="button-container" style={{ paddingTop: "20px" }}>
-            {categories.map((category) => (
-              <button
-                key={category.name}
-                className={
-                  selectedCategories.includes(category.category_id)
-                    ? "selected"
-                    : ""
-                }
-                style={{
-                  marginRight: "40px",
-                  marginLeft: "40px",
-                  marginBottom: "10px",
-                  padding: "5px 10px",
-                  cursor: "pointer",
-                  borderRadius: "25px",
-                }}
-                onClick={() => handleCheckboxChange(category.category_id)}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div> */}
-          {/* <div
-            style={{
-              textAlign: "center",
-              fontSize: "25px", // 적절한 크기로 조절하세요
-              padding: "10px", // 적절한 패딩 설정
-              cursor: "pointer",
-            }}
-          >
-            <button onClick={handleCategoryRecommend}>등록</button>
-          </div> */}
           <hr />
           <div>
             <h2>이미지 선택</h2>
@@ -278,6 +248,9 @@ const Recommend = () => {
               <button onClick={handleShowAnalysisResult}>
                 이미지 분석 결과
               </button>
+              {showAiResult && (
+                <Aiuser res={aiResult} setShowAiResult={setShowAiResult} />
+              )}
             </div>
           </div>
         </div>
@@ -292,6 +265,35 @@ const Recommend = () => {
           </div>
         )
       )}
+    </div>
+  );
+};
+const Aiuser = ({ res, setShowAiResult }) => {
+  const [loading, setLoading] = useState(true);
+  // 'res'를 사용하여 AI 결과를 이 컴포넌트에서 표시할 수 있습니다.
+  useEffect(() => {
+    if (res !== null) {
+      setLoading(false);
+    }
+  }, [res]); // useEffect 의존성 배열에 res 추가
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <div>
+      <h1>유저 취향 분석</h1>
+      <>
+        <h1>Python 스크립트2에서 얻은 결과:</h1>
+        {res.map((result, index) => (
+          <div key={index}>
+            <p>예측된 스타일: {result.predicted_style}</p>
+            <img src={result.image_path} alt={`이미지 ${index}`} />
+            <p> result.image_path:{result.image_path}</p>
+            <p>예측 정확도: {result.prediction_probability.toFixed(2)}%</p>
+          </div>
+        ))}
+      </>
+      <button onClick={() => setShowAiResult(false)}>돌아가기</button>
     </div>
   );
 };

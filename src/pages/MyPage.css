@@ -73,11 +73,6 @@
   color: #fff; /* Change text color on hover */
 }
 
-.nav-link:hover::after {
-  width: 100%; /* Expand the underline on hover */
-  background-color: #db6a5c; /* Adjust hover background color */
-}
-
 /* Optional: Add style for the currently active link */
 .nav-link.active {
   color: #fff;

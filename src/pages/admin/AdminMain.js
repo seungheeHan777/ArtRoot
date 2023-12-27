@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { Button, Navbar, Nav, Table } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import AdminPage from "./AdminPage.js";
 import AdminExhibitionList from "./AdminExhibitionList.js";
 import AdminRatingList from "./AdminRatingList.js";
 import AdminRecommend from "./AdminRecommend";
+import Admincrawling from "./Admincrawling.js";
 
 const AdminMain = () => {
   const [showAdminPageForm, setShowAdminPageForm] = useState(false);
@@ -13,12 +14,14 @@ const AdminMain = () => {
   const [showAdminRatingListForm, setShowAdminRatingListForm] = useState(false);
   const [showAdminAdminRecommendForm, setShowAdminAdminRecommendForm] =
     useState(false);
+  const [showAdmincrawlingForm, setShowAdmincrawlingForm] = useState(false);
 
   const toggleVisibility = (target) => {
     setShowAdminPageForm(false);
     setShowAdminExhibitionListForm(false);
     setShowAdminRatingListForm(false);
     setShowAdminAdminRecommendForm(false);
+    setShowAdmincrawlingForm(false);
 
     switch (target) {
       case "AdminPage":
@@ -32,6 +35,9 @@ const AdminMain = () => {
         break;
       case "AdminRecommend":
         setShowAdminAdminRecommendForm(true);
+        break;
+      case "Admincrawling":
+        setShowAdmincrawlingForm(true);
         break;
       default:
         break;
@@ -61,27 +67,33 @@ const AdminMain = () => {
           <Nav className="mr-auto flex-column">
             <Nav.Link
               onClick={() => toggleVisibility("AdminPage")}
-              style={{ color: "#DB908A", fontSize: "30px" }}
+              style={{ fontWeight: "bold", color: "#DB908A", fontSize: "30px" }}
             >
               유저 관리
             </Nav.Link>
             <Nav.Link
               onClick={() => toggleVisibility("AdminExhibitionList")}
-              style={{ color: "#DB908A", fontSize: "30px" }}
+              style={{ fontWeight: "bold", color: "#DB908A", fontSize: "30px" }}
             >
               전시회 관리
             </Nav.Link>
             <Nav.Link
               onClick={() => toggleVisibility("AdminRatingList")}
-              style={{ color: "#DB908A", fontSize: "30px" }}
+              style={{ fontWeight: "bold", color: "#DB908A", fontSize: "30px" }}
             >
               한줄평 관리
             </Nav.Link>
             <Nav.Link
               onClick={() => toggleVisibility("AdminRecommend")}
-              style={{ color: "#DB908A", fontSize: "30px" }}
+              style={{ fontWeight: "bold", color: "#DB908A", fontSize: "30px" }}
             >
               전시회 추천 관리
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => toggleVisibility("Admincrawling")}
+              style={{ fontWeight: "bold", color: "#DB908A", fontSize: "30px" }}
+            >
+              데이터 관리
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -112,6 +124,11 @@ const AdminMain = () => {
         {showAdminAdminRecommendForm && (
           <section>
             <AdminRecommend />
+          </section>
+        )}
+        {showAdmincrawlingForm && (
+          <section>
+            <Admincrawling />
           </section>
         )}
       </div>

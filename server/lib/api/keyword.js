@@ -104,8 +104,6 @@ router.get("/admin/getExkeyword", (req, res) => {
 // exhibition_keyword 데이터 추가
 router.post("/admin/exhibition_keywords", (req, res) => {
   const { ART_NUM, keyword_id } = req.body;
-  console.log(ART_NUM);
-  console.log(keyword_id);
   const query =
     "INSERT INTO exhibition_keyword (ART_NUM, keyword_id) VALUES (?, ?)";
   db.query(query, [ART_NUM, keyword_id], (err, results) => {
@@ -135,7 +133,7 @@ router.delete("/admin/exhibition_keywords", (req, res) => {
     }
   });
 });
-
+// 유저 취향 저장
 router.post("/user/saveCategories", (req, res) => {
   try {
     const { user_id, categories } = req.body;

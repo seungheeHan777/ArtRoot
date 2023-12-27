@@ -3,6 +3,8 @@ const router = express.Router();
 const { PythonShell } = require("python-shell");
 const path = require("path");
 const fs = require("fs");
+const db = require("../db");
+
 router.get("/predicted", async (req, res) => {
   try {
     // 클라이언트에서 이미지 경로를 쿼리 파라미터로 받아옴
@@ -55,4 +57,55 @@ function callPythonScript(imagePath) {
     });
   });
 }
+
+// 유저 ai 분석 결과 저장
+router.post("/savestyle/user", (req, res) => {
+  try {
+    const { user_id, styles } = req.body;
+    console.log("styles", styles);
+    // 사용자가 이미 선택한 카테고리 정보 삭제
+    const query1 =
+      "DELETE FROM user_style WHERE user_id = (SELECT id FROM user WHERE user_id = ?)";
+    db.query(query1, [user_id]);
+
+    // 새로 선택한 카테고리 정보 추가
+    const query2 =
+      "INSERT INTO user_style (user_id, style_id) VALUES ((SELECT id FROM user WHERE user_id = ?), (SELECT num FROM styles WHERE styles =?))";
+    for (const style of styles) {
+      db.query(query2, [user_id, style]);
+    }
+    res
+      .status(200)
+      .json({ message: "유저 스타일 정보가 성공적으로 저장되었습니다." });
+  } catch (error) {
+    console.error("유저 스타일 정보 저장 중 에러 발생:", error);
+    res
+      .status(500)
+      .json({ message: "서버 오류로 유저 스타일 정보를 저장할 수 없습니다." });
+  }
+});
+// 전시회 style 추가
+router.post("/savestyle/exhibition", (req, res) => {
+  try {
+    const { ART_NUM, styles } = req.body;
+    const query1 = "DELETE FROM exhibition_style WHERE user_id = ?";
+    db.query(query1, [ART_NUM]);
+    // 새로 선택한 카테고리 정보 추가
+    const query2 =
+      "INSERT INTO exhibition_style (ART_NUM, styles) VALUES (?,(SELECT num FROM styles WHERE styles =?))";
+    for (const style of styles) {
+      db.query(query2, [ART_NUM, style]);
+    }
+    res
+      .status(200)
+      .json({ message: "전시회 스타일 정보가 성공적으로 저장되었습니다." });
+  } catch (error) {
+    console.error("전시회 스타일 정보 저장 중 에러 발생:", error);
+    res
+      .status(500)
+      .json({
+        message: "서버 오류로 전시회 스타일 정보를 저장할 수 없습니다.",
+      });
+  }
+});
 module.exports = router;

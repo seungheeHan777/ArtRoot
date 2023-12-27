@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import ExhibitionList from "./pages/ExhibitionList";
 import MyPage from "./pages/MyPage";
 import Register from "./pages/Register";
@@ -34,7 +33,6 @@ import DiscountExhibition from "./pages/DiscountExhibition";
 import Myaccount from "./pages/Myaccount";
 import Calendardetail from "./pages/calendardetail";
 import Loading from "./components/common/Loading";
-import Aiuser from "./pages/aiuser";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -100,7 +98,6 @@ function App() {
         <Route path="/Calendar" element={<Calendar />} />
         <Route path="/calendardetail/:date" element={<Calendardetail />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/aiuser" element={<Aiuser />} />
         <Route path="/Recommend" element={<Recommend />} />
       </Routes>
 

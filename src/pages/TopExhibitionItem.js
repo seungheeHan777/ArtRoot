@@ -73,6 +73,7 @@ const TOPExhibitionItem = () => {
             position: "relative",
             marginRight: index < topImages.length - 1 ? "10px" : "0", // Adjust the marginRight value
             textAlign: "left",
+            transition: "transform 0.3s ease-in-out",
           }}
         >
           <p
@@ -103,7 +104,12 @@ const TOPExhibitionItem = () => {
                 borderRadius: "10px",
                 position: "relative", // 이미지가 자신의 위치를 기준으로 함
                 zIndex: "0", // 이미지가 순위 글씨보다 뒤에 있도록 함
+                transition: "transform 0.3s ease-in-out",
               }}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.transform = "scale(1.05)")
+              }
+              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
             />
           </Link>
           <p style={{ fontSize: "1.2rem", marginTop: "5px" }}>{item.title}</p>

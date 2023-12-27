@@ -27,3 +27,5 @@ export const exhibitionDel = (id) => client.delete(`/admin/exhibitions/${id}`);
 
 //전시회 이미지 조회
 export const eximages = (id) => client.get(`/admin/eximages/${id}`);
+
+export const CW = (data) => client.post("/admin/cw", data);

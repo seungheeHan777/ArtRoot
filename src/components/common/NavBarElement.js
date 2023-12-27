@@ -79,7 +79,6 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "20px" }}
                           >
                             홈
                           </a>
@@ -93,14 +92,16 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "20px" }}
                           >
                             전시
                           </a>
                           {/* dropdown menu */}
                           <div className="dropdown-menu mndDropMenu mndDropMenuSmall p-0">
                             {/* mnDropList */}
-                            <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
+                            <ul
+                              className="list-unstyled mnDropList mb-0 pt-1 pb-1 pb-md-6"
+                              style={{ backgroundColor: "#F6F6F6" }}
+                            >
                               <li className="hasDropdown">
                                 <a
                                   onClick={() =>
@@ -154,9 +155,8 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "20px" }}
                           >
-                            평가
+                            리뷰
                           </a>
                         </li>
                         <li className="nav-item dropdown">
@@ -167,9 +167,8 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "20px" }}
                           >
-                            AI 분석
+                            AI 취향 분석
                           </a>
                         </li>
 
@@ -181,9 +180,8 @@ const NavBarElement = ({ user, onLogout }) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                            style={{ fontSize: "20px" }}
                           >
-                            문의사항
+                            문의
                           </a>
                         </li>
                         {user && user.username === "admin" ? (
@@ -195,28 +193,9 @@ const NavBarElement = ({ user, onLogout }) => {
                               data-toggle="dropdown"
                               aria-haspopup="true"
                               aria-expanded="false"
-                              style={{ fontSize: "20px" }}
                             >
                               관리자
                             </a>
-                            <div className="dropdown-menu mndDropMenu mndDropMenuSmall p-0">
-                              {/* mnDropList */}
-                              <ul className="list-unstyled mnDropList mb-0 pt-1 pb-1 pt-md-4 pb-md-6">
-                                <li className="hasDropdown">
-                                  <a
-                                    onClick={() =>
-                                      handleNavigate("/ExhibitionKeyword")
-                                    }
-                                    style={{
-                                      fontSize: "17px",
-                                      textDecoration: "none",
-                                    }}
-                                  >
-                                    전시회 키워드 관리
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
                           </li>
                         ) : null}
                       </ul>
@@ -261,7 +240,7 @@ const NavBarElement = ({ user, onLogout }) => {
                         title={`${user.username} 님`}
                         id="nav-dropdown-user"
                         className="text-capitalize bdr2 mt-2 hdBtn"
-                        style={{ fontSize: "17px" }}
+                        style={{ fontSize: "17px", fontWeight: "bold" }}
                       >
                         <NavDropdown.Item onClick={handleLogout}>
                           로그아웃
@@ -271,13 +250,18 @@ const NavBarElement = ({ user, onLogout }) => {
                         >
                           마이페이지
                         </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={() => handleNavigate("/Myaccount")}
+                        >
+                          내 정보
+                        </NavDropdown.Item>
                       </NavDropdown>
                     ) : (
                       <NavDropdown
                         title="로그인"
                         id="nav-dropdown"
                         className="text-capitalize bdr2 mt-2 hdBtn"
-                        style={{ fontSize: "17px" }}
+                        style={{ fontSize: "17px", fontWeight: "bold" }}
                       >
                         <NavDropdown.Item
                           onClick={() => handleNavigate("/Login")}

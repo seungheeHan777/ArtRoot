@@ -3,6 +3,26 @@
   margin: 0 auto;
 }
 
+.mainNavigation .nav-link {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mainNavigation .nav-link:hover {
+  color: #872323; /* Change the text color on hover */
+  font-size: 1.5em;
+}
+
+.hasDropdown {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.hasDropdown:hover {
+  color: #872323;
+  font-size: 1.3em;
+}
+
 .site-container {
   text-align: left;
   margin-right: 20px;
