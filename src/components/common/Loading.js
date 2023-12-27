@@ -7,7 +7,7 @@ const Loading = () => {
       <Spinner
         animation="border"
         variant="info"
-        style={{ width: "20rem", height: "20rem", borderWidth: "1em" }}
+        style={{ width: "10rem", height: "10rem", borderWidth: "1em" }}
       />
     </div>
   );

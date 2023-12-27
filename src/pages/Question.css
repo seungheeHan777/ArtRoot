@@ -37,9 +37,8 @@ textarea {
   width: 100%;
   background-color: #fff;
 }
-
 .form-container button {
-  background-color: #4caf50;
+  background-color: #872323;
   color: #fff;
   padding: 10px;
   border: none;
@@ -48,7 +47,7 @@ textarea {
 }
 
 .form-container button:hover {
-  background-color: #45a049;
+  background-color: #ab6060;
 }
 
 .form-container .personal_info {

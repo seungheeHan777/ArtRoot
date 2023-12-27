@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 /* 화면 전체를 채움 */
 const AuthTemplateBlock = styled.div`
-  background: ${palette.gray[2]};
-  margin-top: 6rem;
+  background-color: white;
+  // margin-top: 6rem;
   margin-bottom: 20rem;
 
   display: flex;
@@ -22,7 +22,7 @@ const AuthTemplateBlock = styled.div`
 /* 흰색 박스 */
 const WhiteBox = styled.div`
   .logo-area {
-    width: 100px;
+    width: 100%;
     display: block;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -33,8 +33,9 @@ const WhiteBox = styled.div`
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
   width: 400px;
-  height: 500px;
+  height: auto;
   background: white;
+  border: 1px solid #f3ebeb;
   border-radius: 2px;
 `;
 
@@ -42,8 +43,13 @@ const AuthTemplate = ({ children }) => {
   return (
     <AuthTemplateBlock>
       <WhiteBox>
-        <div className="logo-area" style={{ paddingTop: "100px" }}>
-          <Link to="/">ARTROOT</Link>
+        <div className="logo-area">
+          <Link
+            to="/"
+            style={{ textDecoration: "none", fontSize: "20px", color: "black" }}
+          >
+            <span style={{ color: "#872323" }}>ART</span> ROOT
+          </Link>
         </div>
         {children}
       </WhiteBox>

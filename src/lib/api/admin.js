@@ -24,3 +24,6 @@ export const exhibitionUpdate = (id, updatedData) =>
 
 //전시회 삭제
 export const exhibitionDel = (id) => client.delete(`/admin/exhibitions/${id}`);
+
+//전시회 이미지 조회
+export const eximages = (id) => client.get(`/admin/eximages/${id}`);

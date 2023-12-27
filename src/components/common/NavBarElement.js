@@ -169,7 +169,7 @@ const NavBarElement = ({ user, onLogout }) => {
                             aria-expanded="false"
                             style={{ fontSize: "20px" }}
                           >
-                            취향 분석
+                            AI 분석
                           </a>
                         </li>
 

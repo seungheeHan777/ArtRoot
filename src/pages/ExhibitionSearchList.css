@@ -1,0 +1,106 @@
+.exhibition_list_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.exhibition_list_title {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.search_input_container {
+  width: 40%;
+}
+
+.search_input_container input {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  font-weight: bold;
+  padding-left: 20px;
+  font-size: 20px;
+  border: solid #872323;
+  margin-top: 20px;
+}
+
+.search_input_container input::placeholder {
+  color: #999;
+  font-size: 17px;
+}
+
+.search_input_length {
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.highlighted_text {
+  color: #872323;
+  font-weight: bold;
+}
+
+.exhibition_list_middle_head {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.list_middle_title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.list_middle_more {
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 15px;
+}
+
+.horizontal-line {
+  width: 90%;
+  height: 2px;
+  background-color: #872323;
+  margin: 0 auto 50px;
+}
+
+.exhibition_list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0 auto;
+  justify-content: flex-start;
+}
+
+.exhibition_item {
+  width: 24%;
+  margin-bottom: 20px;
+  border: 1px solid #f3ebeb;
+  height: 500px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+
+.exhibition_item:not(:last-child) {
+  margin-right: 12px;
+}
+
+.image_container {
+  border-bottom: 1px solid #f3ebeb;
+}
+
+.exhibition_item_image {
+  width: 100%;
+  height: 400px;
+}
+
+.title_container {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}

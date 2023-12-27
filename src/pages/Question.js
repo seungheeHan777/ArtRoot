@@ -39,7 +39,7 @@ const Question = () => {
     });
   };
   return (
-    <section className="my-28" id="contact" style={{ paddingTop: "200px" }}>
+    <section className="my-28" id="contact">
       <div className="form-container">
         <form
           // className="flex flex-col space-y-3 m-auto w-full"

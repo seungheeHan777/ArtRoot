@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { search } from "../lib/api/exhibition"; // Axios 라이브러리 추가
+import "./ExhibitionSearchList.css";
+
 function ExhibitionSearchList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -13,6 +15,13 @@ function ExhibitionSearchList() {
       fetchSearchResults(storedSearchTerm);
     }
   }, []);
+
+  const handleSearchChange = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    localStorage.setItem("searchTerm", newSearchTerm);
+    fetchSearchResults(newSearchTerm);
+  };
 
   const fetchSearchResults = async (query) => {
     try {
@@ -38,78 +47,52 @@ function ExhibitionSearchList() {
   };
 
   return (
-    <div
-      className="tab-pane fade show active d-flex justify-content-center align-items-center"
-      id="current"
-      role="tabpanel"
-      aria-labelledby="current-tab"
-      style={{ paddingTop: "200px", minHeight: "100vh" }}
-    >
-      {loading ? (
-        <p>로딩 중...</p>
-      ) : searchResults.length === 0 ? (
-        <p>검색 결과가 없습니다.</p>
-      ) : (
-        <ul className="exhibition-list">
-          <h1
-            style={{
-              textAlign: "left",
-              marginLeft: "250px",
-              marginBottom: "50px",
-            }}
-          >
-            검색 결과
-          </h1>
-          <hr></hr>
-          {searchResults.map((result) => (
-            <div
-              className="tab-pane fade show active"
-              id="current"
-              role="tabpanel"
-              aria-labelledby="current-tab"
-            >
-              <div className="row">
-                <div className="col-12">
-                  <article
-                    className="currExibitColumn gridView d-flex mb-6 mb-lg-9 mb-xl-12 mx-auto"
-                    style={{ marginBottom: "50px" }}
-                  >
-                    <div className="imgHolder flex-shrink-0 mr-4 mr-lg-6 mr-xl-8">
-                      <Link to={`/exhibitiondetail/${result.ART_NUM}`}>
-                        <img
-                          src={result.ART_PICTURE}
-                          className="img-fluid w-100 d-block"
-                          alt="image description"
-                          style={{ width: "300px", height: "200px" }}
-                        />
-                      </Link>
-                    </div>
-                    <div className="descrWrap pt-md-2 pt-lg-5">
-                      <h2
-                        className="mb-1 mb-sm-3"
-                        style={{ fontSize: "1.5rem", marginBottom: "1rem" }}
-                      >
-                        <a style={{ textDecoration: "none", color: "#333" }}>
-                          {result.ART_NAME}
-                        </a>
-                      </h2>
-                      <time
-                        dateTime="2011-01-12"
-                        className="d-block cecTime text-gray777"
-                        style={{ fontSize: "1rem" }}
-                      >
-                        <p>
-                          전시 기간: {result.ART_START} - {result.ART_END}
-                        </p>
-                      </time>
-                    </div>
-                  </article>
-                </div>
-              </div>
+    <div>
+      <div className="exhibition_list_header">
+        <p className="exhibition_list_title">통합 검색</p>
+        <div className="search_input_container">
+          <input
+            type="text"
+            value={searchTerm}
+            placeholder="검색어를 입력하세요."
+            onChange={handleSearchChange}
+          />
+        </div>
+        <p className="search_input_length">
+          <span className="highlighted_text">{`"${searchTerm}"`}</span>에 대한
+          검색결과가
+          <span className="highlighted_text">
+            {` ${searchResults.length}건`}{" "}
+          </span>
+          있습니다.
+        </p>
+      </div>
+
+      <div className="exhibition_list_middle_head">
+        <p className="list_middle_title">전시회 ({searchResults.length})</p>
+        <p className="list_middle_more">더보기 &#62;</p>
+      </div>
+
+      <div className="horizontal-line"></div>
+
+      <div className="exhibition_list">
+        {searchResults.map((result) => (
+          <div className="exhibition_item">
+            <div className="image_container">
+              <Link to={`/exhibitiondetail/${result.ART_NUM}`}>
+                <img
+                  src={result.ART_PICTURE}
+                  alt="image description"
+                  className="exhibition_item_image"
+                />
+              </Link>
             </div>
-          ))}
-        </ul>
-      )}
+            <div className="title_container">
+              <a>{result.ART_NAME}</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ router.get("/predicted", async (req, res) => {
     const imagePath = imagePathsString.split(",");
     console.log("imagePath: ", imagePath);
     // Python 스크립트를 호출하여 예측 수행
-    const result = await callPythonScript2(imagePath);
+    const result = await callPythonScript(imagePath);
 
     // 클라이언트에게 결과 전송
     res.json(result);
@@ -23,7 +23,7 @@ router.get("/predicted", async (req, res) => {
   }
 });
 // Python 스크립트를 호출하는 함수
-function callPythonScript2(imagePath) {
+function callPythonScript(imagePath) {
   return new Promise((resolve, reject) => {
     const pythonScriptPath = path.resolve(
       __dirname,

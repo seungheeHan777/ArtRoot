@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 const fileUpload = require("express-fileupload");
+const path = require("path");
+
+// express-fileupload 미들웨어 초기화
+router.use(fileUpload());
 
 // 관리자 유저
 // API로부터 모든 유저 정보를 가져와 클라이언트에게 제공
@@ -97,10 +101,11 @@ router.get("/exhibitions", (req, res) => {
 });
 
 // 전시회 추가
-router.post("/exhibitionss", fileUpload(), async (req, res) => {
+router.post("/exhibitionss", async (req, res) => {
   try {
-    const { ART_WORK, ...exhibitionData } = req.body;
-
+    const ART_WORK = req.files;
+    const exhibitionData = req.body;
+    console.log("ART_WORK", ART_WORK);
     // exhibition 테이블에 값 삽입
     const insertExhibitionQuery = "INSERT INTO exhibition SET ?";
     const insertExhibitionResult = await db.query(
@@ -111,11 +116,23 @@ router.post("/exhibitionss", fileUpload(), async (req, res) => {
 
     console.log("전시아이디", exhibitionId);
     // ART_WORK 배열이 존재하고, exhibitionId도 있을 때 이미지 삽입 수행
-    if (Array.isArray(ART_WORK) && exhibitionId) {
+    if (Array.isArray(Object.values(ART_WORK)) && exhibitionId) {
       const insertImageQuery =
         "INSERT INTO exhibition_images (exhibition_id, image_data) VALUES (?, ?)";
-      for (const compressedImage of ART_WORK) {
-        await db.query(insertImageQuery, [exhibitionId, compressedImage]);
+      for (const file of Object.values(ART_WORK)) {
+        console.log(file);
+        // 파일을 서버에 저장하고, 해당 경로를 DB에 저장
+        const relativePath = path.join("images/exhibition_images", file.name);
+        console.log(relativePath);
+        const filePath = path.join(
+          __dirname,
+          "../../../public/images/exhibition_images",
+          file.name
+        );
+        console.log(filePath);
+        await file.mv(filePath); // 파일을 저장
+        // 이미지 데이터에서 "public" 다음의 상대 경로 추출
+        await db.query(insertImageQuery, [exhibitionId, relativePath]);
       }
     }
 
@@ -169,6 +186,32 @@ router.delete("/exhibitions/:id", (req, res) => {
       res.status(200).json({ message: "전시회 삭제 성공" });
     }
   });
+});
+// 전시회 이미지 불러오기
+router.get("/eximages/:id", async (req, res) => {
+  const exhibitionId = req.params.id;
+  console.log(exhibitionId);
+
+  try {
+    const getImageDataQuery =
+      "SELECT * FROM exhibition_images WHERE exhibition_id = ?";
+    db.query(getImageDataQuery, [exhibitionId], (err, result) => {
+      if (err) {
+        console.error("Error :", err);
+        return res
+          .status(500)
+          .json({ success: false, error: "Internal Server Error" });
+      }
+      console.log("result", result);
+      const imagedatas = result.map((row) => row.image_data);
+      console.log("imagedatas", imagedatas);
+      // 클라이언트로 이미지 데이터 배열을 보냄
+      res.status(200).json({ success: true, imagedatas });
+    });
+  } catch (error) {
+    console.error("이미지 데이터 불러오기 중 에러 발생:", error);
+    res.status(500).json({ message: "이미지 데이터 불러오기 실패" });
+  }
 });
 
 module.exports = router;

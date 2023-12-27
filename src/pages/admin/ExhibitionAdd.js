@@ -39,7 +39,7 @@ const ExhibitionAdd = () => {
       ...prevInfo,
       ART_WORK: [...prevInfo.ART_WORK, ...updatedFiles],
     }));
-
+    console.log("updatedInfo.ART_WORK)", updatedInfo.ART_WORK);
     // 업로드 이미지 미리보기 업데이트
     const newPreviews = updatedFiles.map((file) => URL.createObjectURL(file));
     setImagePreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
@@ -77,22 +77,19 @@ const ExhibitionAdd = () => {
         {}
       );
       updatedData.ART_DISCOUNT = isDiscount;
-      // 이미지 파일 업로드
-      const base64Images = await Promise.all(
-        updatedInfo.ART_WORK.map(async (file) => {
-          const reader = new FileReader();
-          return new Promise((resolve) => {
-            reader.onloadend = () => {
-              resolve(reader.result.split(",")[1]);
-            };
-            reader.readAsDataURL(file);
+      const formData = new FormData();
+      Object.entries(updatedData).forEach(([key, value]) => {
+        if (key === "ART_WORK") {
+          // 이미지 파일은 여러 개일 수 있으므로 배열로 처리
+          value.forEach((file, index) => {
+            formData.append(`ART_WORK[${index}]`, file);
           });
-        })
-      );
-
-      updatedData.ART_WORK = base64Images;
-
-      const response = await exhibitionAdd(updatedData);
+        } else {
+          formData.append(key, value);
+        }
+      });
+      console.log("updatedData", updatedData);
+      const response = await exhibitionAdd(formData);
       console.log("전시회 추가 성공:", response.data);
     } catch (error) {
       console.error("요청 중 오류 발생:", error);

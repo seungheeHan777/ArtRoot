@@ -33,7 +33,7 @@ import ExhibitionKeyword from "./pages/admin/ExhibitionKeyword";
 import DiscountExhibition from "./pages/DiscountExhibition";
 import Myaccount from "./pages/Myaccount";
 import Calendardetail from "./pages/calendardetail";
-import Loading from "./pages/Loading";
+import Loading from "./components/common/Loading";
 import Aiuser from "./pages/aiuser";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

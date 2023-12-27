@@ -165,7 +165,6 @@ const Recommend = () => {
       const imagePathParam = selectedImageUrls
         .map((url) => encodeURIComponent(url))
         .join(",");
-
       AIuse(imagePathParam)
         .then((response) => {
           console.log("서버 응답:", response.data);

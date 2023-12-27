@@ -5,7 +5,6 @@ const FindPW = () => {
   return (
     <div>
       <div>
-        <h1>비밀번호 찾기</h1>
         <AuthTemplate>
           <FindPWForm />
         </AuthTemplate>

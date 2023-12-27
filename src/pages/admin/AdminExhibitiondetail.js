@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Form, FormGroup } from "react-bootstrap";
-import { exhibitionUpdate, exhibitionDel } from "../../lib/api/admin";
+import { exhibitionUpdate, exhibitionDel, eximages } from "../../lib/api/admin";
 import { detail } from "../../lib/api/exhibition";
+import { AIuse } from "../../lib/api/ai";
 import "./AdminExhibitiondetail.css";
-
+import Loading from "../../components/common/Loading";
 const AdminExhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
@@ -24,6 +25,8 @@ const AdminExhibitiondetail = () => {
     ART_PREFER: "",
     ART_ARTIST: "",
   });
+  const [aiResult, setAiResult] = useState(null); // AI 결과를 저장할 상태
+  const [showAiResult, setShowAiResult] = useState(false); // 표시 여부를 제어하는 상태
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     // 입력 필드의 name 속성을 사용하여 상태 업데이트
@@ -78,13 +81,41 @@ const AdminExhibitiondetail = () => {
       }
     }
   };
-
+  // 전시회 이미지 가져오기 버튼
+  const handleAI = async () => {
+    try {
+      // 서버로 AI 추출 요청을 보냄
+      const response = await eximages(id);
+      if (response.data.imagedatas) {
+        const imagedatas = response.data.imagedatas;
+        const imagePathParam = imagedatas
+          .map((url) => encodeURIComponent(url))
+          .join(",");
+        console.log("imagePathParam", imagePathParam);
+        setShowAiResult(true); // AI 결과를 표시
+        AIuse(imagePathParam)
+          .then((res) => {
+            console.log("서버 응답", res.data);
+            setAiResult(res.data);
+          })
+          .catch((error) => {
+            console.error("서버 요청 오류:", error);
+          });
+      }
+    } catch (error) {
+      console.error("AI로 카테고리 추출 중 에러 발생:", error);
+    }
+  };
   if (!exhibitionData) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   return (
-    <div className="contents" style={{ paddingTop: "200px" }}>
+    <div className="contents">
       <div className="product_detail">
         <div className="imgArea" style={{ width: "100%", textAlign: "center" }}>
           <img
@@ -225,7 +256,44 @@ const AdminExhibitiondetail = () => {
         >
           전시회 삭제
         </button>
+        <button onClick={handleAI} className="save_btn">
+          ai로 카테고리 추출하기
+        </button>
+        {showAiResult && (
+          <AiExhibition res={aiResult} setShowAiResult={setShowAiResult} />
+        )}
       </div>
+    </div>
+  );
+};
+
+// AiExhibition 컴포넌트
+const AiExhibition = ({ res, setShowAiResult }) => {
+  const [loading, setLoading] = useState(true);
+  // 'res'를 사용하여 AI 결과를 이 컴포넌트에서 표시할 수 있습니다.
+  useEffect(() => {
+    if (res !== null) {
+      setLoading(false);
+    }
+  }, [res]); // useEffect 의존성 배열에 res 추가
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <div>
+      <h1>ai로 전시회의 카테고리 추출하기</h1>
+      <>
+        <h1>Python 스크립트2에서 얻은 결과:</h1>
+        {res.map((result, index) => (
+          <div key={index}>
+            <p>예측된 스타일: {result.predicted_style}</p>
+            <img src={result.image_path} alt={`이미지 ${index}`} />
+            <p> result.image_path:{result.image_path}</p>
+            <p>예측 정확도: {result.prediction_probability.toFixed(2)}%</p>
+          </div>
+        ))}
+      </>
+      <button onClick={() => setShowAiResult(false)}>돌아가기</button>
     </div>
   );
 };
