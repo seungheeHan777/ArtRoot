@@ -6,6 +6,7 @@ import { detail } from "../../lib/api/exhibition";
 import { AIuse, saveEx } from "../../lib/api/ai";
 import "./AdminExhibitiondetail.css";
 import Loading from "../../components/common/Loading";
+import DoughnutChart from "../../components/common/Doughnut";
 const AdminExhibitiondetail = () => {
   const { id } = useParams(); // Get the 'id' parameter from the URL
   const [exhibitionData, setExhibitionData] = useState(null);
@@ -88,6 +89,7 @@ const AdminExhibitiondetail = () => {
       const response = await eximages(id);
       if (response.data.imagedatas) {
         const imagedatas = response.data.imagedatas;
+        console.log("imagedatas", imagedatas);
         const imagePathParam = imagedatas
           .map((url) => encodeURIComponent(url))
           .join(",");
@@ -99,6 +101,16 @@ const AdminExhibitiondetail = () => {
             const predictedStyles = res.data.map(
               (item) => item.predicted_style
             );
+            console.log("predictedStyles", predictedStyles);
+            // 각 값의 개수를 저장할 객체
+            const styleCount = predictedStyles.reduce((acc, style) => {
+              // 이미 개수를 저장하고 있는 경우 1을 더하고,
+              // 처음 나오는 경우 1로 초기화
+              acc[style] = (acc[style] || 0) + 1;
+              return acc;
+            }, {});
+
+            console.log("styleCount", styleCount);
             saveEx({ ART_NUM: exhibitionData.ART_NUM, styles: predictedStyles })
               .then((response) => {
                 console.log(response.data.message);
@@ -109,7 +121,7 @@ const AdminExhibitiondetail = () => {
                   error
                 );
               });
-            setAiResult(res.data);
+            setAiResult({ predictions: res.data, styleCount: styleCount });
           })
           .catch((error) => {
             console.error("서버 요청 오류:", error);
@@ -286,6 +298,7 @@ const AiExhibition = ({ res, setShowAiResult }) => {
   // 'res'를 사용하여 AI 결과를 이 컴포넌트에서 표시할 수 있습니다.
   useEffect(() => {
     if (res !== null) {
+      console.log("res", res);
       setLoading(false);
     }
   }, [res]); // useEffect 의존성 배열에 res 추가
@@ -297,7 +310,26 @@ const AiExhibition = ({ res, setShowAiResult }) => {
       <h1>ai로 전시회의 카테고리 추출하기</h1>
       <>
         <h1>Python 스크립트2에서 얻은 결과:</h1>
-        {res.map((result, index) => (
+        <div>
+          <h2>스타일 별 개수:</h2>
+          <ul>
+            {Object.entries(res.styleCount).map(([style, count]) => (
+              <li key={style}>{`${style}: ${count}`}</li>
+            ))}
+          </ul>
+          <div
+            style={{
+              width: "400px",
+              height: "400px",
+            }}
+          >
+            <DoughnutChart
+              labels={Object.keys(res.styleCount)}
+              data={Object.values(res.styleCount)}
+            />
+          </div>
+        </div>
+        {res.predictions.map((result, index) => (
           <div key={index}>
             <p>예측된 스타일: {result.predicted_style}</p>
             <img src={result.image_path} alt={`이미지 ${index}`} />

@@ -206,41 +206,6 @@ const Recommend = () => {
     <div style={{ textAlign: "center" }}>
       {user ? (
         <div>
-          {/* <h2>카테고리 키워드 선택</h2>
-        <div className="button-container" style={{ paddingTop: "20px" }}>
-          {categories.map((category) => (
-            <button
-              key={category.name}
-              className={
-                selectedCategories.includes(category.category_id)
-                  ? "selected"
-                  : ""
-              }
-              style={{
-                marginRight: "40px",
-                marginLeft: "40px",
-                marginBottom: "10px",
-                padding: "5px 10px",
-                cursor: "pointer",
-                borderRadius: "25px",
-              }}
-              onClick={() => handleCheckboxChange(category.category_id)}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div> */}
-          {/* <div
-          style={{
-            textAlign: "center",
-            fontSize: "25px", // 적절한 크기로 조절하세요
-            padding: "10px", // 적절한 패딩 설정
-            cursor: "pointer",
-          }}
-        >
-          <button onClick={handleCategoryRecommend}>등록</button>
-        </div> */}
-
           <div>
             <h2
               style={{
@@ -337,7 +302,6 @@ const Aiuser = ({ res, setShowAiResult }) => {
   useEffect(() => {
     if (res !== null) {
       setLoading(false);
-      console.log("res", res);
     }
   }, [res]);
   if (loading) {
