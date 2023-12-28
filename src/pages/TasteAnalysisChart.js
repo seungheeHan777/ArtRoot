@@ -49,6 +49,35 @@ const TasteAnalysisChart = ({ oneInfo }) => {
     { count: 0 }
   );
 
+  const categorizeUser = (averageRating) => {
+    if (averageRating >= 0.1 && averageRating < 1) {
+      return {
+        message: "당신은 비판적 평가자입니다.",
+      };
+    } else if (averageRating >= 1 && averageRating < 2) {
+      return {
+        message: "당신은 객관적 중립가입니다.",
+      };
+    } else if (averageRating >= 2 && averageRating < 3) {
+      return {
+        message: "당신은 미적 감각을 가진 감상가입니다.",
+      };
+    } else if (averageRating >= 3 && averageRating < 4) {
+      return {
+        message: "당신은 예술적 감수성이 풍부한 사람입니다.",
+      };
+    } else if (averageRating >= 4 && averageRating <= 5) {
+      return {
+        message: "당신은 마에스트로 평가자입니다.",
+      };
+    } else {
+      return {
+        message: "아직 평가가 없군요, 더 많은 전시를 평가해주세요",
+      };
+    }
+  };
+  const { message } = categorizeUser(averageRating.toFixed(2));
+
   return (
     <div
       style={{
@@ -94,6 +123,9 @@ const TasteAnalysisChart = ({ oneInfo }) => {
         <p>별점 평균: {averageRating.toFixed(2)}</p>
         <p>별점 갯수: {totalCount}</p>
         <p>가장 많이 준 별점: {mostFrequentRating.rating}</p>
+        <h2>
+          <span style={{ marginRight: "10px" }}>➔</span> {message}
+        </h2>
       </div>
     </div>
   );

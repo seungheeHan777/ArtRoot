@@ -78,3 +78,16 @@
   color: #fff;
   background-color: #db908a;
 }
+.nav-llink {
+  color: #db908a;
+  font-size: 30px;
+  text-align: left;
+  padding: 5px;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  text-decoration: none; /* Remove the default underline */
+}
+
+.nav-llink:hover {
+  color: #fff;
+  text-decoration: underline;
+}

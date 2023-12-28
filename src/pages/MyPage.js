@@ -111,119 +111,135 @@ const MyPage = () => {
   };
 
   return (
-    <div
-      className="my-page-container"
-      style={{ border: "1px solid #c06a5c", display: "flex", width: "85%" }}
-    >
-      <Navbar
-        bg="light"
-        expand="sm"
+    <div>
+      <h1 style={{ paddingLeft: "50px", fontWeight: "bold" }}>마이페이지</h1>
+      <hr
         style={{
-          textAlign: "left",
-          flexDirection: "column", // Align Navbar items in a column
-          width: "300px", // Adjust the width of the Navbar as needed
-          height: "600px",
-          marginRight: "50px",
-          backgroundColor: "#DC7878",
-          color: "#fff",
-        }}
-      >
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto flex-column">
-            <Nav.Link
-              onClick={() => toggleVisibility("Myaccount")}
-              style={{ color: "#DB908A", fontSize: "30px" }}
-            >
-              내정보
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => toggleVisibility("TasteChart")}
-              style={{ color: "#DB908A", fontSize: "30px", paddingTop: "40px" }}
-            >
-              별점 분포
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => toggleVisibility("Calendar")}
-              style={{ color: "#DB908A", fontSize: "30px", paddingTop: "40px" }}
-            >
-              캘린더
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => toggleVisibility("RatingForm")}
-              style={{ color: "#DB908A", fontSize: "30px", paddingTop: "40px" }}
-            >
-              한줄평 관리
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+          width: "85%",
 
-      <div
-        className="content-container"
-        style={{
-          paddingTop: "50px",
-          width: "100%", // Use the remaining width
+          borderColor: "#db908a",
+          borderWidth: "2px",
         }}
+      ></hr>
+      <div
+        className="my-page-container"
+        style={{ display: "flex", width: "100%" }}
       >
-        {showMyaccountForm && (
-          <section>
-            <Myaccount />
-          </section>
-        )}
-        {showTasteChart && (
-          <section>
-            <TasteAnalysisChart oneInfo={oneInfo} />
-          </section>
-        )}
-        {showCalendar && (
-          <section>
-            <h1
+        <Navbar
+          bg="light"
+          expand="sm"
+          style={{
+            textAlign: "left",
+            flexDirection: "column", // Align Navbar items in a column
+            width: "300px", // Adjust the width of the Navbar as needed
+            height: "600px",
+            marginRight: "50px",
+            backgroundColor: "#DC7878",
+            color: "#fff",
+          }}
+        >
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto flex-column">
+              <Nav.Link
+                className="nav-llink"
+                onClick={() => toggleVisibility("Myaccount")}
+                style={{ color: "#DB908A", fontSize: "30px" }}
+              >
+                내정보
+              </Nav.Link>
+              <Nav.Link
+                className="nav-llink"
+                onClick={() => toggleVisibility("TasteChart")}
+                style={{
+                  color: "#DB908A",
+                  fontSize: "30px",
+                  paddingTop: "40px",
+                }}
+              >
+                별점 분포
+              </Nav.Link>
+              <Nav.Link
+                className="nav-llink"
+                onClick={() => toggleVisibility("Calendar")}
+                style={{
+                  color: "#DB908A",
+                  fontSize: "30px",
+                  paddingTop: "40px",
+                }}
+              >
+                캘린더
+              </Nav.Link>
+              <Nav.Link
+                className="nav-llink"
+                onClick={() => toggleVisibility("RatingForm")}
+                style={{
+                  color: "#DB908A",
+                  fontSize: "30px",
+                  paddingTop: "40px",
+                }}
+              >
+                내 한줄평
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
+        <div
+          className="content-container"
+          style={{
+            paddingTop: "50px",
+            width: "100%", // Use the remaining width
+          }}
+        >
+          {showMyaccountForm && (
+            <section>
+              <Myaccount />
+            </section>
+          )}
+          {showTasteChart && (
+            <section>
+              <TasteAnalysisChart oneInfo={oneInfo} />
+            </section>
+          )}
+          {showCalendar && (
+            <section>
+              <MyCalendar />
+            </section>
+          )}
+          {showRatingForm && oneInfo && oneInfo.length > 0 && (
+            <div
               style={{
-                color: "#DB908A",
-                fontSize: "30px",
-                paddingBottom: "20px",
+                marginLeft: "100px",
+                width: "75%", // Use the remaining width
               }}
             >
-              캘린더
-            </h1>
-            <MyCalendar />
-          </section>
-        )}
-        {showRatingForm && oneInfo && oneInfo.length > 0 && (
-          <div
-            style={{
-              marginLeft: "100px",
-              width: "65%", // Use the remaining width
-            }}
-          >
-            <Table striped bordered hover>
-              <thead>
-                <h5>내 한줄평</h5>
-                <tr>
-                  <th>전시 이미지</th>
-                  <th>한줄평</th>
-                  <th>별점</th>
-                  {/* <th>수정</th> */}
-                  <th>삭제</th>
-                </tr>
-              </thead>
-              <tbody>
-                {oneInfo.map((one, index) => (
-                  <tr key={index}>
-                    <td style={{ paddingRight: "0" }}>
-                      <a href={`exhibitiondetail/${one.artnum}`}>
-                        <img
-                          src={one.picture ? one.picture : ""}
-                          alt="Profile Picture"
-                          width="100"
-                          height="100"
-                        />
-                      </a>
-                    </td>
-                    <td style={{ verticalAlign: "middle" }}>{one.comment}</td>
-                    <td style={{ verticalAlign: "middle" }}>{one.stars}</td>
-                    {/* <td>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>전시 이미지</th>
+                    <th>한줄평</th>
+                    <th>별점</th>
+                    {/* <th>수정</th> */}
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {oneInfo.map((one, index) => (
+                    <tr key={index}>
+                      <td style={{ paddingRight: "0" }}>
+                        <a href={`exhibitiondetail/${one.artnum}`}>
+                          <img
+                            src={one.picture ? one.picture : ""}
+                            alt="Profile Picture"
+                            width="100"
+                            height="100"
+                          />
+                        </a>
+                      </td>
+                      <td style={{ verticalAlign: "middle" }}>{one.comment}</td>
+                      <td style={{ verticalAlign: "middle" }}>{one.stars}</td>
+                      {/* <td>
               <Button
                 variant="info"
                 type="button"
@@ -233,22 +249,23 @@ const MyPage = () => {
                 수정
               </Button>
             </td> */}
-                    <td style={{ verticalAlign: "middle" }}>
-                      <Button
-                        variant="danger"
-                        type="button"
-                        onClick={() => handleDelete(one.username, one.artnum)}
-                        href="/Mypage"
-                      >
-                        삭제
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        )}
+                      <td style={{ verticalAlign: "middle" }}>
+                        <Button
+                          variant="danger"
+                          type="button"
+                          onClick={() => handleDelete(one.username, one.artnum)}
+                          href="/Mypage"
+                        >
+                          삭제
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -91,6 +91,17 @@ const ExhibitionList = () => {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const pageButtonRange = 5; // You can adjust this value
+  const totalPages = Math.ceil(data.length / exhibitionsPerPage);
+  const startPage =
+    currentPage <= Math.floor(pageButtonRange / 2)
+      ? 1
+      : Math.min(
+          Math.max(currentPage - Math.floor(pageButtonRange / 2), 1),
+          totalPages - pageButtonRange + 1
+        );
+  const endPage = Math.min(startPage + pageButtonRange - 1, totalPages);
+
   return (
     <div className="page-container">
       <div className="home-container">
@@ -98,7 +109,14 @@ const ExhibitionList = () => {
           <div className="row">
             <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
               <h1 className="h1Large mb-4">Exhibitions</h1>
-              <div className="fontSerif eabDescrText eabDescrTextII"></div>
+              <div className="fontSerif eabDescrText eabDescrTextII">
+                <p>
+                  여기, 예술의 다양성이 만나는 곳, artroot입니다. 우리는 예술을
+                  사랑하는 이들에게 새로운 창작물과 미술 작품을 소개하고, 다양한
+                  전시 및 행사 정보를 제공합니다. 예술의 뿌리를 탐험하고, 문화의
+                  아름다움에 빠져보세요.
+                </p>
+              </div>
             </div>
           </div>
         </header>
@@ -200,22 +218,16 @@ const ExhibitionList = () => {
           <p>데이터를 불러오는 중입니다...</p>
         )}
         {/* Pagination */}
-        <div
-          className="pagination"
-          style={{
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {Array.from(
-            { length: Math.ceil(data.length / exhibitionsPerPage) },
-            (_, index) => (
-              <button key={index} onClick={() => paginate(index + 1)}>
-                {index + 1}
-              </button>
-            )
-          )}
+        <div className="pagination">
+          {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+            <button
+              key={startPage + index}
+              onClick={() => paginate(startPage + index)}
+              style={{ marginRight: "10px" }}
+            >
+              {startPage + index}
+            </button>
+          ))}
         </div>
       </div>
     </div>

@@ -54,17 +54,20 @@ const Exhibitiondetail = ({ totalStars = 5 }) => {
       <div className="bar-chart-container">
         <div className="bar-chart">
           {starDistribution.map((data, index) => (
-            <div key={index} className="bar">
-              <span className="bar-label">{data.stars}점</span>
-              <div
-                className="bar-fill"
-                style={{
-                  height: `${
-                    maxCount > 0 ? (data.count / maxCount) * 150 : 150
-                  }px`, // 최대 높이가 150px로 고정, 데이터가 0인 경우에도 150px로 높이를 유지
-                  background: data.count > 0 ? "red" : "transparent", // 데이터가 있는 경우에만 빨간색으로 표시
-                }}
-              ></div>
+            <div className="bar-container">
+              <div key={index} className="bar">
+                <span className="bar-label">{data.stars}점</span>
+                <div
+                  className="bar-fill"
+                  style={{
+                    width: "50px",
+                    height: `${
+                      maxCount > 0 ? (data.count / maxCount) * 150 : 150
+                    }px`, // 최대 높이가 150px로 고정, 데이터가 0인 경우에도 150px로 높이를 유지
+                    background: data.count > 0 ? "red" : "transparent", // 데이터가 있는 경우에만 빨간색으로 표시
+                  }}
+                ></div>
+              </div>
             </div>
           ))}
         </div>

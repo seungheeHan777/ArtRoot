@@ -83,3 +83,8 @@
 #right {
   margin-left: 30px;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust the top margin as needed */
+}

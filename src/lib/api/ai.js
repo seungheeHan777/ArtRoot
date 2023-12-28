@@ -18,3 +18,8 @@ export const saveEx = ({ ART_NUM, styles }) => {
 export const airec = (username) => {
   return client.get(`/ai/${username}`);
 };
+
+// 관리자가 모델로 이미지, 라벨 보내기
+export const saveImageData = (formData) => {
+  return client.post("ai/saveImageData", formData);
+};

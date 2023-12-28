@@ -4,7 +4,9 @@ const { PythonShell } = require("python-shell");
 const path = require("path");
 const fs = require("fs");
 const db = require("../db");
-
+const fileUpload = require("express-fileupload");
+// express-fileupload 미들웨어 초기화
+router.use(fileUpload());
 router.get("/predicted", async (req, res) => {
   try {
     // 클라이언트에서 이미지 경로를 쿼리 파라미터로 받아옴
@@ -184,4 +186,53 @@ router.get("/:username", (req, res) => {
     });
   });
 });
+
+router.post("/saveImageData", (req, res) => {
+  const images = req.files.images;
+  const labels = req.body.labels;
+  const imageCount = req.body.imageCount;
+
+  console.log("이미지", images);
+  console.log("라벨", labels);
+  console.log("개수", imageCount);
+  // console.log("Image Count:", imageCount);
+  try {
+    // 이미지 저장 경로 설정(라벨 이름의 폴더 생성 후 그 안에 이미지 삽입)
+    const labelFolder = path.join(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "public",
+      "images",
+      "filtered_images",
+      "images",
+      labels
+    );
+
+    if (!fs.existsSync(labelFolder)) {
+      fs.mkdirSync(labelFolder, { recursive: true });
+    }
+
+    images.forEach((image) => {
+      const filePath = path.join(labelFolder, image.name);
+
+      // Save the image
+      image.mv(filePath, (err) => {
+        if (err) {
+          console.error("Error saving image:", err);
+          return res.status(500).send("Internal Server Error");
+        }
+      });
+
+      console.log("Image Path:", filePath);
+    });
+
+    res.status(200).json({ ok: true });
+  } catch (error) {
+    console.error("Error handling request:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;

@@ -1,34 +1,159 @@
-/* styles.css */
+/* Add these styles to your Recommend.css file */
 .image-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* 왼쪽에서 오른쪽으로 정렬 */
+  justify-content: space-evenly; /* Adjust as needed */
+  gap: 20px;
+  max-width: 1000px; /* Set a maximum width to limit the items in a row */
+  margin: 0 auto; /* Center the container */
+  margin-bottom: 50px;
 }
 
 .image-item {
-  width: calc(25% - 10px);
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  .image-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+  }
 }
 
-.image-content {
-  text-align: center;
-}
-
-.checkbox {
-  margin-top: 10px;
-}
+/* Add these styles for pagination buttons */
 .button-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* 왼쪽에서 오른쪽으로 정렬 */
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #45a049;
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      color: #666;
+      cursor: not-allowed;
+    }
+  }
 }
+
+/* Add these styles for action buttons */
+.action-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #005776;
+  }
+}
+
+/* Add these styles for alert message */
+.alert-message {
+  font-size: 20px;
+  margin-top: 20px;
+  color: red;
+}
+
+.customhr {
+  background-color: #872323;
+  height: 2px;
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .button-container button {
-  flex: 0 0 calc(25% - 100px); /* 한 줄에 4개의 버튼이므로 각 버튼의 너비는 25% */
+  background-color: #4caf50; /* Green background color */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px; /* Optional: Add some border radius for rounded corners */
 }
-.selected {
-  background-color: #dd7328; /* 선택된 상태의 배경색을 지정하세요 */
-  /* 추가적인 스타일 지정 가능 */
+
+.button-container button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
+
+/* Add these styles to your Recommend.css or your component's styles */
+
+.button-container1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-container1 button {
+  background-color: #5e5f61; /* Green background color */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 5px 10px; /* Padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button-container1 button:hover {
+  background-color: #5e5f61;
+}
+
+.button-container1 button + button {
+  margin-left: 800px;
+}
+
+/* Adjust the padding, margin, font-size, and colors as needed */

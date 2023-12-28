@@ -135,13 +135,23 @@ const Recommend = () => {
     }
   };
 
-  // 현재 페이지에 해당하는 이미지 목록을 반환
   const getCurrentImages = () => {
     const indexOfLastImage = currentPage * imagesPerPage;
     const indexOfFirstImage = indexOfLastImage - imagesPerPage;
-    return images.slice(indexOfFirstImage, indexOfLastImage);
-  };
 
+    // Slice the images into two parts: 4 items for the first row, and 4 items for the second row
+    const firstRowImages = images.slice(
+      indexOfFirstImage,
+      indexOfFirstImage + 4
+    );
+    const secondRowImages = images.slice(
+      indexOfFirstImage + 4,
+      indexOfLastImage
+    );
+
+    // Return the concatenated array of two parts
+    return [...firstRowImages, ...secondRowImages];
+  };
   // 페이지 변경 함수
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -196,10 +206,51 @@ const Recommend = () => {
     <div style={{ textAlign: "center" }}>
       {user ? (
         <div>
-          <h1>추천</h1>
-          <hr />
+          {/* <h2>카테고리 키워드 선택</h2>
+        <div className="button-container" style={{ paddingTop: "20px" }}>
+          {categories.map((category) => (
+            <button
+              key={category.name}
+              className={
+                selectedCategories.includes(category.category_id)
+                  ? "selected"
+                  : ""
+              }
+              style={{
+                marginRight: "40px",
+                marginLeft: "40px",
+                marginBottom: "10px",
+                padding: "5px 10px",
+                cursor: "pointer",
+                borderRadius: "25px",
+              }}
+              onClick={() => handleCheckboxChange(category.category_id)}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div> */}
+          {/* <div
+          style={{
+            textAlign: "center",
+            fontSize: "25px", // 적절한 크기로 조절하세요
+            padding: "10px", // 적절한 패딩 설정
+            cursor: "pointer",
+          }}
+        >
+          <button onClick={handleCategoryRecommend}>등록</button>
+        </div> */}
+
           <div>
-            <h2>이미지 선택</h2>
+            <h2
+              style={{
+                fontWeight: "bold",
+                color: "#DB908A",
+              }}
+            >
+              마음에 드는 이미지를 선택하세요
+            </h2>
+            <hr className="customhr" style={{ marginBottom: "100px" }}></hr>
             <div className="image-container">
               {getCurrentImages().map((image) => (
                 <div key={image.category_id} className="image-item">
@@ -216,12 +267,12 @@ const Recommend = () => {
                       }}
                       onClick={() => handleCheckboxChange(image.category_id)}
                     />
-                    <p>이미지 카테고리: {image.name}</p>
+                    {/* <p>이미지 카테고리: {image.name}</p> */}
                   </div>
                 </div>
               ))}
             </div>
-            <div>
+            <div className="button-container1">
               <button
                 onClick={() => paginate(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -238,6 +289,7 @@ const Recommend = () => {
               </button>
             </div>
             <div
+              className="button-container"
               style={{
                 textAlign: "center",
                 fontSize: "25px", // 적절한 크기로 조절하세요
@@ -248,6 +300,7 @@ const Recommend = () => {
               <button onClick={handleCategoryRecommend}>이미지 등록</button>
             </div>
             <div
+              className="button-container"
               style={{
                 textAlign: "center",
                 fontSize: "25px", // 적절한 크기로 조절하세요
@@ -258,10 +311,10 @@ const Recommend = () => {
               <button onClick={handleShowAnalysisResult}>
                 이미지 분석 결과
               </button>
-              {showAiResult && (
-                <Aiuser res={aiResult} setShowAiResult={setShowAiResult} />
-              )}
             </div>
+            {showAiResult && (
+              <Aiuser res={aiResult} setShowAiResult={setShowAiResult} />
+            )}
           </div>
         </div>
       ) : (

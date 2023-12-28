@@ -102,6 +102,10 @@ const Rating = ({ totalStars = 5 }) => {
   const handleSubmitComment = () => {
     const userString = localStorage.getItem("user");
     const userObject = JSON.parse(userString);
+    if (!userObject || !userObject.username) {
+      window.confirm("로그인 하세요!");
+      return;
+    }
     const data = {
       user: userObject.username,
       comment: comment,
