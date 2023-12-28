@@ -9,6 +9,7 @@ import { AIuse, saveuser } from "../lib/api/ai";
 import { useSelector } from "react-redux";
 import "./Recommend.css"; // CSS 파일을 직접 import
 import Loading from "../components/common/Loading";
+import DoughnutChart from "../components/common/Doughnut";
 const Recommend = () => {
   const { user } = useSelector(({ user }) => ({ user: user.user }));
   const [categories, setCategories] = useState([]);
@@ -162,6 +163,15 @@ const Recommend = () => {
             (item) => item.predicted_style
           );
           console.log("predictedStyles", predictedStyles);
+          // 각 값의 개수를 저장할 객체
+          const styleCount = predictedStyles.reduce((acc, style) => {
+            // 이미 개수를 저장하고 있는 경우 1을 더하고,
+            // 처음 나오는 경우 1로 초기화
+            acc[style] = (acc[style] || 0) + 1;
+            return acc;
+          }, {});
+
+          console.log("styleCount", styleCount);
           saveuser({ user_id: user.username, styles: predictedStyles })
             .then((response) => {
               console.log(response.data.message);
@@ -172,7 +182,7 @@ const Recommend = () => {
                 error
               );
             });
-          setAiResult(response.data);
+          setAiResult({ predictions: response.data, styleCount: styleCount });
         })
         .catch((error) => {
           console.error("서버 요청 오류:", error);
@@ -274,8 +284,9 @@ const Aiuser = ({ res, setShowAiResult }) => {
   useEffect(() => {
     if (res !== null) {
       setLoading(false);
+      console.log("res", res);
     }
-  }, [res]); // useEffect 의존성 배열에 res 추가
+  }, [res]);
   if (loading) {
     return <Loading />;
   }
@@ -284,7 +295,26 @@ const Aiuser = ({ res, setShowAiResult }) => {
       <h1>유저 취향 분석</h1>
       <>
         <h1>Python 스크립트2에서 얻은 결과:</h1>
-        {res.map((result, index) => (
+        <div>
+          <h2>스타일 별 개수:</h2>
+          <ul>
+            {Object.entries(res.styleCount).map(([style, count]) => (
+              <li key={style}>{`${style}: ${count}`}</li>
+            ))}
+          </ul>
+          <div
+            style={{
+              width: "400px",
+              height: "400px",
+            }}
+          >
+            <DoughnutChart
+              labels={Object.keys(res.styleCount)}
+              data={Object.values(res.styleCount)}
+            />
+          </div>
+        </div>
+        {res.predictions.map((result, index) => (
           <div key={index}>
             <p>예측된 스타일: {result.predicted_style}</p>
             <img src={result.image_path} alt={`이미지 ${index}`} />
@@ -293,7 +323,7 @@ const Aiuser = ({ res, setShowAiResult }) => {
           </div>
         ))}
       </>
-      <button onClick={() => setShowAiResult(false)}>돌아가기</button>
+      <button onClick={() => setShowAiResult(false)}>닫기</button>
     </div>
   );
 };

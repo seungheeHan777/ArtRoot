@@ -33,6 +33,7 @@ import DiscountExhibition from "./pages/DiscountExhibition";
 import Myaccount from "./pages/Myaccount";
 import Calendardetail from "./pages/calendardetail";
 import Loading from "./components/common/Loading";
+import Doughnut from "./components/common/Doughnut";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -99,6 +100,7 @@ function App() {
         <Route path="/calendardetail/:date" element={<Calendardetail />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/Recommend" element={<Recommend />} />
+        <Route path="/Doughnut" element={<Doughnut />} />
       </Routes>
 
       <div className="ftAreaWrap bg-secondary text-gray888">
