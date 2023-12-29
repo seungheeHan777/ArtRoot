@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ExhibitionItem from "./ExhibitionItem";
 import { useSelector } from "react-redux";
 import { userRec } from "../lib/api/rec";
-import { airec } from "../lib/api/ai";
 import { Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
@@ -31,9 +30,8 @@ const RecommendedExhibition = () => {
     const fetchData = async () => {
       try {
         if (user && user.username) {
-          const response = await airec(user.username);
+          const response = await userRec(user.username);
           setData(response.data.result);
-          console.log(response.data.result);
         } else {
           // 모달을 표시하는 상태 설정
           setShowLoginAlert(true);
@@ -115,12 +113,11 @@ const RecommendedExhibition = () => {
             <header className="topHeadingHead text-center mb-6 mb-lg-9 mb-xl-12">
               <div className="row">
                 <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                  <h1 className="h1Large mb-4">Exhibitions</h1>
+                  <h1 className="h1Large mb-4">추천 전시</h1>
                   <div className="fontSerif eabDescrText eabDescrTextII">
                     <p>
-                      Find out what's on at the museum’s: from current and
-                      upcoming exhibitions, to guided tours, workshops,
-                      children's activities and events.
+                      당신의 전시 추천 사이트가 예술과 문화를 사랑하는 이들에게
+                      즐거움을 주길 바랍니다!
                     </p>
                   </div>
                 </div>

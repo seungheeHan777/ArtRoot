@@ -96,7 +96,12 @@ const ExhibitionList = () => {
           <div className="row">
             <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
               <h1 className="h1Large mb-4">할인 전시</h1>
-              <div className="fontSerif eabDescrText eabDescrTextII"></div>
+              <div className="fontSerif eabDescrText eabDescrTextII">
+                <p>
+                  여러분이 예술을 더 저렴한 가격에 즐기는 즐거운 경험을
+                  기대합니다!
+                </p>
+              </div>
             </div>
           </div>
         </header>
@@ -198,14 +203,7 @@ const ExhibitionList = () => {
           <p>데이터를 불러오는 중입니다...</p>
         )}
         {/* Pagination */}
-        <div
-          className="pagination"
-          style={{
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <div className="pagination">
           {Array.from(
             { length: Math.ceil(data.length / exhibitionsPerPage) },
             (_, index) => (

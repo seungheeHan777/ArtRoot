@@ -40,7 +40,7 @@ const doughnut = ({ labels, data }) => {
 
   return (
     <div>
-      <h1>차트</h1>
+      <h1 style={{ fontWeight: "bold" }}>차트</h1>
       <Doughnut data={ddata} options={options} />
     </div>
   );

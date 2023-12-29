@@ -306,21 +306,21 @@ const AiExhibition = ({ res, setShowAiResult }) => {
     return <Loading />;
   }
   return (
-    <div>
-      <h1>ai로 전시회의 카테고리 추출하기</h1>
+    <div style={{ textAlign: "center" }}>
       <>
-        <h1>Python 스크립트2에서 얻은 결과:</h1>
         <div>
-          <h2>스타일 별 개수:</h2>
-          <ul>
-            {Object.entries(res.styleCount).map(([style, count]) => (
-              <li key={style}>{`${style}: ${count}`}</li>
-            ))}
-          </ul>
+          {/* <h2>스타일 별 개수:</h2>
+
+          {Object.entries(res.styleCount).map(([style, count]) => (
+            <p key={style}>{`${style}: ${count}`}</p>
+          ))} */}
+
           <div
             style={{
-              width: "400px",
-              height: "400px",
+              width: "200px",
+              height: "200px",
+              marginBottom: "150px",
+              marginLeft: "150px",
             }}
           >
             <DoughnutChart
@@ -330,15 +330,42 @@ const AiExhibition = ({ res, setShowAiResult }) => {
           </div>
         </div>
         {res.predictions.map((result, index) => (
-          <div key={index}>
-            <p>예측된 스타일: {result.predicted_style}</p>
-            <img src={result.image_path} alt={`이미지 ${index}`} />
-            <p> result.image_path:{result.image_path}</p>
-            <p>예측 정확도: {result.prediction_probability.toFixed(2)}%</p>
+          <div
+            key={index}
+            style={{
+              margin: "20px",
+              padding: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+            }}
+          >
+            <h3 style={{ fontWeight: "bold" }}>
+              예측된 스타일: {result.predicted_style}
+            </h3>
+            <img
+              src={result.image_path}
+              alt={`이미지 ${index}`}
+              style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+            />
+            {/* <p> result.image_path:{result.image_path}</p> */}
+            <p style={{ fontWeight: "bold" }}>
+              예측 정확도: {result.prediction_probability.toFixed(2)}%
+            </p>
           </div>
         ))}
       </>
-      <button onClick={() => setShowAiResult(false)}>돌아가기</button>
+      <button
+        onClick={() => setShowAiResult(false)}
+        style={{
+          marginTop: "20px",
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+          borderRadius: "8px",
+        }}
+      >
+        돌아가기
+      </button>
     </div>
   );
 };

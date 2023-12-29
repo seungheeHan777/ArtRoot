@@ -110,12 +110,7 @@ const ExhibitionList = () => {
             <div className="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
               <h1 className="h1Large mb-4">Exhibitions</h1>
               <div className="fontSerif eabDescrText eabDescrTextII">
-                <p>
-                  여기, 예술의 다양성이 만나는 곳, artroot입니다. 우리는 예술을
-                  사랑하는 이들에게 새로운 창작물과 미술 작품을 소개하고, 다양한
-                  전시 및 행사 정보를 제공합니다. 예술의 뿌리를 탐험하고, 문화의
-                  아름다움에 빠져보세요.
-                </p>
+                <p>예술의 뿌리를 탐험하고, 문화의 아름다움에 빠져보세요.</p>
               </div>
             </div>
           </div>

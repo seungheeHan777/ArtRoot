@@ -177,7 +177,11 @@ router.get("/:username", (req, res) => {
           }));
 
           console.log(recommendedExhibitions);
-          res.json({ success: true, result: recommendedExhibitions });
+          const uniqueExhibitions = [
+            ...new Set(recommendedExhibitions.map(JSON.stringify)),
+          ].map(JSON.parse);
+          console.log(uniqueExhibitions);
+          res.json({ success: true, result: uniqueExhibitions });
         });
       };
 

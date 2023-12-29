@@ -308,21 +308,16 @@ const Aiuser = ({ res, setShowAiResult }) => {
     return <Loading />;
   }
   return (
-    <div>
-      <h1>유저 취향 분석</h1>
+    <div style={{ textAlign: "center" }}>
       <>
-        <h1>Python 스크립트2에서 얻은 결과:</h1>
         <div>
-          <h2>스타일 별 개수:</h2>
-          <ul>
-            {Object.entries(res.styleCount).map(([style, count]) => (
-              <li key={style}>{`${style}: ${count}`}</li>
-            ))}
-          </ul>
           <div
             style={{
               width: "400px",
               height: "400px",
+              marginBottom: "150px",
+              marginLeft: "750px",
+              marginTop: "50px",
             }}
           >
             <DoughnutChart
@@ -332,11 +327,27 @@ const Aiuser = ({ res, setShowAiResult }) => {
           </div>
         </div>
         {res.predictions.map((result, index) => (
-          <div key={index}>
-            <p>예측된 스타일: {result.predicted_style}</p>
-            <img src={result.image_path} alt={`이미지 ${index}`} />
-            <p> result.image_path:{result.image_path}</p>
-            <p>예측 정확도: {result.prediction_probability.toFixed(2)}%</p>
+          <div
+            key={index}
+            style={{
+              margin: "20px",
+              padding: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+            }}
+          >
+            <h3 style={{ fontWeight: "bold" }}>
+              예측된 스타일: {result.predicted_style}
+            </h3>
+            <img
+              src={result.image_path}
+              alt={`이미지 ${index}`}
+              style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+            />
+
+            <p style={{ fontWeight: "bold" }}>
+              예측 정확도: {result.prediction_probability.toFixed(2)}%
+            </p>
           </div>
         ))}
       </>
