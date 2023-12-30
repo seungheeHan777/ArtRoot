@@ -176,7 +176,6 @@ router.get("/:username", (req, res) => {
             // 다른 필드도 필요한 경우 추가
           }));
 
-          console.log(recommendedExhibitions);
           const uniqueExhibitions = [
             ...new Set(recommendedExhibitions.map(JSON.stringify)),
           ].map(JSON.parse);
@@ -191,7 +190,7 @@ router.get("/:username", (req, res) => {
   });
 });
 
-router.post("/saveImageData", (req, res) => {
+router.post("/saveImageData", async (req, res) => {
   const images = req.files.images;
   const labels = req.body.labels;
   const imageCount = req.body.imageCount;
@@ -228,15 +227,54 @@ router.post("/saveImageData", (req, res) => {
           return res.status(500).send("Internal Server Error");
         }
       });
-
       console.log("Image Path:", filePath);
     });
 
-    res.status(200).json({ ok: true });
+    // // 모델 재학습 함수 호출
+    // //const recallResult = await RecallPythonScript(imagePaths);
+    const recallResult = await RecallPythonScript(labels, imageCount);
+    console.log("recallResult:", recallResult);
+    res.status(200).json({ ok: true, result: recallResult });
   } catch (error) {
     console.error("Error handling request:", error);
     res.status(500).send("Internal Server Error");
   }
 });
+
+// 모델 재학습 Python 스크립트를 호출하는 함수
+function RecallPythonScript(labels, imageCount) {
+  return new Promise((resolve, reject) => {
+    const pythonScriptPath = path.resolve(
+      __dirname,
+      "../../../../ai/ai_module3.py"
+    );
+
+    // PythonShell 인스턴스 생성
+    const pyshell = new PythonShell(pythonScriptPath, {
+      args: [labels, imageCount], // 전달할 인자를 args에 추가
+    });
+
+    // 파이썬 스크립트 실행 완료 시의 처리
+    pyshell.end((err, code, signal) => {
+      if (err) reject(err);
+      console.log("파이썬 스크립트가 코드", code, "로 완료되었습니다.");
+
+      // 파일에서 결과 읽어오기 (동기적으로 처리)
+      try {
+        // 파일에서 결과 읽어오기
+        const resultPath = path.resolve(
+          __dirname,
+          "../../../../ai/retrain.json"
+        );
+        const result = JSON.parse(fs.readFileSync(resultPath, "utf8"));
+        console.log("retrain.json 결과", result);
+        resolve(result);
+      } catch (error) {
+        console.error("파일에서 결과를 읽어오는 중 에러:", error);
+        reject(error);
+      }
+    });
+  });
+}
 
 module.exports = router;
