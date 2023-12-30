@@ -25,3 +25,6 @@ server/node_modules/
 
 # ignore public/images directory
 public/images
+
+# ignore ai/images directory
+ai/images
