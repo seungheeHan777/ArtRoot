@@ -306,7 +306,7 @@ const AiExhibition = ({ res, setShowAiResult }) => {
     return <Loading />;
   }
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ marginTop: "50px", textAlign: "center" }}>
       <>
         <div>
           {/* <h2>스타일 별 개수:</h2>
@@ -317,10 +317,14 @@ const AiExhibition = ({ res, setShowAiResult }) => {
 
           <div
             style={{
-              width: "200px",
-              height: "200px",
-              marginBottom: "150px",
-              marginLeft: "150px",
+              width: "400px",
+              height: "400px",
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              justifyContent: "center",
+
+              margin: "0 auto",
             }}
           >
             <DoughnutChart

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { allList } from "../lib/api/exhibition.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 
 import "slick-carousel/slick/slick.css";
@@ -20,6 +20,11 @@ export default function SimpleSlider() {
     autoplay: true,
   };
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  const handleMoreButtonClick = () => {
+    navigate("/ExhibitionList");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,18 +47,35 @@ export default function SimpleSlider() {
         position: "relative",
         marginTop: "auto",
         width: "85%",
+        marginBottom: "100px",
       }}
     >
       <h2 className="slider-text">ART ROOT의 전시들</h2>
+      <button
+        className="more-button"
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          borderRadius: "8px", // Adjust the border radius for a slightly rounded shape
+          padding: "3px 10px", // Adjust padding for the button size
+          backgroundColor: "#222426", // Set the background color
+          color: "white", // Set the text color
+          cursor: "pointer",
+        }}
+        onClick={handleMoreButtonClick}
+      >
+        더보기
+      </button>
       {sliderInitialized && (
         <Slider {...settings}>
           {data.slice(0, 7).map((exhibition, index) => (
-            <div className="slider-slide" key={index}>
+            <div style={{ marginRight: "105px" }} key={index}>
               <Link to={`/exhibitiondetail/${exhibition.ART_NUM}`}>
                 <img
                   src={exhibition.ART_PICTURE}
                   alt={`img-${index}`}
-                  width="300px"
+                  width="275px"
                   height="400px"
                 />
               </Link>

@@ -102,14 +102,25 @@
   width: 90%;
 }
 
-.button-container {
+.regi_button_section{
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
   justify-content: center;
+  margin: 20px auto 30px;
+}
+
+.button-container {
+  /* display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  justifyContent: "center", */
   margin-top: 20px;
 }
 
 .button-container button {
-  background-color: #4caf50; /* Green background color */
+  background-color: #a04a4a; /* Green background color */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 10px 20px; /* Padding */
@@ -123,7 +134,7 @@
 }
 
 .button-container button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #872323; /* Darker green on hover */
 }
 
 /* Add these styles to your Recommend.css or your component's styles */
@@ -157,3 +168,23 @@
 }
 
 /* Adjust the padding, margin, font-size, and colors as needed */
+
+.Recommend_explain{
+  border: 2px solid #872323;
+  background-color: #f2efef;
+  border-radius: 10px;
+  width: 80%;
+  margin: 0 auto 50px;
+}
+
+.re_q{
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.re_a{
+  margin-left: 20px;
+  font-size: 14px;
+}

@@ -115,7 +115,7 @@ const MyPage = () => {
       <h1 style={{ paddingLeft: "50px", fontWeight: "bold" }}>마이페이지</h1>
       <hr
         style={{
-          width: "85%",
+          width: "100%",
 
           borderColor: "#db908a",
           borderWidth: "2px",
@@ -211,7 +211,7 @@ const MyPage = () => {
             <div
               style={{
                 marginLeft: "100px",
-                width: "75%", // Use the remaining width
+                width: "80%", // Use the remaining width
               }}
             >
               <Table striped bordered hover>
@@ -237,7 +237,7 @@ const MyPage = () => {
                           />
                         </a>
                       </td>
-                      <td style={{ verticalAlign: "middle" }}>{one.comment}</td>
+                      <td style={{ verticalAlign: "middle" , width:"70%"}}>{one.comment}</td>
                       <td style={{ verticalAlign: "middle" }}>{one.stars}</td>
                       {/* <td>
               <Button

@@ -179,7 +179,7 @@ function AdminRecommend() {
 
   return (
     <div>
-      <h1>카테고리/이미지 관리 페이지</h1>
+      {/* <h1>카테고리/이미지 관리 페이지</h1>
       <table>
         <thead>
           <tr>
@@ -224,7 +224,7 @@ function AdminRecommend() {
         <button onClick={addCategory}>카테고리 추가</button>
         <button onClick={deleteSelectedCategories}>카테고리 삭제</button>
       </div>
-      <hr />
+      <hr /> */}
       <h2>등록된 이미지</h2>
       <div className="image-container">
         {images.map((image) => (
@@ -270,11 +270,24 @@ function AdminRecommend() {
           }
         `}</style>
       </div>
-      <div>
-        <h2>이미지 추가</h2>
-        <label>
+      <div style={{ margin: "20px 0" }}>
+        <h2
+          style={{
+            marginLeft: "20px",
+          }}
+        >
+          이미지 추가
+        </h2>
+        <label
+          style={{
+            marginTop: "20px",
+          }}
+        >
           Name:
           <input
+            style={{
+              marginLeft: "20px",
+            }}
             type="text"
             name="name"
             value={imageData.name}
@@ -282,9 +295,16 @@ function AdminRecommend() {
           />
         </label>
         <br />
-        <label>
+        <label
+          style={{
+            marginTop: "20px",
+          }}
+        >
           Image URL:
           <input
+            style={{
+              marginLeft: "20px",
+            }}
             type="text"
             name="image_url"
             value={imageData.image_url}
@@ -292,9 +312,17 @@ function AdminRecommend() {
           />
         </label>
         <br />
-        <label>
+        <label
+          style={{
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
           Keyword ID:
           <input
+            style={{
+              marginLeft: "20px",
+            }}
             type="number"
             name="keyword_id"
             value={imageData.keyword_id}
@@ -302,8 +330,34 @@ function AdminRecommend() {
           />
         </label>
         <br />
-        <button onClick={addImage}>이미지 추가</button>
-        <button onClick={deleteSelectedImages}>선택된 이미지 삭제</button>
+        <button
+          onClick={addImage}
+          style={{
+            margin: "10px 0",
+            padding: "8px 16px",
+            backgroundColor: "#872323", // 빨간색
+            color: "#FFF", // 흰색
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          이미지 추가
+        </button>
+        <button
+          onClick={deleteSelectedImages}
+          style={{
+            marginLeft: "20px",
+            padding: "8px 16px",
+            backgroundColor: "#872323", // 빨간색
+            color: "#FFF", // 흰색
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          선택된 이미지 삭제
+        </button>
       </div>
     </div>
   );

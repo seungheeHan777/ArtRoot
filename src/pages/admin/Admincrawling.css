@@ -1,0 +1,25 @@
+.horizontal-line {
+  border-top: 1px solid #872323; /* 선의 두께와 색상을 조절할 수 있습니다. */
+  margin-top: 20px;
+}
+
+.image_upload_section{
+  border: 1px solid #872323;
+  border-radius: 10px;
+}
+
+.image_upload_title{
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.image_upload_explain{
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.file_uplaad{
+  margin-top: 10px;
+}

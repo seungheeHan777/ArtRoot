@@ -22,6 +22,11 @@
   height: 300px;
   border: 1px solid #dfc6c6;
   margin-bottom: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.ExhibitionItem:hover img {
+  transform: scale(1.1); /* 추가된 부분 */
 }
 
 .exhibition_name {

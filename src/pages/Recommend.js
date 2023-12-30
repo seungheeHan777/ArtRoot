@@ -203,96 +203,115 @@ const Recommend = () => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      {user ? (
-        <div>
+    <div>
+      <div className="Recommend_explain">
+        <p className="re_q">Q) AI 취향 분석이란?</p>
+        <p className="re_a">
+          A) 사용자가 등록한 이미지를 바탕으로 AI를 사용해 취향을 분석해 드리는
+          기능입니다.
+        </p>
+
+        <p className="re_q">Q) 어떻게 사용하나요?</p>
+        <p className="re_a">
+          A) 먼저, 마음에 드는 이미지를 선택하세요. 여러 장을 고를실수록
+          좋습니다.
+        </p>
+        <p className="re_a">
+          이미지를 다 선택하셨다면 이미지 등록 버튼을 눌러 취향을 등록해주세요.
+        </p>
+        <p className="re_a">
+          마지막으로 취향 분석 버튼을 눌러 분석 결과를 확인해보세요!
+        </p>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        {user ? (
           <div>
-            <h2
-              style={{
-                fontWeight: "bold",
-                color: "#DB908A",
-              }}
-            >
-              마음에 드는 이미지를 선택하세요
-            </h2>
-            <hr className="customhr" style={{ marginBottom: "100px" }}></hr>
-            <div className="image-container">
-              {getCurrentImages().map((image) => (
-                <div key={image.category_id} className="image-item">
-                  <div className="image-content">
-                    <img
-                      src={image.image_url}
-                      alt={`이미지 ${image.category_id}`}
-                      style={{
-                        width: "200px",
-                        height: "150px",
-                        border: selectedCategories.includes(image.category_id)
-                          ? "5px solid red"
-                          : "none",
-                      }}
-                      onClick={() => handleCheckboxChange(image.category_id)}
-                    />
-                    {/* <p>이미지 카테고리: {image.name}</p> */}
+            <div>
+              <h2
+                style={{
+                  fontWeight: "bold",
+                  color: "#DB908A",
+                }}
+              >
+                마음에 드는 이미지를 선택하세요
+              </h2>
+              <hr className="customhr" style={{ marginBottom: "100px" }}></hr>
+              <div className="image-container">
+                {getCurrentImages().map((image) => (
+                  <div key={image.category_id} className="image-item">
+                    <div className="image-content">
+                      <img
+                        src={image.image_url}
+                        alt={`이미지 ${image.category_id}`}
+                        style={{
+                          width: "200px",
+                          height: "150px",
+                          border: selectedCategories.includes(image.category_id)
+                            ? "5px solid red"
+                            : "none",
+                        }}
+                        onClick={() => handleCheckboxChange(image.category_id)}
+                      />
+                      {/* <p>이미지 카테고리: {image.name}</p> */}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className="button-container1">
-              <button
-                onClick={() => paginate(currentPage - 1)}
-                disabled={currentPage === 1}
+                ))}
+              </div>
+              <div className="button-container1">
+                <button
+                  onClick={() => paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  이전
+                </button>
+                <button
+                  onClick={() => paginate(currentPage + 1)}
+                  disabled={
+                    currentPage === Math.ceil(images.length / imagesPerPage)
+                  }
+                >
+                  다음
+                </button>
+              </div>
+              <div
+                className="button-container"
+                style={{
+                  textAlign: "center",
+                  fontSize: "25px", // 적절한 크기로 조절하세요
+                  padding: "10px 20px", // 적절한 패딩 설정
+                  cursor: "pointer",
+                }}
               >
-                이전
-              </button>
-              <button
-                onClick={() => paginate(currentPage + 1)}
-                disabled={
-                  currentPage === Math.ceil(images.length / imagesPerPage)
-                }
+                <button onClick={handleCategoryRecommend}>취향 등록</button>
+              </div>
+              <div
+                className="button-container"
+                style={{
+                  textAlign: "center",
+                  fontSize: "25px", // 적절한 크기로 조절하세요
+                  padding: "10px 20px", // 적절한 패딩 설정
+                  cursor: "pointer",
+                }}
               >
-                다음
-              </button>
+                <button onClick={handleShowAnalysisResult}>취향 분석</button>
+              </div>
+              {showAiResult && (
+                <Aiuser res={aiResult} setShowAiResult={setShowAiResult} />
+              )}
             </div>
-            <div
-              className="button-container"
-              style={{
-                textAlign: "center",
-                fontSize: "25px", // 적절한 크기로 조절하세요
-                padding: "10px 20px", // 적절한 패딩 설정
-                cursor: "pointer",
-              }}
-            >
-              <button onClick={handleCategoryRecommend}>이미지 등록</button>
-            </div>
-            <div
-              className="button-container"
-              style={{
-                textAlign: "center",
-                fontSize: "25px", // 적절한 크기로 조절하세요
-                padding: "10px 20px", // 적절한 패딩 설정
-                cursor: "pointer",
-              }}
-            >
-              <button onClick={handleShowAnalysisResult}>
-                이미지 분석 결과
-              </button>
-            </div>
-            {showAiResult && (
-              <Aiuser res={aiResult} setShowAiResult={setShowAiResult} />
-            )}
           </div>
-        </div>
-      ) : (
-        // 아래의 코드 블록을 수정
-        showAlert && (
-          <div>
-            {(() => {
-              window.alert("로그인을 먼저하세요.");
-              setShowAlert(false);
-            })()}
-          </div>
-        )
-      )}
+        ) : (
+          // 아래의 코드 블록을 수정
+          showAlert && (
+            <div>
+              {(() => {
+                window.alert("로그인을 먼저하세요.");
+                setShowAlert(false);
+              })()}
+            </div>
+          )
+        )}
+      </div>
     </div>
   );
 };
@@ -308,50 +327,76 @@ const Aiuser = ({ res, setShowAiResult }) => {
     return <Loading />;
   }
   return (
-    <div style={{ textAlign: "center" }}>
-      <>
-        <div>
-          <div
-            style={{
-              width: "400px",
-              height: "400px",
-              marginBottom: "150px",
-              marginLeft: "750px",
-              marginTop: "50px",
-            }}
-          >
-            <DoughnutChart
-              labels={Object.keys(res.styleCount)}
-              data={Object.values(res.styleCount)}
-            />
-          </div>
-        </div>
+    <div>
+      <h1
+        style={{
+          marginTop: "100px",
+          marginBottom: "50px",
+          textAlign: "center",
+        }}
+      >
+        유저 취향 분석
+      </h1>
+      <div
+        style={{
+          width: "400px",
+          height: "400px",
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "center",
+
+          margin: "0 auto",
+        }}
+      >
+        <DoughnutChart
+          labels={Object.keys(res.styleCount)}
+          data={Object.values(res.styleCount)}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "center",
+
+          margin: "0",
+        }}
+      >
         {res.predictions.map((result, index) => (
-          <div
-            key={index}
-            style={{
-              margin: "20px",
-              padding: "10px",
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-            }}
-          >
-            <h3 style={{ fontWeight: "bold" }}>
-              예측된 스타일: {result.predicted_style}
-            </h3>
+          <div key={index} style={{ margin: "20px", maxWidth: "300px" }}>
+            <div style={{ marginBottom: "10px" }}>
+              <h3 style={{ fontWeight: "bold" }}>
+                예측된 스타일: {result.predicted_style}
+              </h3>
+              <p>예측 정확도: {result.prediction_probability.toFixed(2)}%</p>
+            </div>
             <img
               src={result.image_path}
               alt={`이미지 ${index}`}
-              style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+              style={{ width: "100%", height: "350px", borderRadius: "8px" }}
             />
-
-            <p style={{ fontWeight: "bold" }}>
-              예측 정확도: {result.prediction_probability.toFixed(2)}%
-            </p>
           </div>
         ))}
-      </>
-      <button onClick={() => setShowAiResult(false)}>닫기</button>
+      </div>
+      <button
+        onClick={() => setShowAiResult(false)}
+        style={{
+          marginTop: "20px",
+          padding: "10px 20px",
+          fontSize: "16px",
+          fontWeight: "bold",
+          backgroundColor: "#872323",
+          color: "#FFF",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          marginBottom: "30px",
+        }}
+      >
+        닫기
+      </button>
     </div>
   );
 };

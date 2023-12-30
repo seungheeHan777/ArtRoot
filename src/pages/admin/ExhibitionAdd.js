@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Image, Alert, Button } from "react-bootstrap";
 import { exhibitionAdd } from "../../lib/api/admin";
+import { useNavigate } from "react-router-dom";
 import "./ExhibitionAdd.css";
 
 const ExhibitionAdd = () => {
+  const navigate = useNavigate();
   const [isDiscount, setIsDiscount] = useState(false); // 할인 여부 상태
   const [imagePreviews, setImagePreviews] = useState([]); //업로드 이미지 미리보기
   const [showAlert, setShowAlert] = useState(false); //업로드 이미지 개수 제한 알람
@@ -91,6 +93,7 @@ const ExhibitionAdd = () => {
       console.log("updatedData", updatedData);
       const response = await exhibitionAdd(formData);
       console.log("전시회 추가 성공:", response.data);
+      navigate("/AdminExhibitionList");
     } catch (error) {
       console.error("요청 중 오류 발생:", error);
     }
