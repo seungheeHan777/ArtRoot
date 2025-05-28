@@ -1,109 +1,78 @@
+# ARTROOT
+
 ## 프로젝트 개요
 
-이 프로젝트는 전시회 추천을 위한 전시회 및 미술관 추천 웹 서비스 애플리케이션입니다. 
-전시회 정보 제공과 유저의 전시회 취향 추천 기능 등을 제공하고 있습니다.
-React 와 Express를 활용해서 개발했으며, DB는 MariaDB를 사용하고, 취향 추천 및 정보 수집 코드에는 Python 을 사용했습니다.
-***
+### 🎯 1.1 프로젝트 필요성
 
-### 주요 기능
+현재 전시회 정보는 각 미술관, 박물관별로 분산되어 있어 사용자가 원하는 전시회를 찾기 위해서는 여러 사이트를 일일이 확인해야 하는 불편함이 있습니다.  
+또한 전시회에 관심은 있지만 어떤 전시회를 관람해야 할지 모르는 사용자들에게는 **개인의 취향에 맞는 전시회를 추천받을 수 있는 서비스**가 필요합니다.  
 
-1. **전시회 검색**: 사용자는 특정 키워드를 입력하여 전시회를 검색할 수 있습니다.
+이러한 문제점을 해결하기 위해 다양한 전시장의 정보를 한 곳에서 확인하고, **AI 기반 추천 알고리즘**을 통해 개인 맞춤형 전시회를 추천받을 수 있는 **통합 플랫폼**의 필요성이 대두되었습니다.
 
-2. **전시회 필터링**: 날짜, 장소, 카테고리 등 다양한 기준으로 전시회를 필터링할 수 있습니다.
+### 🎯 개발 목표
 
-3. **전시회 추천**: 사용자의 관심사와 이용 기록을 바탕으로 개인화된 전시회 추천을 제공합니다.
- 
-4. **사용자 인증**: 사용자는 회원가입 및 로그인을 통해 개인 설정과 추천 서비스를 이용할 수 있습니다.
+PC 환경에서 **미술관, 박물관 등 전시장에서 열리는 전시회**를 효과적으로 추천하는 웹 서비스를 개발합니다.
 
-5. **전시회 상세 정보**: 각 전시회에 대한 상세 정보 및 위치 정보를 제공합니다. Naver Map API를 통해 전시회의 위치를 지도 상에 표시합니다.
-6. **관리자 기능**:
-+ 유저 정보 수정 및 삭제
-+ 전시회 정보 추가, 수정, 삭제
-+ AI 학습에 사용하는 그림 추가
+- ✨ **사용자 중심 설계**: 편의성과 접근성을 최우선으로 한 직관적인 UI/UX  
+- 🤖 **AI 기반 추천**: 개인 맞춤형 추천 시스템을 통한 사용자 경험 극대화  
+- 🛠️ **효율적인 관리**: 관리자를 위한 직관적인 백오피스 구축  
+- 📊 **통합 관리**: 사용자, 전시회 정보, 일정, 할인 정보 통합 관리
 
-### 기술 스택
-+ Frontend: React
-+ Backend: Express
-+ DB: MariaDB
+---
 
-### 프로젝트 구조
-+ frontend: React 앱의 소스코드(src)
-  + detail page: (src-pages)
-+ backend: server-server.js
-  + 각 기능 api : (server-lib-api 폴더 내)
-  + databas 연결 : (server-lib-db.js)
-+ ai : (ai)
-  + ai 기능사용 : (ai-ai_module.py)
-  + ai 학습 : learningAIModel.py
+### 👥 1.2 서비스 대상
+
+#### 🎯 주요 타겟
+- 전시회에 관심이 많고 정기적으로 관람하는 사용자  
+- 미술관, 박물관 등 전시회 정보를 효율적으로 찾고자 하는 사용자  
+
+#### 🌟 부가 타겟
+- 전시회에 대한 지식은 부족하지만 문화 활동에 관심이 있는 초보자  
+- 개인 취향에 맞는 전시회를 추천받고 싶은 사용자  
+- 전시회 할인 정보와 일정 관리가 필요한 사용자  
+
+---
+
+### 👨‍💻 1.3 담당 업무
+
+| 이름 | 역할 | 주요 개발 기능 |
+|------|------|----------------|
+| **김민수** |  팀장 | - 프로젝트 및 팀원 관리<br>- 서버 설계 및 구현<br>- DB 설계 및 구축<br>- 웹 크롤링 기능 구현<br>- AI 모델 학습 및 구축<br>- 메인 홈페이지 및 전시회 검색 기능 구현<br>- CSS 스타일링 |
+| **한승희** |  팀원 | - 로그인/로그아웃<br>- 회원 정보 수정 및 관리<br>- 배경 지식 기능<br>- 관리자 페이지 구현<br>- 추천 알고리즘 구현<br>- 코드 통합 및 DB 구축<br>- 할인 정보 페이지 구현<br>- AI 웹 서버 연동 |
+| **신재훈** |  팀원 | - 메인 홈페이지 구현<br>- 커뮤니티 기능<br>- 캘린더 및 평점 기능<br>- 할인 정보 및 전시회 정보 구현<br>- 전시 데이터 및 DB 설계<br>- CSS 스타일링 |
+
+---
 
 
-# Getting Started with Create React App
+## 프로젝트 구성
+### 1. 기술 스택
+- Frontend: 
+- Backend: 
+- Database: 
+- 기타:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 2. 시스템 아키텍처
+#### ▸ 시퀀스 다이어그램
+(이미지 또는 설명 삽입)
 
-## Available Scripts
+#### ▸ 데이터베이스 구조
+(ERD 이미지 또는 테이블 구조 설명 삽입)
 
-In the project directory, you can run:
+### 3. API 명세서
+| Method | Endpoint | 설명 | 비고 |
+|--------|----------|------|------|
+| GET    | /api/... | ...  |      |
+| POST   | /api/... | ...  |      |
 
-### `npm start`
+## 프로젝트 수행과정 및 결과
+### 1. 수행 과정
+설명 작성 예정
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. 결과
+설명 작성 예정
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. 개선해야 할 점
+설명 작성 예정
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 프로젝트 후기
+설명 작성 예정
