@@ -65,10 +65,87 @@ PC 환경에서 **미술관, 박물관 등 전시장에서 열리는 전시회**
 
 
 ### 3. API 명세서
-| Method | Endpoint | 설명 | 비고 |
-|--------|----------|------|------|
-| GET    | /api/... | ...  |      |
-| POST   | /api/... | ...  |      |
+####  Admin REST API 명세서
+
+| Method | Endpoint                 | 설명               |
+| ------ | ------------------------ | ---------------- |
+| GET    | `/admin/users`           | 전체 사용자 목록 조회     |
+| POST   | `/admin/update`          | 사용자 정보 수정        |
+| DELETE | `/admin/deleteUser/:id`  | 사용자 삭제           |
+| GET    | `/admin/exhibitions`     | 전체 전시회 목록 조회     |
+| POST   | `/admin/exhibitionss`    | 전시회 추가 |
+| PUT    | `/admin/exhibitions/:id` | 전시회 정보 수정        |
+| DELETE | `/admin/exhibitions/:id` | 전시회 삭제           |
+| GET    | `/admin/eximages/:id`    | 전시회 이미지 조회       |
+| POST   | `/admin/cw`              | 크롤링한 전시회 데이터 저장  |
+
+#### AI 관련 REST API 명세서
+
+| Method | Endpoint                              | 설명                          |
+| ------ | ------------------------------------- | --------------------------- |
+| GET    | `/ai/predicted?imagePath=?` | 이미지 경로를 기반으로 AI 예측 수행       |
+| POST   | `/ai/savestyle/user`                  | 유저 스타일 정보 저장                |
+| POST   | `/ai/savestyle/exhibition`            | 전시회 스타일 정보 저장               |
+| GET    | `/ai/:username`                       | 유저 취향에 맞는 전시회를 가져오기            |
+| POST   | `/ai/saveImageData`                   | 이미지 및 라벨 데이터 저장 및 모델 재학습 수행 |
+
+#### Auth 관련 Rest API 명세서
+
+| Method | Endpoint | 설명 |
+|--------|------|------|
+| POST | `/auth/SignUp` | 사용자 회원가입 |
+| POST | `/auth/LogIn` | 사용자 로그인 및 세션 생성 |
+| POST | `/auth/Logout` | 사용자 로그아웃 및 세션 종료 |
+| POST | `/auth/findPW` | 비밀번호 찾기 |
+| POST | `/auth/findID` | 아이디 찾기 |
+| GET | `/auth/mypage` | 현재 사용자 정보 조회 |
+| PUT | `/auth/update` | 사용자 정보 수정|
+| DELETE | `/auth/deleteAccount` | 계정 탈퇴 |
+| GET | `/auth/myone` | 현재 사용자 한줄평 정보 조회 |
+| POST | `/auth/updateOne` | 한줄평 정보 수정 |
+| POST | `/auth/question` | 문의사항 등록 |
+
+#### 전시회 관련 Rest API 명세서
+
+| Method | Endpoint                                     | 설명                       |
+| ------ | -------------------------------------------- | ------------------------ |
+| GET    | `/ex/allexhibitions`                 | 전체 전시회 목록 조회             |
+| GET    | `/ex/exhibitiondetail/:id`           | 특정 전시회 상세 정보 조회          |
+| GET    | `/ex/ExhibitionSearchList?query=검색어` | 전시회 이름 또는 키워드로 검색        |
+| GET    | `/ex/random`                         | 랜덤 전시회 조회             |
+| GET    | `/ex/rating/:id`                     | 특정 전시회에 대한 별점 및 한줄평 조회   |
+| POST   | `/ex/submitRating`                   | 전시회에 대한 별점 및 한줄평 등록      |
+| GET    | `/ex/all`                            | 모든 한줄평 및 별점 리스트 조회       |
+| DELETE | `/ex/Ratings/:ONE_USER/:ONE_ARTNUM`  | 특정 사용자의 특정 전시에 대한 한줄평 삭제 |
+| GET    | `/ex/DiscountExhibitions`            | 할인 전시회 목록 조회             |
+| GET    | `/ex/exhibitionrate/:id`             | 특정 전시회의 별점 리스트 조회        |
+
+#### 취향 추천에 사용되는 요소 관련 Rest API 명세서
+
+| Method | Endpoint                     | 설명                                                     |
+| ------ | ---------------------------- | ------------------------------------------------------ |
+| GET    | `/keyword/admin/keywords`            | 관리자 키워드 전체 조회                                          |
+| GET    | `/keyword/admin/categories`          | 관리자 카테고리 전체 조회                                         |
+| DELETE | `/keyword/admin/deletecategories`    | 관리자 카테고리 여러 개 삭제               |
+| POST   | `/keyword/admin/addcategory`         | 관리자 카테고리 추가           |
+| POST   | `/keyword/admin/addimage`            | 관리자 이미지 추가 |
+| GET    | `/keyword/admin/getExkeyword`        | 특정 전시회의 키워드 조회                                      |
+| POST   | `/keyword/admin/exhibition_keywords` | 전시회-키워드 관계 데이터 추가      |
+| DELETE | `/keyword/admin/exhibition_keywords` | 전시회-키워드 관계 데이터 삭제      |
+| POST   | `/keyword/user/saveCategories` | 유저 취향 저장      |
+| GET    | `/keyword/user/updateCategory/:username`        | 유저의  선호 카테고리 조회 |
+| GET    | `/keyword/user/updateImage/:username`        | 유저의  선호 이미지 조회 |
+| GET    | `/keyword/ex/addkeyword`        | 전시회 키워드 추가 |
+
+
+
+#### 미술관 위치 관련 Rest API 명세서
+
+| Method | Endpoint                | 설명                    |
+| ------ | ----------------------- | --------------------- |
+| GET    | `/museum/getMuseumCoordinates` | 미술관 이름으로 좌표 조회 |
+
+
 
 ## 프로젝트 수행과정 및 결과
 ### 1. 수행 과정
